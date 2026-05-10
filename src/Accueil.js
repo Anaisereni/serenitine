@@ -1,7 +1,8 @@
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 function Accueil() {
+  const [instructions, setInstructions] = useState(false);
   const navigate = useNavigate();
   const today = new Date().toLocaleDateString('fr-FR', {
     weekday: 'long',
@@ -69,7 +70,37 @@ function Accueil() {
           <span className="accueil-card-arrow">→</span>
         </div>
       </div>
+<div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Installer l'app</div>
 
+<div className="accueil-cards">
+  <div className="accueil-card" onClick={() => setInstructions(!instructions)}>
+    <span className="accueil-card-icon">📲</span>
+    <div>
+      <div className="accueil-card-titre">Ajouter sur mon écran d'accueil</div>
+      <div className="accueil-card-sub">Accéder à Sérénitine comme une vraie app</div>
+    </div>
+    <span className="accueil-card-arrow">{instructions ? '↑' : '↓'}</span>
+  </div>
+
+  {instructions && (
+    <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+      <p style={{ fontSize: 13, fontWeight: 500, color: '#1D9E75', marginBottom: 10 }}>Sur iPhone (Safari) :</p>
+      <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7, marginBottom: 12 }}>
+        1. Ouvrez l'app dans <strong>Safari</strong><br />
+        2. Appuyez sur l'icône <strong>Partager</strong> (carré avec flèche vers le haut)<br />
+        3. Faites défiler et appuyez sur <strong>"Sur l'écran d'accueil"</strong><br />
+        4. Appuyez sur <strong>"Ajouter"</strong>
+      </p>
+      <p style={{ fontSize: 13, fontWeight: 500, color: '#1D9E75', marginBottom: 10 }}>Sur Android (Chrome) :</p>
+      <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>
+        1. Ouvrez l'app dans <strong>Chrome</strong><br />
+        2. Appuyez sur les <strong>3 points</strong> en haut à droite<br />
+        3. Appuyez sur <strong>"Ajouter à l'écran d'accueil"</strong><br />
+        4. Appuyez sur <strong>"Ajouter"</strong>
+      </p>
+    </div>
+  )}
+</div>
     </div>
   );
 }
