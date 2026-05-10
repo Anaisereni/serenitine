@@ -1,0 +1,30 @@
+{
+  "short_name": "Sérénitine",
+  "name": "Sérénitine — Votre app bien-être",
+  "description": "Prenez soin de vous chaque jour, avec les bons gestes.",
+  "icons": [
+    {
+      "src": "logomesroutines.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logomesroutines.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logomesroutines.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/accueil",
+  "display": "standalone",
+  "theme_color": "#1D9E75",
+  "background_color": "#F7F9F5",
+  "orientation": "portrait"
+}
