@@ -72,7 +72,7 @@ function ContenuApp() {
       <div className="app">
         <header className="app-header">
           <img src="/sereniti.png" alt="Logo Routines" className="header-logo" />
-          <p>✹ Prends soin de toi jour après jour ✹</p>
+          <p>✹ Tes routines bien-être pour une vie plus sereine ✹</p>
         </header>
         <main className="app-main">
           <Routes>
