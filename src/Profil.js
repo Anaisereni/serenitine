@@ -57,7 +57,7 @@ const weekKey = getWeekKey();
 
       <div className="profil-hero">
         <div className="profil-avatar">
- <img src="/logoprofil.png"/>
+ <img src="/logoprofil.png" alt="Logo Sérénitine" />
 </div>
         {edition ? (
           <div className="profil-edition">
