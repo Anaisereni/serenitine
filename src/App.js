@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 import Accueil from './Accueil';
 import ListeRoutines from './ListeRoutines';
@@ -128,6 +129,7 @@ function App() {
   return (
     <BrowserRouter>
       <ContenuApp />
+      <Analytics />
     </BrowserRouter>
   );
 }
