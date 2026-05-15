@@ -814,7 +814,7 @@ function Ressources() {
   return (
     <div className="ressources-wrap">
       <h2 className="ressources-titre" style={{ textAlign: 'center' }}>Ressources💡</h2>
-      <p className="ressources-sous-titre" style={{ textAlign: 'center' }}>Retrouvez ici des articles détaillés utiles au quotidien</p>
+      <p className="ressources-sous-titre" style={{ textAlign: 'center' }}>Retrouve ici des articles détaillés utiles au quotidien</p>
 
       <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
         {PILIERS.map(p => (

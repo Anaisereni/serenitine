@@ -174,12 +174,15 @@ function Statistiques() {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#f3f1ec', marginBottom: '1.2rem', textAlign: 'center' }}>
-        Progression 📊
-      </h2>
+      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center' }}>
+  Progression 📊
+</h2>
+<p style={{ fontSize: 13, color: 'white', textAlign: 'center', marginBottom: '1.2rem' }}>
+  Ton évolution dans les trois catégories de routines
+</p>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem' }}>
-        {[['jour', '7 jours'], ['semaine', '4 semaines'], ['annee', '3 ans']].map(([key, label]) => (
+        {[['jour', 'Jours'], ['semaine', 'Semaines'], ['annee', 'Années']].map(([key, label]) => (
           <button
             key={key}
             onClick={() => setOnglet(key)}

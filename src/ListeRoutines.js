@@ -5,7 +5,7 @@ import { useRoutineStorage, sauvegarderPiliers } from './useStorage';
 import { AppContext } from './App';
 
 const routines = [
-  { id: 1, nom: "Boire 1,5 à 2L d'eau", description: "Répartis sur la journée, hors effort physique", pilier: "Nutrition", frequence: "Quotidien" },
+  { id: 1, nom: "Boire 1,5 à 2L d'eau", description: "Répartis sur la journée", pilier: "Nutrition", frequence: "Quotidien" },
   { id: 2, nom: "Respecter des horaires de repas", description: "Manger à heure régulière", pilier: "Nutrition", frequence: "Quotidien" },
   { id: 3, nom: "Consommer des fruits et légumes", description: "Au moins 5 portions par jour", pilier: "Nutrition", frequence: "Quotidien" },
   { id: 4, nom: "Limiter les produits ultra-transformés", description: "Privilégier le fait maison ou peu transformé", pilier: "Nutrition", frequence: "Quotidien" },
@@ -96,7 +96,9 @@ const routinesFiltrees = routines.filter(r => {
           <div className="progression-fill" style={{ width: `${progression}%` }} />
         </div>
       </div>
-
+<p style={{ fontSize: 12, color: 'white', textAlign: 'center', marginBottom: 8, fontStyle: 'italic' }}>
+  Clique sur chaque routine pour + d'infos
+</p>
       <div className="piliers-filtres">
         {PILIERS.map(p => (
           <button

@@ -49,7 +49,7 @@ function Accueil() {
           <span className="accueil-card-icon">✅</span>
           <div>
             <div className="accueil-card-titre">Routines du jour</div>
-            <div className="accueil-card-sub">Cochez vos habitudes quotidiennes</div>
+            <div className="accueil-card-sub">Coche tes habitudes quotidiennes</div>
           </div>
           <span className="accueil-card-arrow">→</span>
         </div>
@@ -65,7 +65,7 @@ function Accueil() {
           <span className="accueil-card-icon">📊</span>
           <div>
             <div className="accueil-card-titre">Statistiques</div>
-            <div className="accueil-card-sub">Suivre votre progression</div>
+            <div className="accueil-card-sub">Suivre ta progression</div>
           </div>
           <span className="accueil-card-arrow">→</span>
         </div>
