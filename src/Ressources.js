@@ -213,7 +213,7 @@ const articles = [
       },
       {
         sous_titre: "Les meilleures sources de protéines animales",
-        texte: "Les œufs sont la source de protéines la plus complète et la mieux assimilée par l'organisme. Les viandes blanches (poulet, dinde), les poissons et fruits de mer, les produits laitiers (fromage blanc, yaourt grec) sont également d'excellentes sources. Préférez des sources de qualité : œufs bio, poissons sauvages, viandes de qualité en quantité raisonnée."
+        texte: "Les œufs sont la source de protéines la plus complète et la mieux assimilée par l'organisme, il est possible d'en manger plusieurs par jour (un oeuf contient 6 à 7g de protéines). Les viandes blanches (poulet, dinde), les poissons et fruits de mer, les produits laitiers (fromage blanc, yaourt grec) sont également d'excellentes sources. Préférez des sources de qualité : œufs bio filière oméga 3, poissons sauvages, viandes de qualité en quantité raisonnée."
       },
       {
         sous_titre: "Les meilleures sources de protéines végétales",
@@ -773,6 +773,35 @@ const articles = [
       {
         sous_titre: "Les microplastiques : une menace émergente",
         texte: "Les microplastiques sont des fragments de plastique de moins de 5mm résultant de la dégradation des plastiques dans l'environnement. Ils ont été retrouvés dans l'eau du robinet, les eaux embouteillées, le sel marin, le miel, les fruits de mer et même dans le sang et les poumons humains. Leurs effets sur la santé sont encore à l'étude mais préoccupants. Pour les limiter : filtrez votre eau du robinet, réduisez votre consommation de plastiques à usage unique et choisissez des aliments peu transformés avec peu d'emballages."
+      }
+    ]
+  },
+  {
+    id: 28,
+    titre: "Viandes rouges et charcuteries : trouver le bon équilibre",
+    pilier: "Nutrition",
+    emoji: "🥩",
+    resume: "Pourquoi limiter la viande rouge et la charcuterie, et comment trouver le bon équilibre sans se priver.",
+    contenu: [
+      {
+        sous_titre: "Quelle quantité de viande rouge par semaine ?",
+        texte: "Les recommandations nutritionnelles actuelles préconisent de limiter la consommation de viande rouge à 300g maximum par semaine, soit environ 2 à 3 portions. La viande rouge englobe le bœuf, le veau, le porc, l'agneau, le mouton et le cheval. Au-delà de cette quantité, le risque de cancer colorectal augmente de façon significative selon les études épidémiologiques. Cela ne signifie pas qu'il faut supprimer la viande rouge — elle reste une excellente source de protéines, de fer héminique (très bien absorbé) et de zinc — mais la consommer de façon raisonnée."
+      },
+      {
+        sous_titre: "Et pour la charcuterie ?",
+        texte: "La charcuterie (jambon, saucisson, lardons, bacon, rillettes, pâté…) est encore plus limitée — 150g maximum par semaine est la recommandation. Contrairement à la viande rouge, la charcuterie est classée cancérogène certain (groupe 1) par le Centre International de Recherche sur le Cancer, principalement en raison des nitrites utilisés comme conservateurs et du processus de transformation. Préférez les charcuteries sans nitrites ajoutés, de plus en plus disponibles en grande surface et chez les artisans bouchers."
+      },
+      {
+        sous_titre: "Pourquoi ces limites ?",
+        texte: "La cuisson à haute température de la viande rouge (grillades, fritures) produit des composés potentiellement cancérogènes comme les amines hétérocycliques et les hydrocarbures aromatiques polycycliques. Les modes de cuisson plus doux — mijotage, cuisson à la vapeur, four à basse température — sont préférables. Par ailleurs, un excès de viande rouge est associé à un risque accru de maladies cardiovasculaires, notamment en raison de sa teneur en graisses saturées."
+      },
+      {
+        sous_titre: "Par quoi remplacer la viande rouge ?",
+        texte: "Les jours sans viande rouge, privilégiez les volailles (poulet, dinde, canard), les poissons et fruits de mer, les œufs et les légumineuses. Ces alternatives apportent des protéines de qualité avec un profil nutritionnel souvent plus favorable. Les légumineuses associées à des céréales complètes fournissent tous les acides aminés essentiels et sont excellentes pour le microbiote intestinal. Alterner les sources de protéines est la meilleure stratégie pour une alimentation à la fois saine, variée et plaisante."
+      },
+      {
+        sous_titre: "Comment s'organiser concrètement ?",
+        texte: "Une façon simple de respecter ces recommandations : planifiez 2 repas avec viande rouge par semaine maximum (ex: bœuf le mardi, agneau le samedi), 2 repas avec poisson, 2 repas avec volaille ou œufs, et 1 repas végétarien avec légumineuses. Pour la charcuterie, réservez-la aux occasions plutôt qu'au quotidien — une tranche de jambon dans un sandwich de temps en temps ne pose aucun problème dans le cadre d'une alimentation globalement équilibrée."
       }
     ]
   }
