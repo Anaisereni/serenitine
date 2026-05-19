@@ -804,6 +804,64 @@ const articles = [
         texte: "Une façon simple de respecter ces recommandations : planifiez 2 repas avec viande rouge par semaine maximum (ex: bœuf le mardi, agneau le samedi), 2 repas avec poisson, 2 repas avec volaille ou œufs, et 1 repas végétarien avec légumineuses. Pour la charcuterie, réservez-la aux occasions plutôt qu'au quotidien — une tranche de jambon dans un sandwich de temps en temps ne pose aucun problème dans le cadre d'une alimentation globalement équilibrée."
       }
     ]
+  },
+  {
+    id: 29,
+    titre: "Alcool et tabac : ce que la science dit vraiment",
+    pilier: "Nutrition",
+    emoji: "🚭",
+    resume: "Les effets réels de l'alcool et du tabac sur la santé.",
+    contenu: [
+      {
+        sous_titre: "L'alcool : pas de dose sans risque",
+        texte: "Contrairement à une idée longtemps répandue, il n'existe pas de dose d'alcool sans risque pour la santé. Les études récentes, notamment une méta-analyse publiée dans The Lancet portant sur 195 pays, concluent que la dose la plus sûre est zéro. L'alcool est classé cancérogène certain (groupe 1) par le CIRC et est associé à plus de 200 maladies et traumatismes. En France, Santé Publique France recommande de ne pas dépasser 10 verres standard par semaine, pas plus de 2 par jour, et d'avoir au moins 2 jours sans alcool par semaine."
+      },
+      {
+        sous_titre: "Les effets de l'alcool sur le corps",
+        texte: "L'alcool perturbe le sommeil en supprimant le sommeil paradoxal — il peut faciliter l'endormissement mais dégrade significativement la qualité de la nuit. Il altère la mémoire et la concentration dès des doses modérées. Il est très calorique (7 kcal/g) et favorise la prise de poids. Sur le long terme, une consommation régulière même modérée augmente le risque de cancers (bouche, gorge, œsophage, sein, foie, côlon), de maladies cardiovasculaires, de troubles hépatiques et de dépendance."
+      },
+      {
+        sous_titre: "Le tabac : le premier facteur de mortalité évitable",
+        texte: "Le tabac est la première cause de mortalité évitable en France, responsable de 75 000 décès par an. Il contient plus de 70 substances cancérogènes et est impliqué dans les cancers du poumon, de la bouche, de la gorge, de la vessie, du pancréas et du col de l'utérus, entre autres. Il multiplie par 10 à 15 le risque de cancer du poumon et par 2 à 4 le risque de maladies cardiovasculaires. Il n'existe pas de niveau de consommation de tabac sans risque — même fumer occasionnellement présente des risques significatifs."
+      },
+      {
+        sous_titre: "Le tabac et le corps au quotidien",
+        texte: "Au-delà des maladies chroniques, le tabac a des effets immédiats sur la qualité de vie : il réduit les capacités respiratoires et sportives, accélère le vieillissement cutané, dégrade la qualité du sommeil, altère le goût et l'odorat, et nuit à la fertilité. Il aggrave également l'anxiété sur le long terme — contrairement à l'impression de soulagement que procure une cigarette, la nicotine entretient le cycle de dépendance qui génère lui-même le stress."
+      },
+      {
+        sous_titre: "Arrêter : des aides efficaces existent",
+        texte: "Arrêter de fumer est le geste de santé le plus impactant qu'un fumeur puisse faire, à tout âge. Les substituts nicotiniques (patchs, gommes, inhaleurs) sont remboursés par l'Assurance Maladie jusqu'à 150€ par an. La varénicline (Champix) et le bupropion sont des médicaments efficaces sur prescription. Les thérapies cognitivo-comportementales (TCC) améliorent significativement les chances de succès. La ligne Tabac Info Service (3989) propose un accompagnement gratuit. Pour l'alcool, si vous ressentez une dépendance, parlez-en à votre médecin sans attendre — des traitements efficaces existent."
+      }
+    ]
+  },
+  {
+    id: 30,
+    titre: "L'addiction au sucre : comprendre et s'en libérer",
+    pilier: "Nutrition",
+    emoji: "🍬",
+    resume: "Pourquoi on est accro aux produits sucrés, comment ça fonctionne dans le cerveau et comment s'en sortir.",
+    contenu: [
+      {
+        sous_titre: "Le sucre active le circuit de la récompense",
+        texte: "L'attraction pour les aliments sucrés n'est pas une question de volonté — c'est une réponse neurobiologique. Consommer du sucre stimule la libération de dopamine dans le noyau accumbens, la zone du cerveau impliquée dans le plaisir et la récompense. Ce mécanisme est identique à celui activé par certaines drogues. Avec une consommation régulière de produits sucrés, le cerveau s'adapte en réduisant sa sensibilité à la dopamine — ce qui pousse à consommer de plus en plus pour obtenir le même effet de satisfaction."
+      },
+      {
+        sous_titre: "Le vrai problème : les produits sucrés ultra-transformés",
+        texte: "Il est important de distinguer le sucre naturellement présent dans les fruits, les légumes et les produits laitiers — qui s'accompagne de fibres, vitamines et minéraux — des sucres ajoutés dans les produits industriels. Ces derniers sont souvent associés à des graisses, des arômes artificiels et des textures conçues pour maximiser le plaisir et minimiser la satiété. C'est cette combinaison — sucre + gras + sel + arômes — qui crée l'effet addictif des produits ultra-transformés, bien plus que le sucre seul."
+      },
+      {
+        sous_titre: "Les signes d'une dépendance aux produits sucrés",
+        texte: "Vous pourriez être en situation de dépendance si vous ressentez des fringales intenses et incontrôlables pour les produits sucrés, si vous mangez des produits sucrés même sans faim ou en sachant que vous ne devriez pas, si vous ressentez de la culpabilité après avoir consommé mais recommencez quand même, si vous avez des difficultés à vous arrêter une fois que vous avez commencé, ou si vous ressentez de l'irritabilité ou de l'anxiété quand vous n'avez pas accès à ces aliments."
+      },
+      {
+        sous_titre: "Pourquoi les régimes stricts ne fonctionnent pas",
+        texte: "Supprimer brutalement tous les produits sucrés crée un effet de privation qui augmente les fringales et mène souvent à des épisodes de surconsommation. Le cerveau interprète la restriction comme une menace et renforce le désir pour les aliments interdits. Une approche progressive et bienveillante est bien plus efficace sur le long terme. L'objectif n'est pas la perfection mais de réduire progressivement la fréquence et la quantité tout en se permettant des plaisirs occasionnels sans culpabilité."
+      },
+      {
+        sous_titre: "Des stratégies concrètes pour réduire progressivement",
+        texte: "Commencez par identifier vos déclencheurs — stress, ennui, fatigue, habitudes sociales — et trouvez des alternatives pour chacun. Réduisez progressivement le sucre dans votre café ou thé sur plusieurs semaines. Remplacez les produits sucrés industriels par des alternatives moins transformées : fruits frais, dattes, chocolat noir à plus de 70%. Mangez suffisamment de protéines et de bonnes graisses à chaque repas pour stabiliser la glycémie et réduire les fringales. Dormez suffisamment — le manque de sommeil augmente significativement les envies de sucre en stimulant la ghréline, l'hormone de l'appétit."
+      }
+    ]
   }
 ];
 
