@@ -14,7 +14,7 @@ const routines = [
   { id: 7, nom: "Dormir 7 à 9 heures", description: "Durée recommandée pour un adulte, > prendre en compte la nuit passée", pilier: "Sommeil", frequence: "Quotidien" },
   { id: 8, nom: "Cohérence cardiaque si besoin", description: "5 min, 1 à 3 fois par jour", pilier: "Stress", frequence: "Quotidien" },
   { id: 9, nom: "Prendre l'air au moins 20 min", description: "Lumière naturelle et air frais", pilier: "Stress", frequence: "Quotidien" },
-  { id: 10, nom: "Marcher au moins 30 min", description: "Activité minimale recommandée par l'OMS", pilier: "Mouvement", frequence: "Quotidien" },
+  { id: 10, nom: "30 min d'activité modérée (marche, vélo...)", description: "Activité minimale recommandée par jour", pilier: "Mouvement", frequence: "Quotidien" },
   { id: 11, nom: "Éviter la sédentarité prolongée", description: "Se lever et bouger toutes les heures", pilier: "Mouvement", frequence: "Quotidien" },
   { id: 12, nom: "Manger des légumineuses au moins 2 fois", description: "Lentilles, pois chiches, haricots…", pilier: "Nutrition", frequence: "Hebdomadaire" },
   { id: 13, nom: "Consommer des petits poissons gras 1 à 2 fois", description: "Sardines, maquereau, hareng — riches en oméga-3", pilier: "Nutrition", frequence: "Hebdomadaire" },
