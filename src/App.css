@@ -882,3 +882,39 @@ body {
 .fiche-pilier-badge.environnement { background: #FEF9C3; color: #854D0E; }
 .routine-pilier.environnement { background: #FEF9C3; color: #854D0E; }
 .pill.environnement { background: #FEF9C3; color: #854D0E; }
+
+.accueil-conseil {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  border: 1px solid #eee;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid #24a2c8;
+}
+
+.accueil-conseil-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.accueil-conseil-pilier {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.accueil-conseil-date {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  text-transform: capitalize;
+}
+
+.accueil-conseil-texte {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.7;
+  font-style: italic;
+}
