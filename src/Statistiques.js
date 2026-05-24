@@ -17,7 +17,7 @@ const PILIERS = [
   { nom: 'Nutrition', emoji: '🥗', couleur: '#3B6D11', bg: '#EAF3DE' },
   { nom: 'Sommeil', emoji: '😴', couleur: '#185FA5', bg: '#E6F1FB' },
   { nom: 'Stress', emoji: '🧘', couleur: '#854F0B', bg: '#FAEEDA' },
-  { nom: 'Mouvement', emoji: '🏃', couleur: '#993C1D', bg: '#FAECE7' },
+  { nom: 'Mouvement', emoji: '🏃', couleur: '#761d99', bg: '#FAECE7' },
 ];
 
 const getLast7Days = () => {
@@ -170,7 +170,7 @@ function Statistiques() {
         Progression 📊
       </h2>
       <p style={{ fontSize: 13, color: 'white', textAlign: 'center', marginBottom: '1.2rem', opacity: 0.9 }}>
-        Ton évolution pour les trois fréqeunces de routines
+        Ton évolution dans les trois fréquences de routines
       </p>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem' }}>

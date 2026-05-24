@@ -49,7 +49,7 @@ body {
 .nutrition { background: #EAF3DE; color: #27500A; }
 .sommeil   { background: #E6F1FB; color: #0C447C; }
 .stress    { background: #FAEEDA; color: #633806; }
-.mouvement { background: #FAECE7; color: #7626a4; }.liste-routines {
+.mouvement { background: #FAECE7; color: #7d2eb6; }.liste-routines {
   margin-top: 1rem;
 }
 
@@ -361,7 +361,7 @@ body {
 .accueil-pilier.nutrition { background: #EAF3DE; color: #27500A; }
 .accueil-pilier.sommeil { background: #E6F1FB; color: #0C447C; }
 .accueil-pilier.stress { background: #FAEEDA; color: #633806; }
-.accueil-pilier.mouvement { background: #FAECE7; color: #712B13; }
+.accueil-pilier.mouvement { background: #FAECE7; color: #7d2eb6; }
 
 .accueil-cards {
   display: flex;

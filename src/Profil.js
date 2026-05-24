@@ -91,7 +91,7 @@ const weekKey = getWeekKey();
           <div className="profil-stat-label">Aujourd'hui</div>
           <div className="profil-stat-valeur">{cocheeAujourdhui}/{totalQuotidien}</div>
           <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctJour}%`, background: '#1D9E75' }} />
+            <div className="profil-stat-barre-fill" style={{ width: `${pctJour}%`, background: '#56b4d1' }} />
           </div>
           <div className="profil-stat-pct">{pctJour}%</div>
         </div>
@@ -101,7 +101,7 @@ const weekKey = getWeekKey();
           <div className="profil-stat-label">Cette semaine</div>
           <div className="profil-stat-valeur">{cocheeCetteSemaine}/{totalHebdo}</div>
           <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctSemaine}%`, background: '#185FA5' }} />
+            <div className="profil-stat-barre-fill" style={{ width: `${pctSemaine}%`, background: '#56b4d1' }} />
           </div>
           <div className="profil-stat-pct">{pctSemaine}%</div>
         </div>
@@ -111,7 +111,7 @@ const weekKey = getWeekKey();
           <div className="profil-stat-label">Cette année</div>
           <div className="profil-stat-valeur">{cocheeAnnuel}/{totalAnnuel}</div>
           <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctAnnee}%`, background: '#854F0B' }} />
+            <div className="profil-stat-barre-fill" style={{ width: `${pctAnnee}%`, background: '#56b4d1' }} />
           </div>
           <div className="profil-stat-pct">{pctAnnee}%</div>
         </div>
@@ -131,7 +131,7 @@ const weekKey = getWeekKey();
         
         
         
-        <div className="profil-info-row" onClick={() => navigate('/legal')} style={{ cursor: 'pointer', color: '#1D9E75' }}>
+        <div className="profil-info-row" onClick={() => navigate('/legal')} style={{ cursor: 'pointer', color: '#111212' }}>
           <span>Informations légales</span>
           <span>→</span>
         </div>
