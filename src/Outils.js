@@ -10,30 +10,30 @@ const COURSES_DEFAUT = [
   { id: 7, categorie: "Protéines", nom: "Poisson gras (sardines, maquereau, hareng)" },
   { id: 8, categorie: "Protéines", nom: "Légumineuses (lentilles, pois chiches, haricots)" },
   { id: 9, categorie: "Protéines", nom: "Tofu ou tempeh" },
-   { id: 9, categorie: "Protéines", nom: "Viande rouge (petite quantité)" },
-  { id: 10, categorie: "Céréales & Féculents", nom: "Riz complet ou semi-complet" },
-  { id: 11, categorie: "Céréales & Féculents", nom: "Pâtes complètes" },
-  { id: 12, categorie: "Céréales & Féculents", nom: "Pain complet ou au levain ou aux graines" },
-  { id: 13, categorie: "Céréales & Féculents", nom: "Flocons d'avoine" },
-  { id: 14, categorie: "Céréales & Féculents", nom: "Quinoa ou sarrasin" },
-  { id: 15, categorie: "Bonnes graisses", nom: "Huile d'olive extra vierge" },
-  { id: 16, categorie: "Bonnes graisses", nom: "Huile de colza" },
-  { id: 17, categorie: "Bonnes graisses", nom: "Oléagineux (noix, amandes, noisettes)" },
-  { id: 18, categorie: "Bonnes graisses", nom: "Avocat" },
-  { id: 19, categorie: "Produits laitiers & alternatives", nom: "Yaourt nature ou grec" },
-  { id: 20, categorie: "Produits laitiers & alternatives", nom: "Fromage blanc" },
-  { id: 21, categorie: "Produits laitiers & alternatives", nom: "Lait végétal (amande, avoine)" },
-   { id: 20, categorie: "Produits laitiers & alternatives", nom: "Féta ou cottage cheese" },
-    { id: 20, categorie: "Produits laitiers & alternatives", nom: "Beurre ou margarine au colza" },
-     { id: 20, categorie: "Produits laitiers & alternatives", nom: "Fromage de chèvre ou de brebis" },
-  { id: 22, categorie: "Épicerie", nom: "Herbes aromatiques (persil, basilic, coriandre...)" },
-  { id: 23, categorie: "Épicerie", nom: "Épices (curcuma, cumin, gingembre...)" },
-  { id: 24, categorie: "Épicerie", nom: "Chocolat noir 70%+" },
-  { id: 25, categorie: "Épicerie", nom: "Conserves de légumineuses" },
-  { id: 26, categorie: "Boissons", nom: "Eau (si besoin)" },
-  { id: 27, categorie: "Boissons", nom: "Tisanes (camomille, verveine, mélisse)" },
-  { id: 28, categorie: "Boissons", nom: "Thé vert" },
-  { id: 28, categorie: "Boissons", nom: "Café" },
+   { id: 10, categorie: "Protéines", nom: "Viande rouge (petite quantité)" },
+  { id: 11, categorie: "Céréales & Féculents", nom: "Riz complet ou semi-complet" },
+  { id: 12, categorie: "Céréales & Féculents", nom: "Pâtes complètes" },
+  { id: 13, categorie: "Céréales & Féculents", nom: "Pain complet ou au levain ou aux graines" },
+  { id: 14, categorie: "Céréales & Féculents", nom: "Flocons d'avoine" },
+  { id: 15, categorie: "Céréales & Féculents", nom: "Quinoa ou sarrasin" },
+  { id: 16, categorie: "Bonnes graisses", nom: "Huile d'olive extra vierge" },
+  { id: 17, categorie: "Bonnes graisses", nom: "Huile de colza" },
+  { id: 18, categorie: "Bonnes graisses", nom: "Oléagineux (noix, amandes, noisettes)" },
+  { id: 19, categorie: "Bonnes graisses", nom: "Avocat" },
+  { id: 20, categorie: "Produits laitiers & alternatives", nom: "Yaourt nature ou grec" },
+  { id: 21, categorie: "Produits laitiers & alternatives", nom: "Fromage blanc" },
+  { id: 22, categorie: "Produits laitiers & alternatives", nom: "Lait végétal (amande, avoine)" },
+   { id: 23, categorie: "Produits laitiers & alternatives", nom: "Féta ou cottage cheese" },
+    { id: 24, categorie: "Produits laitiers & alternatives", nom: "Beurre ou margarine au colza" },
+     { id: 25, categorie: "Produits laitiers & alternatives", nom: "Fromage de chèvre ou de brebis" },
+  { id: 26, categorie: "Épicerie", nom: "Herbes aromatiques (persil, basilic, coriandre...)" },
+  { id: 27, categorie: "Épicerie", nom: "Épices (curcuma, cumin, gingembre...)" },
+  { id: 28, categorie: "Épicerie", nom: "Chocolat noir 70%+" },
+  { id: 29, categorie: "Épicerie", nom: "Conserves de légumineuses" },
+  { id: 30, categorie: "Boissons", nom: "Eau (si besoin)" },
+  { id: 31, categorie: "Boissons", nom: "Tisanes (camomille, verveine, mélisse)" },
+  { id: 32, categorie: "Boissons", nom: "Thé vert" },
+  { id: 33, categorie: "Boissons", nom: "Café" },
 ];
 
 const CATEGORIES = [...new Set(COURSES_DEFAUT.map(c => c.categorie))];
@@ -57,11 +57,11 @@ function OutilNutrition() {
 
   return (
     <div>
-      <h3 style={{ fontSize: 15, fontWeight: 600, color: '#eff3ed', marginBottom: 12, textAlign: 'center' }}>
-  🛒 Liste de courses idéale — diète méditerranéenne
+      <h3 style={{ fontSize: 15, fontWeight: 600, color: '#a9d4ac', marginBottom: 12, textAlign: 'center' }}>
+  -Liste de courses idéale — diète méditerranéenne-
 </h3>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-        <p style={{ fontSize: 13, color: 'white' }}>{faits}/{total} articles cochés</p>
+        <p style={{ fontSize: 13, color: '#a9d4ac' }}>{faits}/{total} articles cochés</p>
         <button onClick={() => setCochees([])} style={{ fontSize: 12, color: '#cb7c5d', background: 'none', border: 'none', cursor: 'pointer' }}>
           Tout décocher
         </button>

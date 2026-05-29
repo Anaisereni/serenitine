@@ -910,15 +910,15 @@ if (articleActif) {
         <button onClick={() => setOnglet('ressources')} style={{
           flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
           border: onglet === 'ressources' ? 'none' : '0.5px solid var(--color-border-secondary)',
-          background: onglet === 'ressources' ? '#c5bfb5' : 'white',
-          color: '#040404',
+          background: onglet === 'ressources' ? '#d8d1c5' : 'white',
+          color: '#6d6c6c',
           fontWeight: onglet === 'ressources' ? 500 : 400, cursor: 'pointer'
         }}>Articles</button>
         <button onClick={() => setOnglet('outils')} style={{
           flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
           border: onglet === 'outils' ? 'none' : '0.5px solid var(--color-border-secondary)',
-          background: onglet === 'outils' ? '#c8c4b6' : 'white',
-          color: '#0d0d0c',
+          background: onglet === 'outils' ? '#dad6c6' : 'white',
+          color: '#7b7777',
           fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
         }}>Outils</button>
       </div>
