@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Outils from './Outils';
 
 const articles = [
   {
@@ -884,9 +885,10 @@ function Article({ article, onRetour }) {
 }
 
 function Ressources() {
-  console.log("articles:", articles);
+  const [onglet, setOnglet] = useState('ressources');
   const [articleActif, setArticleActif] = useState(null);
   const [pilierActif, setPilierActif] = useState("Tous");
+  console.log("articles:", articles);
 
   const PILIERS = ["Tous", "Nutrition", "Stress", "Mouvement", "Sommeil", "Environnement"];
 
@@ -898,36 +900,61 @@ function Ressources() {
     return <Article article={articleActif} onRetour={() => setArticleActif(null)} />;
   }
 
+if (articleActif) {
+    return <Article article={articleActif} onRetour={() => setArticleActif(null)} />;
+  }
+
   return (
     <div className="ressources-wrap">
-      <h2 className="ressources-titre" style={{ textAlign: 'center' }}>Ressources💡</h2>
-      <p className="ressources-sous-titre" style={{ textAlign: 'center' }}>Retrouve ici des articles détaillés utiles au quotidien</p>
-
-      <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
-        {PILIERS.map(p => (
-          <button
-            key={p}
-            className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
-            onClick={() => setPilierActif(p)}
-          >
-            {p}
-          </button>
-        ))}
+      <div style={{ display: 'flex', gap: 8, marginBottom: '1.2rem' }}>
+        <button onClick={() => setOnglet('ressources')} style={{
+          flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
+          border: onglet === 'ressources' ? 'none' : '0.5px solid var(--color-border-secondary)',
+          background: onglet === 'ressources' ? '#c5bfb5' : 'white',
+          color: '#040404',
+          fontWeight: onglet === 'ressources' ? 500 : 400, cursor: 'pointer'
+        }}>Articles</button>
+        <button onClick={() => setOnglet('outils')} style={{
+          flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
+          border: onglet === 'outils' ? 'none' : '0.5px solid var(--color-border-secondary)',
+          background: onglet === 'outils' ? '#c8c4b6' : 'white',
+          color: '#0d0d0c',
+          fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
+        }}>Outils</button>
       </div>
 
-      <div className="ressources-liste">
-        {articlesFiltres.map(a => (
-          <div key={a.id} className="ressource-card" onClick={() => setArticleActif(a)}>
-            <div className="ressource-card-emoji">{a.emoji}</div>
-            <div className="ressource-card-body">
-              <div className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`} style={{ marginBottom: 6 }}>{a.pilier}</div>
-              <div className="ressource-card-titre">{a.titre}</div>
-              <div className="ressource-card-resume">{a.resume}</div>
-            </div>
-            <span className="accueil-card-arrow">→</span>
+      {onglet === 'outils' ? <Outils /> : (
+        <>
+          <h2 className="ressources-titre" style={{ textAlign: 'center' }}>Articles 💡</h2>
+          <p className="ressources-sous-titre" style= {{ textAlign: 'center' }}>Retrouve ici des articles détaillés utiles au quotidien</p>
+
+          <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
+            {PILIERS.map(p => (
+              <button
+                key={p}
+                className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
+                onClick={() => setPilierActif(p)}
+              >
+                {p}
+              </button>
+            ))}
           </div>
-        ))}
-      </div>
+
+          <div className="ressources-liste">
+            {articlesFiltres.map(a => (
+              <div key={a.id} className="ressource-card" onClick={() => setArticleActif(a)}>
+                <div className="ressource-card-emoji">{a.emoji}</div>
+                <div className="ressource-card-body">
+                  <div className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`} style={{ marginBottom: 6 }}>{a.pilier}</div>
+                  <div className="ressource-card-titre">{a.titre}</div>
+                  <div className="ressource-card-resume">{a.resume}</div>
+                </div>
+                <span className="accueil-card-arrow">→</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

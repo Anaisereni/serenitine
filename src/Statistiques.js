@@ -181,7 +181,7 @@ function Statistiques() {
             style={{
               flex: 1, padding: '8px 4px', borderRadius: 20,
               border: onglet === key ? 'none' : '0.5px solid var(--color-border-secondary)',
-              background: onglet === key ? '#c4bdb0' : 'transparent',
+              background: onglet === key ? '#c5bfb5' : 'white',
               color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
               fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
             }}

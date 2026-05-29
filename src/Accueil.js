@@ -54,7 +54,7 @@ const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
       <div className="accueil-hero">
 
   <h2 className="accueil-hero-titre">Bonjour 🩵</h2>
-<p className="accueil-hero-message">Sérénitine t'accompagne chaque jour pour retrouver un rythme qui te fait du bien. Avec des routines d'hygiène de vie simples à réaliser, tu progresses à ton rythme sans pression, un pas après l'autre. L'objectif n'est pas d'être parfait dès le début, mais d'avancer progressivement afin d'optimiser ton bien-être et ta santé. Tu vas retrouver des routines quotidiennes, hebdomadaires et annuelles à réaliser. L'onglet Resssources t'aide à mieux comprendre les routines et à devenir un expert en hygiène de vie !</p>
+<p className="accueil-hero-message">Sérénitine t'accompagne chaque jour pour retrouver un rythme qui te fait du bien. Avec des routines d'hygiène de vie simples à réaliser, tu progresses à ton rythme sans pression, un pas après l'autre. L'objectif n'est pas d'être parfait dès le début, mais d'avancer progressivement afin d'optimiser ton bien-être et ta santé. Tu vas retrouver des routines quotidiennes, hebdomadaires et annuelles à réaliser. L'onglet Ressources t'aide à réaliser les routines et à devenir un expert en hygiène de vie !</p>
 </div>
 
 
