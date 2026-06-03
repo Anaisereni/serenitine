@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getHistorique, getKey, getHistoriquePilier } from './useStorage';
+import { getHistorique, getHistoriquePilier } from './useStorage';
 
 const TOTAUX = {
   Quotidien: 11,
@@ -146,7 +146,6 @@ function Statistiques() {
   };
 
   const frequence = frequenceMap[onglet];
-  const currentKey = getKeyByOffset(frequence, 0);
   const periodeKey = getKeyByOffset(frequence, offset);
   const isToday = offset === 0;
   const formater = formaterMap[onglet];
