@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Routine({ nom, description, pilier, cochee, onToggle, onOuvrirFiche }) {
+function Routine({ nom, description, pilier, cochee, onToggle, onOuvrirFiche, afficherPilier = true }) {
   return (
     <div className={`routine-item ${cochee ? 'cochee' : ''}`}>
       <input
@@ -19,9 +19,11 @@ function Routine({ nom, description, pilier, cochee, onToggle, onOuvrirFiche }) 
         <span className="routine-nom">{nom}</span>
         <span className="routine-desc">{description}</span>
       </div>
-      <span className={`routine-pilier ${pilier.toLowerCase()}`}>
-        {pilier}
-      </span>
+      {afficherPilier && (
+        <span className={`routine-pilier ${pilier.toLowerCase()}`}>
+          {pilier}
+        </span>
+      )}
     </div>
   );
 }

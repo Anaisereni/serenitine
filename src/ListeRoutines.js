@@ -40,25 +40,27 @@ function ListeRoutines() {
   const navigate = useNavigate();
   const [pilierActif, setPilierActif] = useState("Tous");
   const [frequenceActive, setFrequenceActive] = useState("Quotidien");
-const [cocheeQuotidien, setCocheeQuotidien] = useRoutineStorage('Quotidien');
-const [cocheeHebdo, setCocheeHebdo] = useRoutineStorage('Hebdomadaire');
-const [cocheeAnnuel, setCocheeAnnuel] = useRoutineStorage('Annuel');
+  const [cocheeQuotidien, setCocheeQuotidien] = useRoutineStorage('Quotidien');
+  const [cocheeHebdo, setCocheeHebdo] = useRoutineStorage('Hebdomadaire');
+  const [cocheeAnnuel, setCocheeAnnuel] = useRoutineStorage('Annuel');
 
-const cochees = frequenceActive === 'Quotidien' ? cocheeQuotidien :
-                frequenceActive === 'Hebdomadaire' ? cocheeHebdo : cocheeAnnuel;
+  const cochees = frequenceActive === 'Quotidien' ? cocheeQuotidien :
+                  frequenceActive === 'Hebdomadaire' ? cocheeHebdo : cocheeAnnuel;
 
-const setCochees = frequenceActive === 'Quotidien' ? setCocheeQuotidien :
-                   frequenceActive === 'Hebdomadaire' ? setCocheeHebdo : setCocheeAnnuel;
+  const setCochees = frequenceActive === 'Quotidien' ? setCocheeQuotidien :
+                     frequenceActive === 'Hebdomadaire' ? setCocheeHebdo : setCocheeAnnuel;
 
   const ouvrirFiche = (id) => {
     setRoutineId(id);
     navigate('/fiche');
   };
-const routinesFiltrees = routines.filter(r => {
-    const pilierOk = pilierActif === "Tous" || r.pilier === pilierActif;
+
+  const routinesFiltrees = routines.filter(r => {
+    const pilierOk = frequenceActive === "Annuel" || pilierActif === "Tous" || r.pilier === pilierActif;
     const frequenceOk = r.frequence === frequenceActive;
     return pilierOk && frequenceOk;
   });
+
   const total = routinesFiltrees.length;
   const idsActifs = routinesFiltrees.map(r => r.id);
   const completees = cochees.filter(id => idsActifs.includes(id)).length;
@@ -77,14 +79,17 @@ const routinesFiltrees = routines.filter(r => {
 
       <div className="frequences">
         {FREQUENCES.map(f => (
-  <button
-    key={f}
-    className={`freq-btn ${frequenceActive === f ? 'actif' : ''}`}
-    onClick={() => setFrequenceActive(f)}
-  >
-    {LABELS_FREQUENCES[f]}
-  </button>
-))}
+          <button
+            key={f}
+            className={`freq-btn ${frequenceActive === f ? 'actif' : ''}`}
+            onClick={() => {
+              setFrequenceActive(f);
+              if (f === "Annuel") setPilierActif("Tous");
+            }}
+          >
+            {LABELS_FREQUENCES[f]}
+          </button>
+        ))}
       </div>
 
       <div className="progression-wrap">
@@ -96,32 +101,37 @@ const routinesFiltrees = routines.filter(r => {
           <div className="progression-fill" style={{ width: `${progression}%` }} />
         </div>
       </div>
-<p style={{ fontSize: 12, color: 'white', textAlign: 'center', marginBottom: 8, fontStyle: 'italic' }}>
-  Clique sur chaque routine pour + d'infos
-</p>
-      <div className="piliers-filtres">
-        {PILIERS.map(p => (
-          <button
-            key={p}
-            className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
-            onClick={() => setPilierActif(p)}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
+
+      <p style={{ fontSize: 12, color: 'white', textAlign: 'center', marginBottom: 8, fontStyle: 'italic' }}>
+        Clique sur chaque routine pour + d'infos
+      </p>
+
+      {frequenceActive !== "Annuel" && (
+        <div className="piliers-filtres">
+          {PILIERS.map(p => (
+            <button
+              key={p}
+              className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
+              onClick={() => setPilierActif(p)}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="routines-liste">
         {routinesFiltrees.map(r => (
-          <Routine
-            key={r.id}
-            nom={r.nom}
-            description={r.description}
-            pilier={r.pilier}
-            cochee={cochees.includes(r.id)}
-            onToggle={() => toggleRoutine(r.id)}
-            onOuvrirFiche={() => ouvrirFiche(r.id)}
-          />
+        <Routine
+  key={r.id}
+  nom={r.nom}
+  description={r.description}
+  pilier={r.pilier}
+  cochee={cochees.includes(r.id)}
+  onToggle={() => toggleRoutine(r.id)}
+  onOuvrirFiche={() => ouvrirFiche(r.id)}
+  afficherPilier={frequenceActive !== "Annuel"}
+/>
         ))}
       </div>
 

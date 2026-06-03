@@ -20,54 +20,43 @@ const PILIERS = [
   { nom: 'Mouvement', emoji: '🏃', couleur: '#761d99', bg: '#FAECE7' },
 ];
 
-const getLast7Days = () => {
-  const days = [];
-  for (let i = 6; i >= 0; i--) {
+// Génère la clé pour un offset donné (0 = période en cours, 1 = précédente, etc.)
+const getKeyByOffset = (frequence, offset) => {
+  if (frequence === 'Quotidien') {
     const d = new Date();
-    d.setDate(d.getDate() - i);
-    days.push(d.toISOString().split('T')[0]);
+    d.setDate(d.getDate() - offset);
+    return d.toISOString().split('T')[0];
   }
-  return days;
-};
-
-const getLast4Weeks = () => {
-  const weeks = [];
-  const now = new Date();
-  const day = now.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
-  const monday = new Date(now);
-  monday.setDate(now.getDate() + diff);
-  monday.setHours(0, 0, 0, 0);
-
-  for (let i = 3; i >= 0; i--) {
-    const d = new Date(monday);
-    d.setDate(monday.getDate() - i * 7);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const date = String(d.getDate()).padStart(2, '0');
-    weeks.push(`${year}-${month}-${date}`);
+  if (frequence === 'Hebdomadaire') {
+    const now = new Date();
+    const day = now.getDay();
+    const diff = day === 0 ? -6 : 1 - day;
+    const monday = new Date(now);
+    monday.setDate(now.getDate() + diff - offset * 7);
+    monday.setHours(0, 0, 0, 0);
+    const year = monday.getFullYear();
+    const month = String(monday.getMonth() + 1).padStart(2, '0');
+    const date = String(monday.getDate()).padStart(2, '0');
+    return `${year}-${month}-${date}`;
   }
-  return weeks;
-};
-
-const getLast3Years = () => {
-  const year = new Date().getFullYear();
-  return [`${year - 2}`, `${year - 1}`, `${year}`];
+  if (frequence === 'Annuel') {
+    return `${new Date().getFullYear() - offset}`;
+  }
 };
 
 const formatDay = (key) => {
   const d = new Date(key + 'T12:00:00');
-  return d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' });
+  return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 };
 
 const formatWeek = (key) => {
   const d = new Date(key + 'T12:00:00');
   const end = new Date(d);
   end.setDate(d.getDate() + 6);
-  return `${d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} – ${end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}`;
+  return `${d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} – ${end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}`;
 };
 
-const formatYear = (key) => key;
+const formatYear = (key) => `Année ${key}`;
 
 function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday }) {
   const total = TOTAUX[frequence];
@@ -101,7 +90,7 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
         </div>
       </div>
 
-      {PILIERS.map(p => {
+      {frequence !== 'Annuel' && PILIERS.map(p => {
         const totalPilier = repartition[p.nom] || 0;
         if (totalPilier === 0) return null;
         const cocheesPilier = pilierData[p.nom] || 0;
@@ -123,6 +112,19 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
 
 function Statistiques() {
   const [onglet, setOnglet] = useState('jour');
+  const [offset, setOffset] = useState(0);
+
+  const frequenceMap = {
+    jour: 'Quotidien',
+    semaine: 'Hebdomadaire',
+    annee: 'Annuel',
+  };
+
+  const formaterMap = {
+    jour: formatDay,
+    semaine: formatWeek,
+    annee: formatYear,
+  };
 
   const histQuotidien = getHistorique('Quotidien');
   const histHebdo = getHistorique('Hebdomadaire');
@@ -131,53 +133,44 @@ function Statistiques() {
   const histPilierHebdo = getHistoriquePilier('Hebdomadaire');
   const histPilierAnnuel = getHistoriquePilier('Annuel');
 
-  const todayKey = getKey('Quotidien');
-  const weekKey = getKey('Hebdomadaire');
-  const yearKey = getKey('Annuel');
-
-  const configs = {
-    jour: {
-      keys: getLast7Days(),
-      histGlobal: histQuotidien,
-      histPilier: histPilierQuotidien,
-      frequence: 'Quotidien',
-      currentKey: todayKey,
-      formater: formatDay,
-    },
-    semaine: {
-      keys: getLast4Weeks(),
-      histGlobal: histHebdo,
-      histPilier: histPilierHebdo,
-      frequence: 'Hebdomadaire',
-      currentKey: weekKey,
-      formater: formatWeek,
-    },
-    annee: {
-      keys: getLast3Years(),
-      histGlobal: histAnnuel,
-      histPilier: histPilierAnnuel,
-      frequence: 'Annuel',
-      currentKey: yearKey,
-      formater: formatYear,
-    },
+  const histGlobalMap = {
+    jour: histQuotidien,
+    semaine: histHebdo,
+    annee: histAnnuel,
   };
 
-  const config = configs[onglet];
+  const histPilierMap = {
+    jour: histPilierQuotidien,
+    semaine: histPilierHebdo,
+    annee: histPilierAnnuel,
+  };
+
+  const frequence = frequenceMap[onglet];
+  const currentKey = getKeyByOffset(frequence, 0);
+  const periodeKey = getKeyByOffset(frequence, offset);
+  const isToday = offset === 0;
+  const formater = formaterMap[onglet];
+
+  const changerOnglet = (nouvelOnglet) => {
+    setOnglet(nouvelOnglet);
+    setOffset(0);
+  };
 
   return (
     <div style={{ padding: '1rem' }}>
       <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center' }}>
-        Progression 📊
+        Suivi 📊
       </h2>
       <p style={{ fontSize: 13, color: 'white', textAlign: 'center', marginBottom: '1.2rem', opacity: 0.9 }}>
-        Ton évolution dans les trois fréquences de routines
+        Ton historique dans les trois fréquences de routines
       </p>
 
+      {/* Onglets */}
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem' }}>
-        {[['jour', '7 jours'], ['semaine', '4 semaines'], ['annee', '3 ans']].map(([key, label]) => (
+        {[['jour', 'Jour'], ['semaine', 'Semaine'], ['annee', 'Année']].map(([key, label]) => (
           <button
             key={key}
-            onClick={() => setOnglet(key)}
+            onClick={() => changerOnglet(key)}
             style={{
               flex: 1, padding: '8px 4px', borderRadius: 20,
               border: onglet === key ? 'none' : '0.5px solid var(--color-border-secondary)',
@@ -191,21 +184,51 @@ function Statistiques() {
         ))}
       </div>
 
-      {[...config.keys].reverse().map(k => (
-        <div key={k}>
-          <div style={{ fontSize: 12, color: 'white', marginBottom: 4, textTransform: 'capitalize' }}>
-            {config.formater(k)}
-            {k === config.currentKey && <span style={{ color: '#72d5e0', marginLeft: 6 }}>● en cours</span>}
+      {/* Navigation par flèches */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+        <button
+          onClick={() => setOffset(o => o + 1)}
+          style={{
+            background: 'none', border: '0.5px solid rgba(255,255,255,0.3)',
+            borderRadius: 8, color: 'white', fontSize: 18,
+            width: 36, height: 36, cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          ◀
+        </button>
+
+        <div style={{ textAlign: 'center', flex: 1, padding: '0 8px' }}>
+          <div style={{ fontSize: 13, color: 'white', fontWeight: 500, textTransform: 'capitalize' }}>
+            {formater(periodeKey)}
           </div>
-          <DetailPeriode
-            periodeKey={k}
-            frequence={config.frequence}
-            histGlobal={config.histGlobal}
-            histPilier={config.histPilier}
-            isToday={k === config.currentKey}
-          />
+          {isToday && (
+            <div style={{ fontSize: 11, color: '#72d5e0', marginTop: 2 }}>● période en cours</div>
+          )}
         </div>
-      ))}
+
+        <button
+          onClick={() => setOffset(o => o - 1)}
+          disabled={offset === 0}
+          style={{
+            background: 'none', border: '0.5px solid rgba(255,255,255,0.3)',
+            borderRadius: 8, color: offset === 0 ? 'rgba(255,255,255,0.2)' : 'white', fontSize: 18,
+            width: 36, height: 36, cursor: offset === 0 ? 'default' : 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          ▶
+        </button>
+      </div>
+
+      {/* Détail de la période */}
+      <DetailPeriode
+        periodeKey={periodeKey}
+        frequence={frequence}
+        histGlobal={histGlobalMap[onglet]}
+        histPilier={histPilierMap[onglet]}
+        isToday={isToday}
+      />
     </div>
   );
 }
