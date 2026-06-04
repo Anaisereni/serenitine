@@ -55,15 +55,18 @@ function OutilNutrition() {
 
   return (
     <div>
-      <h3 style={{ fontSize: 15, fontWeight: 600, color: '#a9d4ac', marginBottom: 12, textAlign: 'center' }}>
-  -Liste de courses idéale — diète méditerranéenne-
-</h3>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-        <p style={{ fontSize: 13, color: '#a9d4ac' }}>{faits}/{total} articles cochés</p>
-        <button onClick={() => setCochees([])} style={{ fontSize: 12, color: '#cb7c5d', background: 'none', border: 'none', cursor: 'pointer' }}>
-          Tout décocher
-        </button>
+      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '0.5px solid #eee', marginBottom: 16 }}>
+        <h3 style={{ fontSize: 15, fontWeight: 600, color: '#75ae79', marginBottom: 12, textAlign: 'center' }}>
+          -Liste de courses idéale — diète méditerranéenne-
+        </h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <p style={{ fontSize: 13, color: '#7c867d' }}>{faits}/{total} articles cochés</p>
+          <button onClick={() => setCochees([])} style={{ fontSize: 12, color: '#cb7c5d', background: 'none', border: 'none', cursor: 'pointer' }}>
+            Tout décocher
+          </button>
+        </div>
       </div>
+
       {CATEGORIES.map(cat => (
         <div key={cat} style={{ marginBottom: 16 }}>
           <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'white', marginBottom: 8 }}>{cat}</div>

@@ -188,7 +188,7 @@ body {
 
 .progression-fill {
   height: 8px;
-  background: #C1E1C1;
+  background: #b0d7dd;
   border-radius: 10px;
   transition: width 0.3s ease;
 }
@@ -834,8 +834,8 @@ body {
   cursor: pointer;
 }
 .profil-avatar {
-  width: 60px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   overflow: hidden;
   border-radius: 50%;
   display: flex;
@@ -844,8 +844,8 @@ body {
 }
 
 .profil-avatar img {
-  width: 200%;
-  height: 120%;
+  width: 140%;
+  height: 99%;
   object-fit: center;
 }
 .profil-apropos {
