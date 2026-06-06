@@ -1,10 +1,56 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const PILIERS_INFO = {
+  Nutrition: { emoji: '🥗', conseil: 'Pense à mieux manger et t\'hydrater aujourd\'hui.' },
+  Sommeil:   { emoji: '😴', conseil: 'Ton sommeil mérite plus d\'attention en ce moment.' },
+  Stress:    { emoji: '🧘', conseil: 'Prends un moment pour souffler et décompresser.' },
+  Mouvement: { emoji: '🏃', conseil: 'Ton corps a besoin de bouger un peu plus !' },
+};
+
+const ROUTINES_PAR_PILIER = {
+  Quotidien:    { Nutrition: 4, Sommeil: 3, Stress: 2, Mouvement: 2 },
+  Hebdomadaire: { Nutrition: 2, Sommeil: 1, Stress: 1, Mouvement: 1 },
+};
+
+function getPilierLeMoinsCoche(frequence, periodKey) {
+  try {
+    const hist = JSON.parse(localStorage.getItem(`historique_pilier_${frequence}`) || '{}');
+    const data = hist[periodKey] || {};
+    const totaux = ROUTINES_PAR_PILIER[frequence];
+    let minPct = Infinity;
+    let pilierMin = null;
+    Object.entries(totaux).forEach(([pilier, total]) => {
+      if (total === 0) return;
+      const coches = data[pilier] || 0;
+      const pct = coches / total;
+      if (pct < minPct) { minPct = pct; pilierMin = pilier; }
+    });
+    // Ne retourner un pilier que s'il n'est pas à 100%
+    return minPct < 1 ? pilierMin : null;
+  } catch { return null; }
+}
+
 function Profil() {
-    const navigate = useNavigate();
-  const [prenom, setPrenom] = useState(
-    localStorage.getItem('prenom') || ''
-  );
+  const navigate = useNavigate();
+
+  // Date de premier lancement
+  
+
+const histQuotidien = JSON.parse(localStorage.getItem('historique_Quotidien') || '{}');
+const histHebdo = JSON.parse(localStorage.getItem('historique_Hebdomadaire') || '{}');
+const histAnnuel = JSON.parse(localStorage.getItem('historique_Annuel') || '{}');
+
+const toutesLesDates = [
+  ...Object.keys(histQuotidien),
+].filter(Boolean).sort();
+
+const dateDebut = toutesLesDates.length > 0 ? toutesLesDates[0] : null;
+const debutFormate = dateDebut
+  ? new Date(dateDebut + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })
+  : null;
+
+  const [prenom, setPrenom] = useState(localStorage.getItem('prenom') || '');
   const [edition, setEdition] = useState(false);
   const [input, setInput] = useState(prenom);
 
@@ -18,30 +64,24 @@ function Profil() {
   const totalHebdo = 5;
   const totalAnnuel = 4;
 
-  const histQuotidien = JSON.parse(localStorage.getItem('historique_Quotidien') || '{}');
-  const histHebdo = JSON.parse(localStorage.getItem('historique_Hebdomadaire') || '{}');
-  const histAnnuel = JSON.parse(localStorage.getItem('historique_Annuel') || '{}');
+  
 
   const today = new Date().toISOString().split('T')[0];
   const now = new Date();
   const getWeekKey = () => {
-  const now = new Date();
-  const monday = new Date(now);
+    const now = new Date();
+    const monday = new Date(now);
+    const day = monday.getDay();
+    const diff = day === 0 ? -6 : 1 - day;
+    monday.setDate(monday.getDate() + diff);
+    monday.setHours(0, 0, 0, 0);
+    const year = monday.getFullYear();
+    const month = String(monday.getMonth() + 1).padStart(2, '0');
+    const date = String(monday.getDate()).padStart(2, '0');
+    return `${year}-${month}-${date}`;
+  };
 
-  const day = monday.getDay();
-  const diff = day === 0 ? -6 : 1 - day;
-
-  monday.setDate(monday.getDate() + diff);
-  monday.setHours(0, 0, 0, 0);
-
-  const year = monday.getFullYear();
-  const month = String(monday.getMonth() + 1).padStart(2, '0');
-  const date = String(monday.getDate()).padStart(2, '0');
-
-  return `${year}-${month}-${date}`;
-};
-
-const weekKey = getWeekKey();
+  const weekKey = getWeekKey();
   const yearKey = `${now.getFullYear()}`;
 
   const cocheeAujourdhui = histQuotidien[today] || 0;
@@ -52,13 +92,17 @@ const weekKey = getWeekKey();
   const pctSemaine = Math.round((cocheeCetteSemaine / totalHebdo) * 100);
   const pctAnnee = Math.round((cocheeAnnuel / totalAnnuel) * 100);
 
+  // Pilier le moins coché
+  const pilierFaible = getPilierLeMoinsCoche('Quotidien', today);
+  const infoFaible = pilierFaible ? PILIERS_INFO[pilierFaible] : null;
+
   return (
     <div className="profil-wrap">
 
       <div className="profil-hero">
         <div className="profil-avatar">
- <img src="/profilnew.png" alt="Logo Sérénitine" />
-</div>
+          <img src="/profilnew.png" alt="Logo Sérénitine" />
+        </div>
         {edition ? (
           <div className="profil-edition">
             <input
@@ -81,13 +125,38 @@ const weekKey = getWeekKey();
           </div>
         )}
         <div className="profil-badge">Plan Gratuit</div>
+        {debutFormate && (
+          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 6 }}>
+            Avec Sérénitine depuis le {debutFormate}
+          </div>
+        )}
       </div>
+
+      {/* Pilier faible */}
+      {infoFaible && (
+        <div style={{
+          background: 'rgba(255,255,255,0.1)', borderRadius: 12,
+          padding: '0.8rem 1rem', marginBottom: '1.2rem',
+          border: '0.5px solid rgba(255,255,255,0.2)',
+          display: 'flex', alignItems: 'center', gap: 10
+        }}>
+          <span style={{ fontSize: 22 }}>{infoFaible.emoji}</span>
+          <div>
+            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginBottom: 2 }}>
+              Pilier à renforcer — {pilierFaible}
+            </div>
+            <div style={{ fontSize: 13, color: 'white', fontWeight: 500 }}>
+              {infoFaible.conseil}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="profil-section-titre">Résumé du moment</div>
 
       <div className="profil-stats">
         <div className="profil-stat-card">
-          <div className="profil-stat-icon">📅</div>
+          <div className="profil-stat-icon">🌱</div>
           <div className="profil-stat-label">Aujourd'hui</div>
           <div className="profil-stat-valeur">{cocheeAujourdhui}/{totalQuotidien}</div>
           <div className="profil-stat-barre-bg">
@@ -97,7 +166,7 @@ const weekKey = getWeekKey();
         </div>
 
         <div className="profil-stat-card">
-          <div className="profil-stat-icon">📆</div>
+          <div className="profil-stat-icon">🌿</div>
           <div className="profil-stat-label">Cette semaine</div>
           <div className="profil-stat-valeur">{cocheeCetteSemaine}/{totalHebdo}</div>
           <div className="profil-stat-barre-bg">
@@ -107,7 +176,7 @@ const weekKey = getWeekKey();
         </div>
 
         <div className="profil-stat-card">
-          <div className="profil-stat-icon">🗓️</div>
+          <div className="profil-stat-icon">🌳</div>
           <div className="profil-stat-label">Cette année</div>
           <div className="profil-stat-valeur">{cocheeAnnuel}/{totalAnnuel}</div>
           <div className="profil-stat-barre-bg">
@@ -117,20 +186,16 @@ const weekKey = getWeekKey();
         </div>
       </div>
 
-     
-<div className="profil-section-titre" style={{ marginTop: '1.5rem' }}>À propos de l'app</div>
+      <div className="profil-section-titre" style={{ marginTop: '1.5rem' }}>À propos de l'app</div>
 
-<div className="profil-infos" style={{ marginBottom: '1.5rem' }}>
-  
-  <div className="profil-info-row" onClick={() => navigate('/presentation')} style={{ cursor: 'pointer', color: '#1c1c1a' }}>
-    <span>Qui suis-je ?</span>
-    <span>→</span>
-  </div>
-</div>
+      <div className="profil-infos" style={{ marginBottom: '1.5rem' }}>
+        <div className="profil-info-row" onClick={() => navigate('/presentation')} style={{ cursor: 'pointer', color: '#1c1c1a' }}>
+          <span>Qui suis-je ?</span>
+          <span>→</span>
+        </div>
+      </div>
+
       <div className="profil-infos">
-        
-        
-        
         <div className="profil-info-row" onClick={() => navigate('/legal')} style={{ cursor: 'pointer', color: '#111212' }}>
           <span>Informations légales</span>
           <span>→</span>
@@ -148,4 +213,5 @@ const weekKey = getWeekKey();
     </div>
   );
 }
+
 export default Profil;

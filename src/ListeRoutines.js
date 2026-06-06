@@ -35,6 +35,12 @@ const LABELS_FREQUENCES = {
   "Annuel": "Cette année"
 };
 
+const MESSAGES_FELICITATIONS = {
+  "Quotidien": { emoji: "☀️", texte: "Journée complète ! Toutes tes routines du jour sont faites." },
+  "Hebdomadaire": { emoji: "🏆", texte: "Semaine complète ! Tu as réalisé toutes tes routines de la semaine." },
+  "Annuel": { emoji: "✓", texte: "Année complète ! Tous tes rendez-vous annuels sont à jour." },
+};
+
 function ListeRoutines() {
   const { setRoutineId } = useContext(AppContext);
   const navigate = useNavigate();
@@ -61,6 +67,13 @@ function ListeRoutines() {
     return pilierOk && frequenceOk;
   });
 
+  // Total de toutes les routines de la fréquence (sans filtre pilier) pour les félicitations
+  const totalFrequence = routines.filter(r => r.frequence === frequenceActive).length;
+  const completeesFréquence = cochees.filter(id =>
+    routines.find(r => r.id === id && r.frequence === frequenceActive)
+  ).length;
+  const estComplete = completeesFréquence >= totalFrequence;
+
   const total = routinesFiltrees.length;
   const idsActifs = routinesFiltrees.map(r => r.id);
   const completees = cochees.filter(id => idsActifs.includes(id)).length;
@@ -73,6 +86,8 @@ function ListeRoutines() {
     setCochees(nouvellesCochees);
     sauvegarderPiliers(frequenceActive, nouvellesCochees, routines);
   };
+
+  const felicitations = MESSAGES_FELICITATIONS[frequenceActive];
 
   return (
     <div className="liste-routines">
@@ -91,6 +106,21 @@ function ListeRoutines() {
           </button>
         ))}
       </div>
+
+      {/* Message de félicitations */}
+      {estComplete && (
+        <div style={{
+          background: 'rgba(255,255,255,0.15)',
+          border: '0.5px solid rgba(255,255,255,0.4)',
+          borderRadius: 12,
+          padding: '0.8rem 1rem',
+          marginBottom: 12,
+          textAlign: 'center',
+        }}>
+          <div style={{ fontSize: 24, marginBottom: 4 }}>{felicitations.emoji}</div>
+          <div style={{ fontSize: 13, color: 'white', fontWeight: 500 }}>{felicitations.texte}</div>
+        </div>
+      )}
 
       <div className="progression-wrap">
         <div className="progression-texte">
@@ -122,16 +152,16 @@ function ListeRoutines() {
 
       <div className="routines-liste">
         {routinesFiltrees.map(r => (
-        <Routine
-  key={r.id}
-  nom={r.nom}
-  description={r.description}
-  pilier={r.pilier}
-  cochee={cochees.includes(r.id)}
-  onToggle={() => toggleRoutine(r.id)}
-  onOuvrirFiche={() => ouvrirFiche(r.id)}
-  afficherPilier={frequenceActive !== "Annuel"}
-/>
+          <Routine
+            key={r.id}
+            nom={r.nom}
+            description={r.description}
+            pilier={r.pilier}
+            cochee={cochees.includes(r.id)}
+            onToggle={() => toggleRoutine(r.id)}
+            onOuvrirFiche={() => ouvrirFiche(r.id)}
+            afficherPilier={frequenceActive !== "Annuel"}
+          />
         ))}
       </div>
 

@@ -8,7 +8,7 @@ const COURSES_DEFAUT = [
   { id: 5, categorie: "Protéines", nom: "Poisson gras (sardines, maquereau, hareng)" },
   { id: 6, categorie: "Protéines", nom: "Légumineuses (lentilles, pois chiches, haricots)" },
   { id: 7, categorie: "Protéines", nom: "Tofu ou tempeh" },
-   { id: 8, categorie: "Protéines", nom: "Viande rouge (petite quantité)" },
+  { id: 8, categorie: "Protéines", nom: "Viande rouge (petite quantité)" },
   { id: 9, categorie: "Céréales & Féculents", nom: "Riz complet ou semi-complet" },
   { id: 10, categorie: "Céréales & Féculents", nom: "Pâtes complètes" },
   { id: 11, categorie: "Céréales & Féculents", nom: "Pain complet ou au levain ou aux graines" },
@@ -21,9 +21,9 @@ const COURSES_DEFAUT = [
   { id: 18, categorie: "Produits laitiers & alternatives", nom: "Yaourt nature ou grec" },
   { id: 19, categorie: "Produits laitiers & alternatives", nom: "Fromage blanc" },
   { id: 20, categorie: "Produits laitiers & alternatives", nom: "Lait végétal (amande, avoine)" },
-   { id: 21, categorie: "Produits laitiers & alternatives", nom: "Féta ou cottage cheese" },
-    { id: 22, categorie: "Produits laitiers & alternatives", nom: "Beurre ou margarine au colza" },
-     { id: 23, categorie: "Produits laitiers & alternatives", nom: "Fromage de chèvre ou de brebis" },
+  { id: 21, categorie: "Produits laitiers & alternatives", nom: "Féta ou cottage cheese" },
+  { id: 22, categorie: "Produits laitiers & alternatives", nom: "Beurre ou margarine au colza" },
+  { id: 23, categorie: "Produits laitiers & alternatives", nom: "Fromage de chèvre ou de brebis" },
   { id: 24, categorie: "Épicerie", nom: "Herbes aromatiques (persil, basilic, coriandre...)" },
   { id: 25, categorie: "Épicerie", nom: "Épices (curcuma, cumin, gingembre...)" },
   { id: 26, categorie: "Épicerie", nom: "Chocolat noir 70%+" },
@@ -35,6 +35,8 @@ const COURSES_DEFAUT = [
 ];
 
 const CATEGORIES = [...new Set(COURSES_DEFAUT.map(c => c.categorie))];
+
+ const DUREE_TOTALE = 5 * 60;
 
 function OutilNutrition() {
   const [cochees, setCochees] = useState(() => {
@@ -66,7 +68,6 @@ function OutilNutrition() {
           </button>
         </div>
       </div>
-
       {CATEGORIES.map(cat => (
         <div key={cat} style={{ marginBottom: 16 }}>
           <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'white', marginBottom: 8 }}>{cat}</div>
@@ -128,7 +129,6 @@ function OutilSommeil() {
           style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
         />
       </div>
-
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8 }}>📋 Programme du lendemain</h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
@@ -141,7 +141,6 @@ function OutilSommeil() {
           style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
         />
       </div>
-
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12 }}>📊 Journal du sommeil — aujourd'hui</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
@@ -191,8 +190,90 @@ function OutilStress() {
   const [pensees, setPensees] = useState(() => localStorage.getItem('stress_pensees') || '');
   const [actions, setActions] = useState(() => localStorage.getItem('stress_actions') || '');
 
+  
+const [actif, setActif] = useState(false);
+const [tempsRestant, setTempsRestant] = useState(DUREE_TOTALE);
+const [compteurGlobal, setCompteurGlobal] = useState(0);
+const intervalRef = React.useRef(null);
+
+React.useEffect(() => {
+  if (actif) {
+    intervalRef.current = setInterval(() => {
+      setTempsRestant(t => {
+        if (t <= 1) {
+          setActif(false);
+          clearInterval(intervalRef.current);
+          return DUREE_TOTALE;
+        }
+        return t - 1;
+      });
+      setCompteurGlobal(c => c + 1);
+    }, 1000);
+  } else {
+    clearInterval(intervalRef.current);
+  }
+  return () => clearInterval(intervalRef.current);
+}, [actif]);
+
+const reset = () => {
+  setActif(false);
+  setTempsRestant(DUREE_TOTALE);
+  setCompteurGlobal(0);
+};
+
+const minutes = Math.floor(tempsRestant / 60);
+const secondes = String(tempsRestant % 60).padStart(2, '0');
+const positionDansCycle = compteurGlobal % 10; // cycle de 10s
+const phase = positionDansCycle < 5 ? 'inspiration' : 'expiration';
+const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positionDansCycle;
+  
+
+
   return (
     <div>
+      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4 }}>💚 Cohérence cardiaque</h3>
+        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 16 }}>
+          5 secondes d'inspiration, 5 secondes d'expiration — pendant 5 minutes.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <div style={{
+            width: 120, height: 120, borderRadius: '50%',
+            border: `4px solid ${phase === 'inspiration' ? '#854F0B' : '#c8a07a'}`,
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+            background: phase === 'inspiration' ? '#FFF8F0' : '#FAEEDA',
+            transition: 'all 0.5s ease',
+            transform: phase === 'inspiration' ? 'scale(1.08)' : 'scale(0.95)',
+          }}>
+            <div style={{ fontSize: 22 }}>{phase === 'inspiration' ? '🌬️' : '😮‍💨'}</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: '#854F0B', marginTop: 4 }}>
+              {phase === 'inspiration' ? 'Inspirez' : 'Expirez'}
+            </div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: '#854F0B' }}>{tempsPhase}</div>
+          </div>
+          <div style={{ fontSize: 13, color: '#854F0B', fontWeight: 500 }}>
+            {minutes}:{secondes} restantes
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button onClick={() => setActif(a => !a)} style={{
+            flex: 1, padding: '10px', borderRadius: 10, border: 'none',
+            background: actif ? '#FAEEDA' : '#854F0B',
+            color: actif ? '#854F0B' : 'white',
+            fontSize: 14, fontWeight: 500, cursor: 'pointer'
+          }}>
+            {actif ? '⏸ Pause' : tempsRestant === DUREE_TOTALE ? '▶ Démarrer' : '▶ Reprendre'}
+          </button>
+          <button onClick={reset} style={{
+            padding: '10px 16px', borderRadius: 10,
+            border: '0.5px solid #eee', background: 'white',
+            color: '#854F0B', fontSize: 14, cursor: 'pointer'
+          }}>
+            ↺
+          </button>
+        </div>
+      </div>
+
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8 }}>🧘 Parking à pensées</h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
@@ -205,6 +286,7 @@ function OutilStress() {
           style={{ width: '100%', minHeight: 120, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
         />
       </div>
+
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8 }}>✅ Actions possibles</h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
@@ -282,10 +364,9 @@ function Outils() {
   return (
     <div style={{ padding: '1rem' }}>
       <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4, textAlign: 'center' }}>Outils ✏️</h2>
-<p style={{ fontSize: 13, color: 'white', marginBottom: '1.2rem', textAlign: 'center' }}>
-  Tes espaces pratiques pour agir au quotidien
-</p>
-
+      <p style={{ fontSize: 13, color: 'white', marginBottom: '1.2rem', textAlign: 'center' }}>
+        Tes espaces pratiques pour agir au quotidien
+      </p>
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
         {piliers.map(p => (
           <button key={p.nom} onClick={() => setPilierActif(p.nom)}
@@ -300,7 +381,6 @@ function Outils() {
           </button>
         ))}
       </div>
-
       {pilierActif === 'Nutrition' && <OutilNutrition />}
       {pilierActif === 'Sommeil' && <OutilSommeil />}
       {pilierActif === 'Stress' && <OutilStress />}

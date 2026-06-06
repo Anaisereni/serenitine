@@ -21,7 +21,7 @@ const sections = [
       { sous_titre: "Stockage local", texte: "Les seules données enregistrées sont vos préférences d'utilisation (prénom optionnel, routines cochées, statistiques de progression) et elles sont stockées exclusivement sur votre appareil via le localStorage de votre navigateur. Ces données ne quittent jamais votre appareil et ne sont accessibles par aucun tiers." },
       { sous_titre: "Cookies", texte: "L'application Sérénitine n'utilise pas de cookies de traçage, de publicité ou d'analyse comportementale. Aucun outil de tracking tiers (Google Analytics, Facebook Pixel…) n'est intégré à l'application." },
       { sous_titre: "Vos droits RGPD", texte: "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Vous pouvez supprimer l'intégralité de vos données à tout moment en utilisant le bouton Réinitialiser mes données disponible dans l'onglet Profil." },
-      { sous_titre: "Contact", texte: "Pour toute question relative à la confidentialité de vos données, vous pouvez nous contacter à l'adresse suivante : anaispata@proton.me" }
+      { sous_titre: "Contact", texte: "Pour toute question relative à la confidentialité de vos données, vous pouvez nous contacter à l'adresse suivante : contact@serenitineapp.fr" }
     ]
   },
   {
@@ -29,7 +29,7 @@ const sections = [
     titre: "Mentions légales",
     emoji: "📋",
     contenu: [
-      { sous_titre: "Éditeur de l'application", texte: "Nom : Anaïs PATA\nQualité : Masseur-kinésithérapeute diplômée d'État, formée en nutrition\nVille d'exercice : Reims\nNuméro RPPS : 10102113585\nEmail de contact : anaispata@proton.me" },
+      { sous_titre: "Éditeur de l'application", texte: "Nom : Anaïs PATA\nQualité : Masseur-kinésithérapeute diplômée d'État, formée en nutrition\nVille d'exercice : Reims\nNuméro RPPS : 10102113585\nEmail de contact : contact@serenitineapp.fr" },
       { sous_titre: "Hébergement", texte: "L'application Sérénitine est hébergée par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, California 94104, États-Unis. Site web : vercel.com" },
       { sous_titre: "Propriété intellectuelle", texte: "L'ensemble du contenu de l'application Sérénitine est protégé par le droit d'auteur et appartient à Anaïs PATA. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable." },
       { sous_titre: "Droit applicable", texte: "Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents." }
