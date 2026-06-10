@@ -142,7 +142,7 @@ function OutilSommeil() {
         />
       </div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12 }}>📊 Journal du sommeil — aujourd'hui</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12 }}>💤 Journal du sommeil — aujourd'hui</h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
           <div>
             <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Heure de coucher</label>
@@ -232,7 +232,7 @@ const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positi
   return (
     <div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4 }}>💚 Cohérence cardiaque</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4 }}>🧡 Cohérence cardiaque</h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 16 }}>
           5 secondes d'inspiration, 5 secondes d'expiration — pendant 5 minutes.
         </p>
@@ -247,7 +247,7 @@ const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positi
           }}>
             <div style={{ fontSize: 22 }}>{phase === 'inspiration' ? '🌬️' : '😮‍💨'}</div>
             <div style={{ fontSize: 13, fontWeight: 600, color: '#854F0B', marginTop: 4 }}>
-              {phase === 'inspiration' ? 'Inspirez' : 'Expirez'}
+              {phase === 'inspiration' ? 'Inspire' : 'Expire'}
             </div>
             <div style={{ fontSize: 20, fontWeight: 700, color: '#854F0B' }}>{tempsPhase}</div>
           </div>
@@ -288,7 +288,7 @@ const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positi
       </div>
 
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8 }}>✅ Actions possibles</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8 }}>✍️ Actions possibles</h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
           Pour chaque source de stress, quelle action concrète peux-tu mettre en place ?
         </p>
