@@ -863,6 +863,35 @@ const articles = [
         texte: "Commencez par identifier vos déclencheurs — stress, ennui, fatigue, habitudes sociales — et trouvez des alternatives pour chacun. Réduisez progressivement le sucre dans votre café ou thé sur plusieurs semaines. Remplacez les produits sucrés industriels par des alternatives moins transformées : fruits frais, dattes, chocolat noir à plus de 70%. Mangez suffisamment de protéines et de bonnes graisses à chaque repas pour stabiliser la glycémie et réduire les fringales. Dormez suffisamment — le manque de sommeil augmente significativement les envies de sucre en stimulant la ghréline, l'hormone de l'appétit."
       }
     ]
+  },
+  {
+    id: 31,
+    titre: "L'eau du robinet : le meilleur choix au quotidien",
+    pilier: "Nutrition",
+    emoji: "💧",
+    resume: "Pourquoi l'eau du robinet est souvent le meilleur choix, et dans quels cas l'eau en bouteille peut être préférable.",
+    contenu: [
+      {
+        sous_titre: "L'eau du robinet : une eau contrôlée et de qualité",
+        texte: "En France, l'eau du robinet est l'un des aliments les plus contrôlés qui soit. Elle fait l'objet de plus de 60 paramètres de qualité analysés régulièrement par les Agences Régionales de Santé (ARS). Sa composition en minéraux varie selon les régions mais elle est dans l'immense majorité des cas parfaitement saine à boire. Contrairement aux idées reçues, elle n'est pas inférieure à l'eau en bouteille sur le plan de la sécurité sanitaire — elle est même souvent supérieure en termes de contrôle."
+      },
+      {
+        sous_titre: "L'impact environnemental de l'eau en bouteille",
+        texte: "Choisir l'eau du robinet plutôt que l'eau en bouteille est l'un des gestes écologiques les plus simples et les plus impactants. Une bouteille d'eau plastique nécessite 3 litres d'eau et 250 ml de pétrole pour être produite. Le transport des bouteilles génère des émissions de CO2 importantes. Les bouteilles plastiques, même recyclées, libèrent des microplastiques dans l'eau qu'elles contiennent — surtout lorsqu'elles sont exposées à la chaleur ou au soleil. En buvant l'eau du robinet, vous réduisez drastiquement votre empreinte plastique."
+      },
+      {
+        sous_titre: "Comment améliorer le goût de l'eau du robinet",
+        texte: "Si le goût de chlore vous dérange, il existe des solutions simples. Laissez l'eau reposer quelques heures dans une carafe ouverte au réfrigérateur — le chlore s'évapore naturellement. Vous pouvez aussi utiliser un filtre à carafe (Brita, Aqua Optima) qui améliore le goût sans modifier les qualités sanitaires. Ajouter quelques feuilles de menthe, des rondelles de citron ou de concombre est une autre façon de rendre l'eau du robinet plus agréable à boire au quotidien."
+      },
+      {
+        sous_titre: "Les situations où l'eau en bouteille peut être préférable",
+        texte: "Il existe quelques situations spécifiques où l'eau en bouteille peut être recommandée. Pour les nourrissons de moins de 6 mois — leur système immunitaire immature et leurs besoins spécifiques en minéraux justifient l'utilisation d'une eau faiblement minéralisée adaptée (Evian, Volvic). Pour les femmes enceintes dans certaines régions où l'eau du robinet présente des taux de nitrates élevés. Pour les personnes immunodéprimées sur avis médical. En voyage dans des pays où la qualité de l'eau du robinet n'est pas garantie."
+      },
+      {
+        sous_titre: "Quelle eau choisir selon ses besoins ?",
+        texte: "Toutes les eaux en bouteille ne se valent pas nutritionnellement. Les eaux riches en calcium (Contrex, Hépar) peuvent être intéressantes pour les personnes qui ne consomment pas de produits laitiers. Les eaux riches en magnésium (Hépar, Rozana) peuvent compléter un apport insuffisant. Les eaux gazeuses naturellement riches en bicarbonates (Vichy, Saint-Yorre) peuvent aider à la digestion mais sont déconseillées en cas de tension artérielle élevée. Pour la majorité des personnes en bonne santé, l'eau du robinet filtrée en carafe reste le choix le plus économique, le plus écologique et tout aussi sain."
+      }
+    ]
   }
 ];
 
