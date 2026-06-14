@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
+
 const conseils = [
   { texte: "Commence ta journée avec un grand verre d'eau. Ton corps est déshydraté après une nuit de sommeil.", pilier: "Nutrition", couleur: "#EAF3DE", textColor: "#27500A" },
   { texte: "Ajoute une poignée de légumes verts à chaque repas — ils apportent fibres, vitamines et minéraux essentiels sans calories excessives.", pilier: "Nutrition", couleur: "#EAF3DE", textColor: "#27500A" },
@@ -36,6 +37,7 @@ const conseils = [
 ];
 
 function Accueil() {
+  const [instructions2, setInstructions2] = useState(false);
   const jourDuMois = new Date().getDate();
 const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
   const [instructions, setInstructions] = useState(false);
@@ -78,8 +80,8 @@ const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
           <span className="accueil-pilier-nom">Mouvement</span>
         </div>
       </div>
-
-      <div className="accueil-section-titre">Conseil du jour</div>
+      
+<div className="accueil-section-titre" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Conseil du jour</div>
 
 <div className="accueil-conseil">
   <div className="accueil-conseil-header">
@@ -91,34 +93,44 @@ const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
   <p className="accueil-conseil-texte">{conseilDuJour.texte}</p>
 </div>
 
-      <div className="accueil-section-titre">Par où commencer ?</div>
+    <div className="accueil-section-titre">Mode d'emploi</div>
 
-      <div className="accueil-cards">
-        <div className="accueil-card" onClick={() => navigate('/')}>
-          <span className="accueil-card-icon">✅</span>
+<div className="accueil-cards">
+  <div className="accueil-card" onClick={() => setInstructions2(!instructions2)}>
+    <span className="accueil-card-icon">💡</span>
+    <div>
+      <div className="accueil-card-titre">Comment utiliser Sérénitine ?</div>
+      <div className="accueil-card-sub">Découvrir les différentes sections de l'app</div>
+    </div>
+    <span className="accueil-card-arrow">{instructions2 ? '↑' : '↓'}</span>
+  </div>
+
+  {instructions2 && (
+    <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+      {[
+        { icon: '✅', titre: 'Routines', texte: 'Coche tes routines du jour, de la semaine et de l\'année.' },
+        { icon: '📖', titre: 'Ressources', texte: 'Lis les articles pour comprendre l\'importance de chaque habitude et devenir expert en hygiène de vie. Utilise les outils pratiques : liste de courses, journal du sommeil, parking à pensées, cohérence cardiaque.' },
+        { icon: '📊', titre: 'Suivi', texte: 'Consulte tes statistiques et ton calendrier pour visualiser ta progression dans le temps.' },
+        { icon: '👤', titre: 'Profil', texte: 'Retrouve ton résumé du moment, ton pilier à renforcer, la date de début de ton parcours, ainsi que les infos à propos de l\'app.' },
+      ].map((item, i) => (
+        <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 12, alignItems: 'flex-start' }}>
+          <span style={{ fontSize: 18, flexShrink: 0 }}>{item.icon}</span>
           <div>
-            <div className="accueil-card-titre">Routines du jour</div>
-            <div className="accueil-card-sub">Coche tes habitudes quotidiennes</div>
+            <div style={{ fontSize: 13, fontWeight: 600, color: '#1c1c1a', marginBottom: 2 }}>{item.titre}</div>
+            <div style={{ fontSize: 12, color: '#666', lineHeight: 1.5 }}>{item.texte}</div>
           </div>
-          <span className="accueil-card-arrow">→</span>
         </div>
-        <div className="accueil-card" onClick={() => navigate('/ressources')}>
-          <span className="accueil-card-icon">📖</span>
-          <div>
-            <div className="accueil-card-titre">Ressources</div>
-            <div className="accueil-card-sub">Comprendre pourquoi c'est important</div>
-          </div>
-          <span className="accueil-card-arrow">→</span>
-        </div>
-        <div className="accueil-card" onClick={() => navigate('/statistiques')}>
-          <span className="accueil-card-icon">📊</span>
-          <div>
-            <div className="accueil-card-titre">Statistiques</div>
-            <div className="accueil-card-sub">Suivre ta progression</div>
-          </div>
-          <span className="accueil-card-arrow">→</span>
+      ))}
+
+      <div style={{ marginTop: 12, padding: '0.7rem', background: '#FFF8F0', borderRadius: 8, border: '0.5px solid #f0c040' }}>
+        <div style={{ fontSize: 12, color: '#854F0B', lineHeight: 1.6 }}>
+          ⚠️ <strong>Si l'app ne s'ouvre pas</strong>, c'est qu'une mise à jour est en cours. Ferme l'app et reviens un peu plus tard (cela peut prendre plus de 30 min), puis tout sera de nouveau disponible.
         </div>
       </div>
+    </div>
+  )}
+</div>
+
 <div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Installer l'app</div>
 
 <div className="accueil-cards">
