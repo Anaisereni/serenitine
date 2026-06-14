@@ -892,7 +892,123 @@ const articles = [
         texte: "Toutes les eaux en bouteille ne se valent pas nutritionnellement. Les eaux riches en calcium (Contrex, Hépar) peuvent être intéressantes pour les personnes qui ne consomment pas de produits laitiers. Les eaux riches en magnésium (Hépar, Rozana) peuvent compléter un apport insuffisant. Les eaux gazeuses naturellement riches en bicarbonates (Vichy, Saint-Yorre) peuvent aider à la digestion mais sont déconseillées en cas de tension artérielle élevée. Pour la majorité des personnes en bonne santé, l'eau du robinet filtrée en carafe reste le choix le plus économique, le plus écologique et tout aussi sain."
       }
     ]
-  }
+  },
+  {
+  id: 32,
+  titre: "Le stress et ses effets sur l'organisme",
+  pilier: "Stress",
+  emoji: "🧠",
+  resume: "Comment le stress agit sur le corps, ses effets à court et long terme, et pourquoi il est essentiel de le réguler.",
+  contenu: [
+    {
+      sous_titre: "Le stress : une réponse utile à l'origine",
+      texte: "Le stress est une réponse biologique primitive conçue pour nous protéger face à un danger. Face à une menace, le cerveau déclenche la libération d'adrénaline et de cortisol — les hormones du stress. Le cœur s'accélère, les muscles se contractent, les sens s'aiguisent. Cette réaction de 'fuite ou combat' était essentielle pour la survie de nos ancêtres. Le problème est que notre cerveau ne distingue pas un danger physique réel d'une pression professionnelle ou d'une inquiétude — il déclenche la même réponse dans les deux cas."
+    },
+    {
+      sous_titre: "Les effets du stress aigu sur le corps",
+      texte: "Un stress ponctuel et de courte durée peut être bénéfique — il améliore la concentration, la performance et la réactivité. C'est ce qu'on appelle l'eustress. Mais même un stress aigu provoque des effets physiques immédiats : augmentation de la fréquence cardiaque et de la tension artérielle, tensions musculaires, ralentissement de la digestion, accélération de la respiration, suppression temporaire du système immunitaire. Ces effets sont normaux et réversibles dès que la menace disparaît."
+    },
+    {
+      sous_titre: "Le stress chronique : quand le corps s'épuise",
+      texte: "C'est le stress chronique — celui qui dure dans le temps sans répit — qui est véritablement dangereux pour la santé. Un taux de cortisol élevé en permanence perturbe presque tous les systèmes du corps : le système cardiovasculaire (risque accru d'hypertension, d'infarctus), le système immunitaire (plus grande vulnérabilité aux infections et aux maladies auto-immunes), le système digestif (troubles intestinaux, côlon irritable), le système hormonal (dérèglement de la thyroïde, problèmes de fertilité) et le cerveau lui-même (anxiété, dépression, troubles de la mémoire)."
+    },
+    {
+      sous_titre: "Stress et sommeil : un cercle vicieux",
+      texte: "Le stress et le sommeil sont étroitement liés dans un cercle vicieux. Le cortisol, hormone du stress, est naturellement élevé le matin pour nous réveiller et bas le soir pour permettre l'endormissement. Un stress chronique maintient le cortisol élevé en soirée — ce qui retarde l'endormissement, fragmente le sommeil et réduit le sommeil profond réparateur. Or le manque de sommeil augmente à son tour la sensibilité au stress et la production de cortisol. Prendre soin de son sommeil est donc aussi une façon de réguler son stress."
+    },
+    {
+      sous_titre: "Les techniques validées pour réguler le stress",
+      texte: "Plusieurs approches ont démontré scientifiquement leur efficacité pour réduire le cortisol et calmer le système nerveux. La cohérence cardiaque (5 respirations par minute pendant 5 minutes) réduit le cortisol en quelques minutes. L'activité physique régulière est l'un des meilleurs anti-stress naturels — elle métabolise le cortisol et libère des endorphines. La méditation de pleine conscience modifie structurellement le cerveau après seulement 8 semaines de pratique régulière. Le contact avec la nature, le lien social et le sommeil suffisant sont également des régulateurs puissants du stress."
+    }
+  ]
+},
+{
+  id: 33,
+  titre: "Le sommeil : pourquoi il est vital et comment l'optimiser",
+  pilier: "Sommeil",
+  emoji: "😴",
+  resume: "Ce qui se passe vraiment pendant le sommeil, les conséquences du manque de sommeil et les clés pour mieux dormir.",
+  contenu: [
+    {
+      sous_titre: "Le sommeil, bien plus qu'un simple repos",
+      texte: "Pendant le sommeil, le corps est loin d'être inactif. C'est une période de régénération intense : le cerveau consolide les apprentissages et les souvenirs de la journée, élimine les déchets métaboliques accumulés (dont les protéines liées à la maladie d'Alzheimer) grâce au système glymphatique, et régule les émotions. Le corps, lui, sécrète l'hormone de croissance, répare les tissus musculaires, renforce le système immunitaire et régule les hormones de la faim. Un sommeil de qualité n'est pas un luxe — c'est une nécessité biologique fondamentale."
+    },
+    {
+      sous_titre: "Les cycles du sommeil et leur importance",
+      texte: "Le sommeil se compose de cycles d'environ 90 minutes, répétés 4 à 6 fois par nuit. Chaque cycle comprend du sommeil léger, du sommeil profond et du sommeil paradoxal (REM). Le sommeil profond, dominant en première partie de nuit, est celui de la récupération physique et du renforcement immunitaire. Le sommeil paradoxal, plus abondant en fin de nuit, est essentiel pour la mémoire émotionnelle et la créativité. Réduire son temps de sommeil, même d'une heure, ampute principalement le sommeil paradoxal — le plus précieux cognitivement."
+    },
+    {
+      sous_titre: "Les conséquences du manque de sommeil",
+      texte: "Dormir moins de 7 heures par nuit de façon régulière a des conséquences mesurables sur la santé. À court terme : baisse de la concentration, des performances cognitives et de la réactivité, irritabilité, augmentation des envies de sucre et de gras, affaiblissement des défenses immunitaires. À long terme : risque accru de diabète de type 2, d'obésité, d'hypertension, de maladies cardiovasculaires, de dépression et de déclin cognitif. Les études montrent que conduire avec moins de 5 heures de sommeil présente un risque d'accident comparable à l'alcool au volant."
+    },
+    {
+      sous_titre: "Les piliers d'un bon sommeil",
+      texte: "Plusieurs habitudes ont un impact direct sur la qualité du sommeil. La régularité des horaires est la plus importante — se coucher et se lever à heure fixe, même le week-end, stabilise l'horloge biologique. La température de la chambre idéale se situe entre 16 et 18°C — le corps a besoin de se refroidir pour s'endormir. L'obscurité totale est essentielle car même une faible lumière perturbe la sécrétion de mélatonine. Éviter les écrans et les activités stimulantes dans les 2 heures avant le coucher permet au cerveau d'entrer progressivement en mode veille."
+    },
+    {
+      sous_titre: "Ce qui perturbe le sommeil sans qu'on le sache",
+      texte: "Certains facteurs perturbent le sommeil de façon insidieuse. L'alcool, souvent perçu comme un aide-sommeil, fragmente en réalité le sommeil et supprime le sommeil paradoxal — on s'endort plus vite mais on dort moins bien. La caféine a une demi-vie de 5 à 7 heures — un café à 16h signifie que la moitié de la caféine est encore active à 23h. Le sport intensif le soir élève la température corporelle et le cortisol, retardant l'endormissement. Le stress et les pensées ruminantes activent le système nerveux sympathique, incompatible avec l'endormissement."
+    }
+  ]
+},
+{
+  id: 34,
+  titre: "Café et thé : alliés ou ennemis de la santé ?",
+  pilier: "Nutrition",
+  emoji: "☕",
+  resume: "Ce que la science dit vraiment sur le café et le thé, leurs bénéfices, leurs limites et comment les consommer intelligemment.",
+  contenu: [
+    {
+      sous_titre: "Le café : plus de bénéfices qu'on ne le croit",
+      texte: "Le café est l'une des boissons les plus étudiées au monde et sa réputation a bien évolué. Les études récentes montrent qu'une consommation modérée de 2 à 4 tasses par jour est associée à une réduction du risque de diabète de type 2, de maladies cardiovasculaires, de maladies neurodégénératives (Parkinson, Alzheimer) et de certains cancers. Le café est également la première source d'antioxydants dans l'alimentation occidentale. Ces bénéfices sont liés non seulement à la caféine mais aussi aux nombreux polyphénols qu'il contient."
+    },
+    {
+      sous_titre: "Le thé : une boisson aux multiples vertus",
+      texte: "Le thé vert est particulièrement riche en catéchines, des antioxydants puissants qui protègent les cellules du stress oxydatif. Il contient également de la L-théanine, un acide aminé qui favorise un état de calme et de concentration sans somnolence — ce qui explique l'effet 'zen mais alerte' caractéristique du thé vert. Le thé noir, lui, est riche en théaflavines, bénéfiques pour la santé cardiovasculaire. Les thés fermentés comme le pu-erh auraient des effets positifs sur le microbiote intestinal. Le thé blanc, peu transformé, est particulièrement riche en antioxydants."
+    },
+    {
+      sous_titre: "La caféine : comment elle agit et ses limites",
+      texte: "La caféine agit en bloquant les récepteurs à l'adénosine, une molécule qui favorise la somnolence. Elle améliore la vigilance, la concentration, les performances physiques et l'humeur. Mais elle a aussi des effets indésirables à haute dose : anxiété, palpitations, troubles du sommeil, dépendance légère. La sensibilité à la caféine est très variable selon les individus, en fonction de leur génétique. La dose considérée comme sûre pour la majorité des adultes est de 400 mg par jour, soit environ 4 expressos. Femmes enceintes et allaitantes doivent limiter leur consommation à 200 mg par jour."
+    },
+    {
+      sous_titre: "Quand et comment consommer café et thé intelligemment",
+      texte: "Le moment de consommation est crucial. Boire un café dès le réveil n'est pas optimal — le cortisol, naturellement élevé entre 8h et 9h, fait déjà son effet stimulant. Attendre 1h à 1h30 après le réveil pour prendre son premier café maximise ses effets. Éviter toute caféine après 14h-15h pour ne pas perturber le sommeil. Boire son café après un repas plutôt qu'à jeun réduit son impact sur l'acidité gastrique. Ne pas ajouter de sucre ou de lait en excès — le café noir reste la forme la plus bénéfique pour la santé."
+    },
+    {
+      sous_titre: "Ce qu'il vaut mieux éviter",
+      texte: "Toutes les formes de café et de thé ne se valent pas. Les boissons à base de café avec sucre ajouté, sirops aromatisés et crèmes (type Frappuccino) n'ont plus grand chose à voir avec les bénéfices santé du café — elles sont avant tout des desserts liquides très caloriques. Le café filtre est préférable au café bouilli (cafetière à piston) car il retient les diterpènes — des substances qui élèvent le cholestérol LDL. Les thés en sachets industriels contiennent souvent des résidus de pesticides — préférer les thés en vrac de qualité. Enfin, les boissons énergisantes contenant de la caféine sont à éviter — leur composition globale est délétère pour la santé."
+    }
+  ]
+},
+{
+  id: 35,
+  titre: "Les oméga-3 : pourquoi ils sont essentiels et où les trouver",
+  pilier: "Nutrition",
+  emoji: "🐟",
+  resume: "Le rôle des oméga-3 dans l'organisme, les différences entre sources animales et végétales, et comment couvrir ses besoins au quotidien.",
+  contenu: [
+    {
+      sous_titre: "Les oméga-3 : des graisses indispensables",
+      texte: "Les oméga-3 sont des acides gras polyinsaturés dits 'essentiels' — le corps ne sait pas les fabriquer et doit les obtenir par l'alimentation. Ils jouent un rôle fondamental dans la structure des membranes cellulaires, notamment dans le cerveau dont 60% de la matière sèche est composée de graisses, majoritairement des oméga-3. Ils ont des effets anti-inflammatoires puissants, protègent le système cardiovasculaire, soutiennent la santé mentale (dépression, anxiété) et sont essentiels au développement du cerveau du fœtus pendant la grossesse."
+    },
+    {
+      sous_titre: "Les trois types d'oméga-3 et leurs différences",
+      texte: "Il existe trois principaux oméga-3 aux rôles distincts. L'ALA (acide alpha-linolénique) est d'origine végétale — on le trouve dans les graines de lin, les noix, l'huile de colza. Il est précurseur des deux autres mais la conversion est très limitée dans l'organisme (moins de 5%). L'EPA (acide eicosapentaénoïque) et le DHA (acide docosahexaénoïque) sont les formes directement utilisables par le corps — on les trouve principalement dans les poissons gras et les algues marines. Ce sont ces deux formes qui sont responsables de la majorité des bénéfices santé des oméga-3."
+    },
+    {
+      sous_titre: "Sources animales : les poissons gras en tête",
+      texte: "Les poissons gras sont la source la plus concentrée et la plus biodisponible d'EPA et de DHA. Les plus riches sont les petits poissons gras — sardines, maquereaux, harengs, anchois — qui présentent également l'avantage d'être bas dans la chaîne alimentaire et donc moins chargés en métaux lourds que les grands poissons comme le thon ou le saumon. La recommandation est de consommer 2 portions de poissons gras par semaine. Les œufs de poules élevées en plein air et nourries aux graines de lin sont également une bonne source d'oméga-3."
+    },
+    {
+      sous_titre: "Sources végétales : utiles mais insuffisantes seules",
+      texte: "Pour les végétariens et végétaliens, les sources végétales d'oméga-3 sont importantes mais ne couvrent pas tous les besoins. Les graines de lin moulues, les graines de chia, les noix et l'huile de colza apportent de l'ALA en quantité intéressante. Cependant, la conversion de l'ALA en EPA et DHA étant très faible, ces sources seules ne suffisent généralement pas à couvrir les besoins en EPA et DHA. La solution pour les personnes ne consommant pas de poisson est la supplémentation en huile d'algues — la source primaire d'où les poissons tirent eux-mêmes leurs oméga-3, et donc 100% végétale."
+    },
+    {
+      sous_titre: "Le ratio oméga-6/oméga-3 : le vrai enjeu",
+      texte: "Au-delà de la quantité d'oméga-3, c'est le ratio oméga-6/oméga-3 qui est crucial pour la santé. Ces deux familles de graisses entrent en compétition pour les mêmes enzymes — un excès d'oméga-6 bloque l'utilisation des oméga-3. Le ratio idéal est de 4:1 (oméga-6/oméga-3) mais l'alimentation occidentale moderne atteint souvent 15:1 à 20:1, en raison de la surconsommation d'huiles végétales riches en oméga-6 (tournesol, maïs, soja). Réduire ces huiles au profit de l'huile d'olive et de colza, et augmenter la consommation de poissons gras, est la stratégie la plus efficace pour rééquilibrer ce ratio."
+    }
+  ]
+}
 ];
 
 function Article({ article, onRetour }) {
