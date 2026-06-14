@@ -38,6 +38,54 @@ const CATEGORIES = [...new Set(COURSES_DEFAUT.map(c => c.categorie))];
 
  const DUREE_TOTALE = 5 * 60;
 
+ // Fonctions audio à placer en dehors de OutilStress, après DUREE_TOTALE
+
+
+const jouerSonInspiration = (ctx) => {
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(528, ctx.currentTime); // fréquence apaisante
+  gain.gain.setValueAtTime(0, ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.5);
+  gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 2);
+  osc.start(ctx.currentTime);
+  osc.stop(ctx.currentTime + 2);
+};
+
+const jouerSonExpiration = (ctx) => {
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(396, ctx.currentTime); // note plus grave
+  gain.gain.setValueAtTime(0, ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 0.5);
+  gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 2);
+  osc.start(ctx.currentTime);
+  osc.stop(ctx.currentTime + 2);
+};
+
+const jouerSonFin = (ctx) => {
+  // Ding doux x3
+  [0, 0.5, 1].forEach((delai, i) => {
+    const notes = [528, 594, 660];
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(notes[i], ctx.currentTime + delai);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime + delai);
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + delai + 0.6);
+    osc.start(ctx.currentTime + delai);
+    osc.stop(ctx.currentTime + delai + 0.6);
+  });
+};
+
 function OutilNutrition() {
   const [cochees, setCochees] = useState(() => {
     try { return JSON.parse(localStorage.getItem('courses_cochees') || '[]'); }
@@ -190,24 +238,48 @@ function OutilStress() {
   const [pensees, setPensees] = useState(() => localStorage.getItem('stress_pensees') || '');
   const [actions, setActions] = useState(() => localStorage.getItem('stress_actions') || '');
 
-  
-const [actif, setActif] = useState(false);
-const [tempsRestant, setTempsRestant] = useState(DUREE_TOTALE);
-const [compteurGlobal, setCompteurGlobal] = useState(0);
-const intervalRef = React.useRef(null);
+  const [actif, setActif] = useState(false);
+  const [tempsRestant, setTempsRestant] = useState(DUREE_TOTALE);
+  const [compteurGlobal, setCompteurGlobal] = useState(0);
+  const intervalRef = React.useRef(null);
+  const audioCtxRef = React.useRef(null);
+  const phaseRef = React.useRef('inspiration');
 
-React.useEffect(() => {
+  const getAudioCtx = () => {
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    return audioCtxRef.current;
+  };
+
+  React.useEffect(() => {
   if (actif) {
     intervalRef.current = setInterval(() => {
+      setCompteurGlobal(c => {
+        const nouveauCompteur = c + 1;
+        const pos = nouveauCompteur % 10;
+        const nouvellePhase = pos < 5 ? 'inspiration' : 'expiration';
+        if (nouvellePhase !== phaseRef.current) {
+          phaseRef.current = nouvellePhase;
+          const ctx = getAudioCtx();
+          if (nouvellePhase === 'inspiration') {
+            jouerSonInspiration(ctx);
+          } else {
+            jouerSonExpiration(ctx);
+          }
+        }
+        return nouveauCompteur;
+      });
+
       setTempsRestant(t => {
         if (t <= 1) {
           setActif(false);
           clearInterval(intervalRef.current);
+          setTimeout(() => jouerSonFin(getAudioCtx()), 100);
           return DUREE_TOTALE;
         }
         return t - 1;
       });
-      setCompteurGlobal(c => c + 1);
     }, 1000);
   } else {
     clearInterval(intervalRef.current);
@@ -215,19 +287,26 @@ React.useEffect(() => {
   return () => clearInterval(intervalRef.current);
 }, [actif]);
 
-const reset = () => {
-  setActif(false);
-  setTempsRestant(DUREE_TOTALE);
-  setCompteurGlobal(0);
-};
+  const demarrer = () => {
+    // Initialiser l'AudioContext au premier clic (requis par les navigateurs)
+    getAudioCtx();
+    jouerSonInspiration(getAudioCtx());
+    phaseRef.current = 'inspiration';
+    setActif(a => !a);
+  };
 
-const minutes = Math.floor(tempsRestant / 60);
-const secondes = String(tempsRestant % 60).padStart(2, '0');
-const positionDansCycle = compteurGlobal % 10; // cycle de 10s
-const phase = positionDansCycle < 5 ? 'inspiration' : 'expiration';
-const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positionDansCycle;
-  
+  const reset = () => {
+    setActif(false);
+    setTempsRestant(DUREE_TOTALE);
+    setCompteurGlobal(0);
+    phaseRef.current = 'inspiration';
+  };
 
+  const minutes = Math.floor(tempsRestant / 60);
+  const secondes = String(tempsRestant % 60).padStart(2, '0');
+  const positionDansCycle = compteurGlobal % 10;
+  const phase = positionDansCycle < 5 ? 'inspiration' : 'expiration';
+  const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positionDansCycle;
 
   return (
     <div>
@@ -256,7 +335,7 @@ const tempsPhase = phase === 'inspiration' ? 5 - positionDansCycle : 10 - positi
           </div>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          <button onClick={() => setActif(a => !a)} style={{
+          <button onClick={demarrer} style={{
             flex: 1, padding: '10px', borderRadius: 10, border: 'none',
             background: actif ? '#FAEEDA' : '#854F0B',
             color: actif ? '#854F0B' : 'white',

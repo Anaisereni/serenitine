@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Routine from './Routine';
 import { useRoutineStorage, sauvegarderPiliers } from './useStorage';
@@ -41,11 +41,95 @@ const MESSAGES_FELICITATIONS = {
   "Annuel": { emoji: "✓", texte: "Année complète ! Tous tes rendez-vous annuels sont à jour." },
 };
 
+const COULEURS_CONFETTIS = ['#60d3e5', '#a8e6cf', '#ffd3a5', '#fd9853', '#c3a6e8', '#f9c4d2', '#fff'];
+
+function Confettis({ actif }) {
+  const canvasRef = useRef(null);
+  const animRef = useRef(null);
+  const particulesRef = useRef([]);
+
+  useEffect(() => {
+    if (!actif) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Créer les particules
+    particulesRef.current = Array.from({ length: 80 }, () => ({
+      x: Math.random() * canvas.width,
+      y: -10,
+      taille: Math.random() * 8 + 4,
+      couleur: COULEURS_CONFETTIS[Math.floor(Math.random() * COULEURS_CONFETTIS.length)],
+      vitesseX: (Math.random() - 0.5) * 4,
+      vitesseY: Math.random() * 3 + 2,
+      rotation: Math.random() * 360,
+      vitesseRotation: (Math.random() - 0.5) * 6,
+      forme: Math.random() > 0.5 ? 'rect' : 'cercle',
+    }));
+
+    const animer = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let encore = false;
+
+      particulesRef.current.forEach(p => {
+        p.x += p.vitesseX;
+        p.y += p.vitesseY;
+        p.rotation += p.vitesseRotation;
+
+        if (p.y < canvas.height + 20) encore = true;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.fillStyle = p.couleur;
+
+        if (p.forme === 'rect') {
+          ctx.fillRect(-p.taille / 2, -p.taille / 2, p.taille, p.taille * 0.6);
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.taille / 2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      });
+
+      if (encore) {
+        animRef.current = requestAnimationFrame(animer);
+      }
+    };
+
+    animRef.current = requestAnimationFrame(animer);
+
+    return () => {
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+    };
+  }, [actif]);
+
+  if (!actif) return null;
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed', top: 0, left: 0,
+        width: '100%', height: '100%',
+        pointerEvents: 'none', zIndex: 9999,
+      }}
+    />
+  );
+}
+
 function ListeRoutines() {
   const { setRoutineId } = useContext(AppContext);
   const navigate = useNavigate();
   const [pilierActif, setPilierActif] = useState("Tous");
   const [frequenceActive, setFrequenceActive] = useState("Quotidien");
+  const [confettisActifs, setConfettisActifs] = useState(false);
+  const etaitCompleteRef = useRef(false);
+
   const [cocheeQuotidien, setCocheeQuotidien] = useRoutineStorage('Quotidien');
   const [cocheeHebdo, setCocheeHebdo] = useRoutineStorage('Hebdomadaire');
   const [cocheeAnnuel, setCocheeAnnuel] = useRoutineStorage('Annuel');
@@ -67,7 +151,6 @@ function ListeRoutines() {
     return pilierOk && frequenceOk;
   });
 
-  // Total de toutes les routines de la fréquence (sans filtre pilier) pour les félicitations
   const totalFrequence = routines.filter(r => r.frequence === frequenceActive).length;
   const completeesFréquence = cochees.filter(id =>
     routines.find(r => r.id === id && r.frequence === frequenceActive)
@@ -87,10 +170,26 @@ function ListeRoutines() {
     sauvegarderPiliers(frequenceActive, nouvellesCochees, routines);
   };
 
+  // Déclencher les confettis uniquement au moment où on passe à 100%
+  useEffect(() => {
+    if (estComplete && !etaitCompleteRef.current) {
+      setConfettisActifs(true);
+      setTimeout(() => setConfettisActifs(false), 3500);
+    }
+    etaitCompleteRef.current = estComplete;
+  }, [estComplete]);
+
+  // Réinitialiser la ref quand on change de fréquence
+  useEffect(() => {
+  etaitCompleteRef.current = estComplete;
+}, [frequenceActive, estComplete]);
+
   const felicitations = MESSAGES_FELICITATIONS[frequenceActive];
 
   return (
     <div className="liste-routines">
+
+      <Confettis actif={confettisActifs} />
 
       <div className="frequences">
         {FREQUENCES.map(f => (
@@ -107,7 +206,6 @@ function ListeRoutines() {
         ))}
       </div>
 
-      {/* Message de félicitations */}
       {estComplete && (
         <div style={{
           background: 'rgba(255,255,255,0.15)',
