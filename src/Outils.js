@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getAudioCtx } from './audio';
 
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
@@ -242,15 +243,10 @@ function OutilStress() {
   const [tempsRestant, setTempsRestant] = useState(DUREE_TOTALE);
   const [compteurGlobal, setCompteurGlobal] = useState(0);
   const intervalRef = React.useRef(null);
-  const audioCtxRef = React.useRef(null);
+
   const phaseRef = React.useRef('inspiration');
 
-  const getAudioCtx = () => {
-    if (!audioCtxRef.current) {
-      audioCtxRef.current = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    return audioCtxRef.current;
-  };
+  
 
   React.useEffect(() => {
   if (actif) {
