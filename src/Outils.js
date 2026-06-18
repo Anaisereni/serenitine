@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getAudioCtx } from './audio';
+import { getAudioCtx, debloqueurAudio } from './audio';
+
+
 
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
@@ -283,13 +285,12 @@ function OutilStress() {
   return () => clearInterval(intervalRef.current);
 }, [actif]);
 
-  const demarrer = () => {
-    // Initialiser l'AudioContext au premier clic (requis par les navigateurs)
-    getAudioCtx();
-    jouerSonInspiration(getAudioCtx());
-    phaseRef.current = 'inspiration';
-    setActif(a => !a);
-  };
+ const demarrer = () => {
+  debloqueurAudio();
+  jouerSonInspiration(getAudioCtx());
+  phaseRef.current = 'inspiration';
+  setActif(a => !a);
+};
 
   const reset = () => {
     setActif(false);

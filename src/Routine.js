@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAudioCtx } from './audio';
+import { getAudioCtx, debloqueurAudio } from './audio';
 
 const jouerSonCoche = () => {
   try {
@@ -22,6 +22,7 @@ const jouerSonCoche = () => {
 function Routine({ nom, description, pilier, cochee, onToggle, onOuvrirFiche, afficherPilier = true }) {
 
   const handleToggle = () => {
+    debloqueurAudio();
     if (!cochee) jouerSonCoche();
     onToggle();
   };
