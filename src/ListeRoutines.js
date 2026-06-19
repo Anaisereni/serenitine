@@ -17,7 +17,7 @@ const routines = [
   { id: 10, nom: "30 min d'activité modérée (marche, vélo...)", description: "Activité minimale recommandée par jour", pilier: "Mouvement", frequence: "Quotidien" },
   { id: 11, nom: "Éviter la sédentarité prolongée", description: "Se lever et bouger toutes les heures", pilier: "Mouvement", frequence: "Quotidien" },
   { id: 12, nom: "Manger des légumineuses au moins 2 fois", description: "Lentilles, pois chiches, haricots…", pilier: "Nutrition", frequence: "Hebdomadaire" },
-  { id: 13, nom: "Consommer des petits poissons gras 1 à 2 fois", description: "Sardines, maquereau, hareng — riches en oméga-3", pilier: "Nutrition", frequence: "Hebdomadaire" },
+  { id: 13, nom: "Consommer des petits poissons gras 1 à 2 fois", description: "Sardines, maquereau, hareng, riches en oméga-3", pilier: "Nutrition", frequence: "Hebdomadaire" },
   { id: 14, nom: "Évaluer la qualité de son sommeil", description: "Réveils nocturnes, fatigue au réveil, endormissement", pilier: "Sommeil", frequence: "Hebdomadaire" },
   { id: 15, nom: "Bilan du stress de la semaine", description: "Identifier les sources principales et ajuster", pilier: "Stress", frequence: "Hebdomadaire" },
   { id: 16, nom: "Faire 2 séances de sport", description: "30 min d'activité modérée/jour + 2 sessions intenses", pilier: "Mouvement", frequence: "Hebdomadaire" },

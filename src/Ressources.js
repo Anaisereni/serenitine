@@ -11,7 +11,7 @@ const articles = [
     contenu: [
       {
         sous_titre: "Qu'est-ce qu'un produit ultra-transformé ?",
-        texte: "La classification NOVA divise les aliments en 4 groupes selon leur degré de transformation. Les produits ultra-transformés (groupe 4) sont des formulations industrielles contenant des ingrédients que l'on ne trouve pas dans une cuisine normale : émulsifiants, exhausteurs de goût, colorants, arômes artificiels, sirop de glucose-fructose, huiles hydrogénées… Ils sont conçus pour être hyper-palatables — c'est-à-dire irrésistibles — et favorisent la surconsommation."
+        texte: "La classification NOVA divise les aliments en 4 groupes selon leur degré de transformation. Les produits ultra-transformés (groupe 4) sont des formulations industrielles contenant des ingrédients que l'on ne trouve pas dans une cuisine normale : émulsifiants, exhausteurs de goût, colorants, arômes artificiels, sirop de glucose-fructose, huiles hydrogénées… Ils sont conçus pour être hyper-palatables, c'est-à-dire irrésistibles et favorisent la surconsommation."
       },
       {
         sous_titre: "Comment les reconnaître ?",
@@ -36,7 +36,7 @@ const articles = [
     contenu: [
       {
         sous_titre: "Qu'est-ce que la cohérence cardiaque ?",
-        texte: "La cohérence cardiaque est un état physiologique dans lequel le rythme cardiaque oscille de façon régulière et harmonieuse, synchronisé avec la respiration. Cet état est associé à une activation du système nerveux parasympathique — le système du calme et de la récupération — et à une réduction du cortisol, l'hormone du stress."
+        texte: "La cohérence cardiaque est un état physiologique dans lequel le rythme cardiaque oscille de façon régulière et harmonieuse, synchronisé avec la respiration. Cet état est associé à une activation du système nerveux parasympathique, le système du calme et de la récupération et à une réduction du cortisol, l'hormone du stress."
       },
       {
         sous_titre: "La méthode 365",
@@ -94,7 +94,7 @@ const articles = [
       },
       {
         sous_titre: "Les marqueurs de base remboursés",
-        texte: "Glycémie à jeun : dépiste le prédiabète et le diabète. Bilan lipidique complet : cholestérol total, LDL, HDL, triglycérides. Numération formule sanguine (NFS) : détecte les anémies et infections. Créatinine et urée : fonction rénale. TSH : fonction thyroïdienne. Ces marqueurs sont remboursés sur prescription de votre médecin traitant — demandez-les systématiquement."
+        texte: "Glycémie à jeun : dépiste le prédiabète et le diabète. Bilan lipidique complet : cholestérol total, LDL, HDL, triglycérides. Numération formule sanguine (NFS) : détecte les anémies et infections. Créatinine et urée : fonction rénale. TSH : fonction thyroïdienne. Ces marqueurs sont remboursés sur prescription de votre médecin traitant, demandez-les systématiquement."
       },
       {
         sous_titre: "Les marqueurs supplémentaires à demander",
@@ -115,11 +115,11 @@ const articles = [
     contenu: [
       {
         sous_titre: "Tous les additifs sont-ils dangereux ?",
-        texte: "Non — tous les additifs autorisés en Europe ont été évalués par l'EFSA (Agence européenne de sécurité des aliments). Mais certains font l'objet d'études préoccupantes et méritent une attention particulière, notamment chez les enfants, les femmes enceintes et les personnes sensibles. L'objectif n'est pas la panique mais la vigilance éclairée."
+        texte: "Non, tous les additifs autorisés en Europe ont été évalués par l'EFSA (Agence européenne de sécurité des aliments). Mais certains font l'objet d'études préoccupantes et méritent une attention particulière, notamment chez les enfants, les femmes enceintes et les personnes sensibles. L'objectif n'est pas la panique mais la vigilance éclairée."
       },
       {
         sous_titre: "Les nitrites (E249, E250, E251, E252)",
-        texte: "Utilisés dans les charcuteries pour leur couleur rose et leur conservation, les nitrites se transforment en nitrosamines lors de la cuisson ou de la digestion — des composés classés cancérogènes probables par le CIRC. Préférez les charcuteries sans nitrites ajoutés (de plus en plus disponibles en grande surface) et limitez la consommation à 150g par semaine maximum."
+        texte: "Utilisés dans les charcuteries pour leur couleur rose et leur conservation, les nitrites se transforment en nitrosamines lors de la cuisson ou de la digestion, des composés classés cancérogènes probables par le CIRC. Préférez les charcuteries sans nitrites ajoutés (de plus en plus disponibles en grande surface) et limitez la consommation à 150g par semaine maximum."
       },
       {
         sous_titre: "Les édulcorants intenses (E951, E952, E954, E955)",
@@ -144,23 +144,23 @@ const articles = [
     contenu: [
       {
         sous_titre: "Par où commencer ?",
-        texte: "La première chose à regarder n'est pas le tableau nutritionnel mais la liste des ingrédients. Elle est classée par ordre décroissant de quantité — le premier ingrédient est celui présent en plus grande quantité. Si le premier ingrédient est du sucre, de la farine blanche ou une huile végétale hydrogénée, le produit n'est probablement pas de grande qualité nutritionnelle."
+        texte: "La première chose à regarder n'est pas le tableau nutritionnel mais la liste des ingrédients. Elle est classée par ordre décroissant de quantité, le premier ingrédient est celui présent en plus grande quantité. Si le premier ingrédient est du sucre, de la farine blanche ou une huile végétale hydrogénée, le produit n'est probablement pas de grande qualité nutritionnelle."
       },
       {
         sous_titre: "La règle des 5 ingrédients",
-        texte: "Un bon indicateur de qualité : si un produit contient plus de 5 ingrédients, la probabilité qu'il soit ultra-transformé augmente fortement. Ce n'est pas une règle absolue — une bonne sauce tomate peut contenir 6 ingrédients simples — mais c'est un signal d'alerte utile pour aller vite en rayon. Vérifiez aussi que vous reconnaissez tous les ingrédients listés."
+        texte: "Un bon indicateur de qualité : si un produit contient plus de 5 ingrédients, la probabilité qu'il soit ultra-transformé augmente fortement. Ce n'est pas une règle absolue, une bonne sauce tomate peut contenir 6 ingrédients simples, mais c'est un signal d'alerte utile pour aller vite en rayon. Vérifiez aussi que vous reconnaissez tous les ingrédients listés."
       },
       {
         sous_titre: "Décrypter le tableau nutritionnel",
-        texte: "Regardez les valeurs pour 100g (pas par portion, qui peut être sous-estimée). Les seuils à retenir : sucres > 10g/100g = élevé, graisses saturées > 5g/100g = élevé, sel > 1,5g/100g = élevé, fibres > 3g/100g = bon. Le Nutri-Score est un outil imparfait mais utile — un produit A ou B est généralement un meilleur choix qu'un produit D ou E."
+        texte: "Regardez les valeurs pour 100g (pas par portion, qui peut être sous-estimée). Les seuils à retenir : sucres > 10g/100g = élevé, graisses saturées > 5g/100g = élevé, sel > 1,5g/100g = élevé, fibres > 3g/100g = bon. Le Nutri-Score est un outil imparfait mais utile, un produit A ou B est généralement un meilleur choix qu'un produit D ou E."
       },
       {
         sous_titre: "Les mots piège du marketing",
-        texte: "'Naturel' ne signifie rien légalement — n'importe quel produit peut l'afficher. 'Sans sucres ajoutés' ne veut pas dire sans sucre — le produit peut en contenir naturellement beaucoup. 'Allégé en matières grasses' signifie souvent plus de sucre pour compenser le goût. 'Source de fibres' ne garantit pas une bonne qualité globale. 'Bio' garantit l'absence de pesticides mais pas la qualité nutritionnelle."
+        texte: "'Naturel' ne signifie rien légalement, n'importe quel produit peut l'afficher. 'Sans sucres ajoutés' ne veut pas dire sans sucre, le produit peut en contenir naturellement beaucoup. 'Allégé en matières grasses' signifie souvent plus de sucre pour compenser le goût. 'Source de fibres' ne garantit pas une bonne qualité globale. 'Bio' garantit l'absence de pesticides mais pas la qualité nutritionnelle."
       },
       {
         sous_titre: "Les applications utiles",
-        texte: "Open Food Facts est une base de données collaborative et gratuite qui analyse des millions de produits — elle est intégrée dans l'application Yuka et dans d'autres. Yuka note les produits sur 100 et signale les additifs préoccupants. Ces outils sont imparfaits mais constituent un excellent point de départ pour développer son sens critique face aux produits industriels."
+        texte: "Open Food Facts est une base de données collaborative et gratuite qui analyse des millions de produits, elle est intégrée dans l'application Yuka et dans d'autres. Yuka note les produits sur 100 et signale les additifs préoccupants. Ces outils sont imparfaits mais constituent un excellent point de départ pour développer son sens critique face aux produits industriels."
       }
     ]
   },
@@ -177,19 +177,19 @@ const articles = [
       },
       {
         sous_titre: "Le sommeil léger (N1 et N2)",
-        texte: "Le cycle commence par le sommeil léger, divisé en deux stades. Le stade N1 est la transition entre l'éveil et le sommeil — vous pouvez encore être facilement réveillé et avoir des sensations de chute. Le stade N2 représente environ 50% du temps de sommeil total : le corps se détend, la température baisse, le rythme cardiaque ralentit. C'est pendant cette phase que le cerveau produit des fuseaux de sommeil, impliqués dans la consolidation de la mémoire."
+        texte: "Le cycle commence par le sommeil léger, divisé en deux stades. Le stade N1 est la transition entre l'éveil et le sommeil, vous pouvez encore être facilement réveillé et avoir des sensations de chute. Le stade N2 représente environ 50% du temps de sommeil total : le corps se détend, la température baisse, le rythme cardiaque ralentit. C'est pendant cette phase que le cerveau produit des fuseaux de sommeil, impliqués dans la consolidation de la mémoire."
       },
       {
         sous_titre: "Le sommeil profond (N3)",
-        texte: "Le stade N3, ou sommeil à ondes lentes, est la phase la plus réparatrice physiquement. C'est pendant cette phase que le corps sécrète l'hormone de croissance, régénère les tissus, renforce le système immunitaire et consolide la mémoire déclarative. Il est très difficile de se réveiller pendant le sommeil profond — si cela arrive, on se sent désorienté et confus. Cette phase est plus longue en début de nuit."
+        texte: "Le stade N3, ou sommeil à ondes lentes, est la phase la plus réparatrice physiquement. C'est pendant cette phase que le corps sécrète l'hormone de croissance, régénère les tissus, renforce le système immunitaire et consolide la mémoire déclarative. Il est très difficile de se réveiller pendant le sommeil profond, si cela arrive, on se sent désorienté et confus. Cette phase est plus longue en début de nuit."
       },
       {
         sous_titre: "Le sommeil paradoxal (REM)",
-        texte: "Le sommeil paradoxal (ou REM pour Rapid Eye Movements) est la phase des rêves. Le cerveau est très actif — presque autant qu'en état d'éveil — mais le corps est totalement paralysé pour éviter d'agir les rêves. C'est pendant cette phase que se consolident les mémoires émotionnelles et procédurales (apprentissages moteurs), et que le cerveau effectue un véritable tri et traitement des informations de la journée. Le sommeil paradoxal est plus abondant en fin de nuit."
+        texte: "Le sommeil paradoxal (ou REM pour Rapid Eye Movements) est la phase des rêves. Le cerveau est très actif, presque autant qu'en état d'éveil, mais le corps est totalement paralysé pour éviter d'agir les rêves. C'est pendant cette phase que se consolident les mémoires émotionnelles et procédurales (apprentissages moteurs), et que le cerveau effectue un véritable tri et traitement des informations de la journée. Le sommeil paradoxal est plus abondant en fin de nuit."
       },
       {
         sous_titre: "Pourquoi ne pas couper sa nuit ?",
-        texte: "Les premières heures de la nuit sont dominées par le sommeil profond (N3), essentiel à la récupération physique. Les dernières heures sont dominées par le sommeil paradoxal, essentiel à la récupération mentale et émotionnelle. Se coucher tard prive de sommeil profond. Se lever trop tôt prive de sommeil paradoxal. Les deux sont indispensables — c'est pourquoi une nuit complète de 7 à 9 heures est irremplaçable."
+        texte: "Les premières heures de la nuit sont dominées par le sommeil profond (N3), essentiel à la récupération physique. Les dernières heures sont dominées par le sommeil paradoxal, essentiel à la récupération mentale et émotionnelle. Se coucher tard prive de sommeil profond. Se lever trop tôt prive de sommeil paradoxal. Les deux sont indispensables, c'est pourquoi une nuit complète de 7 à 9 heures est irremplaçable."
       },
       {
         sous_titre: "Le réveil au bon moment",
@@ -218,7 +218,7 @@ const articles = [
       },
       {
         sous_titre: "Les meilleures sources de protéines végétales",
-        texte: "Les légumineuses (lentilles, pois chiches, haricots), le tofu et le tempeh, les graines (chanvre, courge, tournesol) et les céréales complètes contiennent des protéines végétales. Leur point faible : elles sont incomplètes en acides aminés essentiels prises séparément. La solution est de les combiner — légumineuses + céréales complètes forment une protéine complète. Exemple : lentilles + riz, houmous + pain complet."
+        texte: "Les légumineuses (lentilles, pois chiches, haricots), le tofu et le tempeh, les graines (chanvre, courge, tournesol) et les céréales complètes contiennent des protéines végétales. Leur point faible : elles sont incomplètes en acides aminés essentiels prises séparément. La solution est de les combiner, légumineuses + céréales complètes forment une protéine complète. Exemple : lentilles + riz, houmous + pain complet."
       },
       {
         sous_titre: "Les signes d'un manque de protéines",
@@ -235,7 +235,7 @@ const articles = [
     contenu: [
       {
         sous_titre: "Qu'est-ce que la méditation ?",
-        texte: "La méditation est une pratique d'entraînement de l'attention qui consiste à observer ses pensées, sensations et émotions sans les juger. Contrairement à une idée reçue, méditer ne signifie pas 'ne penser à rien' — c'est impossible. Il s'agit plutôt d'observer le flux des pensées sans s'y accrocher, comme regarder des nuages passer dans le ciel. La méditation de pleine conscience (mindfulness) est la forme la plus étudiée scientifiquement."
+        texte: "La méditation est une pratique d'entraînement de l'attention qui consiste à observer ses pensées, sensations et émotions sans les juger. Contrairement à une idée reçue, méditer ne signifie pas 'ne penser à rien', c'est impossible. Il s'agit plutôt d'observer le flux des pensées sans s'y accrocher, comme regarder des nuages passer dans le ciel. La méditation de pleine conscience (mindfulness) est la forme la plus étudiée scientifiquement."
       },
       {
         sous_titre: "Les bienfaits prouvés par la science",
@@ -243,15 +243,15 @@ const articles = [
       },
       {
         sous_titre: "Comment commencer ?",
-        texte: "Commencez par 5 minutes par jour — la régularité prime sur la durée. Asseyez-vous confortablement, fermez les yeux, et portez votre attention sur votre respiration. Quand une pensée arrive (et elle arrivera), observez-la sans vous y accrocher et ramenez doucement votre attention à la respiration. C'est cet acte de ramener l'attention qui constitue l'entraînement — chaque distraction est une opportunité de pratiquer."
+        texte: "Commencez par 5 minutes par jour, la régularité prime sur la durée. Asseyez-vous confortablement, fermez les yeux, et portez votre attention sur votre respiration. Quand une pensée arrive (et elle arrivera), observez-la sans vous y accrocher et ramenez doucement votre attention à la respiration. C'est cet acte de ramener l'attention qui constitue l'entraînement, chaque distraction est une opportunité de pratiquer."
       },
       {
         sous_titre: "Les applications recommandées",
-        texte: "Petit Bambou est l'application de méditation guidée francophone la plus complète — elle propose des programmes structurés pour débutants. Headspace (en anglais) est également très bien conçue. Pour les plus avancés, Insight Timer propose des milliers de méditations gratuites. Ces outils sont particulièrement utiles au début pour être guidé et maintenir une pratique régulière."
+        texte: "Petit Bambou est l'application de méditation guidée francophone la plus complète, elle propose des programmes structurés pour débutants. Headspace (en anglais) est également très bien conçue. Pour les plus avancés, Insight Timer propose des milliers de méditations gratuites. Ces outils sont particulièrement utiles au début pour être guidé et maintenir une pratique régulière."
       },
       {
         sous_titre: "Méditation et cohérence cardiaque : deux pratiques complémentaires",
-        texte: "La cohérence cardiaque et la méditation sont deux outils complémentaires qui agissent différemment. La cohérence cardiaque agit rapidement sur le système nerveux autonome et le cortisol — c'est l'outil d'urgence anti-stress. La méditation agit en profondeur sur les schémas de pensée et la résilience émotionnelle sur le long terme. Idéalement, pratiquez les deux : cohérence cardiaque 3 fois par jour, méditation 5 à 10 minutes le matin."
+        texte: "La cohérence cardiaque et la méditation sont deux outils complémentaires qui agissent différemment. La cohérence cardiaque agit rapidement sur le système nerveux autonome et le cortisol, c'est l'outil d'urgence anti-stress. La méditation agit en profondeur sur les schémas de pensée et la résilience émotionnelle sur le long terme. Idéalement, pratiquez les deux : cohérence cardiaque 3 fois par jour, méditation 5 à 10 minutes le matin."
       }
     ]
   },
@@ -264,11 +264,11 @@ const articles = [
     contenu: [
       {
         sous_titre: "Les compléments remplacent-ils une bonne alimentation ?",
-        texte: "Non — et c'est le point le plus important. Les compléments alimentaires sont conçus pour compléter une alimentation déjà équilibrée, pas pour la remplacer. Une pilule de vitamine C ne reproduira jamais la complexité nutritionnelle d'une orange fraîche, qui contient des dizaines de micronutriments et de composés bioactifs qui agissent en synergie. La priorité reste toujours l'alimentation."
+        texte: "Non, et c'est le point le plus important. Les compléments alimentaires sont conçus pour compléter une alimentation déjà équilibrée, pas pour la remplacer. Une pilule de vitamine C ne reproduira jamais la complexité nutritionnelle d'une orange fraîche, qui contient des dizaines de micronutriments et de composés bioactifs qui agissent en synergie. La priorité reste toujours l'alimentation."
       },
       {
         sous_titre: "La vitamine D : le complément le plus utile",
-        texte: "La vitamine D est déficitaire chez environ 80% des Français, surtout entre octobre et avril. Elle est indispensable à l'immunité, la santé osseuse, la régulation de l'humeur et de nombreuses fonctions hormonales. La supplémentation en vitamine D3 (cholécalciférol) est recommandée pour la quasi-totalité de la population française en automne et hiver — idéalement après dosage sanguin pour adapter la dose."
+        texte: "La vitamine D est déficitaire chez environ 80% des Français, surtout entre octobre et avril. Elle est indispensable à l'immunité, la santé osseuse, la régulation de l'humeur et de nombreuses fonctions hormonales. La supplémentation en vitamine D3 (cholécalciférol) est recommandée pour la quasi-totalité de la population française en automne et hiver, idéalement après dosage sanguin pour adapter la dose."
       },
       {
         sous_titre: "Le magnésium : l'allié du stress",
@@ -276,11 +276,11 @@ const articles = [
       },
       {
         sous_titre: "Les oméga-3 : essentiels si peu de poisson",
-        texte: "Les oméga-3 à longue chaîne (EPA et DHA) sont indispensables pour la santé cardiovasculaire, cérébrale et la régulation de l'inflammation. Si vous ne consommez pas de petits poissons gras 2 fois par semaine, une supplémentation en huile de poisson ou en huile d'algues (pour les végétariens) est justifiée. Vérifiez la teneur en EPA et DHA sur l'étiquette — elle doit être élevée."
+        texte: "Les oméga-3 à longue chaîne (EPA et DHA) sont indispensables pour la santé cardiovasculaire, cérébrale et la régulation de l'inflammation. Si vous ne consommez pas de petits poissons gras 2 fois par semaine, une supplémentation en huile de poisson ou en huile d'algues (pour les végétariens) est justifiée. Vérifiez la teneur en EPA et DHA sur l'étiquette, elle doit être élevée."
       },
       {
         sous_titre: "Les pièges à éviter",
-        texte: "Méfiez-vous des compléments miracles aux allégations trop belles, des formules multi-vitamines peu dosées qui ne servent à rien, et des compléments achetés sans analyse préalable. En France, les compléments alimentaires ne sont pas des médicaments et ne nécessitent pas d'autorisation de mise sur le marché — la qualité est très variable. Privilégiez les marques reconnues, les formes bien absorbées et consultez un professionnel de santé avant de commencer."
+        texte: "Méfiez-vous des compléments miracles aux allégations trop belles, des formules multi-vitamines peu dosées qui ne servent à rien, et des compléments achetés sans analyse préalable. En France, les compléments alimentaires ne sont pas des médicaments et ne nécessitent pas d'autorisation de mise sur le marché, la qualité est très variable. Privilégiez les marques reconnues, les formes bien absorbées et consultez un professionnel de santé avant de commencer."
       }
     ]
   },
@@ -297,19 +297,19 @@ const articles = [
       },
       {
         sous_titre: "Les grandes saisons alimentaires",
-        texte: "Printemps : asperges, radis, petits pois, fraises, cerises, épinards. Été : tomates, courgettes, aubergines, poivrons, concombres, pêches, abricots, melons. Automne : potiron, courges, champignons, raisins, poires, pommes. Hiver : poireaux, choux, carottes, betteraves, agrumes, kiwis. Ces repères sont indicatifs et varient selon les régions — les marchés locaux sont la meilleure boussole."
+        texte: "Printemps : asperges, radis, petits pois, fraises, cerises, épinards. Été : tomates, courgettes, aubergines, poivrons, concombres, pêches, abricots, melons. Automne : potiron, courges, champignons, raisins, poires, pommes. Hiver : poireaux, choux, carottes, betteraves, agrumes, kiwis. Ces repères sont indicatifs et varient selon les régions, les marchés locaux sont la meilleure boussole."
       },
       {
         sous_titre: "Les bénéfices environnementaux",
-        texte: "Manger de saison réduit significativement l'empreinte carbone de son alimentation. Les fruits et légumes hors saison sont souvent cultivés sous serres chauffées ou importés par avion — deux modes de production très énergivores. Selon l'ADEME, l'alimentation représente environ 25% de l'empreinte carbone d'un Français. Choisir des produits de saison et locaux est l'un des gestes les plus impactants."
+        texte: "Manger de saison réduit significativement l'empreinte carbone de son alimentation. Les fruits et légumes hors saison sont souvent cultivés sous serres chauffées ou importés par avion, deux modes de production très énergivores. Selon l'ADEME, l'alimentation représente environ 25% de l'empreinte carbone d'un Français. Choisir des produits de saison et locaux est l'un des gestes les plus impactants."
       },
       {
         sous_titre: "Comment s'organiser concrètement ?",
-        texte: "Affichez un calendrier des fruits et légumes de saison dans votre cuisine — vous en trouverez facilement en ligne. Faites vos courses au marché local plutôt qu'au supermarché. Abonnez-vous à un panier de légumes (AMAP) pour recevoir automatiquement des produits de saison. En hiver, n'hésitez pas à cuisiner des légumineuses et des légumes racines — ils sont nutritifs, économiques et parfaitement adaptés à la saison."
+        texte: "Affichez un calendrier des fruits et légumes de saison dans votre cuisine, vous en trouverez facilement en ligne. Faites vos courses au marché local plutôt qu'au supermarché. Abonnez-vous à un panier de légumes (AMAP) pour recevoir automatiquement des produits de saison. En hiver, n'hésitez pas à cuisiner des légumineuses et des légumes racines, ils sont nutritifs, économiques et parfaitement adaptés à la saison."
       },
       {
         sous_titre: "Frais, surgelé ou en conserve ?",
-        texte: "Les légumes surgelés juste après la récolte conservent une grande partie de leurs nutriments — parfois mieux que des légumes frais stockés plusieurs jours. C'est une excellente alternative économique aux légumes de saison. Les conserves sont acceptables mais moins intéressantes nutritionnellement et souvent plus riches en sel. La hiérarchie : frais de saison et local > surgelé > conserve."
+        texte: "Les légumes surgelés juste après la récolte conservent une grande partie de leurs nutriments, parfois mieux que des légumes frais stockés plusieurs jours. C'est une excellente alternative économique aux légumes de saison. Les conserves sont acceptables mais moins intéressantes nutritionnellement et souvent plus riches en sel. La hiérarchie : frais de saison et local > surgelé > conserve."
       }
     ]
   },
@@ -326,7 +326,7 @@ const articles = [
       },
       {
         sous_titre: "Bio = meilleur pour la santé ?",
-        texte: "Les études montrent que les produits bio contiennent moins de résidus de pesticides — c'est le principal bénéfice santé démontré. Certaines études suggèrent également une teneur légèrement supérieure en antioxydants et en oméga-3 pour les produits animaux bio. Cependant, bio ne signifie pas automatiquement plus nutritif — un biscuit bio reste un biscuit. La qualité globale de l'alimentation prime sur le label."
+        texte: "Les études montrent que les produits bio contiennent moins de résidus de pesticides, c'est le principal bénéfice santé démontré. Certaines études suggèrent également une teneur légèrement supérieure en antioxydants et en oméga-3 pour les produits animaux bio. Cependant, bio ne signifie pas automatiquement plus nutritif, un biscuit bio reste un biscuit. La qualité globale de l'alimentation prime sur le label."
       },
       {
         sous_titre: "Les limites du bio",
@@ -334,11 +334,11 @@ const articles = [
       },
       {
         sous_titre: "Comment prioriser sans se ruiner ?",
-        texte: "Si le budget est limité, priorisez le bio pour les aliments les plus contaminés en pesticides : fraises, pommes, raisins, pêches, épinards, poivrons, céleri (la dirty dozen). Pour les aliments naturellement peu contaminés (avocat, ananas, mangue, oignon, maïs doux), le conventionnel est acceptable. Priorisez aussi le bio pour les produits animaux — les pesticides et antibiotiques se concentrent dans les graisses animales."
+        texte: "Si le budget est limité, priorisez le bio pour les aliments les plus contaminés en pesticides : fraises, pommes, raisins, pêches, épinards, poivrons, céleri (la dirty dozen). Pour les aliments naturellement peu contaminés (avocat, ananas, mangue, oignon, maïs doux), le conventionnel est acceptable. Priorisez aussi le bio pour les produits animaux, les pesticides et antibiotiques se concentrent dans les graisses animales."
       },
       {
         sous_titre: "Bio, local ou de saison : que choisir ?",
-        texte: "Idéalement les trois — mais si vous devez choisir, voici la hiérarchie recommandée : local et de saison d'abord (impact environnemental et fraîcheur), puis bio (moins de pesticides). Un produit local et de saison conventionnel est souvent préférable à un produit bio importé hors saison. La meilleure option reste le marché local avec des producteurs que vous pouvez questionner sur leurs pratiques."
+        texte: "Idéalement les trois, mais si vous devez choisir, voici la hiérarchie recommandée : local et de saison d'abord (impact environnemental et fraîcheur), puis bio (moins de pesticides). Un produit local et de saison conventionnel est souvent préférable à un produit bio importé hors saison. La meilleure option reste le marché local avec des producteurs que vous pouvez questionner sur leurs pratiques."
       }
     ]
   },
@@ -351,23 +351,23 @@ const articles = [
     contenu: [
       {
         sous_titre: "Les effets immédiats dès la première séance",
-        texte: "Dès les premières minutes d'activité physique, le cœur accélère pour irriguer les muscles en oxygène, la température corporelle monte, les bronches se dilatent pour augmenter les échanges gazeux. Le cerveau libère des endorphines — les hormones du bien-être — et de la dopamine, responsable de la motivation et du plaisir. C'est pourquoi on se sent mieux après avoir bougé, même quand on n'en avait pas envie au départ."
+        texte: "Dès les premières minutes d'activité physique, le cœur accélère pour irriguer les muscles en oxygène, la température corporelle monte, les bronches se dilatent pour augmenter les échanges gazeux. Le cerveau libère des endorphines, les hormones du bien-être, et de la dopamine, responsable de la motivation et du plaisir. C'est pourquoi on se sent mieux après avoir bougé, même quand on n'en avait pas envie au départ."
       },
       {
         sous_titre: "Les effets sur le cerveau",
-        texte: "L'activité physique régulière est l'un des meilleurs protecteurs du cerveau connus à ce jour. Elle stimule la neurogenèse — la création de nouveaux neurones — notamment dans l'hippocampe, zone clé pour la mémoire. Elle augmente le volume de matière grise, améliore la concentration, réduit le risque de dépression et d'anxiété aussi efficacement que certains antidépresseurs selon plusieurs méta-analyses, et réduit de 30 à 40% le risque de démence."
+        texte: "L'activité physique régulière est l'un des meilleurs protecteurs du cerveau connus à ce jour. Elle stimule la neurogenèse, la création de nouveaux neurones, notamment dans l'hippocampe, zone clé pour la mémoire. Elle augmente le volume de matière grise, améliore la concentration, réduit le risque de dépression et d'anxiété aussi efficacement que certains antidépresseurs selon plusieurs méta-analyses, et réduit de 30 à 40% le risque de démence."
       },
       {
         sous_titre: "Les effets sur le cœur et la circulation",
-        texte: "L'entraînement cardiovasculaire régulier renforce le muscle cardiaque qui devient plus efficace — il pompe plus de sang à chaque battement, ce qui fait baisser la fréquence cardiaque au repos. Il améliore la flexibilité des artères, réduit la tension artérielle, diminue le mauvais cholestérol (LDL) et augmente le bon (HDL), réduit les triglycérides et améliore la sensibilité à l'insuline. C'est le médicament préventif le plus puissant contre les maladies cardiovasculaires."
+        texte: "L'entraînement cardiovasculaire régulier renforce le muscle cardiaque qui devient plus efficace, il pompe plus de sang à chaque battement, ce qui fait baisser la fréquence cardiaque au repos. Il améliore la flexibilité des artères, réduit la tension artérielle, diminue le mauvais cholestérol (LDL) et augmente le bon (HDL), réduit les triglycérides et améliore la sensibilité à l'insuline. C'est le médicament préventif le plus puissant contre les maladies cardiovasculaires."
       },
       {
         sous_titre: "Les effets sur les muscles et les os",
-        texte: "Le renforcement musculaire augmente la masse et la force musculaires, améliore la posture et prévient les douleurs chroniques. Il stimule aussi la densité osseuse en exerçant des contraintes mécaniques sur les os — essentiel pour prévenir l'ostéoporose, surtout chez les femmes après la ménopause. Après 30 ans, on perd naturellement environ 1% de masse musculaire par an sans activité — l'exercice est le seul moyen efficace de contrer cette perte."
+        texte: "Le renforcement musculaire augmente la masse et la force musculaires, améliore la posture et prévient les douleurs chroniques. Il stimule aussi la densité osseuse en exerçant des contraintes mécaniques sur les os, essentiel pour prévenir l'ostéoporose, surtout chez les femmes après la ménopause. Après 30 ans, on perd naturellement environ 1% de masse musculaire par an sans activité, l'exercice est le seul moyen efficace de contrer cette perte."
       },
       {
         sous_titre: "Combien et quel type d'activité ?",
-        texte: "L'OMS recommande 150 à 300 minutes d'activité modérée par semaine (marche rapide, vélo, natation) ou 75 à 150 minutes d'activité intense (course, sport collectif), plus 2 séances de renforcement musculaire. La clé est la régularité — 30 minutes par jour sont plus bénéfiques que 3h le week-end. Tout mouvement compte : les escaliers, la marche pour aller au travail, le jardinage. L'idéal est de combiner cardio et renforcement musculaire."
+        texte: "L'OMS recommande 150 à 300 minutes d'activité modérée par semaine (marche rapide, vélo, natation) ou 75 à 150 minutes d'activité intense (course, sport collectif), plus 2 séances de renforcement musculaire. La clé est la régularité, 30 minutes par jour sont plus bénéfiques que 3h le week-end. Tout mouvement compte : les escaliers, la marche pour aller au travail, le jardinage. L'idéal est de combiner cardio et renforcement musculaire."
       }
     ]
   },
@@ -384,7 +384,7 @@ const articles = [
       },
       {
         sous_titre: "L'importance de la variété",
-        texte: "Un repas équilibré ne suffit pas — c'est la variété sur la semaine qui compte. L'idéal est de varier les sources de protéines (alterner viande, poisson, œufs, légumineuses), les types de légumes (différentes couleurs = différents nutriments), et les féculents. Une règle simple : essayez de ne pas manger la même chose deux jours de suite. Plus votre alimentation est variée, plus elle couvre l'ensemble de vos besoins nutritionnels."
+        texte: "Un repas équilibré ne suffit pas, c'est la variété sur la semaine qui compte. L'idéal est de varier les sources de protéines (alterner viande, poisson, œufs, légumineuses), les types de légumes (différentes couleurs = différents nutriments), et les féculents. Une règle simple : essayez de ne pas manger la même chose deux jours de suite. Plus votre alimentation est variée, plus elle couvre l'ensemble de vos besoins nutritionnels."
       },
       {
         sous_titre: "Le petit-déjeuner idéal",
@@ -392,7 +392,7 @@ const articles = [
       },
       {
         sous_titre: "Faut-il compter les calories ?",
-        texte: "Compter les calories est fastidieux, souvent inexact et peut entretenir une relation anxieuse à la nourriture. Une approche plus saine consiste à se concentrer sur la qualité des aliments plutôt que sur les quantités. Un corps bien nourri avec des aliments complets et variés régule naturellement sa faim et sa satiété. Les calories ne se valent pas toutes — 200 calories de noix n'ont pas le même effet métabolique que 200 calories de bonbons."
+        texte: "Compter les calories est fastidieux, souvent inexact et peut entretenir une relation anxieuse à la nourriture. Une approche plus saine consiste à se concentrer sur la qualité des aliments plutôt que sur les quantités. Un corps bien nourri avec des aliments complets et variés régule naturellement sa faim et sa satiété. Les calories ne se valent pas toutes, 200 calories de noix n'ont pas le même effet métabolique que 200 calories de bonbons."
       },
       {
         sous_titre: "Les erreurs les plus fréquentes",
@@ -413,11 +413,11 @@ const articles = [
       },
       {
         sous_titre: "Leur composition nutritionnelle exceptionnelle",
-        texte: "Les oléagineux sont denses en bonnes graisses insaturées (oméga-3 et oméga-9), en protéines végétales, en fibres, en magnésium, en zinc, en sélénium, en vitamine E et en polyphénols antioxydants. Les noix sont particulièrement riches en oméga-3. Les amandes sont excellentes pour le magnésium et la vitamine E. Les noix du Brésil sont la meilleure source alimentaire de sélénium — une seule noix couvre les besoins journaliers."
+        texte: "Les oléagineux sont denses en bonnes graisses insaturées (oméga-3 et oméga-9), en protéines végétales, en fibres, en magnésium, en zinc, en sélénium, en vitamine E et en polyphénols antioxydants. Les noix sont particulièrement riches en oméga-3. Les amandes sont excellentes pour le magnésium et la vitamine E. Les noix du Brésil sont la meilleure source alimentaire de sélénium, une seule noix couvre les besoins journaliers."
       },
       {
         sous_titre: "Pourquoi une poignée par jour ?",
-        texte: "Une poignée d'oléagineux correspond à environ 30g — c'est la dose associée aux bénéfices santé dans la majorité des études. La célèbre étude PREDIMED, portant sur 7 000 participants, a montré qu'une consommation quotidienne de noix réduisait de 30% le risque cardiovasculaire. Cette quantité apporte environ 150 à 200 calories de très haute qualité nutritionnelle, ce qui en fait l'une des meilleures collations possibles."
+        texte: "Une poignée d'oléagineux correspond à environ 30g, c'est la dose associée aux bénéfices santé dans la majorité des études. La célèbre étude PREDIMED, portant sur 7 000 participants, a montré qu'une consommation quotidienne de noix réduisait de 30% le risque cardiovasculaire. Cette quantité apporte environ 150 à 200 calories de très haute qualité nutritionnelle, ce qui en fait l'une des meilleures collations possibles."
       },
       {
         sous_titre: "Comment les consommer ?",
@@ -438,15 +438,15 @@ const articles = [
     contenu: [
       {
         sous_titre: "Quelle est la différence ?",
-        texte: "Une céréale complète conserve l'ensemble de ses couches : le son (riche en fibres et minéraux), le germe (riche en vitamines B, E et antioxydants) et l'endosperme (riche en amidon). Une céréale raffinée a été débarrassée du son et du germe — il ne reste que l'endosperme, essentiellement de l'amidon. Ce processus de raffinage retire jusqu'à 75% des fibres, 80% du magnésium et la majorité des vitamines B."
+        texte: "Une céréale complète conserve l'ensemble de ses couches : le son (riche en fibres et minéraux), le germe (riche en vitamines B, E et antioxydants) et l'endosperme (riche en amidon). Une céréale raffinée a été débarrassée du son et du germe, il ne reste que l'endosperme, essentiellement de l'amidon. Ce processus de raffinage retire jusqu'à 75% des fibres, 80% du magnésium et la majorité des vitamines B."
       },
       {
         sous_titre: "Les effets sur la glycémie",
-        texte: "Les céréales raffinées (pain blanc, riz blanc, pâtes blanches) ont un index glycémique élevé — elles font monter rapidement la glycémie, provoquant un pic d'insuline suivi d'une hypoglycémie réactionnelle responsable de la fatigue et des fringales de l'après-midi. Les céréales complètes ont un index glycémique bien plus bas grâce à leurs fibres — elles libèrent leur énergie progressivement et maintiennent une glycémie stable sur plusieurs heures."
+        texte: "Les céréales raffinées (pain blanc, riz blanc, pâtes blanches) ont un index glycémique élevé, elles font monter rapidement la glycémie, provoquant un pic d'insuline suivi d'une hypoglycémie réactionnelle responsable de la fatigue et des fringales de l'après-midi. Les céréales complètes ont un index glycémique bien plus bas grâce à leurs fibres, elles libèrent leur énergie progressivement et maintiennent une glycémie stable sur plusieurs heures."
       },
       {
         sous_titre: "Les meilleures céréales complètes",
-        texte: "L'avoine est l'une des meilleures céréales complètes — riche en bêta-glucanes, des fibres solubles qui réduisent le cholestérol. Le sarrasin est naturellement sans gluten et très riche en protéines et minéraux. Le quinoa (techniquement une graine) contient tous les acides aminés essentiels. L'épeautre, le seigle et l'orge sont d'excellentes alternatives au blé raffiné. Le riz complet remplace avantageusement le riz blanc."
+        texte: "L'avoine est l'une des meilleures céréales complètes, riche en bêta-glucanes, des fibres solubles qui réduisent le cholestérol. Le sarrasin est naturellement sans gluten et très riche en protéines et minéraux. Le quinoa (techniquement une graine) contient tous les acides aminés essentiels. L'épeautre, le seigle et l'orge sont d'excellentes alternatives au blé raffiné. Le riz complet remplace avantageusement le riz blanc."
       },
       {
         sous_titre: "Comment passer aux céréales complètes ?",
@@ -454,7 +454,7 @@ const articles = [
       },
       {
         sous_titre: "Et le gluten dans tout ça ?",
-        texte: "Le gluten est une protéine présente dans le blé, l'orge et le seigle. La maladie cœliaque (intolérance vraie au gluten) touche environ 1% de la population et nécessite une éviction totale du gluten. La sensibilité non cœliaque au gluten est plus courante mais encore mal définie. Pour la grande majorité des personnes, le gluten n'est pas problématique — c'est le raffinage des céréales qui pose problème, pas le gluten en lui-même. Évitez le sans-gluten industriel souvent très transformé."
+        texte: "Le gluten est une protéine présente dans le blé, l'orge et le seigle. La maladie cœliaque (intolérance vraie au gluten) touche environ 1% de la population et nécessite une éviction totale du gluten. La sensibilité non cœliaque au gluten est plus courante mais encore mal définie. Pour la grande majorité des personnes, le gluten n'est pas problématique, c'est le raffinage des céréales qui pose problème, pas le gluten en lui-même. Évitez le sans-gluten industriel souvent très transformé."
       }
     ]
   },
@@ -467,7 +467,7 @@ const articles = [
     contenu: [
       {
         sous_titre: "Les graisses sont-elles toutes mauvaises ?",
-        texte: "Non — les graisses sont indispensables à la vie. Elles constituent les membranes de toutes nos cellules, permettent l'absorption des vitamines liposolubles (A, D, E, K), servent de précurseurs aux hormones et participent au bon fonctionnement du cerveau (composé à 60% de graisses). Le problème n'est pas la quantité de graisses mais leur qualité. Les graisses trans (huiles hydrogénées) et un excès d'oméga-6 sont problématiques — les bonnes graisses insaturées sont au contraire bénéfiques."
+        texte: "Non, les graisses sont indispensables à la vie. Elles constituent les membranes de toutes nos cellules, permettent l'absorption des vitamines liposolubles (A, D, E, K), servent de précurseurs aux hormones et participent au bon fonctionnement du cerveau (composé à 60% de graisses). Le problème n'est pas la quantité de graisses mais leur qualité. Les graisses trans (huiles hydrogénées) et un excès d'oméga-6 sont problématiques, les bonnes graisses insaturées sont au contraire bénéfiques."
       },
       {
         sous_titre: "L'huile d'olive : l'or de la Méditerranée",
@@ -475,15 +475,15 @@ const articles = [
       },
       {
         sous_titre: "L'huile de colza : la meilleure pour les oméga-3",
-        texte: "L'huile de colza est la plus riche en acide alpha-linolénique (ALA), un oméga-3 végétal essentiel. Elle a un excellent rapport oméga-6/oméga-3 (2:1, proche de l'idéal). Elle est aussi riche en vitamine E. En revanche, elle ne supporte pas bien la chaleur — utilisez-la exclusivement crue, en assaisonnement. Alternez huile d'olive et huile de colza pour couvrir à la fois vos besoins en oméga-9 et en oméga-3."
+        texte: "L'huile de colza est la plus riche en acide alpha-linolénique (ALA), un oméga-3 végétal essentiel. Elle a un excellent rapport oméga-6/oméga-3 (2:1, proche de l'idéal). Elle est aussi riche en vitamine E. En revanche, elle ne supporte pas bien la chaleur, utilisez-la exclusivement crue, en assaisonnement. Alternez huile d'olive et huile de colza pour couvrir à la fois vos besoins en oméga-9 et en oméga-3."
       },
       {
         sous_titre: "Les autres huiles intéressantes",
-        texte: "L'huile de lin est la plus riche en oméga-3 de toutes les huiles végétales — à utiliser crue uniquement et à conserver au réfrigérateur. L'huile de noix est également très riche en oméga-3 et délicieuse en vinaigrette. L'huile de coco, malgré son image santé, est très riche en graisses saturées — à utiliser avec modération pour la cuisson à haute température. L'huile de tournesol classique est très riche en oméga-6 — à limiter."
+        texte: "L'huile de lin est la plus riche en oméga-3 de toutes les huiles végétales, à utiliser crue uniquement et à conserver au réfrigérateur. L'huile de noix est également très riche en oméga-3 et délicieuse en vinaigrette. L'huile de coco, malgré son image santé, est très riche en graisses saturées, à utiliser avec modération pour la cuisson à haute température. L'huile de tournesol classique est très riche en oméga-6, à limiter."
       },
       {
         sous_titre: "Les huiles à éviter",
-        texte: "Les margarines et huiles hydrogénées contiennent des acides gras trans qui augmentent le mauvais cholestérol et le risque cardiovasculaire — évitez-les absolument. Les huiles végétales génériques (huile de tournesol en grande quantité, huile de palme) déséquilibrent le rapport oméga-6/oméga-3. Les huiles chauffées au-delà de leur point de fumée se dégradent et produisent des composés toxiques — n'utilisez jamais une huile qui fume."
+        texte: "Les margarines et huiles hydrogénées contiennent des acides gras trans qui augmentent le mauvais cholestérol et le risque cardiovasculaire, évitez-les absolument. Les huiles végétales génériques (huile de tournesol en grande quantité, huile de palme) déséquilibrent le rapport oméga-6/oméga-3. Les huiles chauffées au-delà de leur point de fumée se dégradent et produisent des composés toxiques, n'utilisez jamais une huile qui fume."
       }
     ]
   },
@@ -504,7 +504,7 @@ const articles = [
       },
       {
         sous_titre: "Les labels à privilégier",
-        texte: "Ecocert est le label français de référence pour les produits ménagers écologiques — il garantit l'absence de substances pétrochimiques, de perturbateurs endocriniens et une biodégradabilité rapide. L'Écolabel Européen (fleur verte) garantit des critères environnementaux stricts sur tout le cycle de vie du produit. Nature & Progrès est un label encore plus exigeant. Évitez les allégations marketing comme 'vert', 'naturel' ou 'écologique' sans label certifié."
+        texte: "Ecocert est le label français de référence pour les produits ménagers écologiques, il garantit l'absence de substances pétrochimiques, de perturbateurs endocriniens et une biodégradabilité rapide. L'Écolabel Européen (fleur verte) garantit des critères environnementaux stricts sur tout le cycle de vie du produit. Nature & Progrès est un label encore plus exigeant. Évitez les allégations marketing comme 'vert', 'naturel' ou 'écologique' sans label certifié."
       },
       {
         sous_titre: "Les alternatives maison",
@@ -512,7 +512,7 @@ const articles = [
       },
       {
         sous_titre: "Les bons réflexes au quotidien",
-        texte: "Aérez votre logement au moins 10 minutes par jour, même en hiver — c'est le geste le plus efficace pour réduire la pollution intérieure. Évitez de mélanger les produits ménagers entre eux, surtout javel et ammoniaque ou javel et vinaigre — ces mélanges produisent des gaz toxiques. Privilégiez les sprays aux aérosols qui diffusent des particules fines dans l'air. Conservez les produits ménagers dans leurs emballages d'origine et hors de portée des enfants. Enfin, n'oublions pas que le propre n'a pas d'odeur, nous n'avons pas besoin d'avoir du parfum sur nos vêtements, nos surfaces ou dans l'air."
+        texte: "Aérez votre logement au moins 10 minutes par jour, même en hiver, c'est le geste le plus efficace pour réduire la pollution intérieure. Évitez de mélanger les produits ménagers entre eux, surtout javel et ammoniaque ou javel et vinaigre, ces mélanges produisent des gaz toxiques. Privilégiez les sprays aux aérosols qui diffusent des particules fines dans l'air. Conservez les produits ménagers dans leurs emballages d'origine et hors de portée des enfants. Enfin, n'oublions pas que le propre n'a pas d'odeur, nous n'avons pas besoin d'avoir du parfum sur nos vêtements, nos surfaces ou dans l'air."
       }
     ]
   },
@@ -529,19 +529,19 @@ const articles = [
       },
       {
         sous_titre: "Les perturbateurs endocriniens à éviter",
-        texte: "Les parabènes (methylparaben, propylparaben, butylparaben) sont des conservateurs mimant les œstrogènes — ils ont été retrouvés dans des tumeurs mammaires. Les phtalates (souvent cachés sous le terme 'parfum') perturbent le système hormonal masculin. Le BHA et le BHT sont des antioxydants classés perturbateurs endocriniens probables. Le resorcinol présent dans certaines teintures capillaires perturbe la thyroïde. Ces substances sont particulièrement préoccupantes pour les femmes enceintes et les jeunes enfants."
+        texte: "Les parabènes (methylparaben, propylparaben, butylparaben) sont des conservateurs mimant les œstrogènes, ils ont été retrouvés dans des tumeurs mammaires. Les phtalates (souvent cachés sous le terme 'parfum') perturbent le système hormonal masculin. Le BHA et le BHT sont des antioxydants classés perturbateurs endocriniens probables. Le resorcinol présent dans certaines teintures capillaires perturbe la thyroïde. Ces substances sont particulièrement préoccupantes pour les femmes enceintes et les jeunes enfants."
       },
       {
         sous_titre: "Les autres ingrédients préoccupants",
-        texte: "Le formaldéhyde et ses libérateurs (DMDM hydantoin, imidazolidinyl urea) sont classés cancérogènes — présents dans certains shampooings et vernis à ongles. Les silicones (diméthicone, cyclopentasiloxane) ne sont pas dangereux pour la santé mais très polluants pour l'environnement aquatique. Les PEG (polyéthylène glycols) peuvent être contaminés par des impuretés cancérogènes. Le talc peut contenir des fibres d'amiante selon sa provenance."
+        texte: "Le formaldéhyde et ses libérateurs (DMDM hydantoin, imidazolidinyl urea) sont classés cancérogènes, présents dans certains shampooings et vernis à ongles. Les silicones (diméthicone, cyclopentasiloxane) ne sont pas dangereux pour la santé mais très polluants pour l'environnement aquatique. Les PEG (polyéthylène glycols) peuvent être contaminés par des impuretés cancérogènes. Le talc peut contenir des fibres d'amiante selon sa provenance."
       },
       {
         sous_titre: "Les labels cosmétiques de confiance",
-        texte: "Cosmos Organic (anciennement Ecocert) est le label de référence en Europe pour les cosmétiques bio — il garantit au minimum 95% d'ingrédients d'origine naturelle et 20% d'ingrédients bio. Nature & Progrès est encore plus exigeant. Le label BDIH allemand et Natrue sont également fiables. En France, le label Cosmébio repose sur le référentiel Cosmos. Méfiez-vous des labels fantaisistes créés par les marques elles-mêmes sans certification indépendante."
+        texte: "Cosmos Organic (anciennement Ecocert) est le label de référence en Europe pour les cosmétiques bio, il garantit au minimum 95% d'ingrédients d'origine naturelle et 20% d'ingrédients bio. Nature & Progrès est encore plus exigeant. Le label BDIH allemand et Natrue sont également fiables. En France, le label Cosmébio repose sur le référentiel Cosmos. Méfiez-vous des labels fantaisistes créés par les marques elles-mêmes sans certification indépendante."
       },
       {
         sous_titre: "Les applications pour s'y retrouver",
-        texte: "INCI Beauty est une application française qui analyse la composition de vos cosmétiques en scannant le code-barres ou en recherchant le produit — elle note chaque ingrédient et signale les substances préoccupantes. QuelCosmetic fonctionne sur le même principe. Yuka analyse également les cosmétiques en plus des produits alimentaires. Ces outils sont imparfaits — un ingrédient noté négatif n'est pas forcément dangereux à la concentration utilisée — mais ils constituent un excellent point de départ pour développer son sens critique."
+        texte: "INCI Beauty est une application française qui analyse la composition de vos cosmétiques en scannant le code-barres ou en recherchant le produit, elle note chaque ingrédient et signale les substances préoccupantes. QuelCosmetic fonctionne sur le même principe. Yuka analyse également les cosmétiques en plus des produits alimentaires. Ces outils sont imparfaits, un ingrédient noté négatif n'est pas forcément dangereux à la concentration utilisée, mais ils constituent un excellent point de départ pour développer son sens critique."
       }
     ]
   },
@@ -550,7 +550,7 @@ const articles = [
     titre: "Alimentation et sommeil",
     pilier: "Sommeil",
     emoji: "🍽️",
-    resume: "Ce que vous mangez influence directement la qualité de vos nuits — et vice versa.",
+    resume: "Ce que vous mangez influence directement la qualité de vos nuits, et vice versa.",
     contenu: [
       {
         sous_titre: "Le lien entre nutrition et sommeil",
@@ -558,11 +558,11 @@ const articles = [
       },
       {
         sous_titre: "Les aliments qui favorisent le sommeil",
-        texte: "Le tryptophane est un acide aminé précurseur de la sérotonine et de la mélatonine — les hormones du bien-être et du sommeil. On le trouve dans les œufs, la dinde, le poulet, les produits laitiers, les bananes, les oléagineux et les légumineuses. Les glucides complexes consommés au dîner facilitent le passage du tryptophane dans le cerveau. Un dîner équilibré comprenant des protéines, des légumes et des féculents complets est idéal pour favoriser l'endormissement."
+        texte: "Le tryptophane est un acide aminé précurseur de la sérotonine et de la mélatonine, les hormones du bien-être et du sommeil. On le trouve dans les œufs, la dinde, le poulet, les produits laitiers, les bananes, les oléagineux et les légumineuses. Les glucides complexes consommés au dîner facilitent le passage du tryptophane dans le cerveau. Un dîner équilibré comprenant des protéines, des légumes et des féculents complets est idéal pour favoriser l'endormissement."
       },
       {
         sous_titre: "Les aliments et boissons à éviter le soir",
-        texte: "La caféine est le perturbateur de sommeil numéro un — elle bloque les récepteurs à l'adénosine, la molécule qui crée la pression de sommeil. Sa demi-vie est de 5 à 7 heures, ce qui signifie qu'un café à 16h a encore la moitié de son effet à 21h. L'alcool, bien qu'il facilite l'endormissement, fragmente les cycles et supprime le sommeil paradoxal. Les repas trop gras ou trop épicés ralentissent la digestion et augmentent la température corporelle, deux facteurs défavorables à l'endormissement."
+        texte: "La caféine est le perturbateur de sommeil numéro un, elle bloque les récepteurs à l'adénosine, la molécule qui crée la pression de sommeil. Sa demi-vie est de 5 à 7 heures, ce qui signifie qu'un café à 16h a encore la moitié de son effet à 21h. L'alcool, bien qu'il facilite l'endormissement, fragmente les cycles et supprime le sommeil paradoxal. Les repas trop gras ou trop épicés ralentissent la digestion et augmentent la température corporelle, deux facteurs défavorables à l'endormissement."
       },
       {
         sous_titre: "L'horaire des repas compte aussi",
@@ -570,7 +570,7 @@ const articles = [
       },
       {
         sous_titre: "Les carences qui perturbent le sommeil",
-        texte: "Le magnésium joue un rôle clé dans la régulation du système nerveux et la qualité du sommeil — une carence est fréquente et se manifeste par des crampes nocturnes, des réveils fréquents et une agitation. La vitamine D, dont le déficit touche une large partie de la population, est associée à des troubles du sommeil et notamment à l'insomnie. Le fer, dont le déficit cause une anémie, provoque des jambes sans repos qui perturbent l'endormissement. Un bilan sanguin permet de dépister ces carences."
+        texte: "Le magnésium joue un rôle clé dans la régulation du système nerveux et la qualité du sommeil, une carence est fréquente et se manifeste par des crampes nocturnes, des réveils fréquents et une agitation. La vitamine D, dont le déficit touche une large partie de la population, est associée à des troubles du sommeil et notamment à l'insomnie. Le fer, dont le déficit cause une anémie, provoque des jambes sans repos qui perturbent l'endormissement. Un bilan sanguin permet de dépister ces carences."
       }
     ]
   },
@@ -583,7 +583,7 @@ const articles = [
     contenu: [
       {
         sous_titre: "L'insomnie : bien plus qu'une difficulté à dormir",
-        texte: "L'insomnie touche environ 30% de la population adulte et se définit par des difficultés d'endormissement, des réveils nocturnes fréquents ou un réveil trop précoce, associés à une fatigue diurne. L'insomnie chronique (plus de 3 nuits par semaine depuis plus de 3 mois) nécessite une prise en charge. La thérapie cognitivo-comportementale pour l'insomnie (TCC-I) est aujourd'hui reconnue comme le traitement le plus efficace à long terme — plus efficace que les somnifères et sans effets secondaires."
+        texte: "L'insomnie touche environ 30% de la population adulte et se définit par des difficultés d'endormissement, des réveils nocturnes fréquents ou un réveil trop précoce, associés à une fatigue diurne. L'insomnie chronique (plus de 3 nuits par semaine depuis plus de 3 mois) nécessite une prise en charge. La thérapie cognitivo-comportementale pour l'insomnie (TCC-I) est aujourd'hui reconnue comme le traitement le plus efficace à long terme, plus efficace que les somnifères et sans effets secondaires."
       },
       {
         sous_titre: "L'apnée du sommeil : souvent non diagnostiquée",
@@ -591,11 +591,11 @@ const articles = [
       },
       {
         sous_titre: "Le syndrome des jambes sans repos",
-        texte: "Le syndrome des jambes sans repos (SJSR) se manifeste par une sensation désagréable dans les jambes (picotements, fourmillements, besoin irrépressible de bouger) qui apparaît au repos, surtout le soir et la nuit. Il touche environ 8% de la population et est souvent associé à une carence en fer — un dosage de la ferritine est recommandé. L'activité physique régulière, les étirements des jambes et la correction d'éventuelles carences (fer, magnésium, vitamine D) soulagent souvent les symptômes."
+        texte: "Le syndrome des jambes sans repos (SJSR) se manifeste par une sensation désagréable dans les jambes (picotements, fourmillements, besoin irrépressible de bouger) qui apparaît au repos, surtout le soir et la nuit. Il touche environ 8% de la population et est souvent associé à une carence en fer, un dosage de la ferritine est recommandé. L'activité physique régulière, les étirements des jambes et la correction d'éventuelles carences (fer, magnésium, vitamine D) soulagent souvent les symptômes."
       },
       {
         sous_titre: "La dette de sommeil et le décalage de phase",
-        texte: "La dette de sommeil s'accumule quand on dort régulièrement moins que son besoin naturel. Contrairement à une idée reçue, on ne récupère pas intégralement une dette de sommeil en dormant un week-end — les effets cognitifs et métaboliques persistent. Le décalage de phase est fréquent chez les adolescents et jeunes adultes : l'horloge biologique est naturellement décalée vers des heures tardives, rendant l'endormissement précoce difficile. La luminothérapie matinale et une exposition à la lumière naturelle dès le réveil aident à recaler l'horloge."
+        texte: "La dette de sommeil s'accumule quand on dort régulièrement moins que son besoin naturel. Contrairement à une idée reçue, on ne récupère pas intégralement une dette de sommeil en dormant un week-end, les effets cognitifs et métaboliques persistent. Le décalage de phase est fréquent chez les adolescents et jeunes adultes : l'horloge biologique est naturellement décalée vers des heures tardives, rendant l'endormissement précoce difficile. La luminothérapie matinale et une exposition à la lumière naturelle dès le réveil aident à recaler l'horloge."
       },
       {
         sous_titre: "Quand consulter un médecin ?",
@@ -612,11 +612,11 @@ const articles = [
     contenu: [
       {
         sous_titre: "Qu'est-ce que le burn-out ?",
-        texte: "Le burn-out ou épuisement professionnel est un syndrome résultant d'un stress chronique au travail qui n'a pas été géré avec succès. Il se caractérise par trois dimensions selon la définition de la psychologue Christina Maslach : l'épuisement émotionnel et physique, la dépersonnalisation (détachement cynique envers son travail et les autres) et la diminution du sentiment d'accomplissement personnel. Ce n'est pas une faiblesse — c'est une réponse physiologique à une surcharge prolongée."
+        texte: "Le burn-out ou épuisement professionnel est un syndrome résultant d'un stress chronique au travail qui n'a pas été géré avec succès. Il se caractérise par trois dimensions selon la définition de la psychologue Christina Maslach : l'épuisement émotionnel et physique, la dépersonnalisation (détachement cynique envers son travail et les autres) et la diminution du sentiment d'accomplissement personnel. Ce n'est pas une faiblesse, c'est une réponse physiologique à une surcharge prolongée."
       },
       {
         sous_titre: "Les signes avant-coureurs à ne pas ignorer",
-        texte: "Le burn-out s'installe progressivement — reconnaître les signaux précoces permet d'agir avant l'effondrement. Signes physiques : fatigue persistante qui ne cède pas après le repos, troubles du sommeil, maux de tête fréquents, infections à répétition (immunité affaiblie), tensions musculaires chroniques. Signes psychologiques : irritabilité, cynisme croissant, sentiment d'être débordé en permanence, difficultés de concentration, perte de motivation et de plaisir. Signes comportementaux : isolement social, augmentation de la consommation d'alcool ou de café, procrastination."
+        texte: "Le burn-out s'installe progressivement, reconnaître les signaux précoces permet d'agir avant l'effondrement. Signes physiques : fatigue persistante qui ne cède pas après le repos, troubles du sommeil, maux de tête fréquents, infections à répétition (immunité affaiblie), tensions musculaires chroniques. Signes psychologiques : irritabilité, cynisme croissant, sentiment d'être débordé en permanence, difficultés de concentration, perte de motivation et de plaisir. Signes comportementaux : isolement social, augmentation de la consommation d'alcool ou de café, procrastination."
       },
       {
         sous_titre: "Les facteurs de risque",
@@ -624,11 +624,11 @@ const articles = [
       },
       {
         sous_titre: "Comment prévenir le burn-out ?",
-        texte: "La prévention passe par plusieurs leviers complémentaires. Protégez vos ressources : sommeil suffisant, activité physique régulière, alimentation équilibrée et moments de déconnexion totale. Posez des limites claires : apprenez à dire non, définissez des horaires de travail et respectez-les. Cultivez des activités ressourçantes hors travail. Identifiez vos valeurs et veillez à ce que votre travail y soit aligné. Parlez de votre charge à votre manager avant d'être à bout — attendre le point de rupture est toujours plus coûteux."
+        texte: "La prévention passe par plusieurs leviers complémentaires. Protégez vos ressources : sommeil suffisant, activité physique régulière, alimentation équilibrée et moments de déconnexion totale. Posez des limites claires : apprenez à dire non, définissez des horaires de travail et respectez-les. Cultivez des activités ressourçantes hors travail. Identifiez vos valeurs et veillez à ce que votre travail y soit aligné. Parlez de votre charge à votre manager avant d'être à bout, attendre le point de rupture est toujours plus coûteux."
       },
       {
         sous_titre: "Que faire si vous pensez être en burn-out ?",
-        texte: "Si vous vous reconnaissez dans plusieurs des signes décrits, consultez votre médecin traitant sans attendre — il peut vous orienter vers un arrêt de travail si nécessaire et vers un accompagnement psychologique adapté. Le burn-out nécessite du temps pour récupérer — plusieurs mois dans les cas sévères. La reprise du travail doit être progressive et accompagnée d'un travail de fond sur les causes. Un psychologue spécialisé en thérapies cognitivo-comportementales (TCC) peut vous aider à modifier les schémas de pensée et de comportement qui ont contribué à l'épuisement."
+        texte: "Si vous vous reconnaissez dans plusieurs des signes décrits, consultez votre médecin traitant sans attendre, il peut vous orienter vers un arrêt de travail si nécessaire et vers un accompagnement psychologique adapté. Le burn-out nécessite du temps pour récupérer, plusieurs mois dans les cas sévères. La reprise du travail doit être progressive et accompagnée d'un travail de fond sur les causes. Un psychologue spécialisé en thérapies cognitivo-comportementales (TCC) peut vous aider à modifier les schémas de pensée et de comportement qui ont contribué à l'épuisement."
       }
     ]
   },
@@ -641,19 +641,19 @@ const articles = [
     contenu: [
       {
         sous_titre: "Le corps garde la mémoire des émotions",
-        texte: "Les émotions ne sont pas que des expériences mentales — elles ont une réalité physique bien documentée. La peur contracte les épaules et le diaphragme. La tristesse alourdit la poitrine. La colère tend les mâchoires et les poings. Le stress chronique crée des tensions musculaires persistantes, notamment dans le trapèze, les lombaires et le psoas. Ces tensions corporelles peuvent devenir autonomes — persister même quand la cause émotionnelle a disparu — et engendrer des douleurs chroniques."
+        texte: "Les émotions ne sont pas que des expériences mentales, elles ont une réalité physique bien documentée. La peur contracte les épaules et le diaphragme. La tristesse alourdit la poitrine. La colère tend les mâchoires et les poings. Le stress chronique crée des tensions musculaires persistantes, notamment dans le trapèze, les lombaires et le psoas. Ces tensions corporelles peuvent devenir autonomes, persister même quand la cause émotionnelle a disparu, et engendrer des douleurs chroniques."
       },
       {
         sous_titre: "Le système nerveux autonome au cœur du lien corps-esprit",
-        texte: "Le système nerveux autonome régule automatiquement nos fonctions vitales et notre réponse au stress. En situation de danger (réel ou perçu), le système sympathique active la réponse fight or flight : augmentation du rythme cardiaque, tension musculaire, accélération de la respiration, suppression de la digestion. Quand le danger passe, le système parasympathique devrait prendre le relais pour ramener le calme. En cas de stress chronique, le système sympathique reste en hyperactivité permanente — avec des conséquences importantes sur la santé."
+        texte: "Le système nerveux autonome régule automatiquement nos fonctions vitales et notre réponse au stress. En situation de danger (réel ou perçu), le système sympathique active la réponse fight or flight : augmentation du rythme cardiaque, tension musculaire, accélération de la respiration, suppression de la digestion. Quand le danger passe, le système parasympathique devrait prendre le relais pour ramener le calme. En cas de stress chronique, le système sympathique reste en hyperactivité permanente, avec des conséquences importantes sur la santé."
       },
       {
         sous_titre: "Le rôle du psoas, muscle des émotions",
-        texte: "Le psoas est un muscle profond qui relie la colonne lombaire au fémur et traverse le bassin. C'est le seul muscle qui connecte le tronc aux jambes. Il joue un rôle clé dans la posture et la marche mais aussi dans la réponse au stress — en situation de peur, il se contracte pour préparer la fuite ou la protection. Chez les personnes soumises à un stress chronique, le psoas est souvent chroniquement contracté, entraînant des douleurs lombaires, des tensions dans les hanches et une posture voûtée."
+        texte: "Le psoas est un muscle profond qui relie la colonne lombaire au fémur et traverse le bassin. C'est le seul muscle qui connecte le tronc aux jambes. Il joue un rôle clé dans la posture et la marche mais aussi dans la réponse au stress, en situation de peur, il se contracte pour préparer la fuite ou la protection. Chez les personnes soumises à un stress chronique, le psoas est souvent chroniquement contracté, entraînant des douleurs lombaires, des tensions dans les hanches et une posture voûtée."
       },
       {
         sous_titre: "Les pratiques pour libérer les tensions émotionnelles",
-        texte: "L'activité physique est le moyen le plus direct de libérer les tensions accumulées — elle complète le cycle physiologique du stress que le sédentarisme laisse inachevé. Le yoga, le tai-chi et le qi gong combinent mouvement, respiration et attention corporelle pour réguler le système nerveux. La cohérence cardiaque agit directement sur le système nerveux autonome. La sophrologie et la pleine conscience aident à développer la conscience corporelle et à identifier les tensions avant qu'elles ne deviennent douloureuses."
+        texte: "L'activité physique est le moyen le plus direct de libérer les tensions accumulées, elle complète le cycle physiologique du stress que le sédentarisme laisse inachevé. Le yoga, le tai-chi et le qi gong combinent mouvement, respiration et attention corporelle pour réguler le système nerveux. La cohérence cardiaque agit directement sur le système nerveux autonome. La sophrologie et la pleine conscience aident à développer la conscience corporelle et à identifier les tensions avant qu'elles ne deviennent douloureuses."
       },
       {
         sous_titre: "Quand consulter ?",
@@ -674,15 +674,15 @@ const articles = [
       },
       {
         sous_titre: "La méthode Eisenhower : urgent vs important",
-        texte: "La matrice d'Eisenhower divise les tâches en quatre quadrants selon deux axes : urgent/non urgent et important/non important. Les tâches urgentes ET importantes sont à faire immédiatement. Les tâches importantes mais non urgentes — comme prendre soin de sa santé, se former, entretenir ses relations — sont à planifier : ce sont elles qui ont le plus d'impact sur le long terme. Les tâches urgentes mais non importantes sont à déléguer. Les tâches ni urgentes ni importantes sont à éliminer. La plupart des gens passent leur temps dans l'urgence et négligent l'important."
+        texte: "La matrice d'Eisenhower divise les tâches en quatre quadrants selon deux axes : urgent/non urgent et important/non important. Les tâches urgentes ET importantes sont à faire immédiatement. Les tâches importantes mais non urgentes, comme prendre soin de sa santé, se former, entretenir ses relations, sont à planifier : ce sont elles qui ont le plus d'impact sur le long terme. Les tâches urgentes mais non importantes sont à déléguer. Les tâches ni urgentes ni importantes sont à éliminer. La plupart des gens passent leur temps dans l'urgence et négligent l'important."
       },
       {
         sous_titre: "La technique Pomodoro",
-        texte: "La technique Pomodoro consiste à travailler en blocs de 25 minutes de concentration totale (téléphone éteint, notifications coupées) suivis de 5 minutes de pause. Après 4 cycles, une pause longue de 15 à 30 minutes. Cette méthode exploite la psychologie de la contrainte temporelle — sachant qu'on ne travaille que 25 minutes, le cerveau se met en action plus facilement. Elle protège aussi contre la fatigue cognitive et améliore la qualité du travail produit."
+        texte: "La technique Pomodoro consiste à travailler en blocs de 25 minutes de concentration totale (téléphone éteint, notifications coupées) suivis de 5 minutes de pause. Après 4 cycles, une pause longue de 15 à 30 minutes. Cette méthode exploite la psychologie de la contrainte temporelle, sachant qu'on ne travaille que 25 minutes, le cerveau se met en action plus facilement. Elle protège aussi contre la fatigue cognitive et améliore la qualité du travail produit."
       },
       {
         sous_titre: "Apprendre à dire non",
-        texte: "Dire non est l'une des compétences les plus importantes pour protéger son énergie et son temps. Chaque oui donné à quelque chose est un non donné à autre chose — souvent à soi-même. Pour apprendre à dire non : gagnez du temps avant de répondre ('je vérifie mon agenda et je reviens vers toi'), proposez une alternative ('je ne peux pas cette semaine mais je peux la semaine prochaine'), expliquez brièvement sans vous justifier excessivement. Un non dit clairement et bienveillamment est toujours préférable à un oui suivi d'une exécution bâclée ou d'un ressentiment."
+        texte: "Dire non est l'une des compétences les plus importantes pour protéger son énergie et son temps. Chaque oui donné à quelque chose est un non donné à autre chose, souvent à soi-même. Pour apprendre à dire non : gagnez du temps avant de répondre ('je vérifie mon agenda et je reviens vers toi'), proposez une alternative ('je ne peux pas cette semaine mais je peux la semaine prochaine'), expliquez brièvement sans vous justifier excessivement. Un non dit clairement et bienveillamment est toujours préférable à un oui suivi d'une exécution bâclée ou d'un ressentiment."
       },
       {
         sous_titre: "Les rituels de transition",
@@ -703,7 +703,7 @@ const articles = [
       },
       {
         sous_titre: "Les exercices de base sans matériel",
-        texte: "Le squat renforce les quadriceps, les fessiers et les ischio-jambiers — descendez comme pour vous asseoir sur une chaise, dos droit, genoux dans l'axe des pieds. La pompe travaille les pectoraux, les triceps et les épaules — adaptez l'inclinaison selon votre niveau (sur les genoux pour débuter). La fente avant cible les quadriceps et les fessiers. Le gainage (planche) renforce la sangle abdominale et les muscles profonds du dos. Le pont fessier (allongé sur le dos, poussez les hanches vers le haut) cible les fessiers et les ischio-jambiers."
+        texte: "Le squat renforce les quadriceps, les fessiers et les ischio-jambiers, descendez comme pour vous asseoir sur une chaise, dos droit, genoux dans l'axe des pieds. La pompe travaille les pectoraux, les triceps et les épaules, adaptez l'inclinaison selon votre niveau (sur les genoux pour débuter). La fente avant cible les quadriceps et les fessiers. Le gainage (planche) renforce la sangle abdominale et les muscles profonds du dos. Le pont fessier (allongé sur le dos, poussez les hanches vers le haut) cible les fessiers et les ischio-jambiers."
       },
       {
         sous_titre: "Comment structurer une séance",
@@ -711,11 +711,11 @@ const articles = [
       },
       {
         sous_titre: "Les principes clés pour progresser",
-        texte: "La régularité prime sur l'intensité — deux séances hebdomadaires régulières valent mieux qu'une séance intensive suivie de 3 semaines d'absence. La récupération est aussi importante que l'entraînement — les muscles se renforcent pendant le repos, pas pendant l'effort. La technique prime sur la charge — un mouvement mal exécuté est source de blessure. Écoutez votre corps : une légère courbature le lendemain est normale, une douleur articulaire pendant l'effort ne l'est pas."
+        texte: "La régularité prime sur l'intensité, deux séances hebdomadaires régulières valent mieux qu'une séance intensive suivie de 3 semaines d'absence. La récupération est aussi importante que l'entraînement, les muscles se renforcent pendant le repos, pas pendant l'effort. La technique prime sur la charge, un mouvement mal exécuté est source de blessure. Écoutez votre corps : une légère courbature le lendemain est normale, une douleur articulaire pendant l'effort ne l'est pas."
       },
       {
         sous_titre: "Débuter progressivement",
-        texte: "Si vous débutez, commencez par une seule série de 10 répétitions de chaque exercice et augmentez progressivement sur plusieurs semaines. Ne cherchez pas à tout faire parfaitement dès le début — la priorité est de créer l'habitude. Des applications comme Freeletics, Nike Training Club ou FizzUp proposent des programmes guidés sans matériel adaptés à tous les niveaux. En cas de douleur chronique ou de pathologie, consultez un kinésithérapeute avant de commencer pour adapter les exercices à votre situation."
+        texte: "Si vous débutez, commencez par une seule série de 10 répétitions de chaque exercice et augmentez progressivement sur plusieurs semaines. Ne cherchez pas à tout faire parfaitement dès le début, la priorité est de créer l'habitude. Des applications comme Freeletics, Nike Training Club ou FizzUp proposent des programmes guidés sans matériel adaptés à tous les niveaux. En cas de douleur chronique ou de pathologie, consultez un kinésithérapeute avant de commencer pour adapter les exercices à votre situation."
       }
     ]
   },
@@ -728,19 +728,19 @@ const articles = [
     contenu: [
       {
         sous_titre: "La récupération : partie intégrante de l'entraînement",
-        texte: "Une erreur fréquente des sportifs débutants est de considérer la récupération comme du temps perdu. C'est l'inverse : c'est pendant la récupération que les adaptations physiologiques se produisent. Les muscles se renforcent, les fibres endommagées se réparent, les stocks d'énergie se reconstituent. Sans récupération suffisante, l'entraînement conduit au surentraînement — une forme d'épuisement physiologique qui dégrade les performances et augmente le risque de blessure."
+        texte: "Une erreur fréquente des sportifs débutants est de considérer la récupération comme du temps perdu. C'est l'inverse : c'est pendant la récupération que les adaptations physiologiques se produisent. Les muscles se renforcent, les fibres endommagées se réparent, les stocks d'énergie se reconstituent. Sans récupération suffisante, l'entraînement conduit au surentraînement, une forme d'épuisement physiologique qui dégrade les performances et augmente le risque de blessure."
       },
       {
         sous_titre: "La nutrition post-effort",
-        texte: "La fenêtre anabolique — les 30 à 60 minutes après l'effort — est le moment optimal pour apporter les nutriments nécessaires à la récupération. L'idéal est de consommer une combinaison de protéines (pour la réparation musculaire) et de glucides (pour reconstituer les stocks de glycogène). Exemples pratiques : yaourt grec + fruits, shake protéiné + banane, œufs + pain complet. L'hydratation est aussi critique — compensez les pertes sudorales avec de l'eau, voire une boisson légèrement salée après un effort intense."
+        texte: "La fenêtre anabolique, les 30 à 60 minutes après l'effort, est le moment optimal pour apporter les nutriments nécessaires à la récupération. L'idéal est de consommer une combinaison de protéines (pour la réparation musculaire) et de glucides (pour reconstituer les stocks de glycogène). Exemples pratiques : yaourt grec + fruits, shake protéiné + banane, œufs + pain complet. L'hydratation est aussi critique, compensez les pertes sudorales avec de l'eau, voire une boisson légèrement salée après un effort intense."
       },
       {
         sous_titre: "Le sommeil : le meilleur des récupérateurs",
-        texte: "C'est pendant le sommeil profond que l'hormone de croissance est sécrétée en grande quantité — elle est essentielle à la réparation musculaire et à la récupération générale. Un sportif qui dort 6 heures récupère deux fois moins bien qu'un sportif qui dort 8 heures, à entraînement égal. Priorisez le sommeil avant tout autre stratégie de récupération : il est gratuit, naturel et incomparablement efficace."
+        texte: "C'est pendant le sommeil profond que l'hormone de croissance est sécrétée en grande quantité, elle est essentielle à la réparation musculaire et à la récupération générale. Un sportif qui dort 6 heures récupère deux fois moins bien qu'un sportif qui dort 8 heures, à entraînement égal. Priorisez le sommeil avant tout autre stratégie de récupération : il est gratuit, naturel et incomparablement efficace."
       },
       {
         sous_titre: "Les techniques de récupération active",
-        texte: "La récupération active consiste à maintenir une activité légère les jours de repos — marche, natation douce, vélo léger, yoga. Elle améliore la circulation sanguine et accélère l'élimination des déchets métaboliques. Les étirements post-effort (maintenus 30 secondes minimum) réduisent les courbatures et maintiennent la souplesse. Le massage — auto-massage au foam roller ou massage par un professionnel — améliore la circulation et réduit les tensions musculaires. Le bain froid ou la douche froide après l'effort réduit l'inflammation et les courbatures."
+        texte: "La récupération active consiste à maintenir une activité légère les jours de repos, marche, natation douce, vélo léger, yoga. Elle améliore la circulation sanguine et accélère l'élimination des déchets métaboliques. Les étirements post-effort (maintenus 30 secondes minimum) réduisent les courbatures et maintiennent la souplesse. Le massage, auto-massage au foam roller ou massage par un professionnel, améliore la circulation et réduit les tensions musculaires. Le bain froid ou la douche froide après l'effort réduit l'inflammation et les courbatures."
       },
       {
         sous_titre: "Reconnaître les signes de surentraînement",
@@ -761,15 +761,15 @@ const articles = [
       },
       {
         sous_titre: "Décrypter les codes de recyclage",
-        texte: "Les plastiques sont identifiés par un numéro de 1 à 7 dans le triangle de recyclage. Les plus préoccupants : le n°3 (PVC) contient des phtalates, le n°6 (polystyrène) peut libérer du styrène, le n°7 (autres) peut contenir du BPA. Les plus sûrs pour le contact alimentaire : le n°1 (PET, bouteilles d'eau — à usage unique uniquement), le n°2 (PEHD, bouteilles de lait), le n°4 (PEBD), le n°5 (polypropylène, boîtes alimentaires). En cas de doute, préférez toujours le verre, l'inox ou la céramique."
+        texte: "Les plastiques sont identifiés par un numéro de 1 à 7 dans le triangle de recyclage. Les plus préoccupants : le n°3 (PVC) contient des phtalates, le n°6 (polystyrène) peut libérer du styrène, le n°7 (autres) peut contenir du BPA. Les plus sûrs pour le contact alimentaire : le n°1 (PET, bouteilles d'eau, à usage unique uniquement), le n°2 (PEHD, bouteilles de lait), le n°4 (PEBD), le n°5 (polypropylène, boîtes alimentaires). En cas de doute, préférez toujours le verre, l'inox ou la céramique."
       },
       {
         sous_titre: "Les situations à risque à éviter",
-        texte: "Ne jamais chauffer les aliments dans des contenants en plastique, même estampillés 'micro-ondes safe' — la chaleur accélère la migration des substances chimiques. Ne pas laisser une bouteille d'eau en plastique dans une voiture chaude. Éviter les emballages plastiques pour les aliments gras (fromage, viande) — les graisses facilitent la migration des perturbateurs endocriniens. Ne pas utiliser de film plastique en contact direct avec les aliments gras ou chauds. Jeter les contenants plastiques rayés ou vieillis."
+        texte: "Ne jamais chauffer les aliments dans des contenants en plastique, même estampillés 'micro-ondes safe', la chaleur accélère la migration des substances chimiques. Ne pas laisser une bouteille d'eau en plastique dans une voiture chaude. Éviter les emballages plastiques pour les aliments gras (fromage, viande), les graisses facilitent la migration des perturbateurs endocriniens. Ne pas utiliser de film plastique en contact direct avec les aliments gras ou chauds. Jeter les contenants plastiques rayés ou vieillis."
       },
       {
         sous_titre: "Les alternatives pratiques",
-        texte: "Le verre est l'alternative la plus sûre pour le stockage et le réchauffage des aliments — il est inerte, ne migre rien et se lave facilement. L'inox alimentaire est idéal pour les gourdes, les boîtes repas et les ustensiles de cuisine. La cire d'abeille (wraps) remplace avantageusement le film alimentaire pour couvrir les aliments froids. Le papier sulfurisé et le papier d'aluminium sont des alternatives pour les cuissons. La silicone alimentaire de qualité (sans charge) est généralement considérée comme sûre pour la cuisson."
+        texte: "Le verre est l'alternative la plus sûre pour le stockage et le réchauffage des aliments, il est inerte, ne migre rien et se lave facilement. L'inox alimentaire est idéal pour les gourdes, les boîtes repas et les ustensiles de cuisine. La cire d'abeille (wraps) remplace avantageusement le film alimentaire pour couvrir les aliments froids. Le papier sulfurisé et le papier d'aluminium sont des alternatives pour les cuissons. La silicone alimentaire de qualité (sans charge) est généralement considérée comme sûre pour la cuisson."
       },
       {
         sous_titre: "Les microplastiques : une menace émergente",
@@ -786,15 +786,15 @@ const articles = [
     contenu: [
       {
         sous_titre: "Quelle quantité de viande rouge par semaine ?",
-        texte: "Les recommandations nutritionnelles actuelles préconisent de limiter la consommation de viande rouge à 300g maximum par semaine, soit environ 2 à 3 portions. La viande rouge englobe le bœuf, le veau, le porc, l'agneau, le mouton et le cheval. Au-delà de cette quantité, le risque de cancer colorectal augmente de façon significative selon les études épidémiologiques. Cela ne signifie pas qu'il faut supprimer la viande rouge — elle reste une excellente source de protéines, de fer héminique (très bien absorbé) et de zinc — mais la consommer de façon raisonnée."
+        texte: "Les recommandations nutritionnelles actuelles préconisent de limiter la consommation de viande rouge à 300g maximum par semaine, soit environ 2 à 3 portions. La viande rouge englobe le bœuf, le veau, le porc, l'agneau, le mouton et le cheval. Au-delà de cette quantité, le risque de cancer colorectal augmente de façon significative selon les études épidémiologiques. Cela ne signifie pas qu'il faut supprimer la viande rouge, elle reste une excellente source de protéines, de fer héminique (très bien absorbé) et de zinc, mais la consommer de façon raisonnée."
       },
       {
         sous_titre: "Et pour la charcuterie ?",
-        texte: "La charcuterie (jambon, saucisson, lardons, bacon, rillettes, pâté…) est encore plus limitée — 150g maximum par semaine est la recommandation. Contrairement à la viande rouge, la charcuterie est classée cancérogène certain (groupe 1) par le Centre International de Recherche sur le Cancer, principalement en raison des nitrites utilisés comme conservateurs et du processus de transformation. Préférez les charcuteries sans nitrites ajoutés, de plus en plus disponibles en grande surface et chez les artisans bouchers."
+        texte: "La charcuterie (jambon, saucisson, lardons, bacon, rillettes, pâté…) est encore plus limitée, 150g maximum par semaine est la recommandation. Contrairement à la viande rouge, la charcuterie est classée cancérogène certain (groupe 1) par le Centre International de Recherche sur le Cancer, principalement en raison des nitrites utilisés comme conservateurs et du processus de transformation. Préférez les charcuteries sans nitrites ajoutés, de plus en plus disponibles en grande surface et chez les artisans bouchers."
       },
       {
         sous_titre: "Pourquoi ces limites ?",
-        texte: "La cuisson à haute température de la viande rouge (grillades, fritures) produit des composés potentiellement cancérogènes comme les amines hétérocycliques et les hydrocarbures aromatiques polycycliques. Les modes de cuisson plus doux — mijotage, cuisson à la vapeur, four à basse température — sont préférables. Par ailleurs, un excès de viande rouge est associé à un risque accru de maladies cardiovasculaires, notamment en raison de sa teneur en graisses saturées."
+        texte: "La cuisson à haute température de la viande rouge (grillades, fritures) produit des composés potentiellement cancérogènes comme les amines hétérocycliques et les hydrocarbures aromatiques polycycliques. Les modes de cuisson plus doux, mijotage, cuisson à la vapeur, four à basse température, sont préférables. Par ailleurs, un excès de viande rouge est associé à un risque accru de maladies cardiovasculaires, notamment en raison de sa teneur en graisses saturées."
       },
       {
         sous_titre: "Par quoi remplacer la viande rouge ?",
@@ -802,7 +802,7 @@ const articles = [
       },
       {
         sous_titre: "Comment s'organiser concrètement ?",
-        texte: "Une façon simple de respecter ces recommandations : planifiez 2 repas avec viande rouge par semaine maximum (ex: bœuf le mardi, agneau le samedi), 2 repas avec poisson, 2 repas avec volaille ou œufs, et 1 repas végétarien avec légumineuses. Pour la charcuterie, réservez-la aux occasions plutôt qu'au quotidien — une tranche de jambon dans un sandwich de temps en temps ne pose aucun problème dans le cadre d'une alimentation globalement équilibrée."
+        texte: "Une façon simple de respecter ces recommandations : planifiez 2 repas avec viande rouge par semaine maximum (ex: bœuf le mardi, agneau le samedi), 2 repas avec poisson, 2 repas avec volaille ou œufs, et 1 repas végétarien avec légumineuses. Pour la charcuterie, réservez-la aux occasions plutôt qu'au quotidien, une tranche de jambon dans un sandwich de temps en temps ne pose aucun problème dans le cadre d'une alimentation globalement équilibrée."
       }
     ]
   },
@@ -819,19 +819,19 @@ const articles = [
       },
       {
         sous_titre: "Les effets de l'alcool sur le corps",
-        texte: "L'alcool perturbe le sommeil en supprimant le sommeil paradoxal — il peut faciliter l'endormissement mais dégrade significativement la qualité de la nuit. Il altère la mémoire et la concentration dès des doses modérées. Il est très calorique (7 kcal/g) et favorise la prise de poids. Sur le long terme, une consommation régulière même modérée augmente le risque de cancers (bouche, gorge, œsophage, sein, foie, côlon), de maladies cardiovasculaires, de troubles hépatiques et de dépendance."
+        texte: "L'alcool perturbe le sommeil en supprimant le sommeil paradoxal, il peut faciliter l'endormissement mais dégrade significativement la qualité de la nuit. Il altère la mémoire et la concentration dès des doses modérées. Il est très calorique (7 kcal/g) et favorise la prise de poids. Sur le long terme, une consommation régulière même modérée augmente le risque de cancers (bouche, gorge, œsophage, sein, foie, côlon), de maladies cardiovasculaires, de troubles hépatiques et de dépendance."
       },
       {
         sous_titre: "Le tabac : le premier facteur de mortalité évitable",
-        texte: "Le tabac est la première cause de mortalité évitable en France, responsable de 75 000 décès par an. Il contient plus de 70 substances cancérogènes et est impliqué dans les cancers du poumon, de la bouche, de la gorge, de la vessie, du pancréas et du col de l'utérus, entre autres. Il multiplie par 10 à 15 le risque de cancer du poumon et par 2 à 4 le risque de maladies cardiovasculaires. Il n'existe pas de niveau de consommation de tabac sans risque — même fumer occasionnellement présente des risques significatifs."
+        texte: "Le tabac est la première cause de mortalité évitable en France, responsable de 75 000 décès par an. Il contient plus de 70 substances cancérogènes et est impliqué dans les cancers du poumon, de la bouche, de la gorge, de la vessie, du pancréas et du col de l'utérus, entre autres. Il multiplie par 10 à 15 le risque de cancer du poumon et par 2 à 4 le risque de maladies cardiovasculaires. Il n'existe pas de niveau de consommation de tabac sans risque, même fumer occasionnellement présente des risques significatifs."
       },
       {
         sous_titre: "Le tabac et le corps au quotidien",
-        texte: "Au-delà des maladies chroniques, le tabac a des effets immédiats sur la qualité de vie : il réduit les capacités respiratoires et sportives, accélère le vieillissement cutané, dégrade la qualité du sommeil, altère le goût et l'odorat, et nuit à la fertilité. Il aggrave également l'anxiété sur le long terme — contrairement à l'impression de soulagement que procure une cigarette, la nicotine entretient le cycle de dépendance qui génère lui-même le stress."
+        texte: "Au-delà des maladies chroniques, le tabac a des effets immédiats sur la qualité de vie : il réduit les capacités respiratoires et sportives, accélère le vieillissement cutané, dégrade la qualité du sommeil, altère le goût et l'odorat, et nuit à la fertilité. Il aggrave également l'anxiété sur le long terme, contrairement à l'impression de soulagement que procure une cigarette, la nicotine entretient le cycle de dépendance qui génère lui-même le stress."
       },
       {
         sous_titre: "Arrêter : des aides efficaces existent",
-        texte: "Arrêter de fumer est le geste de santé le plus impactant qu'un fumeur puisse faire, à tout âge. Les substituts nicotiniques (patchs, gommes, inhaleurs) sont remboursés par l'Assurance Maladie jusqu'à 150€ par an. La varénicline (Champix) et le bupropion sont des médicaments efficaces sur prescription. Les thérapies cognitivo-comportementales (TCC) améliorent significativement les chances de succès. La ligne Tabac Info Service (3989) propose un accompagnement gratuit. Pour l'alcool, si vous ressentez une dépendance, parlez-en à votre médecin sans attendre — des traitements efficaces existent."
+        texte: "Arrêter de fumer est le geste de santé le plus impactant qu'un fumeur puisse faire, à tout âge. Les substituts nicotiniques (patchs, gommes, inhaleurs) sont remboursés par l'Assurance Maladie jusqu'à 150€ par an. La varénicline (Champix) et le bupropion sont des médicaments efficaces sur prescription. Les thérapies cognitivo-comportementales (TCC) améliorent significativement les chances de succès. La ligne Tabac Info Service (3989) propose un accompagnement gratuit. Pour l'alcool, si vous ressentez une dépendance, parlez-en à votre médecin sans attendre, des traitements efficaces existent."
       }
     ]
   },
@@ -844,11 +844,11 @@ const articles = [
     contenu: [
       {
         sous_titre: "Le sucre active le circuit de la récompense",
-        texte: "L'attraction pour les aliments sucrés n'est pas une question de volonté — c'est une réponse neurobiologique. Consommer du sucre stimule la libération de dopamine dans le noyau accumbens, la zone du cerveau impliquée dans le plaisir et la récompense. Ce mécanisme est identique à celui activé par certaines drogues. Avec une consommation régulière de produits sucrés, le cerveau s'adapte en réduisant sa sensibilité à la dopamine — ce qui pousse à consommer de plus en plus pour obtenir le même effet de satisfaction."
+        texte: "L'attraction pour les aliments sucrés n'est pas une question de volonté, c'est une réponse neurobiologique. Consommer du sucre stimule la libération de dopamine dans le noyau accumbens, la zone du cerveau impliquée dans le plaisir et la récompense. Ce mécanisme est identique à celui activé par certaines drogues. Avec une consommation régulière de produits sucrés, le cerveau s'adapte en réduisant sa sensibilité à la dopamine, ce qui pousse à consommer de plus en plus pour obtenir le même effet de satisfaction."
       },
       {
         sous_titre: "Le vrai problème : les produits sucrés ultra-transformés",
-        texte: "Il est important de distinguer le sucre naturellement présent dans les fruits, les légumes et les produits laitiers — qui s'accompagne de fibres, vitamines et minéraux — des sucres ajoutés dans les produits industriels. Ces derniers sont souvent associés à des graisses, des arômes artificiels et des textures conçues pour maximiser le plaisir et minimiser la satiété. C'est cette combinaison — sucre + gras + sel + arômes — qui crée l'effet addictif des produits ultra-transformés, bien plus que le sucre seul."
+        texte: "Il est important de distinguer le sucre naturellement présent dans les fruits, les légumes et les produits laitiers, qui s'accompagne de fibres, vitamines et minéraux, des sucres ajoutés dans les produits industriels. Ces derniers sont souvent associés à des graisses, des arômes artificiels et des textures conçues pour maximiser le plaisir et minimiser la satiété. C'est cette combinaison, sucre + gras + sel + arômes, qui crée l'effet addictif des produits ultra-transformés, bien plus que le sucre seul."
       },
       {
         sous_titre: "Les signes d'une dépendance aux produits sucrés",
@@ -860,7 +860,7 @@ const articles = [
       },
       {
         sous_titre: "Des stratégies concrètes pour réduire progressivement",
-        texte: "Commencez par identifier vos déclencheurs — stress, ennui, fatigue, habitudes sociales — et trouvez des alternatives pour chacun. Réduisez progressivement le sucre dans votre café ou thé sur plusieurs semaines. Remplacez les produits sucrés industriels par des alternatives moins transformées : fruits frais, dattes, chocolat noir à plus de 70%. Mangez suffisamment de protéines et de bonnes graisses à chaque repas pour stabiliser la glycémie et réduire les fringales. Dormez suffisamment — le manque de sommeil augmente significativement les envies de sucre en stimulant la ghréline, l'hormone de l'appétit."
+        texte: "Commencez par identifier vos déclencheurs, stress, ennui, fatigue, habitudes sociales, et trouvez des alternatives pour chacun. Réduisez progressivement le sucre dans votre café ou thé sur plusieurs semaines. Remplacez les produits sucrés industriels par des alternatives moins transformées : fruits frais, dattes, chocolat noir à plus de 70%. Mangez suffisamment de protéines et de bonnes graisses à chaque repas pour stabiliser la glycémie et réduire les fringales. Dormez suffisamment, le manque de sommeil augmente significativement les envies de sucre en stimulant la ghréline, l'hormone de l'appétit."
       }
     ]
   },
@@ -873,19 +873,19 @@ const articles = [
     contenu: [
       {
         sous_titre: "L'eau du robinet : une eau contrôlée et de qualité",
-        texte: "En France, l'eau du robinet est l'un des aliments les plus contrôlés qui soit. Elle fait l'objet de plus de 60 paramètres de qualité analysés régulièrement par les Agences Régionales de Santé (ARS). Sa composition en minéraux varie selon les régions mais elle est dans l'immense majorité des cas parfaitement saine à boire. Contrairement aux idées reçues, elle n'est pas inférieure à l'eau en bouteille sur le plan de la sécurité sanitaire — elle est même souvent supérieure en termes de contrôle."
+        texte: "En France, l'eau du robinet est l'un des aliments les plus contrôlés qui soit. Elle fait l'objet de plus de 60 paramètres de qualité analysés régulièrement par les Agences Régionales de Santé (ARS). Sa composition en minéraux varie selon les régions mais elle est dans l'immense majorité des cas parfaitement saine à boire. Contrairement aux idées reçues, elle n'est pas inférieure à l'eau en bouteille sur le plan de la sécurité sanitaire, elle est même souvent supérieure en termes de contrôle."
       },
       {
         sous_titre: "L'impact environnemental de l'eau en bouteille",
-        texte: "Choisir l'eau du robinet plutôt que l'eau en bouteille est l'un des gestes écologiques les plus simples et les plus impactants. Une bouteille d'eau plastique nécessite 3 litres d'eau et 250 ml de pétrole pour être produite. Le transport des bouteilles génère des émissions de CO2 importantes. Les bouteilles plastiques, même recyclées, libèrent des microplastiques dans l'eau qu'elles contiennent — surtout lorsqu'elles sont exposées à la chaleur ou au soleil. En buvant l'eau du robinet, vous réduisez drastiquement votre empreinte plastique."
+        texte: "Choisir l'eau du robinet plutôt que l'eau en bouteille est l'un des gestes écologiques les plus simples et les plus impactants. Une bouteille d'eau plastique nécessite 3 litres d'eau et 250 ml de pétrole pour être produite. Le transport des bouteilles génère des émissions de CO2 importantes. Les bouteilles plastiques, même recyclées, libèrent des microplastiques dans l'eau qu'elles contiennent, surtout lorsqu'elles sont exposées à la chaleur ou au soleil. En buvant l'eau du robinet, vous réduisez drastiquement votre empreinte plastique."
       },
       {
         sous_titre: "Comment améliorer le goût de l'eau du robinet",
-        texte: "Si le goût de chlore vous dérange, il existe des solutions simples. Laissez l'eau reposer quelques heures dans une carafe ouverte au réfrigérateur — le chlore s'évapore naturellement. Vous pouvez aussi utiliser un filtre à carafe (Brita, Aqua Optima) qui améliore le goût sans modifier les qualités sanitaires. Ajouter quelques feuilles de menthe, des rondelles de citron ou de concombre est une autre façon de rendre l'eau du robinet plus agréable à boire au quotidien."
+        texte: "Si le goût de chlore vous dérange, il existe des solutions simples. Laissez l'eau reposer quelques heures dans une carafe ouverte au réfrigérateur, le chlore s'évapore naturellement. Vous pouvez aussi utiliser un filtre à carafe (Brita, Aqua Optima) qui améliore le goût sans modifier les qualités sanitaires. Ajouter quelques feuilles de menthe, des rondelles de citron ou de concombre est une autre façon de rendre l'eau du robinet plus agréable à boire au quotidien."
       },
       {
         sous_titre: "Les situations où l'eau en bouteille peut être préférable",
-        texte: "Il existe quelques situations spécifiques où l'eau en bouteille peut être recommandée. Pour les nourrissons de moins de 6 mois — leur système immunitaire immature et leurs besoins spécifiques en minéraux justifient l'utilisation d'une eau faiblement minéralisée adaptée (Evian, Volvic). Pour les femmes enceintes dans certaines régions où l'eau du robinet présente des taux de nitrates élevés. Pour les personnes immunodéprimées sur avis médical. En voyage dans des pays où la qualité de l'eau du robinet n'est pas garantie."
+        texte: "Il existe quelques situations spécifiques où l'eau en bouteille peut être recommandée. Pour les nourrissons de moins de 6 mois, leur système immunitaire immature et leurs besoins spécifiques en minéraux justifient l'utilisation d'une eau faiblement minéralisée adaptée (Evian, Volvic). Pour les femmes enceintes dans certaines régions où l'eau du robinet présente des taux de nitrates élevés. Pour les personnes immunodéprimées sur avis médical. En voyage dans des pays où la qualité de l'eau du robinet n'est pas garantie."
       },
       {
         sous_titre: "Quelle eau choisir selon ses besoins ?",
@@ -902,23 +902,23 @@ const articles = [
   contenu: [
     {
       sous_titre: "Le stress : une réponse utile à l'origine",
-      texte: "Le stress est une réponse biologique primitive conçue pour nous protéger face à un danger. Face à une menace, le cerveau déclenche la libération d'adrénaline et de cortisol — les hormones du stress. Le cœur s'accélère, les muscles se contractent, les sens s'aiguisent. Cette réaction de 'fuite ou combat' était essentielle pour la survie de nos ancêtres. Le problème est que notre cerveau ne distingue pas un danger physique réel d'une pression professionnelle ou d'une inquiétude — il déclenche la même réponse dans les deux cas."
+      texte: "Le stress est une réponse biologique primitive conçue pour nous protéger face à un danger. Face à une menace, le cerveau déclenche la libération d'adrénaline et de cortisol, les hormones du stress. Le cœur s'accélère, les muscles se contractent, les sens s'aiguisent. Cette réaction de 'fuite ou combat' était essentielle pour la survie de nos ancêtres. Le problème est que notre cerveau ne distingue pas un danger physique réel d'une pression professionnelle ou d'une inquiétude, il déclenche la même réponse dans les deux cas."
     },
     {
       sous_titre: "Les effets du stress aigu sur le corps",
-      texte: "Un stress ponctuel et de courte durée peut être bénéfique — il améliore la concentration, la performance et la réactivité. C'est ce qu'on appelle l'eustress. Mais même un stress aigu provoque des effets physiques immédiats : augmentation de la fréquence cardiaque et de la tension artérielle, tensions musculaires, ralentissement de la digestion, accélération de la respiration, suppression temporaire du système immunitaire. Ces effets sont normaux et réversibles dès que la menace disparaît."
+      texte: "Un stress ponctuel et de courte durée peut être bénéfique, il améliore la concentration, la performance et la réactivité. C'est ce qu'on appelle l'eustress. Mais même un stress aigu provoque des effets physiques immédiats : augmentation de la fréquence cardiaque et de la tension artérielle, tensions musculaires, ralentissement de la digestion, accélération de la respiration, suppression temporaire du système immunitaire. Ces effets sont normaux et réversibles dès que la menace disparaît."
     },
     {
       sous_titre: "Le stress chronique : quand le corps s'épuise",
-      texte: "C'est le stress chronique — celui qui dure dans le temps sans répit — qui est véritablement dangereux pour la santé. Un taux de cortisol élevé en permanence perturbe presque tous les systèmes du corps : le système cardiovasculaire (risque accru d'hypertension, d'infarctus), le système immunitaire (plus grande vulnérabilité aux infections et aux maladies auto-immunes), le système digestif (troubles intestinaux, côlon irritable), le système hormonal (dérèglement de la thyroïde, problèmes de fertilité) et le cerveau lui-même (anxiété, dépression, troubles de la mémoire)."
+      texte: "C'est le stress chronique, celui qui dure dans le temps sans répit, qui est véritablement dangereux pour la santé. Un taux de cortisol élevé en permanence perturbe presque tous les systèmes du corps : le système cardiovasculaire (risque accru d'hypertension, d'infarctus), le système immunitaire (plus grande vulnérabilité aux infections et aux maladies auto-immunes), le système digestif (troubles intestinaux, côlon irritable), le système hormonal (dérèglement de la thyroïde, problèmes de fertilité) et le cerveau lui-même (anxiété, dépression, troubles de la mémoire)."
     },
     {
       sous_titre: "Stress et sommeil : un cercle vicieux",
-      texte: "Le stress et le sommeil sont étroitement liés dans un cercle vicieux. Le cortisol, hormone du stress, est naturellement élevé le matin pour nous réveiller et bas le soir pour permettre l'endormissement. Un stress chronique maintient le cortisol élevé en soirée — ce qui retarde l'endormissement, fragmente le sommeil et réduit le sommeil profond réparateur. Or le manque de sommeil augmente à son tour la sensibilité au stress et la production de cortisol. Prendre soin de son sommeil est donc aussi une façon de réguler son stress."
+      texte: "Le stress et le sommeil sont étroitement liés dans un cercle vicieux. Le cortisol, hormone du stress, est naturellement élevé le matin pour nous réveiller et bas le soir pour permettre l'endormissement. Un stress chronique maintient le cortisol élevé en soirée, ce qui retarde l'endormissement, fragmente le sommeil et réduit le sommeil profond réparateur. Or le manque de sommeil augmente à son tour la sensibilité au stress et la production de cortisol. Prendre soin de son sommeil est donc aussi une façon de réguler son stress."
     },
     {
       sous_titre: "Les techniques validées pour réguler le stress",
-      texte: "Plusieurs approches ont démontré scientifiquement leur efficacité pour réduire le cortisol et calmer le système nerveux. La cohérence cardiaque (5 respirations par minute pendant 5 minutes) réduit le cortisol en quelques minutes. L'activité physique régulière est l'un des meilleurs anti-stress naturels — elle métabolise le cortisol et libère des endorphines. La méditation de pleine conscience modifie structurellement le cerveau après seulement 8 semaines de pratique régulière. Le contact avec la nature, le lien social et le sommeil suffisant sont également des régulateurs puissants du stress."
+      texte: "Plusieurs approches ont démontré scientifiquement leur efficacité pour réduire le cortisol et calmer le système nerveux. La cohérence cardiaque (5 respirations par minute pendant 5 minutes) réduit le cortisol en quelques minutes. L'activité physique régulière est l'un des meilleurs anti-stress naturels, elle métabolise le cortisol et libère des endorphines. La méditation de pleine conscience modifie structurellement le cerveau après seulement 8 semaines de pratique régulière. Le contact avec la nature, le lien social et le sommeil suffisant sont également des régulateurs puissants du stress."
     }
   ]
 },
@@ -931,11 +931,11 @@ const articles = [
   contenu: [
     {
       sous_titre: "Le sommeil, bien plus qu'un simple repos",
-      texte: "Pendant le sommeil, le corps est loin d'être inactif. C'est une période de régénération intense : le cerveau consolide les apprentissages et les souvenirs de la journée, élimine les déchets métaboliques accumulés (dont les protéines liées à la maladie d'Alzheimer) grâce au système glymphatique, et régule les émotions. Le corps, lui, sécrète l'hormone de croissance, répare les tissus musculaires, renforce le système immunitaire et régule les hormones de la faim. Un sommeil de qualité n'est pas un luxe — c'est une nécessité biologique fondamentale."
+      texte: "Pendant le sommeil, le corps est loin d'être inactif. C'est une période de régénération intense : le cerveau consolide les apprentissages et les souvenirs de la journée, élimine les déchets métaboliques accumulés (dont les protéines liées à la maladie d'Alzheimer) grâce au système glymphatique, et régule les émotions. Le corps, lui, sécrète l'hormone de croissance, répare les tissus musculaires, renforce le système immunitaire et régule les hormones de la faim. Un sommeil de qualité n'est pas un luxe, c'est une nécessité biologique fondamentale."
     },
     {
       sous_titre: "Les cycles du sommeil et leur importance",
-      texte: "Le sommeil se compose de cycles d'environ 90 minutes, répétés 4 à 6 fois par nuit. Chaque cycle comprend du sommeil léger, du sommeil profond et du sommeil paradoxal (REM). Le sommeil profond, dominant en première partie de nuit, est celui de la récupération physique et du renforcement immunitaire. Le sommeil paradoxal, plus abondant en fin de nuit, est essentiel pour la mémoire émotionnelle et la créativité. Réduire son temps de sommeil, même d'une heure, ampute principalement le sommeil paradoxal — le plus précieux cognitivement."
+      texte: "Le sommeil se compose de cycles d'environ 90 minutes, répétés 4 à 6 fois par nuit. Chaque cycle comprend du sommeil léger, du sommeil profond et du sommeil paradoxal (REM). Le sommeil profond, dominant en première partie de nuit, est celui de la récupération physique et du renforcement immunitaire. Le sommeil paradoxal, plus abondant en fin de nuit, est essentiel pour la mémoire émotionnelle et la créativité. Réduire son temps de sommeil, même d'une heure, ampute principalement le sommeil paradoxal, le plus précieux cognitivement."
     },
     {
       sous_titre: "Les conséquences du manque de sommeil",
@@ -943,11 +943,11 @@ const articles = [
     },
     {
       sous_titre: "Les piliers d'un bon sommeil",
-      texte: "Plusieurs habitudes ont un impact direct sur la qualité du sommeil. La régularité des horaires est la plus importante — se coucher et se lever à heure fixe, même le week-end, stabilise l'horloge biologique. La température de la chambre idéale se situe entre 16 et 18°C — le corps a besoin de se refroidir pour s'endormir. L'obscurité totale est essentielle car même une faible lumière perturbe la sécrétion de mélatonine. Éviter les écrans et les activités stimulantes dans les 2 heures avant le coucher permet au cerveau d'entrer progressivement en mode veille."
+      texte: "Plusieurs habitudes ont un impact direct sur la qualité du sommeil. La régularité des horaires est la plus importante, se coucher et se lever à heure fixe, même le week-end, stabilise l'horloge biologique. La température de la chambre idéale se situe entre 16 et 18°C, le corps a besoin de se refroidir pour s'endormir. L'obscurité totale est essentielle car même une faible lumière perturbe la sécrétion de mélatonine. Éviter les écrans et les activités stimulantes dans les 2 heures avant le coucher permet au cerveau d'entrer progressivement en mode veille."
     },
     {
       sous_titre: "Ce qui perturbe le sommeil sans qu'on le sache",
-      texte: "Certains facteurs perturbent le sommeil de façon insidieuse. L'alcool, souvent perçu comme un aide-sommeil, fragmente en réalité le sommeil et supprime le sommeil paradoxal — on s'endort plus vite mais on dort moins bien. La caféine a une demi-vie de 5 à 7 heures — un café à 16h signifie que la moitié de la caféine est encore active à 23h. Le sport intensif le soir élève la température corporelle et le cortisol, retardant l'endormissement. Le stress et les pensées ruminantes activent le système nerveux sympathique, incompatible avec l'endormissement."
+      texte: "Certains facteurs perturbent le sommeil de façon insidieuse. L'alcool, souvent perçu comme un aide-sommeil, fragmente en réalité le sommeil et supprime le sommeil paradoxal, on s'endort plus vite mais on dort moins bien. La caféine a une demi-vie de 5 à 7 heures, un café à 16h signifie que la moitié de la caféine est encore active à 23h. Le sport intensif le soir élève la température corporelle et le cortisol, retardant l'endormissement. Le stress et les pensées ruminantes activent le système nerveux sympathique, incompatible avec l'endormissement."
     }
   ]
 },
@@ -964,7 +964,7 @@ const articles = [
     },
     {
       sous_titre: "Le thé : une boisson aux multiples vertus",
-      texte: "Le thé vert est particulièrement riche en catéchines, des antioxydants puissants qui protègent les cellules du stress oxydatif. Il contient également de la L-théanine, un acide aminé qui favorise un état de calme et de concentration sans somnolence — ce qui explique l'effet 'zen mais alerte' caractéristique du thé vert. Le thé noir, lui, est riche en théaflavines, bénéfiques pour la santé cardiovasculaire. Les thés fermentés comme le pu-erh auraient des effets positifs sur le microbiote intestinal. Le thé blanc, peu transformé, est particulièrement riche en antioxydants."
+      texte: "Le thé vert est particulièrement riche en catéchines, des antioxydants puissants qui protègent les cellules du stress oxydatif. Il contient également de la L-théanine, un acide aminé qui favorise un état de calme et de concentration sans somnolence, ce qui explique l'effet 'zen mais alerte' caractéristique du thé vert. Le thé noir, lui, est riche en théaflavines, bénéfiques pour la santé cardiovasculaire. Les thés fermentés comme le pu-erh auraient des effets positifs sur le microbiote intestinal. Le thé blanc, peu transformé, est particulièrement riche en antioxydants."
     },
     {
       sous_titre: "La caféine : comment elle agit et ses limites",
@@ -972,11 +972,11 @@ const articles = [
     },
     {
       sous_titre: "Quand et comment consommer café et thé intelligemment",
-      texte: "Le moment de consommation est crucial. Boire un café dès le réveil n'est pas optimal — le cortisol, naturellement élevé entre 8h et 9h, fait déjà son effet stimulant. Attendre 1h à 1h30 après le réveil pour prendre son premier café maximise ses effets. Éviter toute caféine après 14h-15h pour ne pas perturber le sommeil. Boire son café après un repas plutôt qu'à jeun réduit son impact sur l'acidité gastrique. Ne pas ajouter de sucre ou de lait en excès — le café noir reste la forme la plus bénéfique pour la santé."
+      texte: "Le moment de consommation est crucial. Boire un café dès le réveil n'est pas optimal, le cortisol, naturellement élevé entre 8h et 9h, fait déjà son effet stimulant. Attendre 1h à 1h30 après le réveil pour prendre son premier café maximise ses effets. Éviter toute caféine après 14h-15h pour ne pas perturber le sommeil. Boire son café après un repas plutôt qu'à jeun réduit son impact sur l'acidité gastrique. Ne pas ajouter de sucre ou de lait en excès, le café noir reste la forme la plus bénéfique pour la santé."
     },
     {
       sous_titre: "Ce qu'il vaut mieux éviter",
-      texte: "Toutes les formes de café et de thé ne se valent pas. Les boissons à base de café avec sucre ajouté, sirops aromatisés et crèmes (type Frappuccino) n'ont plus grand chose à voir avec les bénéfices santé du café — elles sont avant tout des desserts liquides très caloriques. Le café filtre est préférable au café bouilli (cafetière à piston) car il retient les diterpènes — des substances qui élèvent le cholestérol LDL. Les thés en sachets industriels contiennent souvent des résidus de pesticides — préférer les thés en vrac de qualité. Enfin, les boissons énergisantes contenant de la caféine sont à éviter — leur composition globale est délétère pour la santé."
+      texte: "Toutes les formes de café et de thé ne se valent pas. Les boissons à base de café avec sucre ajouté, sirops aromatisés et crèmes (type Frappuccino) n'ont plus grand chose à voir avec les bénéfices santé du café, elles sont avant tout des desserts liquides très caloriques. Le café filtre est préférable au café bouilli (cafetière à piston) car il retient les diterpènes, des substances qui élèvent le cholestérol LDL. Les thés en sachets industriels contiennent souvent des résidus de pesticides, préférer les thés en vrac de qualité. Enfin, les boissons énergisantes contenant de la caféine sont à éviter, leur composition globale est délétère pour la santé."
     }
   ]
 },
@@ -989,23 +989,23 @@ const articles = [
   contenu: [
     {
       sous_titre: "Les oméga-3 : des graisses indispensables",
-      texte: "Les oméga-3 sont des acides gras polyinsaturés dits 'essentiels' — le corps ne sait pas les fabriquer et doit les obtenir par l'alimentation. Ils jouent un rôle fondamental dans la structure des membranes cellulaires, notamment dans le cerveau dont 60% de la matière sèche est composée de graisses, majoritairement des oméga-3. Ils ont des effets anti-inflammatoires puissants, protègent le système cardiovasculaire, soutiennent la santé mentale (dépression, anxiété) et sont essentiels au développement du cerveau du fœtus pendant la grossesse."
+      texte: "Les oméga-3 sont des acides gras polyinsaturés dits 'essentiels', le corps ne sait pas les fabriquer et doit les obtenir par l'alimentation. Ils jouent un rôle fondamental dans la structure des membranes cellulaires, notamment dans le cerveau dont 60% de la matière sèche est composée de graisses, majoritairement des oméga-3. Ils ont des effets anti-inflammatoires puissants, protègent le système cardiovasculaire, soutiennent la santé mentale (dépression, anxiété) et sont essentiels au développement du cerveau du fœtus pendant la grossesse."
     },
     {
       sous_titre: "Les trois types d'oméga-3 et leurs différences",
-      texte: "Il existe trois principaux oméga-3 aux rôles distincts. L'ALA (acide alpha-linolénique) est d'origine végétale — on le trouve dans les graines de lin, les noix, l'huile de colza. Il est précurseur des deux autres mais la conversion est très limitée dans l'organisme (moins de 5%). L'EPA (acide eicosapentaénoïque) et le DHA (acide docosahexaénoïque) sont les formes directement utilisables par le corps — on les trouve principalement dans les poissons gras et les algues marines. Ce sont ces deux formes qui sont responsables de la majorité des bénéfices santé des oméga-3."
+      texte: "Il existe trois principaux oméga-3 aux rôles distincts. L'ALA (acide alpha-linolénique) est d'origine végétale, on le trouve dans les graines de lin, les noix, l'huile de colza. Il est précurseur des deux autres mais la conversion est très limitée dans l'organisme (moins de 5%). L'EPA (acide eicosapentaénoïque) et le DHA (acide docosahexaénoïque) sont les formes directement utilisables par le corps, on les trouve principalement dans les poissons gras et les algues marines. Ce sont ces deux formes qui sont responsables de la majorité des bénéfices santé des oméga-3."
     },
     {
       sous_titre: "Sources animales : les poissons gras en tête",
-      texte: "Les poissons gras sont la source la plus concentrée et la plus biodisponible d'EPA et de DHA. Les plus riches sont les petits poissons gras — sardines, maquereaux, harengs, anchois — qui présentent également l'avantage d'être bas dans la chaîne alimentaire et donc moins chargés en métaux lourds que les grands poissons comme le thon ou le saumon. La recommandation est de consommer 2 portions de poissons gras par semaine. Les œufs de poules élevées en plein air et nourries aux graines de lin sont également une bonne source d'oméga-3."
+      texte: "Les poissons gras sont la source la plus concentrée et la plus biodisponible d'EPA et de DHA. Les plus riches sont les petits poissons gras, sardines, maquereaux, harengs, anchois, qui présentent également l'avantage d'être bas dans la chaîne alimentaire et donc moins chargés en métaux lourds que les grands poissons comme le thon ou le saumon. La recommandation est de consommer 2 portions de poissons gras par semaine. Les œufs de poules élevées en plein air et nourries aux graines de lin sont également une bonne source d'oméga-3."
     },
     {
       sous_titre: "Sources végétales : utiles mais insuffisantes seules",
-      texte: "Pour les végétariens et végétaliens, les sources végétales d'oméga-3 sont importantes mais ne couvrent pas tous les besoins. Les graines de lin moulues, les graines de chia, les noix et l'huile de colza apportent de l'ALA en quantité intéressante. Cependant, la conversion de l'ALA en EPA et DHA étant très faible, ces sources seules ne suffisent généralement pas à couvrir les besoins en EPA et DHA. La solution pour les personnes ne consommant pas de poisson est la supplémentation en huile d'algues — la source primaire d'où les poissons tirent eux-mêmes leurs oméga-3, et donc 100% végétale."
+      texte: "Pour les végétariens et végétaliens, les sources végétales d'oméga-3 sont importantes mais ne couvrent pas tous les besoins. Les graines de lin moulues, les graines de chia, les noix et l'huile de colza apportent de l'ALA en quantité intéressante. Cependant, la conversion de l'ALA en EPA et DHA étant très faible, ces sources seules ne suffisent généralement pas à couvrir les besoins en EPA et DHA. La solution pour les personnes ne consommant pas de poisson est la supplémentation en huile d'algues, la source primaire d'où les poissons tirent eux-mêmes leurs oméga-3, et donc 100% végétale."
     },
     {
       sous_titre: "Le ratio oméga-6/oméga-3 : le vrai enjeu",
-      texte: "Au-delà de la quantité d'oméga-3, c'est le ratio oméga-6/oméga-3 qui est crucial pour la santé. Ces deux familles de graisses entrent en compétition pour les mêmes enzymes — un excès d'oméga-6 bloque l'utilisation des oméga-3. Le ratio idéal est de 4:1 (oméga-6/oméga-3) mais l'alimentation occidentale moderne atteint souvent 15:1 à 20:1, en raison de la surconsommation d'huiles végétales riches en oméga-6 (tournesol, maïs, soja). Réduire ces huiles au profit de l'huile d'olive et de colza, et augmenter la consommation de poissons gras, est la stratégie la plus efficace pour rééquilibrer ce ratio."
+      texte: "Au-delà de la quantité d'oméga-3, c'est le ratio oméga-6/oméga-3 qui est crucial pour la santé. Ces deux familles de graisses entrent en compétition pour les mêmes enzymes, un excès d'oméga-6 bloque l'utilisation des oméga-3. Le ratio idéal est de 4:1 (oméga-6/oméga-3) mais l'alimentation occidentale moderne atteint souvent 15:1 à 20:1, en raison de la surconsommation d'huiles végétales riches en oméga-6 (tournesol, maïs, soja). Réduire ces huiles au profit de l'huile d'olive et de colza, et augmenter la consommation de poissons gras, est la stratégie la plus efficace pour rééquilibrer ce ratio."
     }
   ]
 }

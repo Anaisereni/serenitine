@@ -310,7 +310,7 @@ function OutilStress() {
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4 }}>🧡 Cohérence cardiaque</h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 16 }}>
-          5 secondes d'inspiration, 5 secondes d'expiration — pendant 5 minutes.
+          5 secondes d'inspiration, 5 secondes d'expiration, pendant 5 minutes. 🔔 Désactive le mode silencieux pour entendre les sons.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 16 }}>
           <div style={{
