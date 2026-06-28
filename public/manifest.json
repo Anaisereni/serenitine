@@ -4,19 +4,19 @@
   "description": "Prenez soin de vous chaque jour, avec les bons gestes.",
   "icons": [
     {
-      "src": "logomesroutines.png",
+      "src": "icone.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "logomesroutines.png",
+      "src": "icone.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "logomesroutines.png",
+      "src": "icone.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any maskable"

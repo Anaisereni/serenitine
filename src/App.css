@@ -6,13 +6,13 @@
 
 body {
   font-family: -apple-system, sans-serif;
-  background: #3a7376;
+  background: #7498b6;
   color: #1a1a1a;
 }
 
 .app-header {
-  background: #f3ece2;
-  color: #2F5D3A;
+  background: #faf5f0;
+  color: #464228;
   padding: 0.2rem 1.5rem;
   text-align: center;
 }
@@ -188,7 +188,7 @@ body {
 
 .progression-fill {
   height: 8px;
-  background: #b0d7dd;
+  background: #605a52;
   border-radius: 10px;
   transition: width 0.3s ease;
 }
@@ -298,7 +298,7 @@ body {
 }
 
 .accueil-hero {
-  background: linear-gradient(135deg, #3f949e, #bfbdb9);
+  background: linear-gradient(135deg, #88a8d2, #b9c5d6);
   border-radius: 16px;
   padding: 1.5rem;
   text-align: center;
@@ -491,7 +491,7 @@ body {
 }
 
 .profil-hero {
-  background: linear-gradient(135deg, #f0eff2, #468c93);
+  background: linear-gradient(135deg, #f0eff2, #7992b5);
   border-radius: 16px;
   padding: 1.5rem;
   text-align: center;
@@ -765,7 +765,7 @@ body {
 }
 .header-logo {
   width: 300px;
-  height: 250px;
+  height: 300px;
   object-fit: contain;
   border-radius: 8px;
   margin-bottom: 4px;
@@ -889,7 +889,7 @@ body {
   padding: 1rem 1.25rem;
   border: 1px solid #eee;
   margin-bottom: 1.5rem;
-  border-left: 3px solid #24a2c8;
+  border-left: 3px solid #625746;
 }
 
 .accueil-conseil-header {

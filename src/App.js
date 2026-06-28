@@ -72,7 +72,7 @@ function ContenuApp() {
     <AppContext.Provider value={{ routineId, setRoutineId }}>
       <div className="app">
         <header className="app-header">
-          <img src="/sereniti.png" alt="Logo Routines" className="header-logo" />
+          <img src="/logobleu.png" alt="Logo Routines" className="header-logo" />
           <p>✹ Tes routines bien-être pour une vie plus sereine ✹</p>
         </header>
         <main className="app-main">

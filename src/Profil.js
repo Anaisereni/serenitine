@@ -101,7 +101,7 @@ const debutFormate = dateDebut
 
       <div className="profil-hero">
         <div className="profil-avatar">
-          <img src="/profilnew.png" alt="Logo Sérénitine" />
+          <img src="/profilbleu.png" alt="Logo Sérénitine" />
         </div>
         {edition ? (
           <div className="profil-edition">
@@ -160,7 +160,7 @@ const debutFormate = dateDebut
           <div className="profil-stat-label">Aujourd'hui</div>
           <div className="profil-stat-valeur">{cocheeAujourdhui}/{totalQuotidien}</div>
           <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctJour}%`, background: '#56b4d1' }} />
+            <div className="profil-stat-barre-fill" style={{ width: `${pctJour}%`, background: '#534226' }} />
           </div>
           <div className="profil-stat-pct">{pctJour}%</div>
         </div>
@@ -170,7 +170,7 @@ const debutFormate = dateDebut
           <div className="profil-stat-label">Cette semaine</div>
           <div className="profil-stat-valeur">{cocheeCetteSemaine}/{totalHebdo}</div>
           <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctSemaine}%`, background: '#56b4d1' }} />
+            <div className="profil-stat-barre-fill" style={{ width: `${pctSemaine}%`, background: '#534226' }} />
           </div>
           <div className="profil-stat-pct">{pctSemaine}%</div>
         </div>
@@ -180,7 +180,7 @@ const debutFormate = dateDebut
           <div className="profil-stat-label">Cette année</div>
           <div className="profil-stat-valeur">{cocheeAnnuel}/{totalAnnuel}</div>
           <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctAnnee}%`, background: '#56b4d1' }} />
+            <div className="profil-stat-barre-fill" style={{ width: `${pctAnnee}%`, background: '#534226' }} />
           </div>
           <div className="profil-stat-pct">{pctAnnee}%</div>
         </div>

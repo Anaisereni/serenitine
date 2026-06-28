@@ -211,14 +211,14 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
   return (
     <div style={{
       background: 'var(--color-background-primary)',
-      border: isToday ? '1.5px solid #51c3d4' : '0.5px solid var(--color-border-tertiary)',
+      border: isToday ? '1.5px solid #534226' : '0.5px solid var(--color-border-tertiary)',
       borderRadius: 'var(--border-radius-lg)',
       padding: '1rem',
       marginBottom: 10
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
         <div style={{ textAlign: 'center', flexShrink: 0 }}>
-          <div style={{ fontSize: 32, fontWeight: 500, color: '#51d3e2', lineHeight: 1 }}>{pct}</div>
+          <div style={{ fontSize: 32, fontWeight: 500, color: '#534226', lineHeight: 1 }}>{pct}</div>
           <div style={{ fontSize: 10, color: 'white' }}>%</div>
         </div>
         <div style={{ flex: 1 }}>
@@ -226,10 +226,10 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
             <span>{valeur} routines complétées</span>
             <span>/ {total}</span>
           </div>
-          <div style={{ height: 6, background: '#4e7580', borderRadius: 10, overflow: 'hidden' }}>
-            <div style={{ height: 6, background: '#60d3e5', width: `${pct}%`, borderRadius: 10, transition: 'width 0.3s' }} />
+          <div style={{ height: 6, background: '#a79f90', borderRadius: 10, overflow: 'hidden' }}>
+            <div style={{ height: 6, background: '#534226', width: `${pct}%`, borderRadius: 10, transition: 'width 0.3s' }} />
           </div>
-          {isToday && <div style={{ fontSize: 11, color: '#68c4e0', marginTop: 4 }}>Période en cours</div>}
+          {isToday && <div style={{ fontSize: 11, color: '#534226', marginTop: 4 }}>Période en cours</div>}
         </div>
       </div>
 
@@ -343,7 +343,7 @@ function Statistiques() {
             {formater(periodeKey)}
           </div>
           {isToday && (
-            <div style={{ fontSize: 11, color: '#72d5e0', marginTop: 2 }}>● période en cours</div>
+            <div style={{ fontSize: 11, color: '#534226', marginTop: 2 }}>● période en cours</div>
           )}
         </div>
 
