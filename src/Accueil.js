@@ -145,14 +145,14 @@ const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
 
   {instructions && (
     <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-      <p style={{ fontSize: 13, fontWeight: 500, color: '#1D9E75', marginBottom: 10 }}>Sur iPhone (Safari) :</p>
+      <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur iPhone (Safari) :</p>
       <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7, marginBottom: 12 }}>
         1. Ouvrez l'app dans <strong>Safari</strong><br />
         2. Appuyez sur l'icône <strong>Partager</strong> (carré avec flèche vers le haut)<br />
         3. Faites défiler et appuyez sur <strong>"Sur l'écran d'accueil"</strong><br />
         4. Appuyez sur <strong>"Ajouter"</strong>
       </p>
-      <p style={{ fontSize: 13, fontWeight: 500, color: '#1D9E75', marginBottom: 10 }}>Sur Android (Chrome) :</p>
+      <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur Android (Chrome) :</p>
       <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>
         1. Ouvrez l'app dans <strong>Chrome</strong><br />
         2. Appuyez sur les <strong>3 points</strong> en haut à droite<br />

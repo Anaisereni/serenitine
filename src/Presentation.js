@@ -9,9 +9,13 @@ function Presentation() {
       <div className="article-emoji">🙋🏻‍♀️</div>
       <h2 className="fiche-titre">Qui suis-je ?</h2>
       <div className="article-section">
-        <p className="article-section-texte" >Je m’appelle Anaïs Pata et je suis kinésithérapeute depuis 2020. J’ai ensuite obtenu un Master 2 en ingénierie de la santé en 2021 (spécifique masso-kinésithérapie), puis un Diplôme Universitaire en alimentation santé et micronutrition en 2024.
-Depuis mes années étudiantes, je m’intéresse de près au bien-être et à l’importance d’un mode de vie sain. Dans ma pratique, j’ai rapidement réalisé que beaucoup de mes patients manquaient d’informations et avaient besoin d’être guidés au quotidien.
-C’est de ce constat qu’est née, en 2026, l’envie de créer cette application : un outil simple et accessible, pensé pour accompagner chacun vers de meilleures habitudes de vie. Le but n'est pas d'être parfait dès le début, mais d'améliorer ses habitudes petit à petit. Pour aller plus loin et pour avoir des conseils personnalisés, je propose des consultations en visio autour du bien-être et de l’hygiène de vie via Doctolib (prendre rdv 'en vidéo').</p>
+        <p className="article-section-texte" >Je m’appelle Anaïs Pata et je suis kinésithérapeute depuis 2020. Passionnée par la santé et la prévention, j’ai souhaité approfondir mes connaissances en obtenant un Master 2 en ingénierie de la santé (spécialité masso-kinésithérapie) en 2021, puis un Diplôme Universitaire en alimentation santé et micronutrition en 2024.
+
+Depuis mes années d’études, je suis convaincue que notre bien-être se construit avant tout grâce à nos habitudes de vie. Au fil de ma pratique, j’ai constaté que beaucoup de patients souhaitaient prendre davantage soin de leur santé, mais ne savaient pas toujours par où commencer ou manquaient de repères fiables au quotidien.
+
+C’est de cette envie d’accompagner chacun de manière simple et concrète qu’est née, en 2026, cette application. Mon objectif est de vous aider à adopter, à votre rythme, de meilleures habitudes de vie. Ici, pas de recherche de perfection : chaque petit pas compte, et ce sont les progrès réguliers qui font la différence sur le long terme.
+
+Si vous souhaitez aller plus loin avec un accompagnement personnalisé, je propose également des consultations en visioconférence autour du bien-être, de l’hygiène de vie et de la nutrition, réservables sur Doctolib (en choisissant l’option « en vidéo »).</p>
       </div>
     </div>
   );
