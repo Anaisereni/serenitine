@@ -816,7 +816,7 @@ body {
 }
 
 .consentement-lien {
-  color: #1D9E75;
+  color: #3f75bd;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -825,7 +825,7 @@ body {
   margin-top: 1.2rem;
   width: 100%;
   padding: 14px;
-  background: #1D9E75;
+  background: #3a5ba7;
   color: white;
   border: none;
   border-radius: 12px;

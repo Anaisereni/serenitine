@@ -73,7 +73,9 @@ function ContenuApp() {
       <div className="app">
         <header className="app-header">
           <img src="/logohaut.png" alt="Logo Routines" className="header-logo" />
-          <p>✹ Tes routines bien-être pour une vie plus sereine ✹</p>
+       <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', fontWeight: 700 }}>
+  ✹ Tes routines bien-être pour une vie plus sereine ✹
+</p>
         </header>
         <main className="app-main">
           <Routes>

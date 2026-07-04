@@ -53,8 +53,40 @@ const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
 
       <div className="accueil-date">{today}</div>
 
-      <div className="accueil-hero">
+      <div className="accueil-hero"style={{ position: 'relative', overflow: 'hidden' }}>
+{/* Feuilles haut gauche */}
+<svg
+  style={{ position: 'absolute', top: 0, left: 0, width: 100, height: 100, pointerEvents: 'none' }}
+  viewBox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(255,255,255,0.25)"/>
+  <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(255,255,255,0.2)"/>
+  <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(255,255,255,0.18)"/>
+  <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(255,255,255,0.22)"/>
+  <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(255,255,255,0.17)"/>
+  <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(255,255,255,0.14)"/>
+  <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
+  <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
+  <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
+</svg>
 
+   {/* Feuilles bas droite */}
+  <svg
+    style={{ position: 'absolute', bottom: 0, right: 0, width: 100, height: 100, pointerEvents: 'none', transform: 'rotate(180deg)' }}
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(255,255,255,0.25)"/>
+    <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(255,255,255,0.2)"/>
+    <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(255,255,255,0.18)"/>
+    <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(255,255,255,0.22)"/>
+    <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(255,255,255,0.17)"/>
+    <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(255,255,255,0.14)"/>
+    <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
+    <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
+    <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
+  </svg>
   <h2 className="accueil-hero-titre">Bonjour 🤍</h2>
 <p className="accueil-hero-message">Sérénitine t'accompagne chaque jour vers de meilleures habitudes de vie. Simple et sans pression, juste ce qu'il faut pour prendre soin de toi. Retrouve un rythme qui te fait du bien ✹ </p>
 </div>
