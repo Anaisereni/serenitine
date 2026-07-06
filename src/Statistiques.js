@@ -120,7 +120,7 @@ function CalendrierMois({ annee, mois, histQuotidien }) {
               <div style={{
                 width: 28, height: 28, borderRadius: '50%',
                 background: couleur.bg,
-                border: isToday ? '2px solid #60d3e5' : `1.5px solid ${couleur.border}`,
+                border: isToday ? '2px solid #f8f9fa' : `1.5px solid ${couleur.border}`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: 10, color: 'white', fontWeight: isToday ? 700 : 400,
               }}>
@@ -226,7 +226,7 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
             <span>{valeur} routines complétées</span>
             <span>/ {total}</span>
           </div>
-          <div style={{ height: 6, background: '#a79f90', borderRadius: 10, overflow: 'hidden' }}>
+          <div style={{ height: 6, background: '#eeebe7', borderRadius: 10, overflow: 'hidden' }}>
             <div style={{ height: 6, background: '#534226', width: `${pct}%`, borderRadius: 10, transition: 'width 0.3s' }} />
           </div>
           {isToday && <div style={{ fontSize: 11, color: '#534226', marginTop: 4 }}>Période en cours</div>}
@@ -316,7 +316,7 @@ function Statistiques() {
             style={{
               flex: 1, padding: '8px 4px', borderRadius: 20,
               border: onglet === key ? 'none' : '0.5px solid var(--color-border-secondary)',
-              background: onglet === key ? '#c5bfb5' : 'white',
+              background: onglet === key ? '#5b564c' : 'white',
               color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
               fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
             }}

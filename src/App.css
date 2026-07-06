@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, sans-serif;
-  background: #7498b6;
+  background: #83a5c1;
   color: #1a1a1a;
 }
 
@@ -67,11 +67,11 @@ body {
   background: white;
   font-size: 13px;
   cursor: pointer;
-  color: #ada5a5;
+  color: #adaaa5;
 }
 
 .freq-btn.actif {
-  background: #c5bfb5;
+  background: #5b564c;
   color: white;
   border-color: #eaebe5;
   font-weight: 500;
@@ -239,7 +239,7 @@ body {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #A47551;
+  color: #5b564c;
   margin-bottom: 10px;
 }
 
