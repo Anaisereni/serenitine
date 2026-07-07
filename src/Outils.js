@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAudioCtx, debloqueurAudio } from './audio';
-
-
+import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad } from 'lucide-react';
 
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
@@ -39,10 +38,7 @@ const COURSES_DEFAUT = [
 
 const CATEGORIES = [...new Set(COURSES_DEFAUT.map(c => c.categorie))];
 
- const DUREE_TOTALE = 5 * 60;
-
- // Fonctions audio à placer en dehors de OutilStress, après DUREE_TOTALE
-
+const DUREE_TOTALE = 5 * 60;
 
 const jouerSonInspiration = (ctx) => {
   const osc = ctx.createOscillator();
@@ -50,7 +46,7 @@ const jouerSonInspiration = (ctx) => {
   osc.connect(gain);
   gain.connect(ctx.destination);
   osc.type = 'sine';
-  osc.frequency.setValueAtTime(528, ctx.currentTime); // fréquence apaisante
+  osc.frequency.setValueAtTime(528, ctx.currentTime);
   gain.gain.setValueAtTime(0, ctx.currentTime);
   gain.gain.linearRampToValueAtTime(0.15, ctx.currentTime + 0.5);
   gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 2);
@@ -64,7 +60,7 @@ const jouerSonExpiration = (ctx) => {
   osc.connect(gain);
   gain.connect(ctx.destination);
   osc.type = 'sine';
-  osc.frequency.setValueAtTime(396, ctx.currentTime); // note plus grave
+  osc.frequency.setValueAtTime(396, ctx.currentTime);
   gain.gain.setValueAtTime(0, ctx.currentTime);
   gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 0.5);
   gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 2);
@@ -73,7 +69,6 @@ const jouerSonExpiration = (ctx) => {
 };
 
 const jouerSonFin = (ctx) => {
-  // Ding doux x3
   [0, 0.5, 1].forEach((delai, i) => {
     const notes = [528, 594, 660];
     const osc = ctx.createOscillator();
@@ -136,7 +131,7 @@ function OutilNutrition() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0
               }}>
-                {cochees.includes(c.id) && <span style={{ color: 'white', fontSize: 12 }}>✓</span>}
+                {cochees.includes(c.id) && <Check size={12} color="white" />}
               </div>
               <span style={{ fontSize: 14, color: 'var(--color-text-primary)', textDecoration: cochees.includes(c.id) ? 'line-through' : 'none' }}>
                 {c.nom}
@@ -166,10 +161,19 @@ function OutilSommeil() {
     localStorage.setItem('sommeil_journal', JSON.stringify(updated));
   };
 
+  const qualites = [
+    { label: 'Mauvaise', Icon: Frown },
+    { label: 'Moyenne', Icon: Meh },
+    { label: 'Bonne', Icon: Smile },
+    { label: 'Excellente', Icon: Laugh },
+  ];
+
   return (
     <div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8 }}>😴 Vider les pensées du soir</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Moon size={16} /> Vider les pensées du soir
+        </h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
           Note tout ce qui tourne dans ta tête pour libérer ton esprit avant de dormir.
         </p>
@@ -181,7 +185,9 @@ function OutilSommeil() {
         />
       </div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8 }}>📋 Programme du lendemain</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <ClipboardList size={16} /> Programme du lendemain
+        </h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
           Note ce que tu as à faire demain pour ne plus y penser cette nuit.
         </p>
@@ -193,7 +199,9 @@ function OutilSommeil() {
         />
       </div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12 }}>💤 Journal du sommeil — aujourd'hui</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <BedDouble size={16} /> Journal du sommeil — aujourd'hui
+        </h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
           <div>
             <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Heure de coucher</label>
@@ -211,16 +219,17 @@ function OutilSommeil() {
         <div style={{ marginBottom: 10 }}>
           <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Qualité du sommeil</label>
           <div style={{ display: 'flex', gap: 8 }}>
-            {['😴 Mauvaise', '😐 Moyenne', '🙂 Bonne', '😁 Excellente'].map(q => (
-              <button key={q} onClick={() => updateJournal('qualite', q)}
+            {qualites.map(({ label, Icon }) => (
+              <button key={label} onClick={() => updateJournal('qualite', label)}
                 style={{
-                  flex: 1, padding: '6px 4px', borderRadius: 8, fontSize: 11,
-                  border: entryAujourdhui.qualite === q ? 'none' : '0.5px solid #eee',
-                  background: entryAujourdhui.qualite === q ? '#E6F1FB' : 'white',
-                  color: entryAujourdhui.qualite === q ? '#185FA5' : 'var(--color-text-secondary)',
-                  cursor: 'pointer'
+                  flex: 1, padding: '8px 4px', borderRadius: 8, fontSize: 11,
+                  border: entryAujourdhui.qualite === label ? 'none' : '0.5px solid #eee',
+                  background: entryAujourdhui.qualite === label ? '#E6F1FB' : 'white',
+                  color: entryAujourdhui.qualite === label ? '#185FA5' : 'var(--color-text-secondary)',
+                  cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4
                 }}>
-                {q}
+                <Icon size={16} />
+                {label}
               </button>
             ))}
           </div>
@@ -248,49 +257,47 @@ function OutilStress() {
 
   const phaseRef = React.useRef('inspiration');
 
-  
-
   React.useEffect(() => {
-  if (actif) {
-    intervalRef.current = setInterval(() => {
-      setCompteurGlobal(c => {
-        const nouveauCompteur = c + 1;
-        const pos = nouveauCompteur % 10;
-        const nouvellePhase = pos < 5 ? 'inspiration' : 'expiration';
-        if (nouvellePhase !== phaseRef.current) {
-          phaseRef.current = nouvellePhase;
-          const ctx = getAudioCtx();
-          if (nouvellePhase === 'inspiration') {
-            jouerSonInspiration(ctx);
-          } else {
-            jouerSonExpiration(ctx);
+    if (actif) {
+      intervalRef.current = setInterval(() => {
+        setCompteurGlobal(c => {
+          const nouveauCompteur = c + 1;
+          const pos = nouveauCompteur % 10;
+          const nouvellePhase = pos < 5 ? 'inspiration' : 'expiration';
+          if (nouvellePhase !== phaseRef.current) {
+            phaseRef.current = nouvellePhase;
+            const ctx = getAudioCtx();
+            if (nouvellePhase === 'inspiration') {
+              jouerSonInspiration(ctx);
+            } else {
+              jouerSonExpiration(ctx);
+            }
           }
-        }
-        return nouveauCompteur;
-      });
+          return nouveauCompteur;
+        });
 
-      setTempsRestant(t => {
-        if (t <= 1) {
-          setActif(false);
-          clearInterval(intervalRef.current);
-          setTimeout(() => jouerSonFin(getAudioCtx()), 100);
-          return DUREE_TOTALE;
-        }
-        return t - 1;
-      });
-    }, 1000);
-  } else {
-    clearInterval(intervalRef.current);
-  }
-  return () => clearInterval(intervalRef.current);
-}, [actif]);
+        setTempsRestant(t => {
+          if (t <= 1) {
+            setActif(false);
+            clearInterval(intervalRef.current);
+            setTimeout(() => jouerSonFin(getAudioCtx()), 100);
+            return DUREE_TOTALE;
+          }
+          return t - 1;
+        });
+      }, 1000);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [actif]);
 
- const demarrer = () => {
-  debloqueurAudio();
-  jouerSonInspiration(getAudioCtx());
-  phaseRef.current = 'inspiration';
-  setActif(a => !a);
-};
+  const demarrer = () => {
+    debloqueurAudio();
+    jouerSonInspiration(getAudioCtx());
+    phaseRef.current = 'inspiration';
+    setActif(a => !a);
+  };
 
   const reset = () => {
     setActif(false);
@@ -308,9 +315,11 @@ function OutilStress() {
   return (
     <div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4 }}>🧡 Cohérence cardiaque</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <HeartPulse size={16} /> Cohérence cardiaque
+        </h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 16 }}>
-          5 secondes d'inspiration, 5 secondes d'expiration, pendant 5 minutes. 🔔 Désactive le mode silencieux pour entendre les sons.
+          5 secondes d'inspiration, 5 secondes d'expiration, pendant 5 minutes. Désactive le mode silencieux pour entendre les sons.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 16 }}>
           <div style={{
@@ -321,7 +330,7 @@ function OutilStress() {
             transition: 'all 0.5s ease',
             transform: phase === 'inspiration' ? 'scale(1.08)' : 'scale(0.95)',
           }}>
-            <div style={{ fontSize: 22 }}>{phase === 'inspiration' ? '🌬️' : '😮‍💨'}</div>
+            <Wind size={22} color="#854F0B" />
             <div style={{ fontSize: 13, fontWeight: 600, color: '#854F0B', marginTop: 4 }}>
               {phase === 'inspiration' ? 'Inspire' : 'Expire'}
             </div>
@@ -338,7 +347,7 @@ function OutilStress() {
             color: actif ? '#854F0B' : 'white',
             fontSize: 14, fontWeight: 500, cursor: 'pointer'
           }}>
-            {actif ? '⏸ Pause' : tempsRestant === DUREE_TOTALE ? '▶ Démarrer' : '▶ Reprendre'}
+            {actif ? 'Pause' : tempsRestant === DUREE_TOTALE ? 'Démarrer' : 'Reprendre'}
           </button>
           <button onClick={reset} style={{
             padding: '10px 16px', borderRadius: 10,
@@ -351,7 +360,9 @@ function OutilStress() {
       </div>
 
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8 }}>🧘 Parking à pensées</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Flower2 size={16} /> Parking à pensées
+        </h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
           Dépose ici ce qui te stresse ou te préoccupe. Mettre des mots sur ses pensées aide à les dépasser.
         </p>
@@ -364,7 +375,9 @@ function OutilStress() {
       </div>
 
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8 }}>✍️ Actions possibles</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <PenLine size={16} /> Actions possibles
+        </h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
           Pour chaque source de stress, quelle action concrète peux-tu mettre en place ?
         </p>
@@ -397,7 +410,9 @@ function OutilMouvement() {
   return (
     <div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#8f1d99', marginBottom: 8 }}>🏃 Programme de la semaine</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#8f1d99', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Activity size={16} /> Programme de la semaine
+        </h3>
         <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 12 }}>
           Planifie tes activités physiques pour la semaine — un programme écrit multiplie les chances de le suivre.
         </p>
@@ -415,7 +430,9 @@ function OutilMouvement() {
         ))}
       </div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#951d99', marginBottom: 8 }}>📝 Notes libres</h3>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#951d99', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <NotebookPen size={16} /> Notes libres
+        </h3>
         <textarea
           value={programme}
           onChange={e => { setProgramme(e.target.value); localStorage.setItem('mouvement_programme', e.target.value); }}
@@ -431,31 +448,34 @@ function Outils() {
   const [pilierActif, setPilierActif] = useState('Nutrition');
 
   const piliers = [
-    { nom: 'Nutrition', emoji: '🥗', couleur: '#27500A', bg: '#EAF3DE' },
-    { nom: 'Sommeil', emoji: '😴', couleur: '#0C447C', bg: '#E6F1FB' },
-    { nom: 'Stress', emoji: '🧘', couleur: '#633806', bg: '#FAEEDA' },
-    { nom: 'Mouvement', emoji: '🏃', couleur: '#8626a6', bg: '#FAECE7' },
+    { nom: 'Nutrition', Icon: Salad, couleur: '#27500A', bg: '#EAF3DE' },
+    { nom: 'Sommeil', Icon: Moon, couleur: '#0C447C', bg: '#E6F1FB' },
+    { nom: 'Stress', Icon: Flower2, couleur: '#633806', bg: '#FAEEDA' },
+    { nom: 'Mouvement', Icon: Activity, couleur: '#8626a6', bg: '#FAECE7' },
   ];
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4, textAlign: 'center' }}>Outils ✏️</h2>
+      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+        Outils <PenLine size={20} />
+      </h2>
       <p style={{ fontSize: 13, color: 'white', marginBottom: '1.2rem', textAlign: 'center' }}>
         Tes espaces pratiques pour agir au quotidien
       </p>
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
         {piliers.map(p => (
-          <button key={p.nom} onClick={() => setPilierActif(p.nom)}
-            style={{
-              flex: 1, padding: '8px 4px', borderRadius: 20, fontSize: 12,
-              border: pilierActif === p.nom ? 'none' : '0.5px solid var(--color-border-secondary)',
-              background: pilierActif === p.nom ? p.bg : 'transparent',
-              color: pilierActif === p.nom ? p.couleur : 'white',
-              fontWeight: pilierActif === p.nom ? 500 : 400, cursor: 'pointer'
-            }}>
-            {p.emoji} {p.nom}
-          </button>
-        ))}
+  <button key={p.nom} onClick={() => setPilierActif(p.nom)}
+    style={{
+      flex: 1, padding: '8px 4px', borderRadius: 20, fontSize: 12,
+      border: pilierActif === p.nom ? 'none' : '0.5px solid white',
+      background: pilierActif === p.nom ? p.bg : 'transparent',
+      color: pilierActif === p.nom ? p.couleur : 'white',
+      fontWeight: pilierActif === p.nom ? 500 : 400, cursor: 'pointer',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4
+    }}>
+    <p.Icon size={14} /> {p.nom}
+  </button>
+))}
       </div>
       {pilierActif === 'Nutrition' && <OutilNutrition />}
       {pilierActif === 'Sommeil' && <OutilSommeil />}

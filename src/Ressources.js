@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Outils from './Outils';
+import { Factory, HeartPulse, PersonStanding, Droplet, Droplets, AlertTriangle, Search, Moon, Dumbbell, Flower2, Pill, Carrot, Leaf, Activity, UtensilsCrossed, Nut, Wheat, SprayCan, Sparkles, Frown, Flame, Heart, Clock, Bath, Recycle, Beef, CigaretteOff, Candy, Brain, BedDouble, Coffee, Fish, BookOpen } from 'lucide-react';
 
 const articles = [
   {
@@ -1011,12 +1012,22 @@ const articles = [
 }
 ];
 
+const iconesParId = {
+  1: Factory, 2: HeartPulse, 3: PersonStanding, 4: Droplet, 5: AlertTriangle,
+  6: Search, 7: Moon, 8: Dumbbell, 9: Flower2, 10: Pill,
+  11: Carrot, 12: Leaf, 13: Activity, 14: UtensilsCrossed, 15: Nut,
+  16: Wheat, 17: Droplet, 18: SprayCan, 19: Sparkles, 20: UtensilsCrossed,
+  21: Frown, 22: Flame, 23: Heart, 24: Clock, 25: Dumbbell,
+  26: Bath, 27: Recycle, 28: Beef, 29: CigaretteOff, 30: Candy,
+  31: Droplets, 32: Brain, 33: BedDouble, 34: Coffee, 35: Fish,
+};
+
 function Article({ article, onRetour }) {
   return (
     <div className="article-wrap">
       <button className="fiche-retour" onClick={onRetour}>← Retour</button>
       <div className={`fiche-pilier-badge ${article.pilier.toLowerCase()}`}>{article.pilier}</div>
-      <div className="article-emoji">{article.emoji}</div>
+      {React.createElement(iconesParId[article.id], { size: 40, className: 'article-emoji' })}
       <h2 className="fiche-titre">{article.titre}</h2>
       <p className="article-resume">{article.resume}</p>
       {article.contenu.map((section, i) => (
@@ -1070,7 +1081,7 @@ fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
 
       {onglet === 'outils' ? <Outils /> : (
         <>
-          <h2 className="ressources-titre" style={{ textAlign: 'center' }}>Articles 💡</h2>
+          <h2 className="ressources-titre" style={{ textAlign: 'center' }} >Articles <BookOpen size={20} /></h2>
           <p className="ressources-sous-titre" style= {{ textAlign: 'center' }}>Retrouve ici des articles détaillés utiles au quotidien</p>
 
           <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
@@ -1088,7 +1099,7 @@ fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
           <div className="ressources-liste">
             {articlesFiltres.map(a => (
               <div key={a.id} className="ressource-card" onClick={() => setArticleActif(a)}>
-                <div className="ressource-card-emoji">{a.emoji}</div>
+               {React.createElement(iconesParId[a.id], { size: 24, className: 'ressource-card-emoji' })}
                 <div className="ressource-card-body">
                   <div className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`} style={{ marginBottom: 6 }}>{a.pilier}</div>
                   <div className="ressource-card-titre">{a.titre}</div>

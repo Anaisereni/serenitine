@@ -346,7 +346,6 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  cursor: pointer;
 }
 
 .accueil-pilier-icon {

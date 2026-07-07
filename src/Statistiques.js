@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 import { getHistorique, getHistoriquePilier } from './useStorage';
+import { BarChart3, Salad, Moon, Flower2, Activity } from 'lucide-react';
 
 const TOTAUX = {
   Quotidien: 11,
   Hebdomadaire: 5,
   Annuel: 4,
 };
-
 const ROUTINES_PAR_PILIER = {
   Quotidien: { Nutrition: 4, Sommeil: 3, Stress: 2, Mouvement: 2 },
   Hebdomadaire: { Nutrition: 2, Sommeil: 1, Stress: 1, Mouvement: 1 },
   Annuel: { Nutrition: 2, Sommeil: 0, Stress: 0, Mouvement: 2 },
 };
-
 const PILIERS = [
-  { nom: 'Nutrition', emoji: '🥗', couleur: '#3B6D11', bg: '#EAF3DE' },
-  { nom: 'Sommeil', emoji: '😴', couleur: '#185FA5', bg: '#E6F1FB' },
-  { nom: 'Stress', emoji: '🧘', couleur: '#854F0B', bg: '#FAEEDA' },
-  { nom: 'Mouvement', emoji: '🏃', couleur: '#761d99', bg: '#FAECE7' },
+  { nom: 'Nutrition', Icon: Salad, couleur: '#3B6D11', bg: '#EAF3DE' },
+  { nom: 'Sommeil', Icon: Moon, couleur: '#185FA5', bg: '#E6F1FB' },
+  { nom: 'Stress', Icon: Flower2, couleur: '#854F0B', bg: '#FAEEDA' },
+  { nom: 'Mouvement', Icon: Activity, couleur: '#761d99', bg: '#FAECE7' },
 ];
-
 const getKeyByOffset = (frequence, offset) => {
   if (frequence === 'Quotidien') {
     const d = new Date();
@@ -42,79 +40,58 @@ const getKeyByOffset = (frequence, offset) => {
     return `${new Date().getFullYear() - offset}`;
   }
 };
-
 const formatDay = (key) => {
   const d = new Date(key + 'T12:00:00');
   return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 };
-
 const formatWeek = (key) => {
   const d = new Date(key + 'T12:00:00');
   const end = new Date(d);
   end.setDate(d.getDate() + 6);
   return `${d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} – ${end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}`;
 };
-
 const formatYear = (key) => `Année ${key}`;
-
 const getCouleurCercle = (pct, isToday, isFutur) => {
   if (isFutur) return { bg: 'transparent', border: 'rgba(255,255,255,0.15)' };
   if (pct === null) return { bg: 'transparent', border: 'rgba(255,255,255,0.25)' };
-  if (pct === 100) return { bg: '#1a7a35', border: '#1a7a35' };   // vert foncé vif
-  if (pct >= 67) return { bg: '#4caf70', border: '#4caf70' };     // vert moyen
-  if (pct >= 34) return { bg: '#f0c040', border: '#f0c040' };     // jaune/or
-  if (pct >= 1) return { bg: '#e8906a', border: '#e8906a' };      // saumon/orange
-  return { bg: 'transparent', border: 'rgba(255,255,255,0.25)' }; // vide
+  if (pct === 100) return { bg: '#1a7a35', border: '#1a7a35' };
+  if (pct >= 67) return { bg: '#4caf70', border: '#4caf70' };
+  if (pct >= 34) return { bg: '#f0c040', border: '#f0c040' };
+  if (pct >= 1) return { bg: '#e8906a', border: '#e8906a' };
+  return { bg: 'transparent', border: 'rgba(255,255,255,0.25)' };
 };
-
 function CalendrierMois({ annee, mois, histQuotidien }) {
   const today = new Date();
   const todayStr = today.toISOString().split('T')[0];
-
   const premierJour = new Date(annee, mois, 1);
   const dernierJour = new Date(annee, mois + 1, 0);
   const nbJours = dernierJour.getDate();
-
-  // Décalage pour commencer le calendrier le lundi (0=lundi, 6=dimanche)
   let debutSemaine = premierJour.getDay();
   debutSemaine = debutSemaine === 0 ? 6 : debutSemaine - 1;
-
   const jours = ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'];
   const cellules = [];
-
-  // Cases vides avant le premier jour
   for (let i = 0; i < debutSemaine; i++) {
     cellules.push(null);
   }
-  // Jours du mois
   for (let d = 1; d <= nbJours; d++) {
     cellules.push(d);
   }
-
   return (
     <div style={{ marginBottom: 16 }}>
-     
-      
-
-      {/* Jours de la semaine */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4, marginBottom: 4 }}>
         {jours.map(j => (
           <div key={j} style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>{j}</div>
         ))}
       </div>
-
-      {/* Grille des jours */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
         {cellules.map((jour, i) => {
           if (!jour) return <div key={`empty-${i}`} />;
-
           const dateStr = `${annee}-${String(mois + 1).padStart(2, '0')}-${String(jour).padStart(2, '0')}`;
           const isFutur = dateStr > todayStr;
           const isToday = dateStr === todayStr;
           const valeur = histQuotidien[dateStr];
           const pct = valeur !== undefined ? Math.round((valeur / TOTAUX.Quotidien) * 100) : null;
           const couleur = getCouleurCercle(pct, isToday, isFutur);
-
           return (
             <div key={dateStr} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
               <div style={{
@@ -133,17 +110,13 @@ function CalendrierMois({ annee, mois, histQuotidien }) {
     </div>
   );
 }
-
 function CalendrierAnnuel({ histQuotidien }) {
   const today = new Date();
   const [moisOffset, setMoisOffset] = useState(0);
-
   const anneeAffichee = new Date(today.getFullYear(), today.getMonth() - moisOffset, 1);
   const annee = anneeAffichee.getFullYear();
   const mois = anneeAffichee.getMonth();
-
   const nomMois = anneeAffichee.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
-
   return (
     <div style={{
       background: 'var(--color-background-primary)',
@@ -152,7 +125,6 @@ function CalendrierAnnuel({ histQuotidien }) {
       padding: '1rem',
       marginTop: 12,
     }}>
-      {/* Navigation mois */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <button
           onClick={() => setMoisOffset(o => o + 1)}
@@ -163,11 +135,9 @@ function CalendrierAnnuel({ histQuotidien }) {
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
         >◀</button>
-
         <div style={{ fontSize: 13, color: 'white', fontWeight: 500, textTransform: 'capitalize' }}>
           {nomMois}
         </div>
-
         <button
           onClick={() => setMoisOffset(o => o - 1)}
           disabled={moisOffset === 0}
@@ -179,18 +149,15 @@ function CalendrierAnnuel({ histQuotidien }) {
           }}
         >▶</button>
       </div>
-
       <CalendrierMois annee={annee} mois={mois} histQuotidien={histQuotidien} />
-
-      {/* Légende */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 8, flexWrap: 'wrap' }}>
         {[
-  { bg: 'transparent', border: 'rgba(255,255,255,0.25)', label: '0%' },
-  { bg: '#e8906a', border: '#e8906a', label: '1-33%' },
-  { bg: '#f0c040', border: '#f0c040', label: '34-66%' },
-  { bg: '#4caf70', border: '#4caf70', label: '67-99%' },
-  { bg: '#1a7a35', border: '#1a7a35', label: '100%' },
-].map(({ bg, border, label }) => (
+          { bg: 'transparent', border: 'rgba(255,255,255,0.25)', label: '0%' },
+          { bg: '#e8906a', border: '#e8906a', label: '1-33%' },
+          { bg: '#f0c040', border: '#f0c040', label: '34-66%' },
+          { bg: '#4caf70', border: '#4caf70', label: '67-99%' },
+          { bg: '#1a7a35', border: '#1a7a35', label: '100%' },
+        ].map(({ bg, border, label }) => (
           <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <div style={{ width: 12, height: 12, borderRadius: '50%', background: bg, border: `1.5px solid ${border}` }} />
             <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>{label}</span>
@@ -200,14 +167,12 @@ function CalendrierAnnuel({ histQuotidien }) {
     </div>
   );
 }
-
 function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday }) {
   const total = TOTAUX[frequence];
   const valeur = histGlobal[periodeKey] || 0;
   const pct = total > 0 ? Math.round((valeur / total) * 100) : 0;
   const pilierData = histPilier[periodeKey] || { Nutrition: 0, Sommeil: 0, Stress: 0, Mouvement: 0 };
   const repartition = ROUTINES_PAR_PILIER[frequence];
-
   return (
     <div style={{
       background: 'var(--color-background-primary)',
@@ -232,7 +197,6 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
           {isToday && <div style={{ fontSize: 11, color: '#534226', marginTop: 4 }}>Période en cours</div>}
         </div>
       </div>
-
       {frequence !== 'Annuel' && PILIERS.map(p => {
         const totalPilier = repartition[p.nom] || 0;
         if (totalPilier === 0) return null;
@@ -241,7 +205,9 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
         return (
           <div key={p.nom} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 0', borderBottom: '0.5px solid var(--color-border-tertiary)' }}>
             <div style={{ width: 10, height: 10, borderRadius: 3, background: p.couleur, flexShrink: 0 }} />
-            <span style={{ fontSize: 13, color: 'white', flex: 1 }}>{p.emoji} {p.nom}</span>
+            <span style={{ fontSize: 13, color: 'white', flex: 1, display: 'flex', alignItems: 'center', gap: 6 }}>
+              <p.Icon size={14} /> {p.nom}
+            </span>
             <div style={{ width: 80, height: 6, background: p.bg, borderRadius: 10, overflow: 'hidden' }}>
               <div style={{ height: 6, background: p.couleur, width: `${pctPilier}%`, borderRadius: 10 }} />
             </div>
@@ -252,81 +218,68 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
     </div>
   );
 }
-
 function Statistiques() {
   const [onglet, setOnglet] = useState('jour');
   const [offset, setOffset] = useState(0);
-
   const frequenceMap = {
     jour: 'Quotidien',
     semaine: 'Hebdomadaire',
     annee: 'Annuel',
   };
-
   const formaterMap = {
     jour: formatDay,
     semaine: formatWeek,
     annee: formatYear,
   };
-
   const histQuotidien = getHistorique('Quotidien');
   const histHebdo = getHistorique('Hebdomadaire');
   const histAnnuel = getHistorique('Annuel');
   const histPilierQuotidien = getHistoriquePilier('Quotidien');
   const histPilierHebdo = getHistoriquePilier('Hebdomadaire');
   const histPilierAnnuel = getHistoriquePilier('Annuel');
-
   const histGlobalMap = {
     jour: histQuotidien,
     semaine: histHebdo,
     annee: histAnnuel,
   };
-
   const histPilierMap = {
     jour: histPilierQuotidien,
     semaine: histPilierHebdo,
     annee: histPilierAnnuel,
   };
-
   const frequence = frequenceMap[onglet];
   const periodeKey = getKeyByOffset(frequence, offset);
   const isToday = offset === 0;
   const formater = formaterMap[onglet];
-
   const changerOnglet = (nouvelOnglet) => {
     setOnglet(nouvelOnglet);
     setOffset(0);
   };
-
   return (
     <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center' }}>
-        Suivi 📊
+      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+        Suivi <BarChart3 size={20} />
       </h2>
       <p style={{ fontSize: 13, color: 'white', textAlign: 'center', marginBottom: '1.2rem', opacity: 0.9 }}>
         Ton historique dans les trois fréquences de routines
       </p>
-
-      {/* Onglets */}
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem' }}>
         {[['jour', 'Jour'], ['semaine', 'Semaine'], ['annee', 'Année']].map(([key, label]) => (
-<button
-key={key}
-onClick={() => changerOnglet(key)}
-style={{
-flex: 1, padding: '8px 4px', borderRadius: 20,
-border: onglet === key ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
-background: onglet === key ? '#5b564c' : 'white',
-color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
-fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
+          <button
+            key={key}
+            onClick={() => changerOnglet(key)}
+            style={{
+              flex: 1, padding: '8px 4px', borderRadius: 20,
+              border: onglet === key ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
+              background: onglet === key ? '#5b564c' : 'white',
+              color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
+              fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
             }}
->
-{label}
-</button>
+          >
+            {label}
+          </button>
         ))}
-</div>
-
-      {/* Navigation par flèches */}
+      </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
         <button
           onClick={() => setOffset(o => o + 1)}
@@ -337,7 +290,6 @@ fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}
         >◀</button>
-
         <div style={{ textAlign: 'center', flex: 1, padding: '0 8px' }}>
           <div style={{ fontSize: 13, color: 'white', fontWeight: 500, textTransform: 'capitalize' }}>
             {formater(periodeKey)}
@@ -346,7 +298,6 @@ fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
             <div style={{ fontSize: 11, color: '#534226', marginTop: 2 }}>● période en cours</div>
           )}
         </div>
-
         <button
           onClick={() => setOffset(o => o - 1)}
           disabled={offset === 0}
@@ -358,8 +309,6 @@ fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
           }}
         >▶</button>
       </div>
-
-      {/* Détail de la période */}
       <DetailPeriode
         periodeKey={periodeKey}
         frequence={frequence}
@@ -367,13 +316,10 @@ fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
         histPilier={histPilierMap[onglet]}
         isToday={isToday}
       />
-
-      {/* Calendrier uniquement pour l'onglet jour */}
       {onglet === 'jour' && (
         <CalendrierAnnuel histQuotidien={histQuotidien} />
       )}
     </div>
   );
 }
-
 export default Statistiques;

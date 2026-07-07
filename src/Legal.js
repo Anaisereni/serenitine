@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { AlertTriangle, Lock, ClipboardList, FileText } from 'lucide-react';
 
 const sections = [
   {
     id: 1,
     titre: "Disclaimer santé",
-    emoji: "⚠️",
+    Icon: AlertTriangle,
     contenu: [
       { sous_titre: "Avertissement important", texte: "Les informations et contenus proposés par l'application Sérénitine sont fournis à titre purement éducatif et informatif. Ils ne constituent en aucun cas un avis médical, un diagnostic ou une prescription thérapeutique." },
       { sous_titre: "Pas de substitution médicale", texte: "L'application Sérénitine ne remplace pas une consultation médicale, un suivi par un professionnel de santé ou un traitement prescrit. En cas de doute sur votre état de santé, de symptômes persistants ou de pathologie connue, consultez toujours un médecin ou un professionnel de santé qualifié." },
@@ -15,7 +16,7 @@ const sections = [
   {
     id: 2,
     titre: "Politique de confidentialité",
-    emoji: "🔒",
+    Icon: Lock,
     contenu: [
       { sous_titre: "Données collectées", texte: "L'application Sérénitine ne collecte aucune donnée personnelle identifiable. Aucun nom, email, numéro de téléphone ou information de localisation n'est collecté, transmis ou stocké sur des serveurs externes." },
       { sous_titre: "Stockage local", texte: "Les seules données enregistrées sont vos préférences d'utilisation (prénom optionnel, routines cochées, statistiques de progression) et elles sont stockées exclusivement sur votre appareil via le localStorage de votre navigateur. Ces données ne quittent jamais votre appareil et ne sont accessibles par aucun tiers." },
@@ -27,7 +28,7 @@ const sections = [
   {
     id: 3,
     titre: "Mentions légales",
-    emoji: "📋",
+    Icon: ClipboardList,
     contenu: [
       { sous_titre: "Éditeur de l'application", texte: "Nom : Anaïs PATA\nQualité : Masseur-kinésithérapeute diplômée d'État, formée en nutrition\nVille d'exercice : Reims\nNuméro RPPS : 10102113585\nEmail de contact : contact@serenitineapp.fr" },
       { sous_titre: "Hébergement", texte: "L'application Sérénitine est hébergée par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, California 94104, États-Unis. Site web : vercel.com" },
@@ -38,7 +39,7 @@ const sections = [
   {
     id: 4,
     titre: "Conditions générales d'utilisation",
-    emoji: "📄",
+    Icon: FileText,
     contenu: [
       { sous_titre: "Acceptation des conditions", texte: "L'utilisation de l'application Sérénitine implique l'acceptation pleine et entière des présentes conditions générales d'utilisation. Ces conditions peuvent être modifiées à tout moment." },
       { sous_titre: "Accès à l'application", texte: "L'application Sérénitine est accessible gratuitement à tout utilisateur disposant d'un accès internet. Tous les frais nécessaires à l'accès sont à la charge de l'utilisateur." },
@@ -53,7 +54,7 @@ function SectionLegal({ section, onRetour }) {
   return (
     <div className="article-wrap">
       <button className="fiche-retour" onClick={onRetour}>← Retour</button>
-      <div className="article-emoji">{section.emoji}</div>
+      <div className="article-emoji"><section.Icon size={40} /></div>
       <h2 className="fiche-titre">{section.titre}</h2>
       {section.contenu.map((s, i) => (
         <div key={i} className="article-section">
@@ -79,7 +80,7 @@ function Legal() {
       <div className="ressources-liste">
         {sections.map(s => (
           <div key={s.id} className="ressource-card" onClick={() => setSectionActive(s)}>
-            <div className="ressource-card-emoji">{s.emoji}</div>
+            <div className="ressource-card-emoji"><s.Icon size={24} /></div>
             <div className="ressource-card-body">
               <div className="ressource-card-titre">{s.titre}</div>
             </div>
