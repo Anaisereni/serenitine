@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+
 import React, { useState } from 'react';
 import { Heart, Salad, Moon, Flower2, Activity, Lightbulb, CheckCircle2, BookOpen, BarChart3, User, AlertTriangle, Smartphone } from 'lucide-react';
 
@@ -41,7 +41,7 @@ function Accueil() {
   const jourDuMois = new Date().getDate();
   const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
   const [instructions, setInstructions] = useState(false);
-  const navigate = useNavigate();
+
   const today = new Date().toLocaleDateString('fr-FR', {
     weekday: 'long',
     day: 'numeric',
