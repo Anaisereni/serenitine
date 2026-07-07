@@ -1050,23 +1050,23 @@ if (articleActif) {
   }
 
   return (
-    <div className="ressources-wrap">
+   <div className="ressources-wrap">
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.2rem' }}>
-        <button onClick={() => setOnglet('ressources')} style={{
-          flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
-          border: onglet === 'ressources' ? 'none' : '0.5px solid var(--color-border-secondary)',
-          background: onglet === 'ressources' ? '#5b564c' : 'white',
-          color: '#b5acac',
-          fontWeight: onglet === 'ressources' ? 500 : 400, cursor: 'pointer'
+<button onClick={() => setOnglet('ressources')} style={{
+flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
+border: onglet === 'ressources' ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
+background: onglet === 'ressources' ? '#5b564c' : 'white',
+color: onglet === 'ressources' ? 'white' : '#5b564c',
+fontWeight: onglet === 'ressources' ? 500 : 400, cursor: 'pointer'
         }}>Articles</button>
-        <button onClick={() => setOnglet('outils')} style={{
-          flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
-          border: onglet === 'outils' ? 'none' : '0.5px solid var(--color-border-secondary)',
-          background: onglet === 'outils' ? '#5b564c' : 'white',
-          color: '#c2bdbd',
-          fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
+<button onClick={() => setOnglet('outils')} style={{
+flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
+border: onglet === 'outils' ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
+background: onglet === 'outils' ? '#5b564c' : 'white',
+color: onglet === 'outils' ? 'white' : '#5b564c',
+fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
         }}>Outils</button>
-      </div>
+</div>
 
       {onglet === 'outils' ? <Outils /> : (
         <>

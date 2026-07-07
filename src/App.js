@@ -46,7 +46,7 @@ function NavBar() {
   onClick={() => navigate('/statistiques')}
 >
   <span className="nav-icon">📊</span>
-  <span>Statistiques</span>
+  <span>Suivi</span>
 </button>
       <button
         className={`nav-item ${location.pathname === '/profil' ? 'actif' : ''}`}
@@ -109,7 +109,7 @@ function ContenuApp() {
       <button
         style={{
           marginTop: '1rem', width: '100%', padding: 14,
-          background: '#1D9E75', color: 'white', border: 'none',
+          background: '#2b427b', color: 'white', border: 'none',
           borderRadius: 12, fontSize: 15, cursor: 'pointer'
         }}
         onClick={() => {

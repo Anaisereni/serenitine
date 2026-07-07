@@ -113,7 +113,7 @@ const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
         </div>
       </div>
       
-<div className="accueil-section-titre" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif' }}>Conseil du jour</div>
+<div className="accueil-section-titre" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif', textTransform: 'none' }}>Conseil du jour</div>
 
 <div className="accueil-conseil">
   <div className="accueil-conseil-header">

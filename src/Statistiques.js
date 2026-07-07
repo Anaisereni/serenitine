@@ -310,21 +310,21 @@ function Statistiques() {
       {/* Onglets */}
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem' }}>
         {[['jour', 'Jour'], ['semaine', 'Semaine'], ['annee', 'Année']].map(([key, label]) => (
-          <button
-            key={key}
-            onClick={() => changerOnglet(key)}
-            style={{
-              flex: 1, padding: '8px 4px', borderRadius: 20,
-              border: onglet === key ? 'none' : '0.5px solid var(--color-border-secondary)',
-              background: onglet === key ? '#5b564c' : 'white',
-              color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
-              fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
+<button
+key={key}
+onClick={() => changerOnglet(key)}
+style={{
+flex: 1, padding: '8px 4px', borderRadius: 20,
+border: onglet === key ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
+background: onglet === key ? '#5b564c' : 'white',
+color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
+fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
             }}
-          >
-            {label}
-          </button>
+>
+{label}
+</button>
         ))}
-      </div>
+</div>
 
       {/* Navigation par flèches */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
