@@ -36,8 +36,8 @@ const LABELS_FREQUENCES = {
 };
 
 const MESSAGES_FELICITATIONS = {
-  "Quotidien": { emoji: "☀️", texte: "Journée complète ! Toutes tes routines du jour sont faites." },
-  "Hebdomadaire": { emoji: "🏆", texte: "Semaine complète ! Tu as réalisé toutes tes routines de la semaine." },
+  "Quotidien": { emoji: "☺︎", texte: "Journée complète ! Toutes tes routines du jour sont faites." },
+  "Hebdomadaire": { emoji: "❀", texte: "Semaine complète ! Tu as réalisé toutes tes routines de la semaine." },
   "Annuel": { emoji: "✓", texte: "Année complète ! Tous tes rendez-vous annuels sont à jour." },
 };
 

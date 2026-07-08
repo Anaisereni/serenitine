@@ -13,10 +13,10 @@ const ROUTINES_PAR_PILIER = {
   Annuel: { Nutrition: 2, Sommeil: 0, Stress: 0, Mouvement: 2 },
 };
 const PILIERS = [
-  { nom: 'Nutrition', Icon: Salad, couleur: '#3B6D11', bg: '#EAF3DE' },
-  { nom: 'Sommeil', Icon: Moon, couleur: '#185FA5', bg: '#E6F1FB' },
-  { nom: 'Stress', Icon: Flower2, couleur: '#854F0B', bg: '#FAEEDA' },
-  { nom: 'Mouvement', Icon: Activity, couleur: '#761d99', bg: '#FAECE7' },
+  { nom: 'Nutrition', Icon: Salad, couleur: '#27500A', bg: '#EAF3DE' },
+  { nom: 'Sommeil', Icon: Moon, couleur: '#0C447C', bg: '#E6F1FB' },
+  { nom: 'Stress', Icon: Flower2, couleur: '#633806', bg: '#FAEEDA' },
+  { nom: 'Mouvement', Icon: Activity, couleur: '#7d2eb6', bg: '#FAECE7' },
 ];
 const getKeyByOffset = (frequence, offset) => {
   if (frequence === 'Quotidien') {
