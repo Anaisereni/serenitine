@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Heart, Salad, Moon, Flower2, Activity, Lightbulb, CheckCircle2, BookOpen, BarChart3, User, AlertTriangle, Smartphone } from 'lucide-react';
+import { Heart, Salad, Moon, Flower2, Activity, Lightbulb, Smartphone } from 'lucide-react';
 
 const conseils = [
   { texte: "Commence ta journée avec un grand verre d'eau. Ton corps est déshydraté après une nuit de sommeil.", pilier: "Nutrition", couleur: "#EAF3DE", textColor: "#27500A" },
@@ -139,31 +139,22 @@ function Accueil() {
           <span className="accueil-card-arrow">{instructions2 ? '↑' : '↓'}</span>
         </div>
 
-        {instructions2 && (
-          <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-            {[
-              { Icon: CheckCircle2, titre: 'Routines', texte: 'Coche tes routines du jour, de la semaine et de l\'année.' },
-              { Icon: BookOpen, titre: 'Ressources', texte: 'Lis les articles pour comprendre l\'importance de chaque habitude et devenir expert en hygiène de vie. Utilise les outils pratiques : liste de courses, journal du sommeil, parking à pensées, cohérence cardiaque.' },
-              { Icon: BarChart3, titre: 'Suivi', texte: 'Consulte tes statistiques et ton calendrier pour visualiser ta progression dans le temps.' },
-              { Icon: User, titre: 'Profil', texte: 'Retrouve ton résumé du moment, ton pilier à renforcer, la date de début de ton parcours, ainsi que les infos à propos de l\'app.' },
-            ].map((item, i) => (
-              <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 12, alignItems: 'flex-start' }}>
-                <item.Icon size={18} style={{ flexShrink: 0 }} />
-                <div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: '#1c1c1a', marginBottom: 2 }}>{item.titre}</div>
-                  <div style={{ fontSize: 12, color: '#666', lineHeight: 1.5 }}>{item.texte}</div>
-                </div>
-              </div>
-            ))}
+       {instructions2 && (
+  <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+    <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, margin: 0 }}>
+      Commence par <strong>cocher tes routines</strong> quotidiennes, hebdomadaires et annuelles pour suivre tes habitudes. 
+      Lis les <strong>articles</strong> pour comprendre les routines et devenir un expert en hygiène de vie. 
+      Utilise les <strong>outils</strong> pratiques liés aux 4 piliers : liste de courses, journal du sommeil, cohérence cardiaque, parking à pensées... 
+      Enfin, retrouve tes <strong>statistiques et les infos à propos de l'app</strong> sur ta page profil. 🌿
+    </p>
 
-            <div style={{ marginTop: 12, padding: '0.7rem', background: '#FFF8F0', borderRadius: 8, border: '0.5px solid #f0c040', display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-              <AlertTriangle size={16} style={{ flexShrink: 0, color: '#854F0B', marginTop: 2 }} />
-              <div style={{ fontSize: 12, color: '#854F0B', lineHeight: 1.6 }}>
-                <strong>Si l'app ne s'ouvre pas</strong>, c'est qu'une mise à jour est en cours. Ferme l'app et reviens un peu plus tard (cela peut prendre plus de 30 min), puis tout sera de nouveau disponible.
-              </div>
-            </div>
-          </div>
-        )}
+    <div style={{ marginTop: 12, padding: '0.7rem', background: '#FFF8F0', borderRadius: 8, border: '0.5px solid #f0c040' }}>
+      <div style={{ fontSize: 12, color: '#854F0B', lineHeight: 1.6 }}>
+        ⚠️ <strong>Si l'app ne s'ouvre pas</strong>, c'est qu'une mise à jour est en cours. Reviens dans quelques minutes, tout sera de nouveau disponible.
+      </div>
+    </div>
+  </div>
+)}
       </div>
 
       <div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Installer l'app</div>
