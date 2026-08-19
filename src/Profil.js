@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Salad, Moon, Flower2, Activity, PenLine, Sprout, Leaf, TreePine, Trash2 } from 'lucide-react';
+import { Salad, Moon, Flower2, Activity, PenLine, Trash2 } from 'lucide-react';
 import Statistiques from './Statistiques';
 
 const PILIERS_INFO = {
@@ -84,9 +84,7 @@ function Profil() {
   const cocheeCetteSemaine = histHebdo[weekKey] || 0;
   const cocheeAnnuel = histAnnuel[yearKey] || 0;
 
-  const pctJour = Math.round((cocheeAujourdhui / totalQuotidien) * 100);
-  const pctSemaine = Math.round((cocheeCetteSemaine / totalHebdo) * 100);
-  const pctAnnee = Math.round((cocheeAnnuel / totalAnnuel) * 100);
+  
 
   const pilierFaible = getPilierLeMoinsCoche('Quotidien', today);
   const infoFaible = pilierFaible ? PILIERS_INFO[pilierFaible] : null;
