@@ -58,9 +58,7 @@ function Profil() {
     setEdition(false);
   };
 
-  const totalQuotidien = 11;
-  const totalHebdo = 5;
-  const totalAnnuel = 4;
+  
 
   const today = new Date().toISOString().split('T')[0];
   const now = new Date();
@@ -80,10 +78,7 @@ function Profil() {
   const weekKey = getWeekKey();
   const yearKey = `${now.getFullYear()}`;
 
-  const cocheeAujourdhui = histQuotidien[today] || 0;
-  const cocheeCetteSemaine = histHebdo[weekKey] || 0;
-  const cocheeAnnuel = histAnnuel[yearKey] || 0;
-
+  
   
 
   const pilierFaible = getPilierLeMoinsCoche('Quotidien', today);
