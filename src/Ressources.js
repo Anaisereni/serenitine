@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Outils from './Outils';
 import { Factory, HeartPulse, PersonStanding, Droplet, Droplets, AlertTriangle, Search, Moon, Dumbbell, Flower2, Pill, Carrot, Leaf, Activity, UtensilsCrossed, Nut, Wheat, SprayCan, Sparkles, Frown, Flame, Heart, Clock, Bath, Recycle, Beef, CigaretteOff, Candy, Brain, BedDouble, Coffee, Fish, BookOpen } from 'lucide-react';
 
 const articles = [
@@ -1041,7 +1040,6 @@ function Article({ article, onRetour }) {
 }
 
 function Ressources() {
-  const [onglet, setOnglet] = useState('ressources');
   const [articleActif, setArticleActif] = useState(null);
   const [pilierActif, setPilierActif] = useState("Tous");
   console.log("articles:", articles);
@@ -1062,27 +1060,12 @@ if (articleActif) {
 
   return (
    <div className="ressources-wrap">
-      <div style={{ display: 'flex', gap: 8, marginBottom: '1.2rem' }}>
-<button onClick={() => setOnglet('ressources')} style={{
-flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
-border: onglet === 'ressources' ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
-background: onglet === 'ressources' ? '#5b564c' : 'white',
-color: onglet === 'ressources' ? 'white' : '#5b564c',
-fontWeight: onglet === 'ressources' ? 500 : 400, cursor: 'pointer'
-        }}>Articles</button>
-<button onClick={() => setOnglet('outils')} style={{
-flex: 1, padding: '8px', borderRadius: 20, fontSize: 13,
-border: onglet === 'outils' ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
-background: onglet === 'outils' ? '#5b564c' : 'white',
-color: onglet === 'outils' ? 'white' : '#5b564c',
-fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
-        }}>Outils</button>
-</div>
+  
 
-      {onglet === 'outils' ? <Outils /> : (
+      
         <>
           <h2 className="ressources-titre" style={{ textAlign: 'center' }} >Articles <BookOpen size={20} /></h2>
-          <p className="ressources-sous-titre" style= {{ textAlign: 'center' }}>Retrouve ici des articles détaillés utiles au quotidien</p>
+          <p className="ressources-sous-titre" style= {{ textAlign: 'center' }}>Des articles pour comprendre et agir, répartis en 5 catégories pour prendre soin de toi au quotidien</p>
 
           <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
             {PILIERS.map(p => (
@@ -1110,7 +1093,7 @@ fontWeight: onglet === 'outils' ? 500 : 400, cursor: 'pointer'
             ))}
           </div>
         </>
-      )}
+      
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Salad, Moon, Flower2, Activity, PenLine, Sprout, Leaf, TreePine, Trash2 } from 'lucide-react';
+import Statistiques from './Statistiques';
 
 const PILIERS_INFO = {
   Nutrition: { Icon: Salad, conseil: 'Pense à mieux manger et t\'hydrater aujourd\'hui.' },
@@ -178,39 +179,10 @@ function Profil() {
         </div>
       )}
 
-      <div className="profil-section-titre">Résumé du moment</div>
+      
 
-      <div className="profil-stats">
-        <div className="profil-stat-card">
-          <div className="profil-stat-icon"><Sprout size={20} /></div>
-          <div className="profil-stat-label">Aujourd'hui</div>
-          <div className="profil-stat-valeur">{cocheeAujourdhui}/{totalQuotidien}</div>
-          <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctJour}%`, background: '#534226' }} />
-          </div>
-          <div className="profil-stat-pct">{pctJour}%</div>
-        </div>
 
-        <div className="profil-stat-card">
-          <div className="profil-stat-icon"><Leaf size={20} /></div>
-          <div className="profil-stat-label">Cette semaine</div>
-          <div className="profil-stat-valeur">{cocheeCetteSemaine}/{totalHebdo}</div>
-          <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctSemaine}%`, background: '#534226' }} />
-          </div>
-          <div className="profil-stat-pct">{pctSemaine}%</div>
-        </div>
-
-        <div className="profil-stat-card">
-          <div className="profil-stat-icon"><TreePine size={20} /></div>
-          <div className="profil-stat-label">Cette année</div>
-          <div className="profil-stat-valeur">{cocheeAnnuel}/{totalAnnuel}</div>
-          <div className="profil-stat-barre-bg">
-            <div className="profil-stat-barre-fill" style={{ width: `${pctAnnee}%`, background: '#534226' }} />
-          </div>
-          <div className="profil-stat-pct">{pctAnnee}%</div>
-        </div>
-      </div>
+<Statistiques />
 
       <div className="profil-section-titre" style={{ marginTop: '1.5rem' }}>À propos de l'app</div>
 

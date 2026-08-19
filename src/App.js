@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
-import { Home, CheckCircle2, BookOpen, BarChart3, User } from 'lucide-react';
+import { Home, CheckCircle2, BookOpen, Wrench, User } from 'lucide-react';
 import './App.css';
 import Accueil from './Accueil';
 import ListeRoutines from './ListeRoutines';
@@ -12,6 +12,7 @@ import Ressources from './Ressources';
 import Legal from './Legal';
 import APropos from './APropos';
 import Presentation from './Presentation';
+import Outils from './Outils';
 
 export const AppContext = React.createContext(null);
 
@@ -22,7 +23,7 @@ function NavBar() {
   return (
     <nav className="nav-bar">
       <button
-        className={`nav-item ${location.pathname === '/' ? 'actif' : ''}`}
+        className={`nav-item ${location.pathname === '/accueil' ? 'actif' : ''}`}
         onClick={() => navigate('/')}
       >
         <span className="nav-icon"><Home size={20} /></span>
@@ -40,15 +41,15 @@ function NavBar() {
         onClick={() => navigate('/ressources')}
       >
         <span className="nav-icon"><BookOpen size={20} /></span>
-        <span>Ressources</span>
+        <span>Articles</span>
       </button>
       <button
-        className={`nav-item ${location.pathname === '/statistiques' ? 'actif' : ''}`}
-        onClick={() => navigate('/statistiques')}
-      >
-        <span className="nav-icon"><BarChart3 size={20} /></span>
-        <span>Suivi</span>
-      </button>
+  className={`nav-item ${location.pathname === '/outils' ? 'actif' : ''}`}
+  onClick={() => navigate('/outils')}
+>
+  <span className="nav-icon"><Wrench size={20} /></span>
+  <span>Outils</span>
+</button>
       <button
         className={`nav-item ${location.pathname === '/profil' ? 'actif' : ''}`}
         onClick={() => navigate('/profil')}
@@ -80,11 +81,13 @@ function ContenuApp() {
         </header>
         <main className="app-main">
           <Routes>
-            <Route path="/" element={<Accueil />} />
+           <Route path="/" element={<Navigate to="/accueil" replace />} />
+<Route path="/accueil" element={<Accueil />} />
             <Route path="/routines" element={<ListeRoutines onOuvrirFiche={ouvrirFiche} />} />
             <Route path="/fiche" element={<FichePourquoi />} />
             <Route path="/statistiques" element={<Statistiques />} />
             <Route path="/ressources" element={<Ressources />} />
+            <Route path="/outils" element={<Outils />} />
             <Route path="/profil" element={<Profil />} />
             <Route path="/legal" element={<Legal />} />
             <Route path="/apropos" element={<APropos />} />
