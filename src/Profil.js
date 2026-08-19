@@ -60,19 +60,7 @@ function Profil() {
   
 
   const today = new Date().toISOString().split('T')[0];
-  const now = new Date();
-  const getWeekKey = () => {
-    const now = new Date();
-    const monday = new Date(now);
-    const day = monday.getDay();
-    const diff = day === 0 ? -6 : 1 - day;
-    monday.setDate(monday.getDate() + diff);
-    monday.setHours(0, 0, 0, 0);
-    const year = monday.getFullYear();
-    const month = String(monday.getMonth() + 1).padStart(2, '0');
-    const date = String(monday.getDate()).padStart(2, '0');
-    return `${year}-${month}-${date}`;
-  };
+  
 
   
 
