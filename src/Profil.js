@@ -32,11 +32,35 @@ function getPilierLeMoinsCoche(frequence, periodKey) {
   } catch { return null; }
 }
 
+function calculerStreak(histQuotidien) {
+  const TOTAL = 11;
+  const SEUIL = 0.67;
+  let streak = 0;
+  const today = new Date();
+  let i = 0;
+
+  while (true) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const key = d.toISOString().split('T')[0];
+    const valeur = histQuotidien[key] || 0;
+    const pct = valeur / TOTAL;
+    if (pct >= SEUIL) {
+      streak++;
+      i++;
+    } else {
+      break;
+    }
+  }
+  return streak;
+}
+
 function Profil() {
   const navigate = useNavigate();
 
   const histQuotidien = JSON.parse(localStorage.getItem('historique_Quotidien') || '{}');
-  
+
+  const streak = calculerStreak(histQuotidien);
 
   const toutesLesDates = [
     ...Object.keys(histQuotidien),
@@ -57,15 +81,7 @@ function Profil() {
     setEdition(false);
   };
 
-  
-
   const today = new Date().toISOString().split('T')[0];
-  
-
-  
-
-  
-  
 
   const pilierFaible = getPilierLeMoinsCoche('Quotidien', today);
   const infoFaible = pilierFaible ? PILIERS_INFO[pilierFaible] : null;
@@ -139,6 +155,9 @@ function Profil() {
         )}
       </div>
 
+      
+
+      {/* Pilier faible */}
       {infoFaible && (
         <div style={{
           background: 'rgba(255,255,255,0.1)', borderRadius: 12,
@@ -158,10 +177,27 @@ function Profil() {
         </div>
       )}
 
-      
+      {/* Streak */}
+      {streak > 0 && (
+        <div style={{
+          background: 'rgba(255,255,255,0.1)', borderRadius: 12,
+          padding: '0.8rem 1rem', marginBottom: '1.2rem',
+          border: '0.5px solid rgba(255,255,255,0.2)',
+          display: 'flex', alignItems: 'center', gap: 10
+        }}>
+          <span style={{ fontSize: 24 }}>🔥</span>
+          <div>
+            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginBottom: 2 }}>
+              Routines quotidiennes
+            </div>
+            <div style={{ fontSize: 14, color: 'white', fontWeight: 500 }}>
+              {streak} jour{streak > 1 ? 's' : ''} consécutif{streak > 1 ? 's' : ''} à 67% ou plus ✓
+            </div>
+          </div>
+        </div>
+      )}
 
-
-<Statistiques />
+      <Statistiques />
 
       <div className="profil-section-titre" style={{ marginTop: '1.5rem' }}>À propos de l'app</div>
 
