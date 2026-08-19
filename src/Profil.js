@@ -36,8 +36,7 @@ function Profil() {
   const navigate = useNavigate();
 
   const histQuotidien = JSON.parse(localStorage.getItem('historique_Quotidien') || '{}');
-  const histHebdo = JSON.parse(localStorage.getItem('historique_Hebdomadaire') || '{}');
-  const histAnnuel = JSON.parse(localStorage.getItem('historique_Annuel') || '{}');
+  
 
   const toutesLesDates = [
     ...Object.keys(histQuotidien),
@@ -75,8 +74,7 @@ function Profil() {
     return `${year}-${month}-${date}`;
   };
 
-  const weekKey = getWeekKey();
-  const yearKey = `${now.getFullYear()}`;
+  
 
   
   
