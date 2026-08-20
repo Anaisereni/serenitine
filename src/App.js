@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { Analytics } from '@vercel/analytics/react';
 import { Home, CheckCircle2, BookOpen, Wrench, User } from 'lucide-react';
 import './App.css';
 import Accueil from './Accueil';
@@ -134,7 +133,6 @@ function App() {
   return (
     <BrowserRouter>
       <ContenuApp />
-      <Analytics />
     </BrowserRouter>
   );
 }
