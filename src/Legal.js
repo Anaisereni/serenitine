@@ -31,7 +31,7 @@ const sections = [
     Icon: ClipboardList,
     contenu: [
       { sous_titre: "Éditeur de l'application", texte: "Nom : Anaïs PATA\nQualité : Masseur-kinésithérapeute diplômée d'État, formée en nutrition\nVille d'exercice : Reims\nNuméro RPPS : 10102113585\nEmail de contact : contact@serenitineapp.fr" },
-      { sous_titre: "Hébergement", texte: "L'application Sérénitine est hébergée par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, California 94104, États-Unis. Site web : vercel.com" },
+      { sous_titre: "Hébergement", texte: "L'application Sérénitine est hébergée par Cloudflare, Inc., 101 Townsend St, San Francisco, California 94107, États-Unis. Site web : cloudflare.com" },
       { sous_titre: "Propriété intellectuelle", texte: "L'ensemble du contenu de l'application Sérénitine est protégé par le droit d'auteur et appartient à Anaïs PATA. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable." },
       { sous_titre: "Droit applicable", texte: "Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents." }
     ]
