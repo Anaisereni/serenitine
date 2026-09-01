@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAudioCtx, debloqueurAudio } from './audio';
-import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad } from 'lucide-react';
+import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad, ShoppingBag, ExternalLink } from 'lucide-react';
 
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
@@ -84,6 +84,7 @@ const jouerSonFin = (ctx) => {
   });
 };
 
+
 function OutilNutrition() {
   const [cochees, setCochees] = useState(() => {
     try { return JSON.parse(localStorage.getItem('courses_cochees') || '[]'); }
@@ -105,7 +106,7 @@ function OutilNutrition() {
     <div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '0.5px solid #eee', marginBottom: 16 }}>
         <h3 style={{ fontSize: 15, fontWeight: 600, color: '#75ae79', marginBottom: 12, textAlign: 'center' }}>
-          -Liste de courses idéale — diète méditerranéenne-
+          -Liste de courses santé-
         </h3>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <p style={{ fontSize: 13, color: '#7c867d' }}>{faits}/{total} articles cochés</p>
@@ -444,6 +445,88 @@ function OutilMouvement() {
   );
 }
 
+const PRODUITS = [
+  {
+    id: 1,
+    nom: "*Box détente - Mon instant thé ",
+    description: "Thé, bougie, gourmandises et surprises... un moment rien que pour toi.",
+    pilier: "Stress",
+    lien: "https://moninstantthe.fr/?ae=15",
+  },
+  {
+    id: 2,
+    nom: "Compléments alimentaires - Nutripure",
+    description: "Retrouve des compléments de qualité : multivitamines, vitamine D, protéines, fer, magnésium, oméga 3...",
+    pilier: "Nutrition",
+    lien: "https://www.nutripure.fr/fr/",
+  },
+  {
+    id: 3,
+    nom: "Simulateur d'aube et réveils - Ma douce veileuse",
+    description: "Réveillez-vous apaisé, retrouvez un sommeil réparateur. Pour les enfants et les adultes.",
+    pilier: "Sommeil",
+    lien: "https://madouceveilleuse.com",
+  },
+  {
+    id: 4,
+    nom: "Matériel de sport maison - Décathlon",
+    description: "Retrouvez du matériel de sport pour bouger chez soi : élastiques, ballons, poids, tapis...",
+    pilier: "Mouvement",
+    lien: "https://www.decathlon.fr/tous-les-sports/fitness-cardio-training/my-home-gym",
+  },
+
+  // Ajoute d'autres produits ici
+];
+
+function OutilProduits() {
+  const COULEURS_PILIERS = {
+  Nutrition: { bg: '#EAF3DE', couleur: '#27500A' },
+  Sommeil:   { bg: '#E6F1FB', couleur: '#0C447C' },
+  Stress:    { bg: '#FAEEDA', couleur: '#633806' },
+  Mouvement: { bg: '#FAECE7', couleur: '#8626a6' },
+};
+  return (
+    <div>
+      <p style={{ fontSize: 13, color: 'white', marginBottom: 16, fontStyle: 'italic', textAlign: 'center' }}>
+        Une sélection de produits pour prendre soin de toi 🌿 <br />(D'autres produits sont à venir)
+      </p>
+   {PRODUITS.map(p => (
+  <a
+    key={p.id}
+    href={p.lien}
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ textDecoration: 'none' }}
+  >
+    <div style={{
+      background: 'white', borderRadius: 12, padding: '1rem',
+      border: '1px solid #eee', marginBottom: 12,
+      display: 'flex', alignItems: 'center', gap: 12,
+      cursor: 'pointer'
+    }}>
+      <div style={{
+  width: 44, height: 44, borderRadius: 10,
+  background: COULEURS_PILIERS[p.pilier]?.bg || '#EAF3DE',
+  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+  fontSize: 11, fontWeight: 600,
+  color: COULEURS_PILIERS[p.pilier]?.couleur || '#27500A',
+}}>
+  {p.pilier}
+</div>
+      <div style={{ flex: 1 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#1c1c1a', marginBottom: 2 }}>{p.nom}</div>
+        <div style={{ fontSize: 12, color: '#666', lineHeight: 1.4 }}>{p.description}</div>
+      </div>
+      <ExternalLink size={16} color="#999" />
+    </div>
+  </a>
+))}
+      <p style={{ fontSize: 12, color: 'rgba(255, 255, 255, 0.93)', textAlign: 'center', marginTop: 8, fontStyle: 'italic' }}>
+        * liens affiliés
+      </p>
+    </div>
+  );
+}
 function Outils() {
   const [pilierActif, setPilierActif] = useState('Nutrition');
 
@@ -460,27 +543,43 @@ function Outils() {
         Outils <PenLine size={20} />
       </h2>
       <p style={{ fontSize: 13, color: 'white', marginBottom: '1.2rem', textAlign: 'center' }}>
-        Tes espaces pratiques pour agir au quotidien
+        Tes espaces pratiques pour agir au quotidien dans les 4 piliers, ainsi que des produits recommandés
       </p>
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-        {piliers.map(p => (
-  <button key={p.nom} onClick={() => setPilierActif(p.nom)}
-    style={{
-      flex: 1, padding: '8px 4px', borderRadius: 20, fontSize: 12,
-      border: pilierActif === p.nom ? 'none' : '0.5px solid white',
-      background: pilierActif === p.nom ? p.bg : 'transparent',
-      color: pilierActif === p.nom ? p.couleur : 'white',
-      fontWeight: pilierActif === p.nom ? 500 : 400, cursor: 'pointer',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4
-    }}>
-    <p.Icon size={14} /> {p.nom}
-  </button>
-))}
-      </div>
-      {pilierActif === 'Nutrition' && <OutilNutrition />}
-      {pilierActif === 'Sommeil' && <OutilSommeil />}
-      {pilierActif === 'Stress' && <OutilStress />}
-      {pilierActif === 'Mouvement' && <OutilMouvement />}
+  {piliers.map(p => (
+    <button key={p.nom} onClick={() => setPilierActif(p.nom)}
+      style={{
+        flex: 1, padding: '8px 4px', borderRadius: 20, fontSize: 12,
+        border: pilierActif === p.nom ? 'none' : '0.5px solid white',
+        background: pilierActif === p.nom ? p.bg : 'transparent',
+        color: pilierActif === p.nom ? p.couleur : 'white',
+        fontWeight: pilierActif === p.nom ? 500 : 400, cursor: 'pointer',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4
+      }}>
+      <p.Icon size={14} /> {p.nom}
+    </button>
+  ))}
+</div>
+
+{/* Bouton Produits recommandés */}
+<button onClick={() => setPilierActif('Produits')}
+  style={{
+    width: '100%', padding: '8px 4px', borderRadius: 20, fontSize: 12,
+    marginBottom: '1.5rem',
+    border: pilierActif === 'Produits' ? 'none' : '0.5px solid white',
+    background: pilierActif === 'Produits' ? '#f4f3d2' : 'transparent',
+    color: pilierActif === 'Produits' ? '#854F0B' : 'white',
+    fontWeight: pilierActif === 'Produits' ? 500 : 400, cursor: 'pointer',
+    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4
+  }}>
+  <ShoppingBag size={14} /> Produits recommandés 🛍️
+</button>
+
+{pilierActif === 'Nutrition' && <OutilNutrition />}
+{pilierActif === 'Sommeil' && <OutilSommeil />}
+{pilierActif === 'Stress' && <OutilStress />}
+{pilierActif === 'Mouvement' && <OutilMouvement />}
+{pilierActif === 'Produits' && <OutilProduits />}
     </div>
   );
 }

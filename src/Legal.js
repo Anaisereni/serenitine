@@ -22,7 +22,8 @@ const sections = [
       { sous_titre: "Stockage local", texte: "Les seules données enregistrées sont vos préférences d'utilisation (prénom optionnel, routines cochées, statistiques de progression) et elles sont stockées exclusivement sur votre appareil via le localStorage de votre navigateur. Ces données ne quittent jamais votre appareil et ne sont accessibles par aucun tiers." },
       { sous_titre: "Cookies", texte: "L'application Sérénitine n'utilise pas de cookies de traçage, de publicité ou d'analyse comportementale. Aucun outil de tracking tiers (Google Analytics, Facebook Pixel…) n'est intégré à l'application." },
       { sous_titre: "Vos droits RGPD", texte: "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Vous pouvez supprimer l'intégralité de vos données à tout moment en utilisant le bouton Réinitialiser mes données disponible dans l'onglet Profil." },
-      { sous_titre: "Contact", texte: "Pour toute question relative à la confidentialité de vos données, vous pouvez nous contacter à l'adresse suivante : contact@serenitineapp.fr" }
+      { sous_titre: "Contact", texte: "Pour toute question relative à la confidentialité de vos données, vous pouvez nous contacter à l'adresse suivante : contact@serenitineapp.fr" },
+      { sous_titre: "Partenariats et affiliations", texte: "Sérénitine peut entretenir des relations commerciales avec certaines marques via des programmes d'affiliation. Ces partenariats n'influencent pas le contenu éditorial de l'application. Aucune donnée personnelle n'est transmise aux partenaires affiliés." },
     ]
   },
   {
@@ -45,7 +46,8 @@ const sections = [
       { sous_titre: "Accès à l'application", texte: "L'application Sérénitine est accessible gratuitement à tout utilisateur disposant d'un accès internet. Tous les frais nécessaires à l'accès sont à la charge de l'utilisateur." },
       { sous_titre: "Utilisation", texte: "L'utilisateur s'engage à utiliser l'application de manière conforme à sa destination. Il s'engage notamment à ne pas utiliser l'application à des fins commerciales et à ne pas reproduire son contenu sans autorisation." },
       { sous_titre: "Limitation de responsabilité", texte: "L'éditeur de l'application ne saurait être tenu responsable des dommages directs ou indirects résultant de l'utilisation de l'application. L'application est fournie en l'état sans garantie d'aucune sorte." },
-      { sous_titre: "Modification et évolution", texte: "L'éditeur se réserve le droit de modifier, suspendre ou interrompre l'application à tout moment sans préavis. Le contenu peut être mis à jour régulièrement pour refléter les dernières recommandations scientifiques." }
+      { sous_titre: "Modification et évolution", texte: "L'éditeur se réserve le droit de modifier, suspendre ou interrompre l'application à tout moment sans préavis. Le contenu peut être mis à jour régulièrement pour refléter les dernières recommandations scientifiques." },
+      { sous_titre: "Liens affiliés", texte: "Certains liens présents dans l'application Sérénitine sont des liens affiliés. Cela signifie que si vous effectuez un achat via ces liens, Sérénitine peut percevoir une commission de la part du marchand, sans aucun surcoût pour vous. Les produits recommandés sont sélectionnés pour leur qualité et leur cohérence avec les valeurs de l'application. Les liens affiliés sont clairement identifiés dans la section Outils de l'application." },
     ]
   }
 ];

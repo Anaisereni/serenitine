@@ -41,6 +41,7 @@ function Accueil() {
   const jourDuMois = new Date().getDate();
   const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
   const [instructions, setInstructions] = useState(false);
+  const [consultation, setConsultation] = useState(false);
 
   const today = new Date().toLocaleDateString('fr-FR', {
     weekday: 'long',
@@ -115,6 +116,8 @@ function Accueil() {
   </div>
 </div>
 
+
+
       <div className="accueil-section-titre" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif', textTransform: 'none' }}>Conseil du jour</div>
 
       <div className="accueil-conseil">
@@ -125,6 +128,52 @@ function Accueil() {
           <span className="accueil-conseil-date">{today}</span>
         </div>
         <p className="accueil-conseil-texte">{conseilDuJour.texte}</p>
+      </div>
+
+<div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Installer l'app</div>
+
+      <div className="accueil-cards">
+      <div className="accueil-card" onClick={() => setInstructions(!instructions)} style={{ 
+  background: '#b8c5e0',
+  border: '1.5px solid #fcfcfc',
+  boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
+  borderRadius: 16
+}}>
+          <Smartphone size={20} className="accueil-card-icon" />
+          <div>
+            <div className="accueil-card-titre">Ajouter sur mon écran d'accueil</div>
+            <div className="accueil-card-sub" style={{ color: '#fefefe' }}>
+  Accéder à Sérénitine comme une vraie app
+</div>
+          </div>
+       <span className="accueil-card-arrow" style={{ color: '#ffffff' }}>
+  {instructions ? '↑' : '↓'}
+</span>
+        </div>
+
+        {instructions && (
+  <div style={{ 
+    background: '#ffffff', 
+    borderRadius: 16, 
+    padding: '1rem', 
+    border: '0.5px solid #e8d5c0' 
+  }}>
+            <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur iPhone (Safari) :</p>
+            <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7, marginBottom: 12 }}>
+              1. Ouvrez l'app dans <strong>Safari</strong><br />
+              2. Appuyez sur l'icône <strong>Partager</strong> (carré avec flèche vers le haut)<br />
+              3. Faites défiler et appuyez sur <strong>"Sur l'écran d'accueil"</strong><br />
+              4. Appuyez sur <strong>"Ajouter"</strong>
+            </p>
+            <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur Android (Chrome) :</p>
+            <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>
+              1. Ouvrez l'app dans <strong>Chrome</strong><br />
+              2. Appuyez sur les <strong>3 points</strong> en haut à droite<br />
+              3. Appuyez sur <strong>"Ajouter à l'écran d'accueil"</strong><br />
+              4. Appuyez sur <strong>"Ajouter"</strong>
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="accueil-section-titre">Mode d'emploi</div>
@@ -155,39 +204,55 @@ function Accueil() {
     </div>
   </div>
 )}
+
+<div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Consultation personnalisée</div>
+
+<div className="accueil-cards">
+<div className="accueil-card" onClick={() => setConsultation(!consultation)} style={{ 
+  background: '#b8c3dc',
+  border: '1.5px solid #ffffff',
+  boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
+  borderRadius: 16
+}}>
+    <span className="accueil-card-icon">🩺</span>
+    <div>
+      <div className="accueil-card-titre">Consulter en visio</div>
+      <div className="accueil-card-sub" style={{ color: '#fcfcfc' }}>
+ Consultation personnalisée en hygiène de vie
+</div>
+    </div>
+  <span className="accueil-card-arrow" style={{ color: '#ffffff' }}>
+  {instructions ? '↑' : '↓'}
+</span>
+  </div>
+
+  {consultation && (
+    <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+      <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, marginBottom: 12 }}>
+        Tu souhaites aller plus loin dans ta démarche bien-être ? Je propose des <strong>consultations personnalisées en visio</strong> pour t'accompagner sur la nutrition, le sommeil, la gestion du stress et le mouvement.
+      </p>
+      <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, marginBottom: 16 }}>
+        Les consultations se déroulent via <strong>Doctolib</strong>, en toute simplicité depuis chez toi. Choisis "en vidéo" lors de la prise de rdv.
+      </p>
+      <a
+        href="https://www.doctolib.fr/masseur-kinesitherapeute/mons-en-laonnois/anais-pata"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'block', textAlign: 'center',
+          background: '#6977b6', color: 'white',
+          padding: '12px', borderRadius: 10,
+          fontSize: 14, fontWeight: 500,
+          textDecoration: 'none'
+        }}
+     >
+        📅 Prendre rendez-vous
+      </a>
+    </div>
+  )}
+</div>
       </div>
 
-      <div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Installer l'app</div>
-
-      <div className="accueil-cards">
-        <div className="accueil-card" onClick={() => setInstructions(!instructions)}>
-          <Smartphone size={20} className="accueil-card-icon" />
-          <div>
-            <div className="accueil-card-titre">Ajouter sur mon écran d'accueil</div>
-            <div className="accueil-card-sub">Accéder à Sérénitine comme une vraie app</div>
-          </div>
-          <span className="accueil-card-arrow">{instructions ? '↑' : '↓'}</span>
-        </div>
-
-        {instructions && (
-          <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-            <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur iPhone (Safari) :</p>
-            <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7, marginBottom: 12 }}>
-              1. Ouvrez l'app dans <strong>Safari</strong><br />
-              2. Appuyez sur l'icône <strong>Partager</strong> (carré avec flèche vers le haut)<br />
-              3. Faites défiler et appuyez sur <strong>"Sur l'écran d'accueil"</strong><br />
-              4. Appuyez sur <strong>"Ajouter"</strong>
-            </p>
-            <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur Android (Chrome) :</p>
-            <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>
-              1. Ouvrez l'app dans <strong>Chrome</strong><br />
-              2. Appuyez sur les <strong>3 points</strong> en haut à droite<br />
-              3. Appuyez sur <strong>"Ajouter à l'écran d'accueil"</strong><br />
-              4. Appuyez sur <strong>"Ajouter"</strong>
-            </p>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
