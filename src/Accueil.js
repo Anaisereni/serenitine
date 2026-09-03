@@ -214,7 +214,7 @@ function Accueil() {
   boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
   borderRadius: 16
 }}>
-    <span className="accueil-card-icon">🩺</span>
+    <span className="accueil-card-icon">👩🏻‍💻</span>
     <div>
       <div className="accueil-card-titre">Consulter en visio</div>
       <div className="accueil-card-sub" style={{ color: '#fcfcfc' }}>
@@ -232,7 +232,7 @@ function Accueil() {
         Tu souhaites aller plus loin dans ta démarche bien-être ? Je propose des <strong>consultations personnalisées en visio</strong> pour t'accompagner sur la nutrition, le sommeil, la gestion du stress et le mouvement.
       </p>
       <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, marginBottom: 16 }}>
-        Les consultations se déroulent via <strong>Doctolib</strong>, en toute simplicité depuis chez toi. Choisis "en vidéo" lors de la prise de rdv.
+        Les consultations se déroulent en toute simplicité depuis chez toi. Choisis "en vidéo" lors de la prise de rdv.
       </p>
       <a
         href="https://www.doctolib.fr/masseur-kinesitherapeute/mons-en-laonnois/anais-pata"
