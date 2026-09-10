@@ -474,6 +474,13 @@ const PRODUITS = [
     pilier: "Mouvement",
     lien: "https://www.decathlon.fr/tous-les-sports/fitness-cardio-training/my-home-gym",
   },
+   {
+    id: 5,
+    nom: "Zen box méditation - Terraillon",
+    description: "Des programmes de méditation pour se détendre.",
+    pilier: "Stress",
+    lien: "https://www.natureetdecouvertes.com/bien-etre/relaxation-sommeil/appareils-sommeil/zen-box-meditation-terraillon-15236840",
+  },
 
   // Ajoute d'autres produits ici
 ];
