@@ -19,21 +19,7 @@ body {
   overflow: hidden;
 }
 
-.app-header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
 
-  background-image: url('./feuilles.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-
-  opacity: 0.20;
-
-  pointer-events: none;
-  z-index: 0;
-}
 
 .app-header > * {
   position: relative;

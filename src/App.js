@@ -73,7 +73,7 @@ function ContenuApp() {
     <AppContext.Provider value={{ routineId, setRoutineId }}>
       <div className="app">
         <header className="app-header">
-          <img src="/logohaut.png" alt="Logo Routines" className="header-logo" />
+          <img src="/logosansfond.png" alt="Logo Routines" className="header-logo" />
           <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', fontWeight: 700 }}>
             ✹ Tes routines bien-être pour une vie plus sereine ✹
           </p>
