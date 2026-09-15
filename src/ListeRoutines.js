@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Routine from './Routine';
 import { useRoutineStorage, sauvegarderPiliers } from './useStorage';
 import { AppContext } from './App';
+import { CheckCircle2 } from 'lucide-react';
 
 const routines = [
   { id: 1, nom: "Boire 1,5 à 2L d'eau", description: "Répartis sur la journée", pilier: "Nutrition", frequence: "Quotidien" },
@@ -190,7 +191,14 @@ function ListeRoutines() {
     <div className="liste-routines">
 
       <Confettis actif={confettisActifs} />
-
+<div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+  <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4 }}>
+    Mes routines <CheckCircle2 size={20} />
+  </h2>
+  <p style={{ fontSize: 13, color: 'white', opacity: 0.9 }}>
+    Tes habitudes à cocher, avec leurs explications
+  </p>
+</div>
       <div className="frequences">
         {FREQUENCES.map(f => (
           <button

@@ -63,6 +63,7 @@ function NavBar() {
 function ContenuApp() {
   const [routineId, setRoutineId] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const ouvrirFiche = (id) => {
     setRoutineId(id);
@@ -72,12 +73,14 @@ function ContenuApp() {
   return (
     <AppContext.Provider value={{ routineId, setRoutineId }}>
       <div className="app">
-        <header className="app-header">
-          <img src="/logosansfond.png" alt="Logo Routines" className="header-logo" />
-          <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', fontWeight: 700 }}>
-            ✹ Tes routines bien-être pour une vie plus sereine ✹
-          </p>
-        </header>
+        {(location.pathname === '/accueil' || location.pathname === '/') && (
+          <header className="app-header">
+            <img src="/logosansfond.png" alt="Logo Routines" className="header-logo" />
+            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', fontWeight: 700 }}>
+              ✹ Tes routines bien-être pour une vie plus sereine ✹
+            </p>
+          </header>
+        )}
         <main className="app-main">
           <Routes>
            <Route path="/" element={<Navigate to="/accueil" replace />} />

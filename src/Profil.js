@@ -1,36 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Salad, Moon, Flower2, Activity, PenLine, Trash2 } from 'lucide-react';
+import { PenLine, Trash2, User } from 'lucide-react';
 import Statistiques from './Statistiques';
 
-const PILIERS_INFO = {
-  Nutrition: { Icon: Salad, conseil: 'Pense à mieux manger et t\'hydrater aujourd\'hui.' },
-  Sommeil:   { Icon: Moon, conseil: 'Ton sommeil mérite plus d\'attention en ce moment.' },
-  Stress:    { Icon: Flower2, conseil: 'Prends un moment pour souffler et décompresser.' },
-  Mouvement: { Icon: Activity, conseil: 'Ton corps a besoin de bouger un peu plus !' },
-};
 
-const ROUTINES_PAR_PILIER = {
-  Quotidien:    { Nutrition: 4, Sommeil: 3, Stress: 2, Mouvement: 2 },
-  Hebdomadaire: { Nutrition: 2, Sommeil: 1, Stress: 1, Mouvement: 1 },
-};
 
-function getPilierLeMoinsCoche(frequence, periodKey) {
-  try {
-    const hist = JSON.parse(localStorage.getItem(`historique_pilier_${frequence}`) || '{}');
-    const data = hist[periodKey] || {};
-    const totaux = ROUTINES_PAR_PILIER[frequence];
-    let minPct = Infinity;
-    let pilierMin = null;
-    Object.entries(totaux).forEach(([pilier, total]) => {
-      if (total === 0) return;
-      const coches = data[pilier] || 0;
-      const pct = coches / total;
-      if (pct < minPct) { minPct = pct; pilierMin = pilier; }
-    });
-    return minPct < 1 ? pilierMin : null;
-  } catch { return null; }
-}
+
 
 function calculerStreak(histQuotidien) {
   const TOTAL = 11;
@@ -81,14 +56,21 @@ function Profil() {
     setEdition(false);
   };
 
-  const today = new Date().toISOString().split('T')[0];
 
-  const pilierFaible = getPilierLeMoinsCoche('Quotidien', today);
-  const infoFaible = pilierFaible ? PILIERS_INFO[pilierFaible] : null;
+
+ 
 
   return (
+    
     <div className="profil-wrap">
-
+<div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+  <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4 }}>
+    Mon profil <User size={20} />
+  </h2>
+  <p style={{ fontSize: 13, color: 'white', opacity: 0.9 }}>
+    Retrouve ton évolution ici ainsi que les infos à propos de l'app
+  </p>
+</div>
       <div className="profil-hero" style={{ position: 'relative', overflow: 'hidden' }}>
 
         <svg
@@ -156,26 +138,8 @@ function Profil() {
       </div>
 
       
-
-      {/* Pilier faible */}
-      {infoFaible && (
-        <div style={{
-          background: 'rgba(255,255,255,0.1)', borderRadius: 12,
-          padding: '0.8rem 1rem', marginBottom: '1.2rem',
-          border: '0.5px solid rgba(255,255,255,0.2)',
-          display: 'flex', alignItems: 'center', gap: 10
-        }}>
-          <infoFaible.Icon size={22} color="white" />
-          <div>
-            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginBottom: 2 }}>
-              Pilier à renforcer — {pilierFaible}
-            </div>
-            <div style={{ fontSize: 13, color: 'white', fontWeight: 500 }}>
-              {infoFaible.conseil}
-            </div>
-          </div>
-        </div>
-      )}
+   <Statistiques />
+      
 
       {/* Streak */}
       {streak > 0 && (
@@ -197,7 +161,7 @@ function Profil() {
         </div>
       )}
 
-      <Statistiques />
+    
 
       <div className="profil-section-titre" style={{ marginTop: '1.5rem' }}>À propos de l'app</div>
 

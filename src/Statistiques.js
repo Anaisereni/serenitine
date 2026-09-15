@@ -257,8 +257,8 @@ function Statistiques() {
   };
   return (
     <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-        Suivi <BarChart3 size={20} />
+      <h2 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+        Suivi <BarChart3 size={15} />
       </h2>
       <p style={{ fontSize: 13, color: 'white', textAlign: 'center', marginBottom: '1.2rem', opacity: 0.9 }}>
         Ton historique dans les trois fréquences de routines

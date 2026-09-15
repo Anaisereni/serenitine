@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, sans-serif;
-  background: #83a5c1;
+  background: #91afc6;
   color: #1a1a1a;
 }
 
@@ -499,7 +499,7 @@ body {
 }
 
 .profil-hero {
-  background: linear-gradient(135deg, #f0eff2, #7992b5);
+  background: linear-gradient(135deg, #f0eff2, #9fb1c9);
   border-radius: 16px;
   padding: 1.5rem;
   text-align: center;
