@@ -192,10 +192,10 @@ function ListeRoutines() {
 
       <Confettis actif={confettisActifs} />
 <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-  <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4 }}>
+  <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#393434', marginBottom: 4 }}>
     Mes routines <CheckCircle2 size={20} />
   </h2>
-  <p style={{ fontSize: 13, color: 'white', opacity: 0.9 }}>
+  <p style={{ fontSize: 13, color: '#393434', opacity: 0.9 }}>
     Tes habitudes à cocher, avec leurs explications
   </p>
 </div>

@@ -546,10 +546,10 @@ function Outils() {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: 4, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#393434', marginBottom: 4, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
         Outils <PenLine size={20} />
       </h2>
-      <p style={{ fontSize: 13, color: 'white', marginBottom: '1.2rem', textAlign: 'center' }}>
+      <p style={{ fontSize: 13, color: '#393434', marginBottom: '1.2rem', textAlign: 'center' }}>
         Tes espaces pratiques pour agir au quotidien dans les 4 piliers, ainsi que des produits recommandés
       </p>
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
