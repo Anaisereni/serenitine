@@ -360,6 +360,8 @@ function OutilStress() {
         </div>
       </div>
 
+<LecteurMeditation /> 
+
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <Flower2 size={16} /> Parking à pensées
@@ -392,7 +394,156 @@ function OutilStress() {
     </div>
   );
 }
+function LecteurMeditation() {
+  const [sonActif, setSonActif] = useState(null);
+  const [duree, setDuree] = useState(5);
+  const [enLecture, setEnLecture] = useState(false);
+  const [tempsRestant, setTempsRestant] = useState(5 * 60);
+  const audioRef = React.useRef(null);
+  const intervalRef = React.useRef(null);
 
+  const sons = [
+    { id: 'meditation', label: '🧘 Classique', fichier: '/sounds/meditation.mp3' },
+    { id: 'eau', label: '💧 Eau', fichier: '/sounds/meditationeau.mp3' },
+    { id: 'oiseaux', label: '🐦 Oiseaux', fichier: '/sounds/oiseaux.mp3' },
+  ];
+
+  const choisirSon = (son) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    setEnLecture(false);
+    clearInterval(intervalRef.current);
+    setTempsRestant(duree * 60);
+    setSonActif(son);
+  };
+
+  const changerDuree = (d) => {
+    setDuree(d);
+    setTempsRestant(d * 60);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    setEnLecture(false);
+    clearInterval(intervalRef.current);
+  };
+
+  const toggleLecture = () => {
+    if (!sonActif) return;
+
+    if (enLecture) {
+      audioRef.current?.pause();
+      clearInterval(intervalRef.current);
+      setEnLecture(false);
+    } else {
+      if (!audioRef.current) {
+        audioRef.current = new Audio(sonActif.fichier);
+        audioRef.current.loop = true;
+      }
+      audioRef.current.play();
+      setEnLecture(true);
+
+      intervalRef.current = setInterval(() => {
+        setTempsRestant(t => {
+          if (t <= 1) {
+            audioRef.current?.pause();
+            audioRef.current = null;
+            setEnLecture(false);
+            clearInterval(intervalRef.current);
+            return duree * 60;
+          }
+          return t - 1;
+        });
+      }, 1000);
+    }
+  };
+
+  const reset = () => {
+    audioRef.current?.pause();
+    audioRef.current = null;
+    setEnLecture(false);
+    clearInterval(intervalRef.current);
+    setTempsRestant(duree * 60);
+  };
+
+  const minutes = Math.floor(tempsRestant / 60);
+  const secondes = String(tempsRestant % 60).padStart(2, '0');
+
+  return (
+    <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
+      <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+        🎵 Méditation sonore
+      </h3>
+      <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 12 }}>
+        Choisis un son et une durée pour te détendre.
+      </p>
+
+      {/* Choix du son */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
+        {sons.map(s => (
+          <button key={s.id} onClick={() => choisirSon(s)}
+            style={{
+              flex: 1, padding: '8px 4px', borderRadius: 10, fontSize: 12,
+              border: sonActif?.id === s.id ? 'none' : '0.5px solid #eee',
+              background: sonActif?.id === s.id ? '#FAEEDA' : 'white',
+              color: sonActif?.id === s.id ? '#854F0B' : '#666',
+              cursor: 'pointer', fontWeight: sonActif?.id === s.id ? 500 : 400
+            }}>
+            {s.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Choix de la durée */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+        {[5, 10, 15].map(d => (
+          <button key={d} onClick={() => changerDuree(d)}
+            style={{
+              flex: 1, padding: '6px 4px', borderRadius: 10, fontSize: 12,
+              border: duree === d ? 'none' : '0.5px solid #eee',
+              background: duree === d ? '#FAEEDA' : 'white',
+              color: duree === d ? '#854F0B' : '#666',
+              cursor: 'pointer', fontWeight: duree === d ? 500 : 400
+            }}>
+            {d} min
+          </button>
+        ))}
+      </div>
+
+      {/* Timer */}
+      <div style={{ textAlign: 'center', fontSize: 28, fontWeight: 700, color: '#854F0B', marginBottom: 16 }}>
+        {minutes}:{secondes}
+      </div>
+
+      {/* Boutons */}
+      <div style={{ display: 'flex', gap: 8 }}>
+        <button onClick={toggleLecture} disabled={!sonActif}
+          style={{
+            flex: 1, padding: '10px', borderRadius: 10, border: 'none',
+            background: !sonActif ? '#eee' : enLecture ? '#FAEEDA' : '#854F0B',
+            color: !sonActif ? '#999' : enLecture ? '#854F0B' : 'white',
+            fontSize: 14, fontWeight: 500, cursor: sonActif ? 'pointer' : 'default'
+          }}>
+          {enLecture ? '⏸ Pause' : tempsRestant === duree * 60 ? '▶ Démarrer' : '▶ Reprendre'}
+        </button>
+        <button onClick={reset}
+          style={{
+            padding: '10px 16px', borderRadius: 10,
+            border: '0.5px solid #eee', background: 'white',
+            color: '#854F0B', fontSize: 14, cursor: 'pointer'
+          }}>
+          ↺
+        </button>
+      </div>
+
+      <p style={{ fontSize: 11, color: '#c8a07a', textAlign: 'center', marginTop: 10, fontStyle: 'italic' }}>
+        🔔 Sur iPhone, désactive le mode silencieux pour entendre les sons
+      </p>
+    </div>
+  );
+}
 function OutilMouvement() {
   const [programme, setProgramme] = useState(() => localStorage.getItem('mouvement_programme') || '');
 
