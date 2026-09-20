@@ -2,6 +2,13 @@ import React, { useState } from 'react';
 import { getHistorique, getHistoriquePilier } from './useStorage';
 import { BarChart3, Salad, Moon, Flower2, Activity } from 'lucide-react';
 
+const HUMEURS = [
+  { valeur: 'tres-bien', emoji: '😊', label: 'Très bien' },
+  { valeur: 'bien', emoji: '🙂', label: 'Bien' },
+  { valeur: 'neutre', emoji: '😐', label: 'Neutre' },
+  { valeur: 'bof', emoji: '😕', label: 'Bof' },
+  { valeur: 'pas-bien', emoji: '😔', label: 'Pas très bien' },
+];
 const TOTAUX = {
   Quotidien: 11,
   Hebdomadaire: 5,
@@ -221,6 +228,9 @@ function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday 
 function Statistiques() {
   const [onglet, setOnglet] = useState('jour');
   const [offset, setOffset] = useState(0);
+  const [humeurs] = useState(() =>
+  JSON.parse(localStorage.getItem('serenitine_humeurs') || '{}')
+);
   const frequenceMap = {
     jour: 'Quotidien',
     semaine: 'Hebdomadaire',
@@ -249,6 +259,8 @@ function Statistiques() {
   };
   const frequence = frequenceMap[onglet];
   const periodeKey = getKeyByOffset(frequence, offset);
+  const humeurJour = onglet === 'jour' ? humeurs[periodeKey] : null;
+const humeurSelectionnee = HUMEURS.find(h => h.valeur === humeurJour);
   const isToday = offset === 0;
   const formater = formaterMap[onglet];
   const changerOnglet = (nouvelOnglet) => {
@@ -316,6 +328,44 @@ function Statistiques() {
         histPilier={histPilierMap[onglet]}
         isToday={isToday}
       />
+            {onglet === 'jour' && (
+  <div style={{
+    background: 'var(--color-background-primary)',
+    border: '0.5px solid var(--color-border-tertiary)',
+    borderRadius: 'var(--border-radius-lg)',
+    padding: '0.7rem 1rem',
+    marginBottom: 10,
+    textAlign: 'center',
+  }}>
+    {humeurSelectionnee ? (
+      <div style={{
+        fontSize: 13,
+        color: 'white',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+      }}>
+        <span style={{ fontWeight: 500 }}>
+          Humeur du jour :
+        </span>
+        <span style={{ fontSize: 20 }}>
+          {humeurSelectionnee.emoji}
+        </span>
+        <span>
+          {humeurSelectionnee.label}
+        </span>
+      </div>
+    ) : (
+      <div style={{
+        fontSize: 12,
+        color: 'rgba(255,255,255,0.55)',
+      }}>
+        Humeur du jour : aucune humeur renseignée
+      </div>
+    )}
+  </div>
+)}
       {onglet === 'jour' && (
         <CalendrierAnnuel histQuotidien={histQuotidien} />
       )}

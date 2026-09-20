@@ -201,7 +201,7 @@ function OutilSommeil() {
       </div>
       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-          <BedDouble size={16} /> Journal du sommeil — aujourd'hui
+          <BedDouble size={16} /> Journal du sommeil
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
           <div>
@@ -463,14 +463,14 @@ const PRODUITS = [
   {
     id: 3,
     nom: "Simulateur d'aube et réveils - Ma douce veileuse",
-    description: "Réveillez-vous apaisé, retrouvez un sommeil réparateur. Pour les enfants et les adultes.",
+    description: "Réveille-toi apaisé, retrouvez un sommeil réparateur. Pour les enfants et les adultes.",
     pilier: "Sommeil",
     lien: "https://madouceveilleuse.com",
   },
   {
     id: 4,
     nom: "Matériel de sport maison - Décathlon",
-    description: "Retrouvez du matériel de sport pour bouger chez soi : élastiques, ballons, poids, tapis...",
+    description: "Retrouve du matériel de sport pour bouger chez soi : élastiques, ballons, poids, tapis...",
     pilier: "Mouvement",
     lien: "https://www.decathlon.fr/tous-les-sports/fitness-cardio-training/my-home-gym",
   },
@@ -481,6 +481,20 @@ const PRODUITS = [
     pilier: "Stress",
     lien: "https://www.natureetdecouvertes.com/bien-etre/relaxation-sommeil/appareils-sommeil/zen-box-meditation-terraillon-15236840",
   },
+  {
+  id: 6,
+  nom: "Produits ménagers - Mutyne",
+  description: "Des produits efficaces, éco-conçus, qui respectent ta santé et l'environnement.",
+  pilier: "Autres",
+  lien: "https://mutyne.co",
+},
+{
+  id: 7,
+  nom: "Produits cosmétiques - Aroma-zone",
+  description: "Des produits de beauté avec des compositions saines pour respecter ta santé et l'environnement.",
+  pilier: "Autres",
+  lien: "https://www.aroma-zone.com",
+},
 
   // Ajoute d'autres produits ici
 ];
@@ -491,6 +505,7 @@ function OutilProduits() {
   Sommeil:   { bg: '#E6F1FB', couleur: '#0C447C' },
   Stress:    { bg: '#FAEEDA', couleur: '#633806' },
   Mouvement: { bg: '#FAECE7', couleur: '#8626a6' },
+  Autres : { bg: '#fbf6bf', couleur: '#8d6e21' },
 };
   return (
     <div>

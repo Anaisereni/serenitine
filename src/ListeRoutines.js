@@ -36,6 +36,15 @@ const LABELS_FREQUENCES = {
   "Annuel": "Cette année"
 };
 
+const HUMEURS = [
+  { valeur: 'tres-bien', emoji: '😊', label: 'Très bien' },
+  { valeur: 'bien', emoji: '🙂', label: 'Bien' },
+  { valeur: 'neutre', emoji: '😐', label: 'Neutre' },
+  { valeur: 'bof', emoji: '😕', label: 'Bof' },
+  { valeur: 'pas-bien', emoji: '😔', label: 'Pas très bien' },
+];
+
+
 const MESSAGES_FELICITATIONS = {
   "Quotidien": { emoji: "☺︎", texte: "Journée complète ! Toutes tes routines du jour sont faites." },
   "Hebdomadaire": { emoji: "❀", texte: "Semaine complète ! Tu as réalisé toutes tes routines de la semaine." },
@@ -130,10 +139,28 @@ function ListeRoutines() {
   const [frequenceActive, setFrequenceActive] = useState("Quotidien");
   const [confettisActifs, setConfettisActifs] = useState(false);
   const etaitCompleteRef = useRef(false);
+  const [humeur, setHumeur] = useState(() => {
+  const aujourdHui = new Date().toISOString().split('T')[0];
+  const historique = JSON.parse(localStorage.getItem('serenitine_humeurs') || '{}');
+  return historique[aujourdHui] || null;
+});
+
+const choisirHumeur = (valeur) => {
+  const aujourdHui = new Date().toISOString().split('T')[0];
+  const historique = JSON.parse(localStorage.getItem('serenitine_humeurs') || '{}');
+
+  historique[aujourdHui] = valeur;
+
+  localStorage.setItem('serenitine_humeurs', JSON.stringify(historique));
+  setHumeur(valeur);
+};
+  
 
   const [cocheeQuotidien, setCocheeQuotidien] = useRoutineStorage('Quotidien');
   const [cocheeHebdo, setCocheeHebdo] = useRoutineStorage('Hebdomadaire');
   const [cocheeAnnuel, setCocheeAnnuel] = useRoutineStorage('Annuel');
+
+   
 
   const cochees = frequenceActive === 'Quotidien' ? cocheeQuotidien :
                   frequenceActive === 'Hebdomadaire' ? cocheeHebdo : cocheeAnnuel;
@@ -256,7 +283,7 @@ function ListeRoutines() {
         </div>
       )}
 
-      <div className="routines-liste">
+            <div className="routines-liste">
         {routinesFiltrees.map(r => (
           <Routine
             key={r.id}
@@ -270,6 +297,70 @@ function ListeRoutines() {
           />
         ))}
       </div>
+
+      {frequenceActive === "Quotidien" && (
+        <div style={{
+          marginTop: 24,
+          padding: '1rem',
+          background: 'rgba(255,255,255,0.12)',
+          border: '0.5px solid rgba(255,255,255,0.3)',
+          borderRadius: 16,
+          textAlign: 'center',
+        }}>
+          <div style={{
+            fontSize: 15,
+            fontWeight: 600,
+            color: 'white',
+            marginBottom: 4,
+          }}>
+            Comment je me sens aujourd'hui ?
+          </div>
+
+          <div style={{
+            fontSize: 11,
+            color: 'rgba(255,255,255,0.75)',
+            marginBottom: 14,
+          }}>
+            Une petite pause pour faire le point sur ton humeur
+          </div>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: 8,
+            flexWrap: 'wrap',
+          }}>
+            {HUMEURS.map(h => (
+              <button
+                key={h.valeur}
+                onClick={() => choisirHumeur(h.valeur)}
+                style={{
+                  flex: '1 1 55px',
+                  maxWidth: 75,
+                  padding: '8px 4px',
+                  borderRadius: 12,
+                  border: humeur === h.valeur
+                    ? '1.5px solid white'
+                    : '0.5px solid rgba(255,255,255,0.25)',
+                  background: humeur === h.valeur
+                    ? 'rgba(255,255,255,0.22)'
+                    : 'rgba(255,255,255,0.08)',
+                  color: 'white',
+                  cursor: 'pointer',
+                }}
+              >
+                <div style={{ fontSize: 22 }}>{h.emoji}</div>
+                <div style={{
+                  fontSize: 10,
+                  marginTop: 3,
+                }}>
+                  {h.label}
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
     </div>
   );
