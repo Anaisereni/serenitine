@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAudioCtx, debloqueurAudio } from './audio';
-import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad, ShoppingBag, ExternalLink } from 'lucide-react';
+import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad, ShoppingBag, ExternalLink, Music } from 'lucide-react';
 
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
@@ -474,7 +474,7 @@ function LecteurMeditation() {
   return (
     <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
       <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
-        🎵 Méditation sonore
+        <Music size={16} /> Méditation sonore
       </h3>
       <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 12 }}>
         Choisis un son et une durée pour te détendre.
