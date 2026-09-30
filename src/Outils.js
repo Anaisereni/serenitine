@@ -597,50 +597,44 @@ function OutilMouvement() {
 }
 
 const PRODUITS = [
+  
   {
     id: 1,
-    nom: "*Box détente - Mon instant thé ",
-    description: "Thé, bougie, gourmandises et surprises... un moment rien que pour toi.",
-    pilier: "Stress",
-    lien: "https://moninstantthe.fr/?ae=15",
-  },
-  {
-    id: 2,
     nom: "Compléments alimentaires - Nutripure",
     description: "Retrouve des compléments de qualité : multivitamines, vitamine D, protéines, fer, magnésium, oméga 3...",
     pilier: "Nutrition",
     lien: "https://www.nutripure.fr/fr/",
   },
   {
-    id: 3,
+    id: 2,
     nom: "Simulateur d'aube et réveils - Ma douce veileuse",
     description: "Réveille-toi apaisé, retrouvez un sommeil réparateur. Pour les enfants et les adultes.",
     pilier: "Sommeil",
     lien: "https://madouceveilleuse.com",
   },
   {
-    id: 4,
+    id: 3,
     nom: "Matériel de sport maison - Décathlon",
     description: "Retrouve du matériel de sport pour bouger chez soi : élastiques, ballons, poids, tapis...",
     pilier: "Mouvement",
     lien: "https://www.decathlon.fr/tous-les-sports/fitness-cardio-training/my-home-gym",
   },
    {
-    id: 5,
+    id: 4,
     nom: "Zen box méditation - Terraillon",
     description: "Des programmes de méditation pour se détendre.",
     pilier: "Stress",
     lien: "https://www.natureetdecouvertes.com/bien-etre/relaxation-sommeil/appareils-sommeil/zen-box-meditation-terraillon-15236840",
   },
   {
-  id: 6,
+  id: 5,
   nom: "Produits ménagers - Mutyne",
   description: "Des produits efficaces, éco-conçus, qui respectent ta santé et l'environnement.",
   pilier: "Autres",
   lien: "https://mutyne.co",
 },
 {
-  id: 7,
+  id: 6,
   nom: "Produits cosmétiques - Aroma-zone",
   description: "Des produits de beauté avec des compositions saines pour respecter ta santé et l'environnement.",
   pilier: "Autres",
@@ -661,7 +655,8 @@ function OutilProduits() {
   return (
     <div>
       <p style={{ fontSize: 13, color: 'white', marginBottom: 16, fontStyle: 'italic', textAlign: 'center' }}>
-        Une sélection de produits pour prendre soin de toi 🌿 <br />(D'autres produits sont à venir)
+        Quelques produits pour prendre soin de toi ❤︎ 
+
       </p>
    {PRODUITS.map(p => (
   <a
@@ -694,8 +689,8 @@ function OutilProduits() {
     </div>
   </a>
 ))}
-      <p style={{ fontSize: 12, color: 'rgba(255, 255, 255, 0.93)', textAlign: 'center', marginTop: 8, fontStyle: 'italic' }}>
-        * liens affiliés
+      <p style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.93)', textAlign: 'center', marginTop: 8, fontStyle: 'italic' }}>
+        Aucun lien affilié
       </p>
     </div>
   );
