@@ -618,33 +618,41 @@ const PRODUITS = [
     lien: "https://madouceveilleuse.com",
   },
   {
-    id: 3,
+  id: 3,
+  nom: "Literie - Litier Français",
+  description: "Une literie pour t'aider à mieux dormir et récupérer chaque nuit. ▹ Lien affilié ",
+  pilier: "Sommeil",
+  lien: "https://www.litierfrancais.com/?utm_source=affiliation&utm_medium=Blog%20Media&utm_campaign=S%C3%A9r%C3%A9nitine&ae=234",
+},
+  {
+    id: 4,
     nom: "Matériel de sport maison - Décathlon",
     description: "Retrouve du matériel de sport pour bouger chez soi : élastiques, ballons, poids, tapis...",
     pilier: "Mouvement",
     lien: "https://www.decathlon.fr/tous-les-sports/fitness-cardio-training/my-home-gym",
   },
    {
-    id: 4,
+    id: 5,
     nom: "Zen box méditation - Terraillon",
     description: "Des programmes de méditation pour se détendre.",
     pilier: "Stress",
     lien: "https://www.natureetdecouvertes.com/bien-etre/relaxation-sommeil/appareils-sommeil/zen-box-meditation-terraillon-15236840",
   },
   {
-  id: 5,
+  id: 6,
   nom: "Produits ménagers - Mutyne",
   description: "Des produits efficaces, éco-conçus, qui respectent ta santé et l'environnement.",
   pilier: "Autres",
   lien: "https://mutyne.co",
 },
 {
-  id: 6,
+  id: 7,
   nom: "Produits cosmétiques - Aroma-zone",
   description: "Des produits de beauté avec des compositions saines pour respecter ta santé et l'environnement.",
   pilier: "Autres",
   lien: "https://www.aroma-zone.com",
 },
+
 
   // Ajoute d'autres produits ici
 ];
@@ -695,7 +703,7 @@ function OutilProduits() {
   </a>
 ))}
       <p style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.93)', textAlign: 'center', marginTop: 8, fontStyle: 'italic' }}>
-        Aucun lien affilié
+        
       </p>
     </div>
   );

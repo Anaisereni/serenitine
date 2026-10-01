@@ -1008,6 +1008,47 @@ const articles = [
       texte: "Au-delà de la quantité d'oméga-3, c'est le ratio oméga-6/oméga-3 qui est crucial pour la santé. Ces deux familles de graisses entrent en compétition pour les mêmes enzymes, un excès d'oméga-6 bloque l'utilisation des oméga-3. Le ratio idéal est de 4:1 (oméga-6/oméga-3) mais l'alimentation occidentale moderne atteint souvent 15:1 à 20:1, en raison de la surconsommation d'huiles végétales riches en oméga-6 (tournesol, maïs, soja). Réduire ces huiles au profit de l'huile d'olive et de colza, et augmenter la consommation de poissons gras, est la stratégie la plus efficace pour rééquilibrer ce ratio."
     }
   ]
+},
+{
+  id: 36,
+  titre: "La literie : la base d'un sommeil vraiment réparateur",
+  pilier: "Sommeil",
+  emoji: "🛏️",
+  resume: "Comment ton matelas, ton oreiller et tes draps influencent la qualité de ton sommeil, et comment les choisir et les renouveler.",
+  contenu: [
+    {
+      sous_titre: "Un tiers de ta vie passé dans ton lit",
+      texte: "On soigne son alimentation, on bouge, on gère son stress... et on dort parfois sur un matelas qui a dix ans de trop. Pourtant, la literie est l'environnement dans lequel ton corps récupère chaque nuit. Un lit inadapté peut fragmenter ton sommeil, entretenir des tensions musculaires et te faire te réveiller fatigué malgré des nuits de durée suffisante."
+    },
+    {
+      sous_titre: "Le soutien du dos : garder une colonne alignée",
+      texte: "Pendant la nuit, ta colonne vertébrale doit rester dans son alignement naturel. Un matelas trop mou laisse le bassin s'affaisser, un matelas trop dur crée des points de pression sur les épaules et les hanches. Dans les deux cas, tu risques de te réveiller avec des raideurs lombaires ou cervicales. En général, un soutien ferme associé à un accueil modéré convient à une majorité de dormeurs, mais le bon choix dépend de ta morphologie, de ta position de sommeil et de tes éventuelles douleurs. Le meilleur test reste de s'allonger plusieurs minutes sur le matelas dans ta position habituelle."
+    },
+    {
+      sous_titre: "La température : un facteur clé de sommeil profond",
+      texte: "Pour s'endormir et rester endormi, ton corps doit légèrement baisser sa température interne. Une literie qui retient la chaleur ou l'humidité perturbe ce mécanisme : tu transpires, tu te réveilles sans t'en rendre compte et tes cycles de sommeil profond sont écourtés. Les matières respirantes comme le coton, le lin ou la laine aident à garder un microclimat stable sous la couette. Dans la chambre, une température autour de 18 °C est généralement recommandée."
+    },
+    {
+      sous_titre: "L'oreiller : adapte-le à ta position",
+      texte: "L'oreiller a un seul rôle : maintenir ta nuque dans l'axe de ta colonne. Sur le dos, choisis une hauteur moyenne qui épouse la courbe du cou. Sur le côté, il faut un oreiller plus haut pour combler l'espace entre l'épaule et la tête. Sur le ventre, privilégie un oreiller très fin, voire aucun, car cette position est la plus contraignante pour les cervicales. Si tu changes souvent de position, un oreiller de hauteur moyenne et à la mousse adaptable est souvent le meilleur compromis."
+    },
+    {
+      sous_titre: "Hygiène : acariens et poussières",
+      texte: "Matelas et oreillers accumulent avec le temps de la poussière, de l'humidité et des acariens. Chez les personnes sensibles, cela peut favoriser le nez qui coule, la toux nocturne ou les irritations de la peau. Aère ton lit chaque matin en ouvrant la couette, lave tes draps régulièrement et, quand les étiquettes le permettent, à 60 °C pour limiter les acariens. Une housse de protection lavable sur le matelas facilite l'entretien."
+    },
+    {
+      sous_titre: "Quand renouveler ta literie ?",
+      texte: "Un matelas se change en moyenne tous les 8 à 10 ans, plus tôt s'il s'affaisse, craque ou si tu te réveilles régulièrement courbaturé. Un oreiller se renouvelle tous les 1 à 2 ans, car il perd son soutien et accumule les saletés. Ton mini-test : sur le côté, ta colonne forme-t-elle une ligne droite ? As-tu des raideurs au réveil qui disparaissent dans la journée ? As-tu trop chaud ou trop froid la nuit ? Si tu réponds oui à plusieurs de ces questions, ta literie mérite probablement ton attention."
+    },
+    {
+      sous_titre: "Collaboration commerciale",
+      texte: "Découvre Litier français, des matelas qui s'adaptent à ton corps et à tes positions, pour des nuits réparatrices. Le lien ci-dessous est un lien d'affiliation :",
+      lien: {
+        label: "Découvrir la literie Litier Français",
+        url: "https://www.litierfrancais.com/?utm_source=affiliation&utm_medium=Blog%20Media&utm_campaign=S%C3%A9r%C3%A9nitine&ae=234"
+      }
+    }
+  ]
 }
 ];
 
@@ -1019,20 +1060,43 @@ const iconesParId = {
   21: Frown, 22: Flame, 23: Heart, 24: Clock, 25: Dumbbell,
   26: Bath, 27: Recycle, 28: Beef, 29: CigaretteOff, 30: Candy,
   31: Droplets, 32: Brain, 33: BedDouble, 34: Coffee, 35: Fish,
+  36: BedDouble,
 };
 
 function Article({ article, onRetour }) {
+  const Icone = iconesParId[article.id] || BookOpen;
+
   return (
     <div className="article-wrap">
       <button className="fiche-retour" onClick={onRetour}>← Retour</button>
       <div className={`fiche-pilier-badge ${article.pilier.toLowerCase()}`}>{article.pilier}</div>
-      {React.createElement(iconesParId[article.id], { size: 40, className: 'article-emoji' })}
+      <Icone size={40} className="article-emoji" />
       <h2 className="fiche-titre">{article.titre}</h2>
       <p className="article-resume">{article.resume}</p>
       {article.contenu.map((section, i) => (
         <div key={i} className="article-section">
           <h3 className="article-section-titre">{section.sous_titre}</h3>
           <p className="article-section-texte">{section.texte}</p>
+          {section.lien && (
+            <a
+              href={section.lien.url}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="article-lien"
+              style={{
+                display: 'inline-block',
+                marginTop: '0.6rem',
+                padding: '0.6rem 1.1rem',
+                borderRadius: '999px',
+                background: '#5C3D2E',
+                color: '#fff',
+                textDecoration: 'none',
+                fontWeight: 600,
+              }}
+            >
+              {section.lien.label}
+            </a>
+          )}
         </div>
       ))}
     </div>
@@ -1042,7 +1106,6 @@ function Article({ article, onRetour }) {
 function Ressources() {
   const [articleActif, setArticleActif] = useState(null);
   const [pilierActif, setPilierActif] = useState("Tous");
-  console.log("articles:", articles);
 
   const PILIERS = ["Tous", "Nutrition", "Stress", "Mouvement", "Sommeil", "Environnement"];
 
@@ -1054,46 +1117,41 @@ function Ressources() {
     return <Article article={articleActif} onRetour={() => setArticleActif(null)} />;
   }
 
-if (articleActif) {
-    return <Article article={articleActif} onRetour={() => setArticleActif(null)} />;
-  }
-
   return (
-   <div className="ressources-wrap">
-  
+    <div className="ressources-wrap">
+      <h2 className="ressources-titre" style={{ textAlign: 'center' }}>Articles <BookOpen size={20} /></h2>
+      <p className="ressources-sous-titre" style={{ textAlign: 'center' }}>
+        Des articles pour comprendre et agir, répartis en 5 catégories pour prendre soin de toi au quotidien
+      </p>
 
-      
-        <>
-          <h2 className="ressources-titre" style={{ textAlign: 'center' }} >Articles <BookOpen size={20} /></h2>
-          <p className="ressources-sous-titre" style= {{ textAlign: 'center' }}>Des articles pour comprendre et agir, répartis en 5 catégories pour prendre soin de toi au quotidien</p>
+      <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
+        {PILIERS.map(p => (
+          <button
+            key={p}
+            className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
+            onClick={() => setPilierActif(p)}
+          >
+            {p}
+          </button>
+        ))}
+      </div>
 
-          <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
-            {PILIERS.map(p => (
-              <button
-                key={p}
-                className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
-                onClick={() => setPilierActif(p)}
-              >
-                {p}
-              </button>
-            ))}
-          </div>
-
-          <div className="ressources-liste">
-            {articlesFiltres.map(a => (
-              <div key={a.id} className="ressource-card" onClick={() => setArticleActif(a)}>
-               {React.createElement(iconesParId[a.id], { size: 24, className: 'ressource-card-emoji' })}
-                <div className="ressource-card-body">
-                  <div className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`} style={{ marginBottom: 6 }}>{a.pilier}</div>
-                  <div className="ressource-card-titre">{a.titre}</div>
-                  <div className="ressource-card-resume">{a.resume}</div>
-                </div>
-                <span className="accueil-card-arrow">→</span>
+      <div className="ressources-liste">
+        {articlesFiltres.map(a => {
+          const Icone = iconesParId[a.id] || BookOpen;
+          return (
+            <div key={a.id} className="ressource-card" onClick={() => setArticleActif(a)}>
+              <Icone size={24} className="ressource-card-emoji" />
+              <div className="ressource-card-body">
+                <div className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`} style={{ marginBottom: 6 }}>{a.pilier}</div>
+                <div className="ressource-card-titre">{a.titre}</div>
+                <div className="ressource-card-resume">{a.resume}</div>
               </div>
-            ))}
-          </div>
-        </>
-      
+              <span className="accueil-card-arrow">→</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
