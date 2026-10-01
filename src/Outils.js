@@ -171,37 +171,9 @@ function OutilSommeil() {
 
   return (
     <div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-          <Moon size={16} /> Vider les pensées du soir
-        </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
-          Note tout ce qui tourne dans ta tête pour libérer ton esprit avant de dormir.
-        </p>
-        <textarea
-          value={pensees}
-          onChange={e => { setPensees(e.target.value); localStorage.setItem('sommeil_pensees', e.target.value); }}
-          placeholder="Ce qui me préoccupe ce soir..."
-          style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
-        />
-      </div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-          <ClipboardList size={16} /> Programme du lendemain
-        </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
-          Note ce que tu as à faire demain pour ne plus y penser cette nuit.
-        </p>
-        <textarea
-          value={programme}
-          onChange={e => { setProgramme(e.target.value); localStorage.setItem('sommeil_programme', e.target.value); }}
-          placeholder="Demain je dois..."
-          style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
-        />
-      </div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
-          <BedDouble size={16} /> Journal du sommeil
+          <BedDouble size={16} /> Mon sommeil
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
           <div>
@@ -218,7 +190,7 @@ function OutilSommeil() {
           </div>
         </div>
         <div style={{ marginBottom: 10 }}>
-          <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Qualité du sommeil</label>
+          <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Qualité du sommeil en ce moment</label>
           <div style={{ display: 'flex', gap: 8 }}>
             {qualites.map(({ label, Icon }) => (
               <button key={label} onClick={() => updateJournal('qualite', label)}
@@ -240,9 +212,42 @@ function OutilSommeil() {
           <textarea value={entryAujourdhui.notes}
             onChange={e => updateJournal('notes', e.target.value)}
             placeholder="Réveils nocturnes, rêves, sensations..."
-            style={{ width: '100%', minHeight: 70, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }} />
+            style={{ width: '100%', minHeight: 70, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }} 
+            />
+
         </div>
+
       </div>
+      
+      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginTop: 12 }}>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Moon size={16} /> Vider les pensées du soir
+        </h3>
+        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+          Note tout ce qui tourne dans ta tête pour libérer ton esprit avant de dormir.
+        </p>
+        <textarea
+          value={pensees}
+          onChange={e => { setPensees(e.target.value); localStorage.setItem('sommeil_pensees', e.target.value); }}
+          placeholder="Ce qui me préoccupe ce soir..."
+          style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
+        />
+      </div>
+      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginTop: 12 }}>
+        <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <ClipboardList size={16} /> Programme du lendemain
+        </h3>
+        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+          Note ce que tu as à faire demain pour ne plus y penser cette nuit.
+        </p>
+        <textarea
+          value={programme}
+          onChange={e => { setProgramme(e.target.value); localStorage.setItem('sommeil_programme', e.target.value); }}
+          placeholder="Demain je dois..."
+          style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
+        />
+      </div>
+      
     </div>
   );
 }
