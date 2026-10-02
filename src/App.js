@@ -89,6 +89,7 @@ function ContenuApp() {
             <Route path="/fiche" element={<FichePourquoi />} />
             <Route path="/statistiques" element={<Statistiques />} />
             <Route path="/ressources" element={<Ressources />} />
+            <Route path="/ressources/:articleId" element={<Ressources />} />
             <Route path="/outils" element={<Outils />} />
             <Route path="/profil" element={<Profil />} />
             <Route path="/legal" element={<Legal />} />

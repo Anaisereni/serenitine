@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Factory, HeartPulse, PersonStanding, Droplet, Droplets, AlertTriangle, Search, Moon, Dumbbell, Flower2, Pill, Carrot, Leaf, Activity, UtensilsCrossed, Nut, Wheat, SprayCan, Sparkles, Frown, Flame, Heart, Clock, Bath, Recycle, Beef, CigaretteOff, Candy, Brain, BedDouble, Coffee, Fish, BookOpen } from 'lucide-react';
 
 const articles = [
@@ -1104,7 +1105,8 @@ function Article({ article, onRetour }) {
 }
 
 function Ressources() {
-  const [articleActif, setArticleActif] = useState(null);
+  const { articleId } = useParams();
+  const navigate = useNavigate();
   const [pilierActif, setPilierActif] = useState("Tous");
 
   const PILIERS = ["Tous", "Nutrition", "Stress", "Mouvement", "Sommeil", "Environnement"];
@@ -1113,13 +1115,39 @@ function Ressources() {
     pilierActif === "Tous" || a.pilier === pilierActif
   );
 
-  if (articleActif) {
-    return <Article article={articleActif} onRetour={() => setArticleActif(null)} />;
+  // Si une URL d'article est utilisée, on cherche l'article correspondant
+  if (articleId) {
+    const articleActif = articles.find(a => a.id === Number(articleId));
+
+    // Si l'ID n'existe pas
+    if (!articleActif) {
+      return (
+        <div style={{ padding: '1rem', textAlign: 'center' }}>
+          <p>Article non trouvé.</p>
+          <button
+            className="fiche-retour"
+            onClick={() => navigate('/ressources')}
+          >
+            ← Retour aux articles
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <Article
+        article={articleActif}
+        onRetour={() => navigate('/ressources')}
+      />
+    );
   }
 
   return (
     <div className="ressources-wrap">
-      <h2 className="ressources-titre" style={{ textAlign: 'center' }}>Articles <BookOpen size={20} /></h2>
+      <h2 className="ressources-titre" style={{ textAlign: 'center' }}>
+        Articles <BookOpen size={20} />
+      </h2>
+
       <p className="ressources-sous-titre" style={{ textAlign: 'center' }}>
         Des articles pour comprendre et agir, répartis en 5 catégories pour prendre soin de toi au quotidien
       </p>
@@ -1139,14 +1167,32 @@ function Ressources() {
       <div className="ressources-liste">
         {articlesFiltres.map(a => {
           const Icone = iconesParId[a.id] || BookOpen;
+
           return (
-            <div key={a.id} className="ressource-card" onClick={() => setArticleActif(a)}>
+            <div
+              key={a.id}
+              className="ressource-card"
+              onClick={() => navigate(`/ressources/${a.id}`)}
+            >
               <Icone size={24} className="ressource-card-emoji" />
+
               <div className="ressource-card-body">
-                <div className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`} style={{ marginBottom: 6 }}>{a.pilier}</div>
-                <div className="ressource-card-titre">{a.titre}</div>
-                <div className="ressource-card-resume">{a.resume}</div>
+                <div
+                  className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`}
+                  style={{ marginBottom: 6 }}
+                >
+                  {a.pilier}
+                </div>
+
+                <div className="ressource-card-titre">
+                  {a.titre}
+                </div>
+
+                <div className="ressource-card-resume">
+                  {a.resume}
+                </div>
               </div>
+
               <span className="accueil-card-arrow">→</span>
             </div>
           );
