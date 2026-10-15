@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, sans-serif;
-  background: #91afc6;
+  background: #98b7cf;
   color: #1a1a1a;
 }
 
@@ -925,4 +925,74 @@ body {
   color: #444;
   line-height: 1.7;
   font-style: italic;
+}
+.entete-onglet {
+  box-sizing: border-box;
+  width: calc(100% + 5rem);
+  margin: -2.5rem -2.5rem 1.5rem;
+  padding: 1.5rem 1rem;
+  background: #faf6ee;
+  border: none;
+  border-bottom: 1px solid #e8dece;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 3px 12px rgba(92, 61, 46, 0.06);
+  text-align: center;
+}
+
+/* Routines n'a pas le padding supplémentaire des autres pages. */
+.liste-routines > .entete-onglet {
+  width: calc(100% + 3rem);
+  margin: -2.5rem -1.5rem 1.5rem;
+}
+
+
+.entete-onglet__titre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  color: #5c3d2e;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.entete-onglet__titre svg {
+  flex-shrink: 0;
+  color: #92765b;
+}
+
+.entete-onglet__description {
+  max-width: 440px;
+  margin: 8px auto 0;
+  color: #786b5e;
+  font-size: 13px;
+  line-height: 1.6;
+  font-style: italic;
+}
+.entete-onglet__titre {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.entete-onglet__titre svg {
+  stroke-width: 1.6;
+}
+
+.entete-onglet__description {
+  margin-top: 10px;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.entete-onglet::after {
+  content: '';
+  display: block;
+  width: 38px;
+  height: 2px;
+  margin: 14px auto 0;
+  background: #c9b596;
+  border-radius: 2px;
 }

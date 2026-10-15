@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Factory, HeartPulse, PersonStanding, Droplet, Droplets, AlertTriangle, Search, Moon, Dumbbell, Flower2, Pill, Carrot, Leaf, Activity, UtensilsCrossed, Nut, Wheat, SprayCan, Sparkles, Frown, Flame, Heart, Clock, Bath, Recycle, Beef, CigaretteOff, Candy, Brain, BedDouble, Coffee, Fish, BookOpen } from 'lucide-react';
 
@@ -1107,9 +1107,39 @@ function Article({ article, onRetour }) {
 function Ressources() {
   const { articleId } = useParams();
   const navigate = useNavigate();
-  const [pilierActif, setPilierActif] = useState("Tous");
+  useEffect(() => {
+  const position = articleId
+    ? 0
+    : Number(sessionStorage.getItem('ressources_position') || 0);
 
-  const PILIERS = ["Tous", "Nutrition", "Stress", "Mouvement", "Sommeil", "Environnement"];
+  const frame = requestAnimationFrame(() => {
+    window.scrollTo({
+      top: position,
+      left: 0,
+      behavior: 'instant',
+    });
+  });
+
+  return () => cancelAnimationFrame(frame);
+}, [articleId]);
+  const [pilierActif, setPilierActif] = useState(() => {
+  const valeur = localStorage.getItem('ressources_dernier_pilier');
+  const piliersValides = [
+    'Tous', 'Nutrition', 'Stress',
+    'Mouvement', 'Sommeil', 'Environnement'
+  ];
+
+  return piliersValides.includes(valeur) ? valeur : 'Tous';
+});
+
+useEffect(() => {
+  localStorage.setItem('ressources_dernier_pilier', pilierActif);
+}, [pilierActif]);
+
+const PILIERS = [
+  'Tous', 'Nutrition', 'Stress',
+  'Mouvement', 'Sommeil', 'Environnement'
+];
 
   const articlesFiltres = articles.filter(a =>
     pilierActif === "Tous" || a.pilier === pilierActif
@@ -1144,20 +1174,26 @@ function Ressources() {
 
   return (
     <div className="ressources-wrap">
-      <h2 className="ressources-titre" style={{ textAlign: 'center' }}>
-        Articles <BookOpen size={20} />
-      </h2>
-
-      <p className="ressources-sous-titre" style={{ textAlign: 'center' }}>
-        Des articles pour comprendre et agir, répartis en 5 catégories pour prendre soin de toi au quotidien
-      </p>
+      <div className="entete-onglet">
+  <h2 className="entete-onglet__titre">
+    <BookOpen size={21} />
+    Articles
+  </h2>
+  <p className="entete-onglet__description">
+    Des articles pour comprendre et agir, autour des 4 piliers
+    et de ton environnement
+  </p>
+</div>
 
       <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
         {PILIERS.map(p => (
           <button
             key={p}
             className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
-            onClick={() => setPilierActif(p)}
+            onClick={() => {
+  sessionStorage.setItem('ressources_position', '0');
+  setPilierActif(p);
+}}
           >
             {p}
           </button>
@@ -1172,7 +1208,13 @@ function Ressources() {
             <div
               key={a.id}
               className="ressource-card"
-              onClick={() => navigate(`/ressources/${a.id}`)}
+              onClick={() => {
+  sessionStorage.setItem(
+    'ressources_position',
+    String(window.scrollY)
+  );
+  navigate(`/ressources/${a.id}`);
+}}
             >
               <Icone size={24} className="ressource-card-emoji" />
 

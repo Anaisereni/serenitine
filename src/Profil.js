@@ -63,12 +63,13 @@ function Profil() {
   return (
     
     <div className="profil-wrap">
-<div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-  <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#393434', marginBottom: 4 }}>
-    Mon profil <User size={20} />
+<div className="entete-onglet">
+  <h2 className="entete-onglet__titre">
+    <User size={21} />
+    Mon profil
   </h2>
-  <p style={{ fontSize: 13, color: '#393434', opacity: 0.9 }}>
-    Retrouve ton évolution ici ainsi que les infos à propos de l'app
+  <p className="entete-onglet__description">
+    Retrouve ton évolution et les informations à propos de Sérénitine
   </p>
 </div>
       <div className="profil-hero" style={{ position: 'relative', overflow: 'hidden' }}>

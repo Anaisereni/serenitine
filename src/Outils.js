@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAudioCtx, debloqueurAudio } from './audio';
-import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad, ShoppingBag, ExternalLink, Music } from 'lucide-react';
+import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad, ShoppingBag, ExternalLink, Music, Wrench } from 'lucide-react';
 
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
@@ -153,14 +153,28 @@ function OutilSommeil() {
     catch { return {}; }
   });
 
-  const today = new Date().toISOString().split('T')[0];
-  const entryAujourdhui = journal[today] || { coucher: '', lever: '', qualite: '', notes: '' };
+  // Recharge la fiche permanente ou la dernière fiche enregistrée.
+const derniereDate = Object.keys(journal)
+  .filter(key => /^\d{4}-\d{2}-\d{2}$/.test(key))
+  .sort()
+  .pop();
 
-  const updateJournal = (field, value) => {
-    const updated = { ...journal, [today]: { ...entryAujourdhui, [field]: value } };
-    setJournal(updated);
-    localStorage.setItem('sommeil_journal', JSON.stringify(updated));
+const entryAujourdhui = journal.fiche ||
+  (derniereDate ? journal[derniereDate] : null) ||
+  { coucher: '', lever: '', qualite: '', notes: '' };
+
+const updateJournal = (field, value) => {
+  const updated = {
+    ...journal,
+    fiche: {
+      ...entryAujourdhui,
+      [field]: value,
+    },
   };
+
+  localStorage.setItem('sommeil_journal', JSON.stringify(updated));
+  setJournal(updated);
+};
 
   const qualites = [
     { label: 'Mauvaise', Icon: Frown },
@@ -299,11 +313,26 @@ function OutilStress() {
   }, [actif]);
 
   const demarrer = () => {
-    debloqueurAudio();
+  if (actif) {
+    setActif(false);
+    return;
+  }
+
+  debloqueurAudio();
+
+  const phaseActuelle =
+    compteurGlobal % 10 < 5 ? 'inspiration' : 'expiration';
+
+  phaseRef.current = phaseActuelle;
+
+  if (phaseActuelle === 'inspiration') {
     jouerSonInspiration(getAudioCtx());
-    phaseRef.current = 'inspiration';
-    setActif(a => !a);
-  };
+  } else {
+    jouerSonExpiration(getAudioCtx());
+  }
+
+  setActif(true);
+};
 
   const reset = () => {
     setActif(false);
@@ -333,7 +362,7 @@ function OutilStress() {
             border: `4px solid ${phase === 'inspiration' ? '#854F0B' : '#c8a07a'}`,
             display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
             background: phase === 'inspiration' ? '#FFF8F0' : '#FAEEDA',
-            transition: 'all 0.5s ease',
+            transition: 'transform 5s ease-in-out',
             transform: phase === 'inspiration' ? 'scale(1.08)' : 'scale(0.95)',
           }}>
             <Wind size={22} color="#854F0B" />
@@ -709,7 +738,18 @@ function OutilProduits() {
   );
 }
 function Outils() {
-  const [pilierActif, setPilierActif] = useState('Nutrition');
+  const [pilierActif, setPilierActif] = useState(() => {
+  const dernierOnglet = localStorage.getItem('outils_dernier_onglet');
+
+  return ['Nutrition', 'Sommeil', 'Stress', 'Mouvement', 'Produits']
+    .includes(dernierOnglet)
+    ? dernierOnglet
+    : 'Nutrition';
+});
+
+useEffect(() => {
+  localStorage.setItem('outils_dernier_onglet', pilierActif);
+}, [pilierActif]);
 
   const piliers = [
     { nom: 'Nutrition', Icon: Salad, couleur: '#27500A', bg: '#EAF3DE' },
@@ -720,12 +760,16 @@ function Outils() {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#393434', marginBottom: 4, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-        Outils <PenLine size={20} />
-      </h2>
-      <p style={{ fontSize: 13, color: '#393434', marginBottom: '1.2rem', textAlign: 'center' }}>
-        Tes espaces pratiques pour agir au quotidien dans les 4 piliers, ainsi que des produits recommandés
-      </p>
+      <div className="entete-onglet">
+  <h2 className="entete-onglet__titre">
+    <Wrench size={21} />
+    Outils
+  </h2>
+  <p className="entete-onglet__description">
+    Tes espaces pratiques pour agir au quotidien,
+    ainsi que des produits recommandés
+  </p>
+</div>
       <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
   {piliers.map(p => (
     <button key={p.nom} onClick={() => setPilierActif(p.nom)}

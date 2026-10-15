@@ -135,7 +135,7 @@ function Accueil() {
       <div className="accueil-cards">
       <div className="accueil-card" onClick={() => setInstructions(!instructions)} style={{ 
   background: '#b8c5e0',
-  border: '1.5px solid #fcfcfc',
+  border: '1.5px solid #b8c5e0',
   boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
   borderRadius: 16
 }}>
@@ -210,7 +210,7 @@ function Accueil() {
 <div className="accueil-cards">
 <div className="accueil-card" onClick={() => setConsultation(!consultation)} style={{ 
   background: '#b8c3dc',
-  border: '1.5px solid #ffffff',
+  border: '1.5px solid #b8c3dc',
   boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
   borderRadius: 16
 }}>

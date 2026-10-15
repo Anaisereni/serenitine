@@ -46,8 +46,8 @@ const HUMEURS = [
 
 
 const MESSAGES_FELICITATIONS = {
-  "Quotidien": { emoji: "☺︎", texte: "Journée complète ! Toutes tes routines du jour sont faites." },
-  "Hebdomadaire": { emoji: "❀", texte: "Semaine complète ! Tu as réalisé toutes tes routines de la semaine." },
+  "Quotidien": { emoji: "🎉", texte: "Journée complète ! Toutes tes routines du jour sont faites." },
+  "Hebdomadaire": { emoji: "🥳", texte: "Semaine complète ! Tu as réalisé toutes tes routines de la semaine." },
   "Annuel": { emoji: "✓", texte: "Année complète ! Tous tes rendez-vous annuels sont à jour." },
 };
 
@@ -135,8 +135,23 @@ function Confettis({ actif }) {
 function ListeRoutines() {
   const { setRoutineId } = useContext(AppContext);
   const navigate = useNavigate();
-  const [pilierActif, setPilierActif] = useState("Tous");
-  const [frequenceActive, setFrequenceActive] = useState("Quotidien");
+  const [pilierActif, setPilierActif] = useState(() => {
+  const valeur = localStorage.getItem('routines_dernier_pilier');
+  return PILIERS.includes(valeur) ? valeur : 'Tous';
+});
+
+const [frequenceActive, setFrequenceActive] = useState(() => {
+  const valeur = localStorage.getItem('routines_derniere_frequence');
+  return FREQUENCES.includes(valeur) ? valeur : 'Quotidien';
+});
+
+useEffect(() => {
+  localStorage.setItem('routines_dernier_pilier', pilierActif);
+}, [pilierActif]);
+
+useEffect(() => {
+  localStorage.setItem('routines_derniere_frequence', frequenceActive);
+}, [frequenceActive]);
   const [confettisActifs, setConfettisActifs] = useState(false);
   const etaitCompleteRef = useRef(false);
   const [humeur, setHumeur] = useState(() => {
@@ -218,11 +233,12 @@ const choisirHumeur = (valeur) => {
     <div className="liste-routines">
 
       <Confettis actif={confettisActifs} />
-<div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-  <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#393434', marginBottom: 4 }}>
-    Mes routines <CheckCircle2 size={20} />
+<div className="entete-onglet">
+  <h2 className="entete-onglet__titre">
+    <CheckCircle2 size={21} />
+    Mes routines
   </h2>
-  <p style={{ fontSize: 13, color: '#393434', opacity: 0.9 }}>
+  <p className="entete-onglet__description">
     Tes habitudes à cocher, avec leurs explications
   </p>
 </div>

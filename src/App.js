@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { Home, CheckCircle2, BookOpen, Wrench, User } from 'lucide-react';
 import './App.css';
@@ -18,6 +18,7 @@ export const AppContext = React.createContext(null);
 function NavBar() {
   const navigate = useNavigate();
   const location = useLocation();
+  
 
   return (
     <nav className="nav-bar">
@@ -64,6 +65,35 @@ function ContenuApp() {
   const [routineId, setRoutineId] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const cheminPrecedent = useRef(location.pathname);
+
+useLayoutEffect(() => {
+  const chemin = location.pathname;
+  const precedent = cheminPrecedent.current;
+
+  cheminPrecedent.current = chemin;
+
+  if (chemin === '/ressources') {
+    // Conserve la position uniquement lorsqu'on revient d'un article.
+    if (!precedent.startsWith('/ressources/')) {
+      sessionStorage.setItem('ressources_position', '0');
+    }
+
+    // Ressources gère déjà le défilement de sa liste.
+    return;
+  }
+
+  // Ressources gère déjà l'ouverture des articles en haut.
+  if (chemin.startsWith('/ressources/')) {
+    return;
+  }
+
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'instant',
+  });
+}, [location.pathname]);
 
   const ouvrirFiche = (id) => {
     setRoutineId(id);
