@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PenLine, Trash2, User } from 'lucide-react';
+import {
+  PenLine,
+  Trash2,
+  User,
+  CheckCircle2,
+  ShieldCheck,
+} from 'lucide-react';
 import Statistiques from './Statistiques';
 
 
@@ -72,113 +78,153 @@ function Profil() {
     Retrouve ton évolution et les informations à propos de Sérénitine
   </p>
 </div>
-      <div className="profil-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+     <div
+  className="profil-hero"
+  style={{ position: 'relative', overflow: 'hidden' }}
+>
+  {[false, true].map((basDroite) => (
+    <svg
+      key={String(basDroite)}
+      aria-hidden="true"
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        position: 'absolute',
+        top: basDroite ? 'auto' : 0,
+        left: basDroite ? 'auto' : 0,
+        bottom: basDroite ? 0 : 'auto',
+        right: basDroite ? 0 : 'auto',
+        width: 100,
+        height: 100,
+        pointerEvents: 'none',
+        transform: basDroite ? 'rotate(180deg)' : 'none',
+      }}
+    >
+      <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(130,165,190,0.30)" />
+      <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(130,165,190,0.25)" />
+      <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(130,165,190,0.22)" />
+      <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(130,165,190,0.26)" />
+      <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(130,165,190,0.22)" />
+      <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(130,165,190,0.18)" />
 
-        <svg
-          style={{ position: 'absolute', top: 0, left: 0, width: 100, height: 100, pointerEvents: 'none' }}
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(168,205,216,0.5)"/>
-          <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(168,205,216,0.45)"/>
-          <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(168,205,216,0.4)"/>
-          <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(168,205,216,0.45)"/>
-          <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(168,205,216,0.35)"/>
-          <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(168,205,216,0.3)"/>
-          <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(168,205,216,0.4)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(168,205,216,0.35)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(168,205,216,0.3)" strokeWidth="1.5"/>
-        </svg>
+      <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(130,165,190,0.25)" strokeWidth="1.5" />
+      <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(130,165,190,0.22)" strokeWidth="1.5" />
+      <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(130,165,190,0.20)" strokeWidth="1.5" />
+    </svg>
+  ))}
+  <div className="profil-avatar">
+    <img src="/profilbleu.png" alt="Logo Sérénitine" />
+  </div>
 
-        <svg
-          style={{ position: 'absolute', bottom: 0, right: 0, width: 100, height: 100, pointerEvents: 'none', transform: 'rotate(180deg)' }}
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(255,255,255,0.25)"/>
-          <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(255,255,255,0.2)"/>
-          <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(255,255,255,0.18)"/>
-          <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(255,255,255,0.22)"/>
-          <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(255,255,255,0.17)"/>
-          <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(255,255,255,0.14)"/>
-          <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
-        </svg>
+  {edition ? (
+    <div className="profil-edition">
+      <label htmlFor="profil-prenom" className="profil-petit-texte">
+        Ton prénom
+      </label>
 
-        <div className="profil-avatar">
-          <img src="/profilbleu.png" alt="Logo Sérénitine" />
-        </div>
-        {edition ? (
-          <div className="profil-edition">
-            <input
-              className="profil-input"
-              value={input}
-              onChange={e => setInput(e.target.value)}
-              placeholder="Votre prénom"
-              autoFocus
-            />
-            <button className="profil-btn-save" onClick={sauvegarder}>
-              Sauvegarder
-            </button>
-          </div>
-        ) : (
-          <div className="profil-nom-wrap">
-            <h2 className="profil-nom">{prenom || 'Ajouter votre prénom'}</h2>
-            <button className="profil-btn-edit" onClick={() => setEdition(true)} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-              <PenLine size={14} /> Modifier
-            </button>
-          </div>
-        )}
-        <div className="profil-badge">Plan Gratuit</div>
-        {debutFormate && (
-          <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.6)', marginTop: 6 }}>
-            Avec Sérénitine depuis le {debutFormate}
-          </div>
-        )}
+      <input
+        id="profil-prenom"
+        className="profil-input"
+        value={input}
+        onChange={e => setInput(e.target.value)}
+        placeholder="Ton prénom"
+        autoFocus
+      />
+
+      <button
+        type="button"
+        className="profil-btn-save"
+        onClick={sauvegarder}
+      >
+        Sauvegarder
+      </button>
+    </div>
+  ) : (
+    <div className="profil-nom-wrap">
+      <h2 className="profil-nom">
+        {prenom || 'Bienvenue dans ton espace'}
+      </h2>
+
+      <button
+        type="button"
+        className="profil-btn-edit"
+        onClick={() => setEdition(true)}
+      >
+        <PenLine size={14} />
+        {prenom ? 'Modifier mon prénom' : 'Ajouter mon prénom'}
+      </button>
+    </div>
+  )}
+
+  {debutFormate && (
+    <p className="profil-petit-texte">
+      Avec Sérénitine depuis le {debutFormate}
+    </p>
+  )}
+</div>
+
+      
+   <section className="profil-suivi">
+  <Statistiques />
+
+  {streak > 0 && (
+    <div className="profil-serie">
+      <span className="profil-serie-icone" aria-hidden="true">
+        <CheckCircle2 size={22} strokeWidth={1.6} />
+      </span>
+
+      <div>
+        <strong>
+          {streak} jour{streak > 1 ? 's' : ''} de régularité
+        </strong>
+        <p>
+          Au moins 67 % de tes routines quotidiennes réalisées
+          chaque jour de cette série.
+        </p>
       </div>
-
-      
-   <Statistiques />
-      
-
-      {/* Streak */}
-      {streak > 0 && (
-        <div style={{
-          background: 'rgba(255,255,255,0.1)', borderRadius: 12,
-          padding: '0.8rem 1rem', marginBottom: '1.2rem',
-          border: '0.5px solid rgba(255,255,255,0.2)',
-          display: 'flex', alignItems: 'center', gap: 10
-        }}>
-          <span style={{ fontSize: 24 }}>🔥</span>
-          <div>
-            <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.7)', marginBottom: 2 }}>
-              Routines quotidiennes
-            </div>
-            <div style={{ fontSize: 14, color: 'white', fontWeight: 500 }}>
-              {streak} jour{streak > 1 ? 's' : ''} consécutif{streak > 1 ? 's' : ''} à 67% ou plus ✓
-            </div>
-          </div>
-        </div>
-      )}
+    </div>
+  )}
+</section>
 
     
 
-      <div className="profil-section-titre" style={{ marginTop: '1.5rem' }}>À propos de l'app</div>
+     <section className="profil-a-propos">
+  <h3>À propos de Sérénitine</h3>
 
-      <div className="profil-infos" style={{ marginBottom: '1.5rem' }}>
-        <div className="profil-info-row" onClick={() => navigate('/presentation')} style={{ cursor: 'pointer', color: '#1c1c1a' }}>
-          <span>Qui suis-je ?</span>
-          <span>→</span>
-        </div>
-      </div>
+  <button
+    type="button"
+    className="profil-lien"
+    onClick={() => navigate('/presentation')}
+  >
+    <span className="profil-lien-icone">
+      <User size={20} strokeWidth={1.6} />
+    </span>
 
-      <div className="profil-infos">
-        <div className="profil-info-row" onClick={() => navigate('/legal')} style={{ cursor: 'pointer', color: '#111212' }}>
-          <span>Informations légales</span>
-          <span>→</span>
-        </div>
-      </div>
+    <span className="profil-lien-texte">
+      <strong>Qui suis-je ?</strong>
+      <span>Découvre la créatrice de Sérénitine</span>
+    </span>
+
+    <span aria-hidden="true">→</span>
+  </button>
+
+  <button
+    type="button"
+    className="profil-lien"
+    onClick={() => navigate('/legal')}
+  >
+    <span className="profil-lien-icone">
+      <ShieldCheck size={20} strokeWidth={1.6} />
+    </span>
+
+    <span className="profil-lien-texte">
+      <strong>Informations légales</strong>
+      <span>Confidentialité et conditions d’utilisation</span>
+    </span>
+
+    <span aria-hidden="true">→</span>
+  </button>
+</section>
 
       <button className="profil-btn-reset" onClick={() => {
         if (window.confirm('Effacer toutes les données ?')) {

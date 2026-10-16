@@ -1064,42 +1064,80 @@ const iconesParId = {
   36: BedDouble,
 };
 
+const THEMES_ARTICLES = {
+  Tous: { fond: '#e8eff4', couleur: '#526f84' },
+  Nutrition: { fond: '#eaf3de', couleur: '#52734a' },
+  Sommeil: { fond: '#e6f1fb', couleur: '#526f84' },
+  Stress: { fond: '#faeeda', couleur: '#987440' },
+  Mouvement: { fond: '#f2e8f1', couleur: '#927094' },
+  Environnement: { fond: '#e7eee6', couleur: '#52715d' },
+};
+
+const STYLE_ARTICLES = `
+.serenitine-articles { color: #5c5045; }
+.serenitine-articles .articles-filtres { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; margin-bottom: 18px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 20px; }
+.serenitine-articles .articles-filtre { flex: 1 1 auto; min-height: 40px; padding: 9px 12px; border: 1px solid transparent; border-radius: 12px; font: inherit; font-size: 12px; cursor: pointer; }
+.serenitine-articles .articles-filtre[aria-pressed="true"] { border-color: currentColor; font-weight: 600; }
+.serenitine-articles .articles-compteur { margin: 0 0 14px; color: #304c60; font-size: 12px; }
+.serenitine-articles .articles-liste { display: grid; gap: 12px; }
+.serenitine-articles .articles-carte { box-sizing: border-box; display: flex; align-items: flex-start; gap: 12px; width: 100%; padding: 20px; text-decoration: none; background: #faf6ee; border: 1px solid #e8dece; border-radius: 22px; color: #5c5045; transition: transform .2s ease, box-shadow .2s ease; }
+.serenitine-articles .articles-icone { box-sizing: border-box; display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; }
+.serenitine-articles .articles-carte-corps { flex: 1; min-width: 0; }
+.serenitine-articles .articles-badge { display: inline-block; padding: 4px 9px; border-radius: 20px; font-size: 10px; font-weight: 500; line-height: 1.5; }
+.serenitine-articles .articles-carte h3 { margin: 9px 0 7px; color: #5c3d2e; font-size: 15px; font-weight: 600; line-height: 1.5; }
+.serenitine-articles .articles-carte p { margin: 0; color: #786b5e; font-size: 12px; line-height: 1.8; }
+.serenitine-articles .articles-fleche { align-self: center; flex-shrink: 0; color: #92765b; }
+.serenitine-articles .articles-retour { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; margin: 0 0 18px; padding: 10px 14px; border: 1px solid #e8dece; border-radius: 12px; background: #faf6ee; color: #5c3d2e; font: inherit; font-size: 13px; cursor: pointer; }
+.serenitine-articles .lecture-entete { padding: 24px 20px; margin-bottom: 20px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 22px; }
+.serenitine-articles .lecture-entete .articles-icone { margin-bottom: 14px; width: 52px; height: 52px; }
+.serenitine-articles .lecture-entete h2 { margin: 14px 0 12px; color: #5c3d2e; font-size: 24px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.serenitine-articles .lecture-resume { margin: 0; color: #786b5e; font-size: 14px; font-style: italic; line-height: 1.8; }
+.serenitine-articles .lecture-section { padding: 22px; margin-bottom: 14px; background: #fffdf9; border: 1px solid #e8dece; border-radius: 20px; }
+.serenitine-articles .lecture-section h3 { margin: 0 0 12px; color: #5c3d2e; font-size: 16px; font-weight: 600; line-height: 1.6; }
+.serenitine-articles .lecture-section p { margin: 0; color: #635b52; font-size: 14px; line-height: 1.9; overflow-wrap: anywhere; }
+.serenitine-articles .lecture-lien { display: inline-block; box-sizing: border-box; max-width: 100%; margin-top: 18px; padding: 12px 16px; border-radius: 12px; background: #5c3d2e; color: #fffaf3; font-size: 13px; font-weight: 500; line-height: 1.6; text-decoration: none; }
+.serenitine-articles button:focus-visible, .serenitine-articles a:focus-visible { outline: 3px solid #526f84; outline-offset: 3px; }
+@media (hover: hover) { .serenitine-articles .articles-carte:hover { transform: translateY(-2px); box-shadow: 0 5px 16px rgba(92,61,46,.07); } }
+@media (max-width: 380px) { .serenitine-articles .articles-carte { padding: 16px; gap: 10px; } .serenitine-articles .articles-carte > .articles-icone { width: 34px; height: 34px; } .serenitine-articles .lecture-entete h2 { font-size: 21px; } .serenitine-articles .lecture-section { padding: 18px; } }
+@media (prefers-reduced-motion: reduce) { .serenitine-articles .articles-carte { transition: none; transform: none; } }
+`;
+
 function Article({ article, onRetour }) {
   const Icone = iconesParId[article.id] || BookOpen;
+  const theme = THEMES_ARTICLES[article.pilier] || THEMES_ARTICLES.Tous;
 
   return (
-    <div className="article-wrap">
-      <button className="fiche-retour" onClick={onRetour}>← Retour</button>
-      <div className={`fiche-pilier-badge ${article.pilier.toLowerCase()}`}>{article.pilier}</div>
-      <Icone size={40} className="article-emoji" />
-      <h2 className="fiche-titre">{article.titre}</h2>
-      <p className="article-resume">{article.resume}</p>
-      {article.contenu.map((section, i) => (
-        <div key={i} className="article-section">
-          <h3 className="article-section-titre">{section.sous_titre}</h3>
-          <p className="article-section-texte">{section.texte}</p>
-          {section.lien && (
-            <a
-              href={section.lien.url}
-              target="_blank"
-              rel="sponsored noopener noreferrer"
-              className="article-lien"
-              style={{
-                display: 'inline-block',
-                marginTop: '0.6rem',
-                padding: '0.6rem 1.1rem',
-                borderRadius: '999px',
-                background: '#5C3D2E',
-                color: '#fff',
-                textDecoration: 'none',
-                fontWeight: 600,
-              }}
-            >
-              {section.lien.label}
-            </a>
-          )}
-        </div>
-      ))}
+    <div className="serenitine-articles" style={{ padding: '1rem' }}>
+      <style>{STYLE_ARTICLES}</style>
+      <button type="button" className="articles-retour" onClick={onRetour}>
+        ← Retour aux articles
+      </button>
+      <article>
+        <header className="lecture-entete">
+          <span className="articles-icone" style={{ background: theme.fond, color: theme.couleur }} aria-hidden="true">
+            <Icone size={26} strokeWidth={1.6} />
+          </span>
+          <span className="articles-badge" style={{ background: theme.fond, color: theme.couleur }}>
+            {article.pilier}
+          </span>
+          <h2>{article.titre}</h2>
+          <p className="lecture-resume">{article.resume}</p>
+        </header>
+        {article.contenu.map((section, i) => (
+          <section key={i} className="lecture-section">
+            <h3>{section.sous_titre}</h3>
+            <p>{section.texte}</p>
+            {section.lien && (
+              <a href={section.lien.url} target="_blank" rel="sponsored noopener noreferrer" className="lecture-lien">
+                {section.lien.label} ↗
+              </a>
+            )}
+          </section>
+        ))}
+      </article>
+      <button type="button" className="articles-retour" onClick={onRetour}>
+        ← Retour aux articles
+      </button>
     </div>
   );
 }
@@ -1107,136 +1145,95 @@ function Article({ article, onRetour }) {
 function Ressources() {
   const { articleId } = useParams();
   const navigate = useNavigate();
-  useEffect(() => {
-  const position = articleId
-    ? 0
-    : Number(sessionStorage.getItem('ressources_position') || 0);
+  const PILIERS = ['Tous', 'Nutrition', 'Stress', 'Mouvement', 'Sommeil', 'Environnement'];
 
-  const frame = requestAnimationFrame(() => {
-    window.scrollTo({
-      top: position,
-      left: 0,
-      behavior: 'instant',
-    });
+  const [pilierActif, setPilierActif] = useState(() => {
+    const valeur = localStorage.getItem('ressources_dernier_pilier');
+    return ['Tous', 'Nutrition', 'Stress', 'Mouvement', 'Sommeil', 'Environnement'].includes(valeur) ? valeur : 'Tous';
   });
 
-  return () => cancelAnimationFrame(frame);
-}, [articleId]);
-  const [pilierActif, setPilierActif] = useState(() => {
-  const valeur = localStorage.getItem('ressources_dernier_pilier');
-  const piliersValides = [
-    'Tous', 'Nutrition', 'Stress',
-    'Mouvement', 'Sommeil', 'Environnement'
-  ];
+  useEffect(() => {
+    localStorage.setItem('ressources_dernier_pilier', pilierActif);
+  }, [pilierActif]);
 
-  return piliersValides.includes(valeur) ? valeur : 'Tous';
-});
+  useEffect(() => {
+    const valeur = Number(sessionStorage.getItem('ressources_position') || 0);
+    const position = articleId ? 0 : Number.isFinite(valeur) ? Math.max(0, valeur) : 0;
+    const frame = requestAnimationFrame(() => {
+      window.scrollTo({ top: position, left: 0, behavior: 'instant' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [articleId]);
 
-useEffect(() => {
-  localStorage.setItem('ressources_dernier_pilier', pilierActif);
-}, [pilierActif]);
+  const articlesFiltres = articles.filter(a => pilierActif === 'Tous' || a.pilier === pilierActif);
 
-const PILIERS = [
-  'Tous', 'Nutrition', 'Stress',
-  'Mouvement', 'Sommeil', 'Environnement'
-];
-
-  const articlesFiltres = articles.filter(a =>
-    pilierActif === "Tous" || a.pilier === pilierActif
-  );
-
-  // Si une URL d'article est utilisée, on cherche l'article correspondant
   if (articleId) {
     const articleActif = articles.find(a => a.id === Number(articleId));
-
-    // Si l'ID n'existe pas
     if (!articleActif) {
       return (
-        <div style={{ padding: '1rem', textAlign: 'center' }}>
+        <div className="serenitine-articles" style={{ padding: '1rem' }}>
+          <style>{STYLE_ARTICLES}</style>
           <p>Article non trouvé.</p>
-          <button
-            className="fiche-retour"
-            onClick={() => navigate('/ressources')}
-          >
+          <button type="button" className="articles-retour" onClick={() => navigate('/ressources')}>
             ← Retour aux articles
           </button>
         </div>
       );
     }
-
-    return (
-      <Article
-        article={articleActif}
-        onRetour={() => navigate('/ressources')}
-      />
-    );
+    return <Article article={articleActif} onRetour={() => navigate('/ressources')} />;
   }
 
   return (
-    <div className="ressources-wrap">
+    <div className="ressources-wrap serenitine-articles">
+      <style>{STYLE_ARTICLES}</style>
       <div className="entete-onglet">
-  <h2 className="entete-onglet__titre">
-    <BookOpen size={21} />
-    Articles
-  </h2>
-  <p className="entete-onglet__description">
-    Des articles pour comprendre et agir, autour des 4 piliers
-    et de ton environnement
-  </p>
-</div>
-
-      <div className="piliers-filtres" style={{ marginBottom: '1.2rem' }}>
-        {PILIERS.map(p => (
-          <button
-            key={p}
-            className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
-            onClick={() => {
-  sessionStorage.setItem('ressources_position', '0');
-  setPilierActif(p);
-}}
-          >
-            {p}
-          </button>
-        ))}
+        <h2 className="entete-onglet__titre"><BookOpen size={21} /> Articles</h2>
+        <p className="entete-onglet__description">
+          Des articles pour comprendre et agir, autour des 4 piliers et de ton environnement
+        </p>
       </div>
 
-      <div className="ressources-liste">
+      <div className="articles-filtres" role="group" aria-label="Catégories d’articles">
+        {PILIERS.map(p => {
+          const theme = THEMES_ARTICLES[p];
+          return (
+            <button key={p} type="button" className="articles-filtre"
+              aria-pressed={pilierActif === p}
+              style={{ background: pilierActif === p ? theme.fond : 'transparent', color: pilierActif === p ? theme.couleur : '#786b5e' }}
+              onClick={() => {
+                sessionStorage.setItem('ressources_position', '0');
+                setPilierActif(p);
+              }}>
+              {p}
+            </button>
+          );
+        })}
+      </div>
+      <p className="articles-compteur" aria-live="polite">
+        {articlesFiltres.length} article{articlesFiltres.length > 1 ? 's' : ''} à découvrir
+      </p>
+      <div className="articles-liste">
         {articlesFiltres.map(a => {
           const Icone = iconesParId[a.id] || BookOpen;
-
+          const theme = THEMES_ARTICLES[a.pilier] || THEMES_ARTICLES.Tous;
           return (
-            <div
-              key={a.id}
-              className="ressource-card"
-              onClick={() => {
-  sessionStorage.setItem(
-    'ressources_position',
-    String(window.scrollY)
-  );
-  navigate(`/ressources/${a.id}`);
-}}
-            >
-              <Icone size={24} className="ressource-card-emoji" />
-
-              <div className="ressource-card-body">
-                <div
-                  className={`fiche-pilier-badge ${a.pilier.toLowerCase()}`}
-                  style={{ marginBottom: 6 }}
-                >
-                  {a.pilier}
-                </div>
-
-                <div className="ressource-card-titre">
-                  {a.titre}
-                </div>
-
-                <div className="ressource-card-resume">
-                  {a.resume}
-                </div>
+            <a key={a.id} className="articles-carte" href={`/ressources/${a.id}`}
+              onClick={e => {
+                if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                e.preventDefault();
+                sessionStorage.setItem('ressources_position', String(window.scrollY));
+                navigate(`/ressources/${a.id}`);
+              }}>
+              <span className="articles-icone" style={{ background: theme.fond, color: theme.couleur }} aria-hidden="true">
+                <Icone size={22} strokeWidth={1.6} />
+              </span>
+              <div className="articles-carte-corps">
+                <span className="articles-badge" style={{ background: theme.fond, color: theme.couleur }}>{a.pilier}</span>
+                <h3>{a.titre}</h3>
+                <p>{a.resume}</p>
               </div>
-
-              <span className="accueil-card-arrow">→</span>
-            </div>
+              <span className="articles-fleche" aria-hidden="true">→</span>
+            </a>
           );
         })}
       </div>

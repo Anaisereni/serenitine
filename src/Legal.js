@@ -14,18 +14,68 @@ const sections = [
     ]
   },
   {
-    id: 2,
-    titre: "Politique de confidentialité",
-    Icon: Lock,
-    contenu: [
-      { sous_titre: "Données collectées", texte: "L'application Sérénitine ne collecte aucune donnée personnelle identifiable. Aucun nom, email, numéro de téléphone ou information de localisation n'est collecté, transmis ou stocké sur des serveurs externes." },
-      { sous_titre: "Stockage local", texte: "Les seules données enregistrées sont vos préférences d'utilisation (prénom optionnel, routines cochées, statistiques de progression) et elles sont stockées exclusivement sur votre appareil via le localStorage de votre navigateur. Ces données ne quittent jamais votre appareil et ne sont accessibles par aucun tiers." },
-      { sous_titre: "Cookies", texte: "L'application Sérénitine n'utilise pas de cookies de traçage, de publicité ou d'analyse comportementale. Aucun outil de tracking tiers (Google Analytics, Facebook Pixel…) n'est intégré à l'application." },
-      { sous_titre: "Vos droits RGPD", texte: "Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Vous pouvez supprimer l'intégralité de vos données à tout moment en utilisant le bouton Réinitialiser mes données disponible dans l'onglet Profil." },
-      { sous_titre: "Contact", texte: "Pour toute question relative à la confidentialité de vos données, vous pouvez nous contacter à l'adresse suivante : contact@serenitineapp.fr" },
-      { sous_titre: "Partenariats et affiliations", texte: "Sérénitine peut entretenir des relations commerciales avec certaines marques via des programmes d'affiliation. Ces partenariats n'influencent pas le contenu éditorial de l'application. Aucune donnée personnelle n'est transmise aux partenaires affiliés." },
-    ]
-  },
+  id: 2,
+  titre: "Politique de confidentialité",
+  Icon: Lock,
+  contenu: [
+    {
+      sous_titre: "Responsable de l’application",
+      texte: "Sérénitine est éditée par Anaïs PATA. Pour toute question concernant vos données ou cette politique de confidentialité, vous pouvez écrire à contact@serenitineapp.fr. Dernière mise à jour : 16 octobre 2026."
+    },
+    {
+      sous_titre: "Une utilisation sans compte",
+      texte: "L’application ne nécessite pas de compte utilisateur. Aucun nom complet, email ou numéro de téléphone ne vous est demandé pour utiliser les routines et les outils. Un prénom peut être renseigné facultativement pour personnaliser votre accueil."
+    },
+    {
+      sous_titre: "Les informations enregistrées sur votre appareil",
+      texte: "Selon les fonctionnalités utilisées, Sérénitine enregistre localement votre prénom facultatif, vos routines cochées, vos historiques et statistiques de progression, vos humeurs, les articles cochés dans la liste de courses, vos informations et notes sur le sommeil, vos pensées et actions liées au stress, votre programme d’activité physique et vos notes libres. Vos choix d’onglets et de filtres sont également mémorisés."
+    },
+    {
+      sous_titre: "À quoi servent ces informations ?",
+      texte: "Ces informations permettent de retrouver vos saisies, de suivre vos habitudes et de personnaliser votre navigation. Elles sont enregistrées dans le stockage local de votre navigateur (localStorage). Certaines informations temporaires de navigation, comme la position dans la liste des articles, utilisent le sessionStorage. Aucune synchronisation entre appareils ni sauvegarde de ces saisies sur un serveur n’est proposée. Dans le fonctionnement actuel de l’application, elles ne sont pas transmises à l’éditrice, à Cloudflare Web Analytics ou aux partenaires commerciaux."
+    },
+    {
+      sous_titre: "Conservation et suppression des saisies",
+      texte: "Les informations du localStorage n’ont pas de date d’expiration automatique définie par l’application : elles restent disponibles jusqu’à leur suppression ou leur effacement par le navigateur. Vous pouvez modifier les saisies depuis les outils concernés et supprimer les données persistantes de Sérénitine avec le bouton « Réinitialiser mes données » dans Profil. Les données temporaires du sessionStorage sont normalement effacées à la fin de la session du navigateur. Vous pouvez également effacer les données du site depuis les paramètres de votre navigateur. La suppression est définitive en l’absence de sauvegarde."
+    },
+    {
+      sous_titre: "Confidentialité sur un appareil partagé",
+      texte: "Les informations locales ne sont pas protégées par un compte ou un mot de passe propre à Sérénitine. Une personne ayant accès à votre appareil et à votre navigateur peut donc potentiellement les consulter. Certains textes libres peuvent contenir des informations sensibles : limitez-vous aux renseignements utiles et évitez d’y inscrire des informations identifiantes concernant d’autres personnes."
+    },
+    {
+      sous_titre: "Mesure d’audience avec Cloudflare Web Analytics",
+      texte: "Sérénitine utilise Cloudflare Web Analytics pour comprendre la fréquentation et les performances de l’application. Selon sa documentation, ce service n’utilise pas de cookies ou de stockage local pour mesurer l’audience et ne recourt pas à l’empreinte numérique pour suivre les visiteurs. Les statistiques concernent notamment les visites, les pages consultées et les performances de chargement. Les textes saisis dans les outils et votre prénom ne sont pas envoyés à ce service par l’application."
+    },
+    {
+      sous_titre: "Hébergement et données techniques",
+      texte: "L’application est hébergée et distribuée par Cloudflare. Lors de votre connexion, des données techniques, notamment l’adresse IP et des informations sur les requêtes, peuvent être traitées pour fournir le service et assurer sa sécurité. Ces traitements sont distincts des saisies conservées sur votre appareil. Cloudflare est une entreprise américaine et peut traiter des données dans les pays où elle exerce ses activités, selon les garanties décrites dans sa documentation. Sa politique de confidentialité est accessible à l’adresse https://www.cloudflare.com/policies/privacy/."
+    },
+    {
+      sous_titre: "Cookies et stockage du navigateur",
+      texte: "Sérénitine n’intègre actuellement aucune publicité ni outil de suivi publicitaire. Le stockage local utilisé par ses fonctionnalités sert à conserver vos saisies et vos préférences. Le service Cloudflare Web Analytics ne dépose pas de cookies de mesure d’audience selon sa documentation. Des mécanismes techniques liés à la sécurité de l’hébergement peuvent dépendre de la configuration de Cloudflare."
+    },
+    {
+      sous_titre: "Liens externes, affiliations et Doctolib",
+      texte: "L’application contient des liens vers des sites externes, notamment Doctolib et des marchands. Certains liens affiliés comportent un identifiant permettant d’attribuer une visite ou un achat à Sérénitine. Ils ne contiennent pas vos notes, votre humeur, votre prénom ou votre historique de routines. Lorsque vous ouvrez un site externe, celui-ci peut traiter des données de connexion et utiliser ses propres cookies ou traceurs conformément à sa politique et à vos choix. Les informations renseignées pour prendre rendez-vous sur Doctolib relèvent du parcours de réservation et de ses propres règles de confidentialité."
+    },
+    {
+  sous_titre: "Contact par email",
+  texte: "Lorsque vous écrivez à contact@serenitineapp.fr, votre adresse email, le contenu de votre message et les éventuelles pièces jointes sont traités pour répondre à votre demande. La messagerie est fournie par OVHcloud et consultée via Zimbra. Ces échanges ne donnent pas accès aux informations enregistrées localement dans votre application. Évitez de transmettre des informations médicales détaillées par ce moyen. Les échanges concernant une consultation, la facturation ou un litige font l’objet d’une gestion distincte. Les échanges sont conservés pendant le temps nécessaire au traitement de votre demande et à son suivi. Une conservation supplémentaire peut être nécessaire pour respecter une obligation légale ou pour la gestion d’un litige."
+},
+{
+  sous_titre: "Bases légales",
+  texte: "La gestion des demandes générales reçues par email repose sur l’intérêt légitime de l’éditrice à répondre aux utilisateurs. Les traitements techniques nécessaires à la sécurité et au bon fonctionnement du site reposent sur l’intérêt légitime à fournir et protéger l’application. Les demandes liées à une consultation ou à une obligation légale relèvent des bases légales propres à ces démarches."
+},
+{
+  sous_titre: "Statistiques et journaux techniques",
+  texte: "Cloudflare Web Analytics permet à l’éditrice de consulter les statistiques des six derniers mois. Cette période de consultation ne correspond pas nécessairement à la durée de conservation de toutes les données techniques de Cloudflare. La journalisation facultative Workers Observability est actuellement désactivée pour Sérénitine. Les traitements techniques liés à l’hébergement et à la sécurité sont décrits dans la politique de confidentialité de Cloudflare : https://www.cloudflare.com/privacypolicy/."
+},
+    {
+      sous_titre: "Vos droits et votre contact",
+      texte: "Vous pouvez consulter et modifier vos saisies directement dans l’application et les supprimer comme indiqué ci-dessus. L’éditrice ne peut pas récupérer à distance les informations présentes uniquement sur votre appareil. Pour les traitements de données personnelles relevant de sa responsabilité, vous pouvez demander l’exercice des droits applicables à votre situation en écrivant à contact@serenitineapp.fr. Vous pouvez également adresser une réclamation à la CNIL sur www.cnil.fr."
+    }
+  ]
+},
   {
     id: 3,
     titre: "Mentions légales",
@@ -52,18 +102,164 @@ const sections = [
   }
 ];
 
+const STYLE_LEGAL = `
+.legal-page {
+  color: #5c5045;
+}
+
+.legal-liste {
+  display: grid;
+  gap: 12px;
+}
+
+.legal-carte {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.legal-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #e8eff4;
+  color: #526f84;
+}
+
+.legal-carte-titre {
+  flex: 1;
+  color: #5c3d2e;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.legal-fleche {
+  color: #92765b;
+}
+
+.legal-retour {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 12px;
+  color: #5c3d2e;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.legal-introduction {
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+}
+
+.legal-introduction h2 {
+  margin: 16px 0 0;
+  color: #5c3d2e;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.legal-section {
+  padding: 22px;
+  margin-bottom: 14px;
+  background: #fffdf9;
+  border: 1px solid #e8dece;
+  border-radius: 20px;
+}
+
+.legal-section h3 {
+  margin: 0 0 12px;
+  color: #5c3d2e;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.legal-section p {
+  margin: 0;
+  color: #635b52;
+  font-size: 14px;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+.legal-page button:focus-visible {
+  outline: 3px solid #526f84;
+  outline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+  .legal-carte,
+  .legal-section {
+    padding: 18px;
+  }
+
+  .legal-introduction h2 {
+    font-size: 21px;
+  }
+}
+`;
+
 function SectionLegal({ section, onRetour }) {
   return (
-    <div className="article-wrap">
-      <button className="fiche-retour" onClick={onRetour}>← Retour</button>
-      <div className="article-emoji"><section.Icon size={40} /></div>
-      <h2 className="fiche-titre">{section.titre}</h2>
-      {section.contenu.map((s, i) => (
-        <div key={i} className="article-section">
-          <h3 className="article-section-titre">{s.sous_titre}</h3>
-          <p className="article-section-texte" style={{ whiteSpace: 'pre-line' }}>{s.texte}</p>
-        </div>
-      ))}
+    <div className="legal-page" style={{ padding: '1rem' }}>
+      <style>{STYLE_LEGAL}</style>
+
+      <button
+        type="button"
+        className="legal-retour"
+        onClick={onRetour}
+      >
+        ← Retour aux informations légales
+      </button>
+
+      <article>
+        <header className="legal-introduction">
+          <span className="legal-icone" aria-hidden="true">
+            <section.Icon size={24} strokeWidth={1.6} />
+          </span>
+          <h2>{section.titre}</h2>
+        </header>
+
+        {section.contenu.map((s, i) => (
+          <section key={i} className="legal-section">
+            <h3>{s.sous_titre}</h3>
+            <p>{s.texte}</p>
+          </section>
+        ))}
+      </article>
+
+      <button
+        type="button"
+        className="legal-retour"
+        onClick={onRetour}
+      >
+        ← Retour aux informations légales
+      </button>
     </div>
   );
 }
@@ -71,23 +267,59 @@ function SectionLegal({ section, onRetour }) {
 function Legal() {
   const [sectionActive, setSectionActive] = useState(null);
 
+  const changerSection = (section) => {
+    setSectionActive(section);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant',
+    });
+  };
+
   if (sectionActive) {
-    return <SectionLegal section={sectionActive} onRetour={() => setSectionActive(null)} />;
+    return (
+      <SectionLegal
+        section={sectionActive}
+        onRetour={() => changerSection(null)}
+      />
+    );
   }
 
   return (
-    <div className="ressources-wrap">
-      <h2 className="ressources-titre">Informations légales</h2>
-      <p className="ressources-sous-titre">Transparence et protection de vos données</p>
-      <div className="ressources-liste">
+    <div className="ressources-wrap legal-page">
+      <style>{STYLE_LEGAL}</style>
+
+      <div className="entete-onglet">
+        <h2 className="entete-onglet__titre">
+          <Lock size={21} />
+          Informations légales
+        </h2>
+
+        <p className="entete-onglet__description">
+          Transparence et protection de vos données
+        </p>
+      </div>
+
+      <div className="legal-liste">
         {sections.map(s => (
-          <div key={s.id} className="ressource-card" onClick={() => setSectionActive(s)}>
-            <div className="ressource-card-emoji"><s.Icon size={24} /></div>
-            <div className="ressource-card-body">
-              <div className="ressource-card-titre">{s.titre}</div>
-            </div>
-            <span className="accueil-card-arrow">→</span>
-          </div>
+          <button
+            key={s.id}
+            type="button"
+            className="legal-carte"
+            onClick={() => changerSection(s)}
+          >
+            <span className="legal-icone" aria-hidden="true">
+              <s.Icon size={22} strokeWidth={1.6} />
+            </span>
+
+            <span className="legal-carte-titre">
+              {s.titre}
+            </span>
+
+            <span className="legal-fleche" aria-hidden="true">
+              →
+            </span>
+          </button>
         ))}
       </div>
     </div>

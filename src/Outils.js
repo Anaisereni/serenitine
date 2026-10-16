@@ -2,6 +2,41 @@ import React, { useState, useEffect } from 'react';
 import { getAudioCtx, debloqueurAudio } from './audio';
 import { Check, Moon, ClipboardList, BedDouble, Frown, Meh, Smile, Laugh, HeartPulse, Wind, Flower2, PenLine, Activity, NotebookPen, Salad, ShoppingBag, ExternalLink, Music, Wrench } from 'lucide-react';
 
+
+const STYLE_CARTE = {
+  background: '#faf6ee',
+  borderRadius: 22,
+  padding: '1.25rem',
+  border: '1px solid #e8dece',
+};
+
+const STYLE_OUTILS = `
+.outils-page { --color-text-primary: #5c5045; --color-text-secondary: #786b5e; --color-text-tertiary: #786b5e; }
+.outils-page *, .outils-page *::before, .outils-page *::after { box-sizing: border-box; }
+.outils-navigation { background: #faf6ee; border: 1px solid #e8dece; border-radius: 20px; padding: 8px; margin-bottom: 20px; }
+.outils-piliers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; }
+.outils-categorie { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; min-height: 68px; padding: 10px 2px; border: 1px solid transparent; border-radius: 14px; font: inherit; font-size: 11px; cursor: pointer; }
+.outils-categorie[aria-pressed="true"] { border-color: currentColor; font-weight: 600; }
+.outils-produits-bouton { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 44px; margin-top: 8px; padding: 10px; background: transparent; color: #786b5e; border: none; border-top: 1px solid #e8dece; border-radius: 0 0 12px 12px; font: inherit; font-size: 12px; cursor: pointer; }
+.outils-produits-bouton[aria-pressed="true"] { background: #e8eff4; color: #405b6c; font-weight: 600; }
+.outils-contenu h3 { color: #5c3d2e !important; font-size: 15px !important; font-weight: 600 !important; line-height: 1.5; margin-top: 0; margin-bottom: 14px !important; gap: 10px !important; }
+.outils-contenu h3 > svg { box-sizing: content-box; flex-shrink: 0; width: 19px; height: 19px; padding: 10px; border-radius: 50%; background: var(--outil-pastel); color: var(--outil-accent); stroke-width: 1.6; }
+.outils-contenu p { line-height: 1.7; }
+.outils-contenu input, .outils-contenu textarea { box-sizing: border-box; min-width: 0; max-width: 100%; background: #fffdf9; color: #5c5045; border: 1px solid #d9cebf !important; border-radius: 12px !important; font-family: inherit; line-height: 1.6; }
+.outils-contenu input { min-height: 42px; }
+.outils-contenu textarea { display: block; padding: 12px !important; }
+.outils-contenu input::placeholder, .outils-contenu textarea::placeholder { color: #8b8074; opacity: 1; }
+.outils-contenu label { line-height: 1.6; }
+.outils-contenu button { min-height: 40px; font-family: inherit; }
+.outils-contenu a { display: block; }
+.outils-contenu a > div { gap: 10px !important; }
+.outils-page button:focus-visible, .outils-page a:focus-visible, .outils-page input:focus-visible, .outils-page textarea:focus-visible { outline: 3px solid #526f84; outline-offset: 3px; }
+@media (max-width: 380px) {
+  .outils-categorie { font-size: 10px; }
+  .outils-contenu h3 { font-size: 14px !important; }
+}
+`;
+
 const COURSES_DEFAUT = [
   { id: 1, categorie: "Légumes & Fruits", nom: "Légumes / crudités de saison ou surgelés (légumes verts ++, légumes colorés)" },
   { id: 2, categorie: "Légumes & Fruits", nom: "Fruits de saison ou surgelés" },
@@ -104,9 +139,9 @@ function OutilNutrition() {
 
   return (
     <div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '0.5px solid #eee', marginBottom: 16 }}>
+      <div style={{ ...STYLE_CARTE, marginBottom: 16 }}>
         <h3 style={{ fontSize: 15, fontWeight: 600, color: '#75ae79', marginBottom: 12, textAlign: 'center' }}>
-          -Liste de courses santé-
+          Liste de courses santé
         </h3>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <p style={{ fontSize: 13, color: '#7c867d' }}>{faits}/{total} articles cochés</p>
@@ -117,27 +152,28 @@ function OutilNutrition() {
       </div>
       {CATEGORIES.map(cat => (
         <div key={cat} style={{ marginBottom: 16 }}>
-          <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'white', marginBottom: 8 }}>{cat}</div>
+          <div style={{ fontSize: 11, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#405b6c', marginBottom: 8 }}>{cat}</div>
           {COURSES_DEFAUT.filter(c => c.categorie === cat).map(c => (
-            <div key={c.id} onClick={() => toggle(c.id)} style={{
+            <button type="button" aria-pressed={cochees.includes(c.id)} key={c.id} onClick={() => toggle(c.id)} style={{
+              width: '100%', textAlign: 'left', fontFamily: 'inherit',
               display: 'flex', alignItems: 'center', gap: 12,
-              padding: '10px 12px', background: 'white', borderRadius: 10,
+              padding: '12px 14px', background: '#fffdf9', borderRadius: 14,
               border: '0.5px solid #eee', marginBottom: 6, cursor: 'pointer',
-              opacity: cochees.includes(c.id) ? 0.5 : 1
+              opacity: cochees.includes(c.id) ? 0.7 : 1
             }}>
               <div style={{
                 width: 20, height: 20, borderRadius: 4,
                 border: cochees.includes(c.id) ? 'none' : '1.5px solid #ccc',
-                background: cochees.includes(c.id) ? '#ded3ae' : 'transparent',
+                background: cochees.includes(c.id) ? '#52734a' : 'transparent',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0
               }}>
                 {cochees.includes(c.id) && <Check size={12} color="white" />}
               </div>
-              <span style={{ fontSize: 14, color: 'var(--color-text-primary)', textDecoration: cochees.includes(c.id) ? 'line-through' : 'none' }}>
+              <span style={{ fontSize: 14, color: '#5c5045', textDecoration: cochees.includes(c.id) ? 'line-through' : 'none' }}>
                 {c.nom}
               </span>
-            </div>
+            </button>
           ))}
         </div>
       ))}
@@ -185,26 +221,26 @@ const updateJournal = (field, value) => {
 
   return (
     <div>
-       <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+       <div style={{ ...STYLE_CARTE }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 6 }}>
           <BedDouble size={16} /> Mon sommeil
         </h3>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 10 }}>
           <div>
-            <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Heure de coucher</label>
+            <label style={{ fontSize: 12, color: '#786b5e', display: 'block', marginBottom: 4 }}>Heure de coucher</label>
             <input type="time" value={entryAujourdhui.coucher}
               onChange={e => updateJournal('coucher', e.target.value)}
               style={{ width: '100%', border: '0.5px solid #eee', borderRadius: 8, padding: '6px 10px', fontSize: 13 }} />
           </div>
           <div>
-            <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Heure de lever</label>
+            <label style={{ fontSize: 12, color: '#786b5e', display: 'block', marginBottom: 4 }}>Heure de lever</label>
             <input type="time" value={entryAujourdhui.lever}
               onChange={e => updateJournal('lever', e.target.value)}
               style={{ width: '100%', border: '0.5px solid #eee', borderRadius: 8, padding: '6px 10px', fontSize: 13 }} />
           </div>
         </div>
         <div style={{ marginBottom: 10 }}>
-          <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Qualité du sommeil en ce moment</label>
+          <label style={{ fontSize: 12, color: '#786b5e', display: 'block', marginBottom: 4 }}>Qualité du sommeil en ce moment</label>
           <div style={{ display: 'flex', gap: 8 }}>
             {qualites.map(({ label, Icon }) => (
               <button key={label} onClick={() => updateJournal('qualite', label)}
@@ -212,7 +248,7 @@ const updateJournal = (field, value) => {
                   flex: 1, padding: '8px 4px', borderRadius: 8, fontSize: 11,
                   border: entryAujourdhui.qualite === label ? 'none' : '0.5px solid #eee',
                   background: entryAujourdhui.qualite === label ? '#E6F1FB' : 'white',
-                  color: entryAujourdhui.qualite === label ? '#185FA5' : 'var(--color-text-secondary)',
+                  color: entryAujourdhui.qualite === label ? '#185FA5' : '#786b5e',
                   cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4
                 }}>
                 <Icon size={16} />
@@ -222,7 +258,7 @@ const updateJournal = (field, value) => {
           </div>
         </div>
         <div>
-          <label style={{ fontSize: 12, color: 'var(--color-text-secondary)', display: 'block', marginBottom: 4 }}>Notes</label>
+          <label style={{ fontSize: 12, color: '#786b5e', display: 'block', marginBottom: 4 }}>Notes</label>
           <textarea value={entryAujourdhui.notes}
             onChange={e => updateJournal('notes', e.target.value)}
             placeholder="Réveils nocturnes, rêves, sensations..."
@@ -233,11 +269,11 @@ const updateJournal = (field, value) => {
 
       </div>
       
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginTop: 12 }}>
+      <div style={{ ...STYLE_CARTE, marginTop: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <Moon size={16} /> Vider les pensées du soir
         </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+        <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 8 }}>
           Note tout ce qui tourne dans ta tête pour libérer ton esprit avant de dormir.
         </p>
         <textarea
@@ -247,11 +283,11 @@ const updateJournal = (field, value) => {
           style={{ width: '100%', minHeight: 100, border: '0.5px solid #eee', borderRadius: 8, padding: 10, fontSize: 13, resize: 'vertical', fontFamily: 'inherit' }}
         />
       </div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginTop: 12 }}>
+      <div style={{ ...STYLE_CARTE, marginTop: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#185FA5', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <ClipboardList size={16} /> Programme du lendemain
         </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+        <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 8 }}>
           Note ce que tu as à faire demain pour ne plus y penser cette nuit.
         </p>
         <textarea
@@ -349,11 +385,11 @@ function OutilStress() {
 
   return (
     <div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
+      <div style={{ ...STYLE_CARTE, marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
           <HeartPulse size={16} /> Cohérence cardiaque
         </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 16 }}>
+        <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 16 }}>
           5 secondes d'inspiration, 5 secondes d'expiration, pendant 5 minutes. Désactive le mode silencieux pour entendre les sons.
         </p>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginBottom: 16 }}>
@@ -396,11 +432,11 @@ function OutilStress() {
 
 <LecteurMeditation /> 
 
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
+      <div style={{ ...STYLE_CARTE, marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <Flower2 size={16} /> Parking à pensées
         </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+        <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 8 }}>
           Dépose ici ce qui te stresse ou te préoccupe. Mettre des mots sur ses pensées aide à les dépasser.
         </p>
         <textarea
@@ -411,11 +447,11 @@ function OutilStress() {
         />
       </div>
 
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+      <div style={{ ...STYLE_CARTE }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <PenLine size={16} /> Actions possibles
         </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 8 }}>
+        <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 8 }}>
           Pour chaque source de stress, quelle action concrète peux-tu mettre en place ?
         </p>
         <textarea
@@ -435,6 +471,14 @@ function LecteurMeditation() {
   const [tempsRestant, setTempsRestant] = useState(5 * 60);
   const audioRef = React.useRef(null);
   const intervalRef = React.useRef(null);
+
+  useEffect(() => {
+    return () => {
+      audioRef.current?.pause();
+      audioRef.current = null;
+      clearInterval(intervalRef.current);
+    };
+  }, []);
 
   const sons = [
     { id: 'meditation', label: '🧘 Classique', fichier: '/sounds/meditation.mp3' },
@@ -464,7 +508,7 @@ function LecteurMeditation() {
     clearInterval(intervalRef.current);
   };
 
-  const toggleLecture = () => {
+  const toggleLecture = async () => {
     if (!sonActif) return;
 
     if (enLecture) {
@@ -476,7 +520,13 @@ function LecteurMeditation() {
         audioRef.current = new Audio(sonActif.fichier);
         audioRef.current.loop = true;
       }
-      audioRef.current.play();
+      try {
+        await audioRef.current.play();
+      } catch {
+        setEnLecture(false);
+        return;
+      }
+      if (!audioRef.current) return;
       setEnLecture(true);
 
       intervalRef.current = setInterval(() => {
@@ -506,11 +556,11 @@ function LecteurMeditation() {
   const secondes = String(tempsRestant % 60).padStart(2, '0');
 
   return (
-    <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
+    <div style={{ ...STYLE_CARTE, marginBottom: 12 }}>
       <h3 style={{ fontSize: 14, fontWeight: 500, color: '#854F0B', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
         <Music size={16} /> Méditation sonore
       </h3>
-      <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 12 }}>
+      <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 12 }}>
         Choisis un son et une durée pour te détendre.
       </p>
 
@@ -595,16 +645,16 @@ function OutilMouvement() {
 
   return (
     <div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee', marginBottom: 12 }}>
+      <div style={{ ...STYLE_CARTE, marginBottom: 12 }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#8f1d99', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <Activity size={16} /> Programme de la semaine
         </h3>
-        <p style={{ fontSize: 12, color: 'var(--color-text-tertiary)', marginBottom: 12 }}>
+        <p style={{ fontSize: 12, color: '#786b5e', marginBottom: 12 }}>
           Planifie tes activités physiques pour la semaine — un programme écrit multiplie les chances de le suivre.
         </p>
         {jours.map(jour => (
           <div key={jour} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-            <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--color-text-primary)', minWidth: 70 }}>{jour}</div>
+            <div style={{ fontSize: 13, fontWeight: 500, color: '#5c5045', minWidth: 70 }}>{jour}</div>
             <input
               type="text"
               value={activites[jour] || ''}
@@ -615,7 +665,7 @@ function OutilMouvement() {
           </div>
         ))}
       </div>
-      <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
+      <div style={{ ...STYLE_CARTE }}>
         <h3 style={{ fontSize: 14, fontWeight: 500, color: '#951d99', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
           <NotebookPen size={16} /> Notes libres
         </h3>
@@ -696,7 +746,7 @@ function OutilProduits() {
 };
   return (
     <div>
-      <p style={{ fontSize: 13, color: 'white', marginBottom: 16, fontStyle: 'italic', textAlign: 'center' }}>
+      <p style={{ fontSize: 13, color: '#405b6c', marginBottom: 16, fontStyle: 'italic', textAlign: 'center' }}>
         Quelques produits pour prendre soin de toi ❤︎ 
 
       </p>
@@ -709,13 +759,12 @@ function OutilProduits() {
     style={{ textDecoration: 'none' }}
   >
     <div style={{
-      background: 'white', borderRadius: 12, padding: '1rem',
-      border: '1px solid #eee', marginBottom: 12,
+      ...STYLE_CARTE, marginBottom: 12,
       display: 'flex', alignItems: 'center', gap: 12,
       cursor: 'pointer'
     }}>
       <div style={{
-  width: 44, height: 44, borderRadius: 10,
+  minWidth: 64, padding: '6px 8px', minHeight: 34, borderRadius: 12,
   background: COULEURS_PILIERS[p.pilier]?.bg || '#EAF3DE',
   display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
   fontSize: 11, fontWeight: 600,
@@ -723,9 +772,9 @@ function OutilProduits() {
 }}>
   {p.pilier}
 </div>
-      <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: '#1c1c1a', marginBottom: 2 }}>{p.nom}</div>
-        <div style={{ fontSize: 12, color: '#666', lineHeight: 1.4 }}>{p.description}</div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#5c3d2e', marginBottom: 2 }}>{p.nom}</div>
+        <div style={{ fontSize: 12, color: '#786b5e', lineHeight: 1.4 }}>{p.description}</div>
       </div>
       <ExternalLink size={16} color="#999" />
     </div>
@@ -752,59 +801,53 @@ useEffect(() => {
 }, [pilierActif]);
 
   const piliers = [
-    { nom: 'Nutrition', Icon: Salad, couleur: '#27500A', bg: '#EAF3DE' },
-    { nom: 'Sommeil', Icon: Moon, couleur: '#0C447C', bg: '#E6F1FB' },
-    { nom: 'Stress', Icon: Flower2, couleur: '#633806', bg: '#FAEEDA' },
-    { nom: 'Mouvement', Icon: Activity, couleur: '#8626a6', bg: '#FAECE7' },
+    { nom: 'Nutrition', Icon: Salad, couleur: '#52734a', bg: '#eaf3de' },
+    { nom: 'Sommeil', Icon: Moon, couleur: '#526f84', bg: '#e6f1fb' },
+    { nom: 'Stress', Icon: Flower2, couleur: '#987440', bg: '#faeeda' },
+    { nom: 'Mouvement', Icon: Activity, couleur: '#927094', bg: '#f2e8f1' },
   ];
+  const actif = piliers.find(p => p.nom === pilierActif);
 
   return (
-    <div style={{ padding: '1rem' }}>
+    <div className="outils-page" style={{ padding: '1rem', '--outil-accent': actif?.couleur || '#526f84', '--outil-pastel': actif?.bg || '#e8eff4' }}>
+      <style>{STYLE_OUTILS}</style>
       <div className="entete-onglet">
-  <h2 className="entete-onglet__titre">
-    <Wrench size={21} />
-    Outils
-  </h2>
-  <p className="entete-onglet__description">
-    Tes espaces pratiques pour agir au quotidien,
-    ainsi que des produits recommandés
-  </p>
-</div>
-      <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-  {piliers.map(p => (
-    <button key={p.nom} onClick={() => setPilierActif(p.nom)}
-      style={{
-        flex: 1, padding: '8px 4px', borderRadius: 20, fontSize: 12,
-        border: pilierActif === p.nom ? 'none' : '0.5px solid white',
-        background: pilierActif === p.nom ? p.bg : 'transparent',
-        color: pilierActif === p.nom ? p.couleur : 'white',
-        fontWeight: pilierActif === p.nom ? 500 : 400, cursor: 'pointer',
-        display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4
-      }}>
-      <p.Icon size={14} /> {p.nom}
-    </button>
-  ))}
-</div>
+        <h2 className="entete-onglet__titre"><Wrench size={21} /> Outils</h2>
+        <p className="entete-onglet__description">
+          Tes espaces pratiques pour agir au quotidien,
+          ainsi que des produits recommandés
+        </p>
+      </div>
 
-{/* Bouton Produits recommandés */}
-<button onClick={() => setPilierActif('Produits')}
-  style={{
-    width: '100%', padding: '8px 4px', borderRadius: 20, fontSize: 12,
-    marginBottom: '1.5rem',
-    border: pilierActif === 'Produits' ? 'none' : '0.5px solid white',
-    background: pilierActif === 'Produits' ? '#f4f3d2' : 'transparent',
-    color: pilierActif === 'Produits' ? '#854F0B' : 'white',
-    fontWeight: pilierActif === 'Produits' ? 500 : 400, cursor: 'pointer',
-    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4
-  }}>
-  <ShoppingBag size={14} /> Produits recommandés 🛍️
-</button>
+      <div className="outils-navigation" role="group" aria-label="Choisir un outil">
+        <div className="outils-piliers">
+          {piliers.map(p => (
+            <button type="button" key={p.nom}
+              aria-pressed={pilierActif === p.nom}
+              className="outils-categorie"
+              onClick={() => setPilierActif(p.nom)}
+              style={{ background: pilierActif === p.nom ? p.bg : 'transparent', color: pilierActif === p.nom ? p.couleur : '#786b5e' }}>
+              <p.Icon size={18} strokeWidth={1.6} />
+              <span>{p.nom}</span>
+            </button>
+          ))}
+        </div>
+        <button type="button" className="outils-produits-bouton"
+          aria-pressed={pilierActif === 'Produits'}
+          onClick={() => setPilierActif('Produits')}>
+          <ShoppingBag size={18} strokeWidth={1.6} />
+          Produits recommandés
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
 
-{pilierActif === 'Nutrition' && <OutilNutrition />}
-{pilierActif === 'Sommeil' && <OutilSommeil />}
-{pilierActif === 'Stress' && <OutilStress />}
-{pilierActif === 'Mouvement' && <OutilMouvement />}
-{pilierActif === 'Produits' && <OutilProduits />}
+      <div className="outils-contenu">
+        {pilierActif === 'Nutrition' && <OutilNutrition />}
+        {pilierActif === 'Sommeil' && <OutilSommeil />}
+        {pilierActif === 'Stress' && <OutilStress />}
+        {pilierActif === 'Mouvement' && <OutilMouvement />}
+        {pilierActif === 'Produits' && <OutilProduits />}
+      </div>
     </div>
   );
 }

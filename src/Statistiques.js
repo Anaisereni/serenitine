@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { getHistorique, getHistoriquePilier } from './useStorage';
-import { BarChart3, Salad, Moon, Flower2, Activity } from 'lucide-react';
+import {
+  BarChart3,
+  Salad,
+  Moon,
+  Flower2,
+  Activity,
+} from 'lucide-react';
 
 const HUMEURS = [
   { valeur: 'tres-bien', emoji: '😊', label: 'Très bien' },
@@ -9,107 +15,301 @@ const HUMEURS = [
   { valeur: 'bof', emoji: '😕', label: 'Bof' },
   { valeur: 'pas-bien', emoji: '😔', label: 'Pas très bien' },
 ];
+
 const TOTAUX = {
   Quotidien: 11,
   Hebdomadaire: 5,
   Annuel: 4,
 };
+
 const ROUTINES_PAR_PILIER = {
-  Quotidien: { Nutrition: 4, Sommeil: 3, Stress: 2, Mouvement: 2 },
-  Hebdomadaire: { Nutrition: 2, Sommeil: 1, Stress: 1, Mouvement: 1 },
-  Annuel: { Nutrition: 2, Sommeil: 0, Stress: 0, Mouvement: 2 },
+  Quotidien: {
+    Nutrition: 4,
+    Sommeil: 3,
+    Stress: 2,
+    Mouvement: 2,
+  },
+  Hebdomadaire: {
+    Nutrition: 2,
+    Sommeil: 1,
+    Stress: 1,
+    Mouvement: 1,
+  },
+  Annuel: {
+    Nutrition: 2,
+    Sommeil: 0,
+    Stress: 0,
+    Mouvement: 2,
+  },
 };
+
 const PILIERS = [
-  { nom: 'Nutrition', Icon: Salad, couleur: '#27500A', bg: '#EAF3DE' },
-  { nom: 'Sommeil', Icon: Moon, couleur: '#0C447C', bg: '#E6F1FB' },
-  { nom: 'Stress', Icon: Flower2, couleur: '#633806', bg: '#FAEEDA' },
-  { nom: 'Mouvement', Icon: Activity, couleur: '#7d2eb6', bg: '#FAECE7' },
+  {
+    nom: 'Nutrition',
+    Icon: Salad,
+    couleur: '#52734a',
+    bg: '#eaf3de',
+  },
+  {
+    nom: 'Sommeil',
+    Icon: Moon,
+    couleur: '#526f84',
+    bg: '#e6f1fb',
+  },
+  {
+    nom: 'Stress',
+    Icon: Flower2,
+    couleur: '#987440',
+    bg: '#faeeda',
+  },
+  {
+    nom: 'Mouvement',
+    Icon: Activity,
+    couleur: '#927094',
+    bg: '#f2e8f1',
+  },
 ];
+
+const COULEURS = {
+  titre: '#5c3d2e',
+  texte: '#5c5045',
+  secondaire: '#786b5e',
+  bordure: '#e8dece',
+  carte: '#fffdf9',
+  bleuClair: '#e8eff4',
+  bleu: '#526f84',
+};
+
+const COULEURS_CALENDRIER = [
+  {
+    bg: 'transparent',
+    border: '#d9cebf',
+    label: '0 %',
+    texte: '#786b5e',
+  },
+  {
+    bg: '#e8b49c',
+    border: '#e8b49c',
+    label: '1–33 %',
+    texte: '#5c3d2e',
+  },
+  {
+    bg: '#ead59a',
+    border: '#ead59a',
+    label: '34–66 %',
+    texte: '#5c5034',
+  },
+  {
+    bg: '#aec9a7',
+    border: '#aec9a7',
+    label: '67–99 %',
+    texte: '#304b33',
+  },
+  {
+    bg: '#52734a',
+    border: '#52734a',
+    label: '100 %',
+    texte: '#ffffff',
+  },
+];
+
+const styleCarte = {
+  background: COULEURS.carte,
+  border: `1px solid ${COULEURS.bordure}`,
+  borderRadius: 16,
+  padding: '1rem',
+};
+
+const styleFleche = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  flexShrink: 0,
+  width: 36,
+  height: 36,
+  border: `1px solid ${COULEURS.bordure}`,
+  borderRadius: 12,
+  background: COULEURS.carte,
+  color: COULEURS.texte,
+  fontSize: 14,
+  cursor: 'pointer',
+};
+
 const getKeyByOffset = (frequence, offset) => {
   if (frequence === 'Quotidien') {
     const d = new Date();
     d.setDate(d.getDate() - offset);
     return d.toISOString().split('T')[0];
   }
+
   if (frequence === 'Hebdomadaire') {
     const now = new Date();
     const day = now.getDay();
     const diff = day === 0 ? -6 : 1 - day;
+
     const monday = new Date(now);
     monday.setDate(now.getDate() + diff - offset * 7);
     monday.setHours(0, 0, 0, 0);
+
     const year = monday.getFullYear();
     const month = String(monday.getMonth() + 1).padStart(2, '0');
     const date = String(monday.getDate()).padStart(2, '0');
+
     return `${year}-${month}-${date}`;
   }
-  if (frequence === 'Annuel') {
-    return `${new Date().getFullYear() - offset}`;
-  }
+
+  return `${new Date().getFullYear() - offset}`;
 };
+
 const formatDay = (key) => {
   const d = new Date(key + 'T12:00:00');
-  return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+  return d.toLocaleDateString('fr-FR', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
 };
+
 const formatWeek = (key) => {
   const d = new Date(key + 'T12:00:00');
   const end = new Date(d);
   end.setDate(d.getDate() + 6);
-  return `${d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })} – ${end.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' })}`;
+
+  const debut = d.toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'short',
+  });
+
+  const fin = end.toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+
+  return `${debut} – ${fin}`;
 };
+
 const formatYear = (key) => `Année ${key}`;
-const getCouleurCercle = (pct, isToday, isFutur) => {
-  if (isFutur) return { bg: 'transparent', border: 'rgba(255,255,255,0.15)' };
-  if (pct === null) return { bg: 'transparent', border: 'rgba(255,255,255,0.25)' };
-  if (pct === 100) return { bg: '#1a7a35', border: '#1a7a35' };
-  if (pct >= 67) return { bg: '#4caf70', border: '#4caf70' };
-  if (pct >= 34) return { bg: '#f0c040', border: '#f0c040' };
-  if (pct >= 1) return { bg: '#e8906a', border: '#e8906a' };
-  return { bg: 'transparent', border: 'rgba(255,255,255,0.25)' };
+
+const getCouleurCercle = (pct, isFutur) => {
+  if (isFutur) {
+    return {
+      bg: 'transparent',
+      border: '#eee7dd',
+      texte: '#b8afa3',
+    };
+  }
+
+  if (pct === null || pct === 0) {
+    return COULEURS_CALENDRIER[0];
+  }
+
+  if (pct >= 100) return COULEURS_CALENDRIER[4];
+  if (pct >= 67) return COULEURS_CALENDRIER[3];
+  if (pct >= 34) return COULEURS_CALENDRIER[2];
+
+  return COULEURS_CALENDRIER[1];
 };
+
 function CalendrierMois({ annee, mois, histQuotidien }) {
   const today = new Date();
   const todayStr = today.toISOString().split('T')[0];
+
   const premierJour = new Date(annee, mois, 1);
-  const dernierJour = new Date(annee, mois + 1, 0);
-  const nbJours = dernierJour.getDate();
+  const nbJours = new Date(annee, mois + 1, 0).getDate();
+
   let debutSemaine = premierJour.getDay();
   debutSemaine = debutSemaine === 0 ? 6 : debutSemaine - 1;
+
   const jours = ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'];
-  const cellules = [];
-  for (let i = 0; i < debutSemaine; i++) {
-    cellules.push(null);
-  }
-  for (let d = 1; d <= nbJours; d++) {
-    cellules.push(d);
-  }
+  const cellules = [
+    ...Array(debutSemaine).fill(null),
+    ...Array.from({ length: nbJours }, (_, i) => i + 1),
+  ];
+
   return (
-    <div style={{ marginBottom: 16 }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4, marginBottom: 4 }}>
-        {jours.map(j => (
-          <div key={j} style={{ fontSize: 9, color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>{j}</div>
+    <div>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(7, minmax(0, 1fr))',
+          gap: 2,
+          marginBottom: 8,
+        }}
+      >
+        {jours.map((jour) => (
+          <div
+            key={jour}
+            style={{
+              color: COULEURS.secondaire,
+              fontSize: 10,
+              textAlign: 'center',
+              fontWeight: 500,
+            }}
+          >
+            {jour}
+          </div>
         ))}
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
+
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(7, minmax(0, 1fr))',
+          gap: '8px 2px',
+        }}
+      >
         {cellules.map((jour, i) => {
           if (!jour) return <div key={`empty-${i}`} />;
-          const dateStr = `${annee}-${String(mois + 1).padStart(2, '0')}-${String(jour).padStart(2, '0')}`;
+
+          const dateStr =
+            `${annee}-` +
+            `${String(mois + 1).padStart(2, '0')}-` +
+            `${String(jour).padStart(2, '0')}`;
+
           const isFutur = dateStr > todayStr;
           const isToday = dateStr === todayStr;
           const valeur = histQuotidien[dateStr];
-          const pct = valeur !== undefined ? Math.round((valeur / TOTAUX.Quotidien) * 100) : null;
-          const couleur = getCouleurCercle(pct, isToday, isFutur);
+
+          const pct = valeur !== undefined
+            ? Math.round((valeur / TOTAUX.Quotidien) * 100)
+            : null;
+
+          const couleur = getCouleurCercle(pct, isFutur);
+
           return (
-            <div key={dateStr} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-              <div style={{
-                width: 28, height: 28, borderRadius: '50%',
+            <div
+              key={dateStr}
+              title={
+                isFutur
+                  ? `${dateStr} : à venir`
+                  : `${dateStr} : ${
+                      pct === null ? 'aucune donnée' : `${pct} %`
+                    }`
+              }
+              aria-current={isToday ? 'date' : undefined}
+              style={{
+                boxSizing: 'border-box',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                justifySelf: 'center',
+                width: '100%',
+                maxWidth: 28,
+                aspectRatio: '1',
+                borderRadius: '50%',
                 background: couleur.bg,
-                border: isToday ? '2px solid #f8f9fa' : `1.5px solid ${couleur.border}`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 10, color: 'white', fontWeight: isToday ? 700 : 400,
-              }}>
-                {jour}
-              </div>
+                border: isToday
+                  ? `2px solid ${COULEURS.titre}`
+                  : `1.5px solid ${couleur.border}`,
+                color: couleur.texte,
+                fontSize: 10,
+                fontWeight: isToday ? 700 : 400,
+              }}
+            >
+              {jour}
             </div>
           );
         })}
@@ -117,210 +317,556 @@ function CalendrierMois({ annee, mois, histQuotidien }) {
     </div>
   );
 }
+
 function CalendrierAnnuel({ histQuotidien }) {
-  const today = new Date();
   const [moisOffset, setMoisOffset] = useState(0);
-  const anneeAffichee = new Date(today.getFullYear(), today.getMonth() - moisOffset, 1);
-  const annee = anneeAffichee.getFullYear();
-  const mois = anneeAffichee.getMonth();
-  const nomMois = anneeAffichee.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+
+  const today = new Date();
+  const dateAffichee = new Date(
+    today.getFullYear(),
+    today.getMonth() - moisOffset,
+    1
+  );
+
+  const annee = dateAffichee.getFullYear();
+  const mois = dateAffichee.getMonth();
+
+  const nomMois = dateAffichee.toLocaleDateString('fr-FR', {
+    month: 'long',
+    year: 'numeric',
+  });
+
   return (
-    <div style={{
-      background: 'var(--color-background-primary)',
-      border: '0.5px solid var(--color-border-tertiary)',
-      borderRadius: 'var(--border-radius-lg)',
-      padding: '1rem',
-      marginTop: 12,
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+    <section style={{ ...styleCarte, marginTop: 12 }}>
+      <h3
+        style={{
+          margin: '0 0 16px',
+          color: COULEURS.titre,
+          fontSize: 14,
+          fontWeight: 600,
+        }}
+      >
+        Ma régularité
+      </h3>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 8,
+          marginBottom: 16,
+        }}
+      >
         <button
+          type="button"
+          aria-label="Mois précédent"
           onClick={() => setMoisOffset(o => o + 1)}
+          style={styleFleche}
+        >
+          ‹
+        </button>
+
+        <div
           style={{
-            background: 'none', border: '0.5px solid rgba(255,255,255,0.3)',
-            borderRadius: 8, color: 'white', fontSize: 16,
-            width: 32, height: 32, cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
+            color: COULEURS.texte,
+            fontSize: 13,
+            fontWeight: 500,
+            textAlign: 'center',
+            textTransform: 'capitalize',
           }}
-        >◀</button>
-        <div style={{ fontSize: 13, color: 'white', fontWeight: 500, textTransform: 'capitalize' }}>
+        >
           {nomMois}
         </div>
+
         <button
-          onClick={() => setMoisOffset(o => o - 1)}
+          type="button"
+          aria-label="Mois suivant"
+          onClick={() => setMoisOffset(o => Math.max(0, o - 1))}
           disabled={moisOffset === 0}
           style={{
-            background: 'none', border: '0.5px solid rgba(255,255,255,0.3)',
-            borderRadius: 8, color: moisOffset === 0 ? 'rgba(255,255,255,0.2)' : 'white', fontSize: 16,
-            width: 32, height: 32, cursor: moisOffset === 0 ? 'default' : 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
+            ...styleFleche,
+            opacity: moisOffset === 0 ? 0.35 : 1,
+            cursor: moisOffset === 0 ? 'default' : 'pointer',
           }}
-        >▶</button>
+        >
+          ›
+        </button>
       </div>
-      <CalendrierMois annee={annee} mois={mois} histQuotidien={histQuotidien} />
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, marginTop: 8, flexWrap: 'wrap' }}>
-        {[
-          { bg: 'transparent', border: 'rgba(255,255,255,0.25)', label: '0%' },
-          { bg: '#e8906a', border: '#e8906a', label: '1-33%' },
-          { bg: '#f0c040', border: '#f0c040', label: '34-66%' },
-          { bg: '#4caf70', border: '#4caf70', label: '67-99%' },
-          { bg: '#1a7a35', border: '#1a7a35', label: '100%' },
-        ].map(({ bg, border, label }) => (
-          <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-            <div style={{ width: 12, height: 12, borderRadius: '50%', background: bg, border: `1.5px solid ${border}` }} />
-            <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>{label}</span>
+
+      <CalendrierMois
+        annee={annee}
+        mois={mois}
+        histQuotidien={histQuotidien}
+      />
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '8px 12px',
+          marginTop: 18,
+        }}
+      >
+        {COULEURS_CALENDRIER.map(({ bg, border, label }) => (
+          <div
+            key={label}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 4,
+            }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                boxSizing: 'border-box',
+                width: 10,
+                height: 10,
+                borderRadius: '50%',
+                background: bg,
+                border: `1px solid ${border}`,
+              }}
+            />
+            <span
+              style={{
+                color: COULEURS.secondaire,
+                fontSize: 10,
+              }}
+            >
+              {label}
+            </span>
           </div>
         ))}
       </div>
-    </div>
+
+      <p
+        style={{
+          margin: '12px 0 0',
+          color: COULEURS.secondaire,
+          fontSize: 10,
+          lineHeight: 1.6,
+          textAlign: 'center',
+        }}
+      >
+        Le jour actuel est entouré. Les jours sans donnée
+        restent vides.
+      </p>
+    </section>
   );
 }
-function DetailPeriode({ periodeKey, frequence, histGlobal, histPilier, isToday }) {
+
+function DetailPeriode({
+  periodeKey,
+  frequence,
+  histGlobal,
+  histPilier,
+  isToday,
+}) {
   const total = TOTAUX[frequence];
   const valeur = histGlobal[periodeKey] || 0;
   const pct = total > 0 ? Math.round((valeur / total) * 100) : 0;
-  const pilierData = histPilier[periodeKey] || { Nutrition: 0, Sommeil: 0, Stress: 0, Mouvement: 0 };
+
+  const pilierData = histPilier[periodeKey] || {
+    Nutrition: 0,
+    Sommeil: 0,
+    Stress: 0,
+    Mouvement: 0,
+  };
+
   const repartition = ROUTINES_PAR_PILIER[frequence];
+
   return (
-    <div style={{
-      background: 'var(--color-background-primary)',
-      border: isToday ? '1.5px solid #534226' : '0.5px solid var(--color-border-tertiary)',
-      borderRadius: 'var(--border-radius-lg)',
-      padding: '1rem',
-      marginBottom: 10
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-        <div style={{ textAlign: 'center', flexShrink: 0 }}>
-          <div style={{ fontSize: 32, fontWeight: 500, color: '#534226', lineHeight: 1 }}>{pct}</div>
-          <div style={{ fontSize: 10, color: 'white' }}>%</div>
+    <div
+      style={{
+        ...styleCarte,
+        marginBottom: 12,
+        borderColor: isToday ? '#c9b596' : COULEURS.bordure,
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 14,
+          marginBottom: frequence === 'Annuel' ? 0 : 18,
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'baseline',
+            gap: 2,
+            flexShrink: 0,
+            color: COULEURS.titre,
+          }}
+        >
+          <span
+            style={{
+              fontSize: 32,
+              fontWeight: 600,
+              lineHeight: 1,
+            }}
+          >
+            {pct}
+          </span>
+          <span style={{ fontSize: 13 }}>%</span>
         </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'white', marginBottom: 4 }}>
-            <span>{valeur} routines complétées</span>
-            <span>/ {total}</span>
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 4,
+              marginBottom: 8,
+              color: COULEURS.secondaire,
+              fontSize: 12,
+              lineHeight: 1.5,
+            }}
+          >
+            <span>Routines complétées</span>
+            <strong style={{ color: COULEURS.titre }}>
+              {valeur}/{total}
+            </strong>
           </div>
-          <div style={{ height: 6, background: '#eeebe7', borderRadius: 10, overflow: 'hidden' }}>
-            <div style={{ height: 6, background: '#534226', width: `${pct}%`, borderRadius: 10, transition: 'width 0.3s' }} />
+
+          <div
+            style={{
+              height: 7,
+              background: '#eee7dd',
+              borderRadius: 10,
+              overflow: 'hidden',
+            }}
+          >
+            <div
+              style={{
+                height: '100%',
+                width: `${Math.min(100, Math.max(0, pct))}%`,
+                background: '#92765b',
+                borderRadius: 10,
+              }}
+            />
           </div>
-          {isToday && <div style={{ fontSize: 11, color: '#534226', marginTop: 4 }}>Période en cours</div>}
         </div>
       </div>
+
       {frequence !== 'Annuel' && PILIERS.map(p => {
         const totalPilier = repartition[p.nom] || 0;
         if (totalPilier === 0) return null;
+
         const cocheesPilier = pilierData[p.nom] || 0;
-        const pctPilier = Math.round((cocheesPilier / totalPilier) * 100);
+        const pctPilier = Math.round(
+          (cocheesPilier / totalPilier) * 100
+        );
+
         return (
-          <div key={p.nom} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 0', borderBottom: '0.5px solid var(--color-border-tertiary)' }}>
-            <div style={{ width: 10, height: 10, borderRadius: 3, background: p.couleur, flexShrink: 0 }} />
-            <span style={{ fontSize: 13, color: 'white', flex: 1, display: 'flex', alignItems: 'center', gap: 6 }}>
-              <p.Icon size={14} /> {p.nom}
+          <div
+            key={p.nom}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '9px 0',
+              borderTop: `1px solid ${COULEURS.bordure}`,
+            }}
+          >
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                width: 28,
+                height: 28,
+                borderRadius: 9,
+                background: p.bg,
+                color: p.couleur,
+              }}
+            >
+              <p.Icon size={15} strokeWidth={1.6} />
             </span>
-            <div style={{ width: 80, height: 6, background: p.bg, borderRadius: 10, overflow: 'hidden' }}>
-              <div style={{ height: 6, background: p.couleur, width: `${pctPilier}%`, borderRadius: 10 }} />
+
+            <span
+              style={{
+                flex: 1,
+                color: COULEURS.texte,
+                fontSize: 12,
+              }}
+            >
+              {p.nom}
+            </span>
+
+            <div
+              style={{
+                flexShrink: 1,
+                width: 64,
+                minWidth: 20,
+                height: 6,
+                background: p.bg,
+                borderRadius: 10,
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  height: '100%',
+                  width: `${
+                    Math.min(100, Math.max(0, pctPilier))
+                  }%`,
+                  background: p.couleur,
+                  borderRadius: 10,
+                }}
+              />
             </div>
-            <span style={{ fontSize: 12, color: 'white', minWidth: 32, textAlign: 'right' }}>{cocheesPilier}/{totalPilier}</span>
+
+            <span
+              style={{
+                flexShrink: 0,
+                minWidth: 25,
+                color: COULEURS.secondaire,
+                fontSize: 11,
+                textAlign: 'right',
+              }}
+            >
+              {cocheesPilier}/{totalPilier}
+            </span>
           </div>
         );
       })}
     </div>
   );
 }
+
 function Statistiques() {
   const [onglet, setOnglet] = useState('jour');
   const [offset, setOffset] = useState(0);
-  const [humeurs] = useState(() =>
-  JSON.parse(localStorage.getItem('serenitine_humeurs') || '{}')
-);
+
+  const [humeurs] = useState(() => {
+    try {
+      return JSON.parse(
+        localStorage.getItem('serenitine_humeurs') || '{}'
+      ) || {};
+    } catch {
+      return {};
+    }
+  });
+
   const frequenceMap = {
     jour: 'Quotidien',
     semaine: 'Hebdomadaire',
     annee: 'Annuel',
   };
+
   const formaterMap = {
     jour: formatDay,
     semaine: formatWeek,
     annee: formatYear,
   };
+
   const histQuotidien = getHistorique('Quotidien');
   const histHebdo = getHistorique('Hebdomadaire');
   const histAnnuel = getHistorique('Annuel');
+
   const histPilierQuotidien = getHistoriquePilier('Quotidien');
   const histPilierHebdo = getHistoriquePilier('Hebdomadaire');
   const histPilierAnnuel = getHistoriquePilier('Annuel');
+
   const histGlobalMap = {
     jour: histQuotidien,
     semaine: histHebdo,
     annee: histAnnuel,
   };
+
   const histPilierMap = {
     jour: histPilierQuotidien,
     semaine: histPilierHebdo,
     annee: histPilierAnnuel,
   };
+
   const frequence = frequenceMap[onglet];
   const periodeKey = getKeyByOffset(frequence, offset);
-  const humeurJour = onglet === 'jour' ? humeurs[periodeKey] : null;
-const humeurSelectionnee = HUMEURS.find(h => h.valeur === humeurJour);
   const isToday = offset === 0;
-  const formater = formaterMap[onglet];
+
+  const humeurJour = onglet === 'jour'
+    ? humeurs[periodeKey]
+    : null;
+
+  const humeurSelectionnee = HUMEURS.find(
+    h => h.valeur === humeurJour
+  );
+
   const changerOnglet = (nouvelOnglet) => {
     setOnglet(nouvelOnglet);
     setOffset(0);
   };
+
   return (
-    <div style={{ padding: '1rem' }}>
-      <h2 style={{ fontSize: 18, fontWeight: 700, color: 'white', marginBottom: '4px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-        Suivi <BarChart3 size={15} />
-      </h2>
-      <p style={{ fontSize: 13, color: 'white', textAlign: 'center', marginBottom: '1.2rem', opacity: 0.9 }}>
-        Ton historique dans les trois fréquences de routines
-      </p>
-      <div style={{ display: 'flex', gap: 8, marginBottom: '1.5rem' }}>
-        {[['jour', 'Jour'], ['semaine', 'Semaine'], ['annee', 'Année']].map(([key, label]) => (
+    <div style={{ padding: 0 }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 12,
+          marginBottom: 20,
+        }}
+      >
+        <span
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+            width: 42,
+            height: 42,
+            borderRadius: '50%',
+            background: COULEURS.bleuClair,
+            color: COULEURS.bleu,
+          }}
+        >
+          <BarChart3 size={22} strokeWidth={1.6} />
+        </span>
+
+        <div>
+          <h2
+            style={{
+              margin: 0,
+              color: COULEURS.titre,
+              fontSize: 16,
+              fontWeight: 600,
+            }}
+          >
+            Mon suivi
+          </h2>
+
+          <p
+            style={{
+              margin: '5px 0 0',
+              color: COULEURS.secondaire,
+              fontSize: 12,
+              lineHeight: 1.6,
+            }}
+          >
+            Tes habitudes au fil du temps
+          </p>
+        </div>
+      </div>
+
+      <div
+        role="group"
+        aria-label="Fréquence du suivi"
+        style={{
+          display: 'flex',
+          gap: 4,
+          padding: 4,
+          marginBottom: 20,
+          borderRadius: 14,
+          background: '#eee7dd',
+        }}
+      >
+        {[
+          ['jour', 'Jour'],
+          ['semaine', 'Semaine'],
+          ['annee', 'Année'],
+        ].map(([key, label]) => (
           <button
             key={key}
+            type="button"
+            aria-pressed={onglet === key}
             onClick={() => changerOnglet(key)}
             style={{
-              flex: 1, padding: '8px 4px', borderRadius: 20,
-              border: onglet === key ? '0.5px solid white' : '0.5px solid var(--color-border-secondary)',
-              background: onglet === key ? '#5b564c' : 'white',
-              color: onglet === key ? '#f4f1ef' : 'var(--color-text-secondary)',
-              fontSize: 13, cursor: 'pointer', fontWeight: onglet === key ? 500 : 400
+              flex: 1,
+              minWidth: 0,
+              minHeight: 40,
+              padding: '8px 4px',
+              border: 'none',
+              borderRadius: 11,
+              background: onglet === key
+                ? COULEURS.titre
+                : 'transparent',
+              color: onglet === key
+                ? '#fffaf3'
+                : COULEURS.secondaire,
+              fontSize: 12,
+              fontWeight: 500,
+              cursor: 'pointer',
             }}
           >
             {label}
           </button>
         ))}
       </div>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
+
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 6,
+          marginBottom: 16,
+        }}
+      >
         <button
+          type="button"
+          aria-label="Période précédente"
           onClick={() => setOffset(o => o + 1)}
+          style={styleFleche}
+        >
+          ‹
+        </button>
+
+        <div
           style={{
-            background: 'none', border: '0.5px solid rgba(255,255,255,0.3)',
-            borderRadius: 8, color: 'white', fontSize: 18,
-            width: 36, height: 36, cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
+            flex: 1,
+            minWidth: 0,
+            padding: '0 4px',
+            textAlign: 'center',
           }}
-        >◀</button>
-        <div style={{ textAlign: 'center', flex: 1, padding: '0 8px' }}>
-          <div style={{ fontSize: 13, color: 'white', fontWeight: 500, textTransform: 'capitalize' }}>
-            {formater(periodeKey)}
+        >
+          <div
+            aria-live="polite"
+            style={{
+              color: COULEURS.texte,
+              fontSize: 12,
+              fontWeight: 500,
+              lineHeight: 1.6,
+              textTransform: 'capitalize',
+            }}
+          >
+            {formaterMap[onglet](periodeKey)}
           </div>
+
           {isToday && (
-            <div style={{ fontSize: 11, color: '#534226', marginTop: 2 }}>● période en cours</div>
+            <div
+              style={{
+                marginTop: 3,
+                color: COULEURS.bleu,
+                fontSize: 10,
+              }}
+            >
+              Période en cours
+            </div>
           )}
         </div>
+
         <button
-          onClick={() => setOffset(o => o - 1)}
+          type="button"
+          aria-label="Période suivante"
+          onClick={() => setOffset(o => Math.max(0, o - 1))}
           disabled={offset === 0}
           style={{
-            background: 'none', border: '0.5px solid rgba(255,255,255,0.3)',
-            borderRadius: 8, color: offset === 0 ? 'rgba(255,255,255,0.2)' : 'white', fontSize: 18,
-            width: 36, height: 36, cursor: offset === 0 ? 'default' : 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center'
+            ...styleFleche,
+            opacity: offset === 0 ? 0.35 : 1,
+            cursor: offset === 0 ? 'default' : 'pointer',
           }}
-        >▶</button>
+        >
+          ›
+        </button>
       </div>
+
       <DetailPeriode
         periodeKey={periodeKey}
         frequence={frequence}
@@ -328,48 +874,51 @@ const humeurSelectionnee = HUMEURS.find(h => h.valeur === humeurJour);
         histPilier={histPilierMap[onglet]}
         isToday={isToday}
       />
-            {onglet === 'jour' && (
-  <div style={{
-    background: 'var(--color-background-primary)',
-    border: '0.5px solid var(--color-border-tertiary)',
-    borderRadius: 'var(--border-radius-lg)',
-    padding: '0.7rem 1rem',
-    marginBottom: 10,
-    textAlign: 'center',
-  }}>
-    {humeurSelectionnee ? (
-      <div style={{
-        fontSize: 13,
-        color: 'white',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 6,
-      }}>
-        <span style={{ fontWeight: 500 }}>
-          Humeur du jour :
-        </span>
-        <span style={{ fontSize: 20 }}>
-          {humeurSelectionnee.emoji}
-        </span>
-        <span>
-          {humeurSelectionnee.label}
-        </span>
-      </div>
-    ) : (
-      <div style={{
-        fontSize: 12,
-        color: 'rgba(255,255,255,0.55)',
-      }}>
-        Humeur du jour : aucune humeur renseignée
-      </div>
-    )}
-  </div>
-)}
+
       {onglet === 'jour' && (
-        <CalendrierAnnuel histQuotidien={histQuotidien} />
+        <>
+          <div
+            style={{
+              ...styleCarte,
+              padding: '12px',
+              marginBottom: 12,
+              textAlign: 'center',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                gap: 6,
+                color: COULEURS.secondaire,
+                fontSize: 12,
+                lineHeight: 1.6,
+              }}
+            >
+              <span>Humeur du jour :</span>
+
+              {humeurSelectionnee ? (
+                <>
+                  <span style={{ fontSize: 20 }}>
+                    {humeurSelectionnee.emoji}
+                  </span>
+                  <span style={{ color: COULEURS.texte }}>
+                    {humeurSelectionnee.label}
+                  </span>
+                </>
+              ) : (
+                <span>non renseignée</span>
+              )}
+            </div>
+          </div>
+
+          <CalendrierAnnuel histQuotidien={histQuotidien} />
+        </>
       )}
     </div>
   );
 }
+
 export default Statistiques;

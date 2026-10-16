@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Routine from './Routine';
+import { getAudioCtx, debloqueurAudio } from './audio';
 import { useRoutineStorage, sauvegarderPiliers } from './useStorage';
 import { AppContext } from './App';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Smile } from 'lucide-react';
 
 const routines = [
   { id: 1, nom: "Boire 1,5 à 2L d'eau", description: "Répartis sur la journée", pilier: "Nutrition", frequence: "Quotidien" },
@@ -132,6 +132,104 @@ function Confettis({ actif }) {
   );
 }
 
+const THEMES_ROUTINES = {
+  Tous: { fond: '#e8eff4', couleur: '#526f84' },
+  Nutrition: { fond: '#eaf3de', couleur: '#52734a' },
+  Sommeil: { fond: '#e6f1fb', couleur: '#526f84' },
+  Stress: { fond: '#faeeda', couleur: '#987440' },
+  Mouvement: { fond: '#f2e8f1', couleur: '#927094' },
+};
+
+const STYLE_ROUTINES = `
+.routines-modernisees .routines-frequences { display: flex; gap: 4px; padding: 6px; margin-bottom: 18px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 18px; }
+.routines-modernisees .routines-frequences button { flex: 1; min-width: 0; min-height: 44px; padding: 9px 4px; border: none; border-radius: 13px; background: transparent; color: #786b5e; font: inherit; font-size: 12px; line-height: 1.5; cursor: pointer; }
+.routines-modernisees .routines-frequences button[aria-pressed="true"] { background: #5c3d2e; color: #fffaf3; font-weight: 500; }
+.routines-modernisees .routines-progression, .routines-modernisees .routines-humeur { padding: 20px; margin-bottom: 18px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 22px; }
+.routines-modernisees .routines-progression-entete, .routines-modernisees .routines-humeur-entete { display: flex; align-items: center; gap: 12px; }
+.routines-modernisees .routines-progression-entete > div, .routines-modernisees .routines-humeur-entete > div { flex: 1; min-width: 0; }
+.routines-modernisees .routines-pastille { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; background: #e8eff4; color: #526f84; }
+.routines-modernisees .routines-progression h3, .routines-modernisees .routines-humeur h3 { margin: 0; color: #5c3d2e; font-size: 15px; font-weight: 600; line-height: 1.5; }
+.routines-modernisees .routines-progression p, .routines-modernisees .routines-humeur p { margin: 5px 0 0; color: #786b5e; font-size: 12px; line-height: 1.7; }
+.routines-modernisees .routines-progression strong { flex-shrink: 0; color: #5c3d2e; font-size: 24px; font-weight: 600; }
+.routines-modernisees .routines-progression small { font-size: 12px; }
+.routines-modernisees .routines-jauge { height: 8px; margin-top: 18px; background: #e8dece; border-radius: 10px; overflow: hidden; }
+.routines-modernisees .routines-jauge > div { height: 100%; background: #78916c; border-radius: 10px; transition: width .3s ease; }
+.routines-modernisees .routines-filtres { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; margin-bottom: 12px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 18px; }
+.routines-modernisees .routines-filtres button { flex: 1 1 auto; min-height: 38px; padding: 8px 10px; border: 1px solid transparent; border-radius: 12px; font: inherit; font-size: 12px; cursor: pointer; }
+.routines-modernisees .routines-filtres button[aria-pressed="true"] { border-color: currentColor; font-weight: 600; }
+.routines-modernisees .routines-indication { margin: 12px 0 14px; color: #304c60; font-size: 12px; font-style: italic; text-align: center; line-height: 1.7; }
+.routines-modernisees .routines-cartes { display: grid; gap: 10px; }
+.routines-modernisees .routine-carte { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 20px; }
+.routines-modernisees .routine-carte.est-cochee { background: #edf3e8; border-color: #c9d8c3; }
+.routines-modernisees .routine-carte input { flex-shrink: 0; width: 22px; height: 22px; margin: 10px 0 0; accent-color: #52734a; cursor: pointer; }
+.routines-modernisees .routine-ouvrir { display: flex; flex-direction: column; align-items: stretch; gap: 8px; flex: 1; min-width: 0; min-height: 44px; padding: 0; border: none; background: transparent; font: inherit; text-align: left; cursor: pointer; }
+.routines-modernisees .routine-carte-nom { color: #5c3d2e; font-size: 14px; font-weight: 600; line-height: 1.6; }
+.routines-modernisees .routine-carte-description {
+  display: block;
+  color: #786b5e;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.8;
+  text-align: left;
+}
+.routines-modernisees .routine-carte-bas { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.routines-modernisees .routine-carte-badge { padding: 3px 9px; border-radius: 20px; font-size: 10px; line-height: 1.5; }
+.routines-modernisees .routine-carte-fleche { margin-left: auto; color: #92765b; }
+.routines-modernisees .routines-felicitations { padding: 18px; margin-bottom: 18px; background: #edf3e8; border: 1px solid #c9d8c3; border-radius: 20px; text-align: center; color: #426246; }
+.routines-modernisees .routines-felicitations > span { font-size: 24px; }
+.routines-modernisees .routines-felicitations p { margin: 8px 0 0; font-size: 13px; line-height: 1.7; }
+.routines-modernisees .routines-humeur { margin-top: 24px; }
+.routines-modernisees .routines-humeur-choix { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.routines-modernisees .routines-humeur-choix button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; flex: 1 1 52px; min-height: 78px; padding: 10px 4px; border: 1px solid #e8dece; border-radius: 14px; background: #fffdf9; color: #786b5e; font: inherit; font-size: 10px; line-height: 1.5; cursor: pointer; }
+.routines-modernisees .routines-humeur-choix button[aria-pressed="true"] { background: #e8eff4; border-color: #526f84; color: #405b6c; font-weight: 600; }
+.routines-modernisees .routines-humeur-choix button > span:first-child { font-size: 24px; }
+.routines-modernisees button:focus-visible, .routines-modernisees input:focus-visible { outline: 3px solid #526f84; outline-offset: 3px; }
+@media (max-width: 380px) { .routines-modernisees .routines-progression, .routines-modernisees .routines-humeur { padding: 16px; } .routines-modernisees .routines-progression-entete { flex-wrap: wrap; } .routines-modernisees .routines-frequences button { font-size: 11px; } }
+@media (prefers-reduced-motion: reduce) { .routines-modernisees .routines-jauge > div { transition: none; } }
+`;
+
+const jouerSonCoche = () => {
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(528, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(594, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + 0.02);
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.4);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.4);
+  } catch (e) {}
+};
+
+function RoutineCarte({ nom, description, pilier, cochee, onToggle, onOuvrirFiche, afficherPilier }) {
+  const theme = THEMES_ROUTINES[pilier] || THEMES_ROUTINES.Tous;
+  const handleToggle = () => {
+    try { debloqueurAudio(); } catch (e) {}
+    if (!cochee) jouerSonCoche();
+    onToggle();
+  };
+  return (
+    <div className={`routine-carte ${cochee ? 'est-cochee' : ''}`}>
+      <input type="checkbox" aria-label={`Marquer comme réalisée : ${nom}`} checked={cochee} onChange={handleToggle} />
+      <button type="button" className="routine-ouvrir" onClick={onOuvrirFiche}>
+        <span className="routine-carte-nom">{nom}</span>
+        <span className="routine-carte-description">{description}</span>
+        <span className="routine-carte-bas">
+          {afficherPilier && <span className="routine-carte-badge" style={{ background: theme.fond, color: theme.couleur }}>{pilier}</span>}
+          <span className="routine-carte-fleche" aria-hidden="true">→</span>
+        </span>
+      </button>
+    </div>
+  );
+}
+
 function ListeRoutines() {
   const { setRoutineId } = useContext(AppContext);
   const navigate = useNavigate();
@@ -213,171 +311,102 @@ const choisirHumeur = (valeur) => {
     sauvegarderPiliers(frequenceActive, nouvellesCochees, routines);
   };
 
-  // Déclencher les confettis uniquement au moment où on passe à 100%
-  useEffect(() => {
-    if (estComplete && !etaitCompleteRef.current) {
-      setConfettisActifs(true);
-      setTimeout(() => setConfettisActifs(false), 3500);
-    }
-    etaitCompleteRef.current = estComplete;
-  }, [estComplete]);
+  const frequencePrecedenteRef = useRef(frequenceActive);
+  const suiviInitialiseRef = useRef(false);
+  const confettisTimeoutRef = useRef(null);
 
-  // Réinitialiser la ref quand on change de fréquence
   useEffect(() => {
-  etaitCompleteRef.current = estComplete;
-}, [frequenceActive, estComplete]);
+    const memeFrequence = frequencePrecedenteRef.current === frequenceActive;
+    if (suiviInitialiseRef.current && memeFrequence && estComplete && !etaitCompleteRef.current) {
+      setConfettisActifs(true);
+      clearTimeout(confettisTimeoutRef.current);
+      confettisTimeoutRef.current = setTimeout(() => setConfettisActifs(false), 3500);
+    }
+    if (!memeFrequence) {
+      clearTimeout(confettisTimeoutRef.current);
+      setConfettisActifs(false);
+    }
+    suiviInitialiseRef.current = true;
+    frequencePrecedenteRef.current = frequenceActive;
+    etaitCompleteRef.current = estComplete;
+  }, [estComplete, frequenceActive]);
+
+  useEffect(() => () => clearTimeout(confettisTimeoutRef.current), []);
 
   const felicitations = MESSAGES_FELICITATIONS[frequenceActive];
 
   return (
-    <div className="liste-routines">
-
+    <div className="liste-routines routines-modernisees">
+      <style>{STYLE_ROUTINES}</style>
       <Confettis actif={confettisActifs} />
-<div className="entete-onglet">
-  <h2 className="entete-onglet__titre">
-    <CheckCircle2 size={21} />
-    Mes routines
-  </h2>
-  <p className="entete-onglet__description">
-    Tes habitudes à cocher, avec leurs explications
-  </p>
-</div>
-      <div className="frequences">
+      <div className="entete-onglet">
+        <h2 className="entete-onglet__titre"><CheckCircle2 size={21} /> Mes routines</h2>
+        <p className="entete-onglet__description">Tes habitudes à cocher, avec leurs explications</p>
+      </div>
+
+      <div className="routines-frequences" role="group" aria-label="Fréquence des routines">
         {FREQUENCES.map(f => (
-          <button
-            key={f}
-            className={`freq-btn ${frequenceActive === f ? 'actif' : ''}`}
-            onClick={() => {
-              setFrequenceActive(f);
-              if (f === "Annuel") setPilierActif("Tous");
-            }}
-          >
+          <button key={f} type="button" aria-pressed={frequenceActive === f}
+            onClick={() => { setFrequenceActive(f); if (f === 'Annuel') setPilierActif('Tous'); }}>
             {LABELS_FREQUENCES[f]}
           </button>
         ))}
       </div>
 
       {estComplete && (
-        <div style={{
-          background: 'rgba(255,255,255,0.15)',
-          border: '0.5px solid rgba(255,255,255,0.4)',
-          borderRadius: 12,
-          padding: '0.8rem 1rem',
-          marginBottom: 12,
-          textAlign: 'center',
-        }}>
-          <div style={{ fontSize: 24, marginBottom: 4 }}>{felicitations.emoji}</div>
-          <div style={{ fontSize: 13, color: 'white', fontWeight: 500 }}>{felicitations.texte}</div>
+        <div className="routines-felicitations" role="status">
+          <span aria-hidden="true">{felicitations.emoji}</span>
+          <p>{felicitations.texte}</p>
         </div>
       )}
 
-      <div className="progression-wrap">
-        <div className="progression-texte">
-          <span key={completees}>{completees} / {total} complétées</span>
-          <span key={`pct-${completees}`}>{progression}%</span>
+      <section className="routines-progression">
+        <div className="routines-progression-entete">
+          <span className="routines-pastille"><CheckCircle2 size={21} strokeWidth={1.6} /></span>
+          <div><h3>Chaque geste compte</h3><p>{completees} / {total} routines complétées{pilierActif !== 'Tous' && frequenceActive !== 'Annuel' ? ` · ${pilierActif}` : ''}</p></div>
+          <strong>{progression}<small> %</small></strong>
         </div>
-        <div className="progression-bar">
-          <div className="progression-fill" style={{ width: `${progression}%` }} />
+        <div className="routines-jauge" role="progressbar" aria-label="Routines complétées dans la sélection" aria-valuenow={progression} aria-valuemin={0} aria-valuemax={100}>
+          <div style={{ width: `${progression}%` }} />
         </div>
-      </div>
+      </section>
 
-      <p style={{ fontSize: 12, color: 'white', textAlign: 'center', marginBottom: 8, fontStyle: 'italic' }}>
-        Clique sur chaque routine pour + d'infos
-      </p>
-
-      {frequenceActive !== "Annuel" && (
-        <div className="piliers-filtres">
-          {PILIERS.map(p => (
-            <button
-              key={p}
-              className={`pilier-btn ${p.toLowerCase()} ${pilierActif === p ? 'actif' : ''}`}
-              onClick={() => setPilierActif(p)}
-            >
-              {p}
-            </button>
-          ))}
+      {frequenceActive !== 'Annuel' && (
+        <div className="routines-filtres" role="group" aria-label="Filtrer par pilier">
+          {PILIERS.map(p => {
+            const theme = THEMES_ROUTINES[p];
+            return (
+              <button key={p} type="button" aria-pressed={pilierActif === p}
+                style={{ background: pilierActif === p ? theme.fond : 'transparent', color: pilierActif === p ? theme.couleur : '#786b5e' }}
+                onClick={() => setPilierActif(p)}>{p}</button>
+            );
+          })}
         </div>
       )}
-
-            <div className="routines-liste">
+      <p className="routines-indication">Coche tes habitudes et ouvre leur titre pour en savoir plus.</p>
+      <div className="routines-cartes">
         {routinesFiltrees.map(r => (
-          <Routine
-            key={r.id}
-            nom={r.nom}
-            description={r.description}
-            pilier={r.pilier}
-            cochee={cochees.includes(r.id)}
-            onToggle={() => toggleRoutine(r.id)}
-            onOuvrirFiche={() => ouvrirFiche(r.id)}
-            afficherPilier={frequenceActive !== "Annuel"}
-          />
+          <RoutineCarte key={r.id} nom={r.nom} description={r.description} pilier={r.pilier}
+            cochee={cochees.includes(r.id)} onToggle={() => toggleRoutine(r.id)}
+            onOuvrirFiche={() => ouvrirFiche(r.id)} afficherPilier={frequenceActive !== 'Annuel'} />
         ))}
       </div>
 
-      {frequenceActive === "Quotidien" && (
-        <div style={{
-          marginTop: 24,
-          padding: '1rem',
-          background: 'rgba(255,255,255,0.12)',
-          border: '0.5px solid rgba(255,255,255,0.3)',
-          borderRadius: 16,
-          textAlign: 'center',
-        }}>
-          <div style={{
-            fontSize: 15,
-            fontWeight: 600,
-            color: 'white',
-            marginBottom: 4,
-          }}>
-            Comment je me sens aujourd'hui ?
+      {frequenceActive === 'Quotidien' && (
+        <section className="routines-humeur">
+          <div className="routines-humeur-entete">
+            <span className="routines-pastille"><Smile size={21} strokeWidth={1.6} /></span>
+            <div><h3>Comment je me sens aujourd’hui ?</h3><p>Une petite pause pour faire le point sur ton humeur</p></div>
           </div>
-
-          <div style={{
-            fontSize: 11,
-            color: 'rgba(255,255,255,0.75)',
-            marginBottom: 14,
-          }}>
-            Une petite pause pour faire le point sur ton humeur
-          </div>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: 8,
-            flexWrap: 'wrap',
-          }}>
+          <div className="routines-humeur-choix" role="group" aria-label="Humeur du jour">
             {HUMEURS.map(h => (
-              <button
-                key={h.valeur}
-                onClick={() => choisirHumeur(h.valeur)}
-                style={{
-                  flex: '1 1 55px',
-                  maxWidth: 75,
-                  padding: '8px 4px',
-                  borderRadius: 12,
-                  border: humeur === h.valeur
-                    ? '1.5px solid white'
-                    : '0.5px solid rgba(255,255,255,0.25)',
-                  background: humeur === h.valeur
-                    ? 'rgba(255,255,255,0.22)'
-                    : 'rgba(255,255,255,0.08)',
-                  color: 'white',
-                  cursor: 'pointer',
-                }}
-              >
-                <div style={{ fontSize: 22 }}>{h.emoji}</div>
-                <div style={{
-                  fontSize: 10,
-                  marginTop: 3,
-                }}>
-                  {h.label}
-                </div>
+              <button key={h.valeur} type="button" aria-pressed={humeur === h.valeur} onClick={() => choisirHumeur(h.valeur)}>
+                <span aria-hidden="true">{h.emoji}</span><span>{h.label}</span>
               </button>
             ))}
           </div>
-        </div>
+        </section>
       )}
-
     </div>
   );
 }

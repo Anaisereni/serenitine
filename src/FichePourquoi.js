@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from './App';
+import { Salad, Moon, Flower2, Activity, BookOpen, Lightbulb } from 'lucide-react';
 
 const fiches = [
   { id: 1, titre: "Boire 1,5 à 2L d'eau", pilier: "Nutrition", contenu: "Le corps est composé à 60% d'eau. Une déshydratation même légère (1 à 2%) suffit à altérer la concentration, la digestion et la régulation de la température corporelle. L'eau participe aussi à l'élimination des déchets par les reins. Mieux vaut répartir les apports tout au long de la journée plutôt que de boire de grandes quantités d'un coup. Le café, le thé ou les infusions sans sucre comptent." },
@@ -25,27 +26,83 @@ const fiches = [
   { id: 20, titre: "Consultation gynécologique ou urologique", pilier: "Mouvement", contenu: "Le suivi gynécologique ou urologique permet le dépistage de pathologies souvent asymptomatiques à un stade précoce. Pour les femmes, le frottis cervico-utérin est recommandé tous les 3 ans entre 25 et 65 ans et un check-up annuel est fortement recommandé. Pour les hommes, un suivi prostatique est conseillé à partir de 50 ans ou plus tôt en cas d'antécédents familiaux. Si non concerné, coche directement la case." },
 ];
 
+const THEMES_FICHES = {
+  Nutrition: { fond: '#eaf3de', couleur: '#52734a', Icone: Salad },
+  Sommeil: { fond: '#e6f1fb', couleur: '#526f84', Icone: Moon },
+  Stress: { fond: '#faeeda', couleur: '#987440', Icone: Flower2 },
+  Mouvement: { fond: '#f2e8f1', couleur: '#927094', Icone: Activity },
+};
+
+const STYLE_FICHES = `
+.fiche-moderne { padding: 1rem; color: #5c5045; }
+.fiche-moderne .fiche-navigation { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 10px 14px; margin-bottom: 18px; border: 1px solid #e8dece; border-radius: 12px; background: #faf6ee; color: #5c3d2e; font: inherit; font-size: 13px; cursor: pointer; }
+.fiche-moderne .fiche-introduction { padding: 24px 20px; margin-bottom: 20px; background: #faf6ee; border: 1px solid #e8dece; border-radius: 22px; }
+.fiche-moderne .fiche-icone { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-bottom: 14px; border-radius: 50%; }
+.fiche-moderne .fiche-categorie { display: inline-block; padding: 4px 9px; border-radius: 20px; font-size: 11px; font-weight: 500; line-height: 1.5; }
+.fiche-moderne .fiche-introduction h2 { margin: 14px 0 0; color: #5c3d2e; font-size: 24px; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.fiche-moderne .fiche-explication { padding: 22px; margin-bottom: 20px; border: 1px solid #e8dece; border-radius: 20px; background: #fffdf9; }
+.fiche-moderne .fiche-explication h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; color: #5c3d2e; font-size: 16px; font-weight: 600; line-height: 1.6; }
+.fiche-moderne .fiche-explication h3 > span { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: #e8eff4; color: #526f84; }
+.fiche-moderne .fiche-explication p { margin: 0; color: #635b52; font-size: 14px; font-weight: 400; line-height: 1.9; white-space: pre-line; overflow-wrap: anywhere; }
+.fiche-moderne button:focus-visible { outline: 3px solid #526f84; outline-offset: 3px; }
+@media (max-width: 380px) { .fiche-moderne .fiche-introduction h2 { font-size: 21px; } .fiche-moderne .fiche-explication { padding: 18px; } }
+`;
+
 function FichePourquoi() {
   const { routineId } = useContext(AppContext);
   const navigate = useNavigate();
   const fiche = fiches.find(f => f.id === routineId);
+  const retour = () => navigate('/routines');
 
-  if (!fiche) return (
-    <div className="fiche-wrap">
-      <button className="fiche-retour" onClick={() => navigate(-1)}>← Retour</button>
-      <p>Fiche non trouvée.</p>
-    </div>
-  );
+  if (!fiche) {
+    return (
+      <div className="fiche-moderne">
+        <style>{STYLE_FICHES}</style>
+        <button type="button" className="fiche-navigation" onClick={retour}>← Retour aux routines</button>
+        <p>Ouvre une routine pour consulter son explication.</p>
+      </div>
+    );
+  }
+
+  const theme = THEMES_FICHES[fiche.pilier] || {
+    fond: '#e8eff4', couleur: '#526f84', Icone: BookOpen,
+  };
+  const Icone = theme.Icone;
 
   return (
-    <div className="fiche-wrap">
-      <button className="fiche-retour" onClick={() => navigate(-1)}>← Retour</button>
-      <div className={`fiche-pilier-badge ${fiche.pilier.toLowerCase()}`}>{fiche.pilier}</div>
-      <h2 className="fiche-titre">{fiche.titre}</h2>
-      <div className="fiche-section">
-        <h3 className="fiche-section-titre">Pourquoi c'est important ?</h3>
-        <p className="fiche-contenu">{fiche.contenu}</p>
-      </div>
+    <div className="fiche-moderne">
+      <style>{STYLE_FICHES}</style>
+      <button type="button" className="fiche-navigation" onClick={retour}>← Retour aux routines</button>
+      <article>
+        <header className="fiche-introduction">
+         {![17, 18, 19, 20].includes(fiche.id) && (
+  <span
+    className="fiche-icone"
+    style={{ background: theme.fond, color: theme.couleur }}
+    aria-hidden="true"
+  >
+    <Icone size={26} strokeWidth={1.6} />
+  </span>
+)}
+         {![17, 18, 19, 20].includes(fiche.id) && (
+  <span
+    className="fiche-categorie"
+    style={{ background: theme.fond, color: theme.couleur }}
+  >
+    {fiche.pilier}
+  </span>
+)}
+          <h2>{fiche.titre}</h2>
+        </header>
+        <section className="fiche-explication">
+          <h3>
+            <span aria-hidden="true"><Lightbulb size={19} strokeWidth={1.6} /></span>
+            Pourquoi c’est important ?
+          </h3>
+          <p>{fiche.contenu}</p>
+        </section>
+      </article>
+      <button type="button" className="fiche-navigation" onClick={retour}>← Retour aux routines</button>
     </div>
   );
 }

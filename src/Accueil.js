@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Heart, Salad, Moon, Flower2, Activity, Lightbulb, Smartphone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const conseils = [
   { texte: "Commence ta journée avec un grand verre d'eau. Ton corps est déshydraté après une nuit de sommeil.", pilier: "Nutrition", couleur: "#EAF3DE", textColor: "#27500A" },
@@ -37,6 +38,13 @@ const conseils = [
 ];
 
 function Accueil() {
+  const navigate = useNavigate();
+const prenom = (localStorage.getItem('prenom') || '').trim();
+
+const ouvrirOutil = (pilier) => {
+  localStorage.setItem('outils_dernier_onglet', pilier);
+  navigate('/outils');
+};
   const [instructions2, setInstructions2] = useState(false);
   const jourDuMois = new Date().getDate();
   const conseilDuJour = conseils[(jourDuMois - 1) % conseils.length];
@@ -54,205 +62,293 @@ function Accueil() {
 
       <div className="accueil-date">{today}</div>
 
-      <div className="accueil-hero" style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Feuilles haut gauche */}
-        <svg
-          style={{ position: 'absolute', top: 0, left: 0, width: 100, height: 100, pointerEvents: 'none' }}
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(255,255,255,0.25)"/>
-          <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(255,255,255,0.2)"/>
-          <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(255,255,255,0.18)"/>
-          <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(255,255,255,0.22)"/>
-          <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(255,255,255,0.17)"/>
-          <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(255,255,255,0.14)"/>
-          <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
-        </svg>
+     <div
+  className="accueil-hero"
+  style={{ position: 'relative', overflow: 'hidden' }}
+>
+  {/* Feuilles en haut à gauche */}
+  <svg
+    aria-hidden="true"
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: 100,
+      height: 100,
+      pointerEvents: 'none',
+    }}
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(130,165,190,0.25)" />
+    <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(130,165,190,0.20)" />
+    <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(130,165,190,0.18)" />
+    <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(130,165,190,0.22)" />
+    <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(130,165,190,0.18)" />
+    <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(130,165,190,0.14)" />
+    <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(130,165,190,0.20)" strokeWidth="1.5" />
+    <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(130,165,190,0.18)" strokeWidth="1.5" />
+    <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(130,165,190,0.15)" strokeWidth="1.5" />
+  </svg>
 
-        {/* Feuilles bas droite */}
-        <svg
-          style={{ position: 'absolute', bottom: 0, right: 0, width: 100, height: 100, pointerEvents: 'none', transform: 'rotate(180deg)' }}
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(255,255,255,0.25)"/>
-          <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(255,255,255,0.2)"/>
-          <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(255,255,255,0.18)"/>
-          <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(255,255,255,0.22)"/>
-          <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(255,255,255,0.17)"/>
-          <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(255,255,255,0.14)"/>
-          <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(255,255,255,0.18)" strokeWidth="1.5"/>
-          <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5"/>
-        </svg>
-        <h2 className="accueil-hero-titre" style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center' }}>
-          Bonjour <Heart size={20} />
-        </h2>
-        <p className="accueil-hero-message">Sérénitine t'accompagne chaque jour vers de meilleures habitudes de vie. Simple et sans pression, juste ce qu'il faut pour prendre soin de toi. Retrouve un rythme qui te fait du bien ✹ </p>
-      </div>
+  {/* Feuilles en bas à droite */}
+  <svg
+    aria-hidden="true"
+    style={{
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      width: 100,
+      height: 100,
+      pointerEvents: 'none',
+      transform: 'rotate(180deg)',
+    }}
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M0 0 Q45 5 50 20 Q28 22 0 0 Z" fill="rgba(130,165,190,0.25)" />
+    <path d="M0 0 Q48 15 52 32 Q28 32 0 0 Z" fill="rgba(130,165,190,0.20)" />
+    <path d="M0 0 Q42 25 44 42 Q22 40 0 0 Z" fill="rgba(130,165,190,0.18)" />
+    <path d="M0 0 Q30 38 26 52 Q12 46 0 0 Z" fill="rgba(130,165,190,0.22)" />
+    <path d="M0 0 Q16 42 10 55 Q3 45 0 0 Z" fill="rgba(130,165,190,0.18)" />
+    <path d="M0 0 Q5 44 0 56 Q-3 44 0 0 Z" fill="rgba(130,165,190,0.14)" />
+    <line x1="0" y1="0" x2="38" y2="16" stroke="rgba(130,165,190,0.20)" strokeWidth="1.5" />
+    <line x1="0" y1="0" x2="26" y2="38" stroke="rgba(130,165,190,0.18)" strokeWidth="1.5" />
+    <line x1="0" y1="0" x2="8" y2="48" stroke="rgba(130,165,190,0.15)" strokeWidth="1.5" />
+  </svg>
+
+  <div style={{ position: 'relative', zIndex: 1 }}>
+    <h2 className="accueil-hero-titre">
+      Bonjour{prenom ? ` ${prenom}` : ''} <Heart size={20} />
+    </h2>
+
+    <p className="accueil-hero-message">
+      Un petit geste pour toi, aujourd’hui.
+      Avance à ton rythme, sans pression.
+    </p>
+
+    <button
+      type="button"
+      className="accueil-bouton-routines"
+      onClick={() => navigate('/routines')}
+    >
+      Retrouver mes routines <span aria-hidden="true">→</span>
+    </button>
+  </div>
+</div>
 
 
       <div className="accueil-section-titre">Les 4 piliers</div>
 
      <div className="accueil-piliers">
-  <div className="accueil-pilier nutrition">
-    <Salad size={24} className="accueil-pilier-icon" />
-    <span className="accueil-pilier-nom">Nutrition</span>
-  </div>
-  <div className="accueil-pilier sommeil">
-    <Moon size={24} className="accueil-pilier-icon" />
-    <span className="accueil-pilier-nom">Sommeil</span>
-  </div>
-  <div className="accueil-pilier stress">
-    <Flower2 size={24} className="accueil-pilier-icon" />
-    <span className="accueil-pilier-nom">Stress</span>
-  </div>
-  <div className="accueil-pilier mouvement">
-    <Activity size={24} className="accueil-pilier-icon" />
-    <span className="accueil-pilier-nom">Mouvement</span>
-  </div>
+  {[
+    { nom: 'Nutrition', Icone: Salad, description: 'Mieux manger' },
+    { nom: 'Sommeil', Icone: Moon, description: 'Préparer ma nuit' },
+    { nom: 'Stress', Icone: Flower2, description: 'Souffler un instant' },
+    { nom: 'Mouvement', Icone: Activity, description: 'Bouger à mon rythme' },
+  ].map(({ nom, Icone, description }) => (
+    <button
+      key={nom}
+      type="button"
+      className={`accueil-pilier ${nom.toLowerCase()}`}
+      onClick={() => ouvrirOutil(nom)}
+    >
+      <Icone size={23} strokeWidth={1.6} />
+      <span className="accueil-pilier-nom">{nom}</span>
+      <span className="accueil-pilier-description">
+        {description}
+      </span>
+    </button>
+  ))}
 </div>
 
 
+      <section className="accueil-conseil">
+  <div className="accueil-conseil-entete">
+    <span className="accueil-aide-icone" aria-hidden="true">
+      <Lightbulb size={22} strokeWidth={1.6} />
+    </span>
 
-      <div className="accueil-section-titre" style={{ fontStyle: 'italic', fontFamily: 'Georgia, serif', textTransform: 'none' }}>Conseil du jour</div>
-
-      <div className="accueil-conseil">
-        <div className="accueil-conseil-header">
-          <span className="accueil-conseil-pilier" style={{ background: conseilDuJour.couleur, color: conseilDuJour.textColor }}>
-            {conseilDuJour.pilier}
-          </span>
-          <span className="accueil-conseil-date">{today}</span>
-        </div>
-        <p className="accueil-conseil-texte">{conseilDuJour.texte}</p>
-      </div>
-
-<div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Installer l'app</div>
-
-      <div className="accueil-cards">
-      <div className="accueil-card" onClick={() => setInstructions(!instructions)} style={{ 
-  background: '#b8c5e0',
-  border: '1.5px solid #b8c5e0',
-  boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
-  borderRadius: 16
-}}>
-          <Smartphone size={20} className="accueil-card-icon" />
-          <div>
-            <div className="accueil-card-titre">Ajouter sur mon écran d'accueil</div>
-            <div className="accueil-card-sub" style={{ color: '#fefefe' }}>
-  Accéder à Sérénitine comme une vraie app
-</div>
-          </div>
-       <span className="accueil-card-arrow" style={{ color: '#ffffff' }}>
-  {instructions ? '↑' : '↓'}
-</span>
-        </div>
-
-        {instructions && (
-  <div style={{ 
-    background: '#ffffff', 
-    borderRadius: 16, 
-    padding: '1rem', 
-    border: '0.5px solid #e8d5c0' 
-  }}>
-            <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur iPhone (Safari) :</p>
-            <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7, marginBottom: 12 }}>
-              1. Ouvrez l'app dans <strong>Safari</strong><br />
-              2. Appuyez sur l'icône <strong>Partager</strong> (carré avec flèche vers le haut)<br />
-              3. Faites défiler et appuyez sur <strong>"Sur l'écran d'accueil"</strong><br />
-              4. Appuyez sur <strong>"Ajouter"</strong>
-            </p>
-            <p style={{ fontSize: 13, fontWeight: 500, color: '#300bc4', marginBottom: 10 }}>Sur Android (Chrome) :</p>
-            <p style={{ fontSize: 13, color: '#444', lineHeight: 1.7 }}>
-              1. Ouvrez l'app dans <strong>Chrome</strong><br />
-              2. Appuyez sur les <strong>3 points</strong> en haut à droite<br />
-              3. Appuyez sur <strong>"Ajouter à l'écran d'accueil"</strong><br />
-              4. Appuyez sur <strong>"Ajouter"</strong>
-            </p>
-          </div>
-        )}
-      </div>
-
-      <div className="accueil-section-titre">Mode d'emploi</div>
-
-      <div className="accueil-cards">
-        <div className="accueil-card" onClick={() => setInstructions2(!instructions2)}>
-          <Lightbulb size={20} className="accueil-card-icon" />
-          <div>
-            <div className="accueil-card-titre">Comment utiliser Sérénitine ?</div>
-            <div className="accueil-card-sub">Découvrir les différentes sections de l'app</div>
-          </div>
-          <span className="accueil-card-arrow">{instructions2 ? '↑' : '↓'}</span>
-        </div>
-
-       {instructions2 && (
-  <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-    <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, margin: 0 }}>
-      Commence par <strong>cocher tes routines</strong> quotidiennes, hebdomadaires et annuelles pour suivre tes habitudes. 
-      Lis les <strong>articles</strong> pour comprendre les routines et devenir un expert en hygiène de vie. 
-      Utilise les <strong>outils</strong> pratiques liés aux 4 piliers : liste de courses, journal du sommeil, cohérence cardiaque, parking à pensées... 
-      Enfin, retrouve tes <strong>statistiques et les infos à propos de l'app</strong> sur ta page profil. 🌿
-    </p>
-
-    <div style={{ marginTop: 12, padding: '0.7rem', background: '#FFF8F0', borderRadius: 8, border: '0.5px solid #f0c040' }}>
-      <div style={{ fontSize: 12, color: '#854F0B', lineHeight: 1.6 }}>
-        ⚠️ <strong>Si l'app ne s'ouvre pas</strong>, c'est qu'une mise à jour est en cours. Reviens dans quelques minutes, tout sera de nouveau disponible.
-      </div>
-    </div>
-  </div>
-)}
-
-<div className="accueil-section-titre" style={{ marginTop: '1.5rem' }}>Consultation personnalisée</div>
-
-<div className="accueil-cards">
-<div className="accueil-card" onClick={() => setConsultation(!consultation)} style={{ 
-  background: '#b8c3dc',
-  border: '1.5px solid #b8c3dc',
-  boxShadow: '0 4px 12px rgba(200,160,122,0.25)',
-  borderRadius: 16
-}}>
-    <span className="accueil-card-icon">👩🏻‍💻</span>
     <div>
-      <div className="accueil-card-titre">Consulter en visio</div>
-      <div className="accueil-card-sub" style={{ color: '#fcfcfc' }}>
- Consultation personnalisée en hygiène de vie
-</div>
+      <h3>Conseil du jour</h3>
+      <span
+        className="accueil-conseil-categorie"
+        style={{
+          background: conseilDuJour.couleur,
+          color: conseilDuJour.textColor,
+        }}
+      >
+        {conseilDuJour.pilier}
+      </span>
     </div>
-  <span className="accueil-card-arrow" style={{ color: '#ffffff' }}>
-  {instructions ? '↑' : '↓'}
-</span>
   </div>
+
+  <p className="accueil-conseil-texte">
+    {conseilDuJour.texte}
+  </p>
+</section>
+
+{/* Consultation personnalisée */}
+<section className="accueil-accompagnement">
+  <div className="accueil-accompagnement-entete">
+    <span className="accueil-aide-icone" aria-hidden="true">
+      <Heart size={22} strokeWidth={1.6} />
+    </span>
+
+    <h3>Besoin d’un accompagnement ?</h3>
+  </div>
+
+  <p>
+    Fais le point sur tes habitudes avec une consultation
+    personnalisée en hygiène de vie.
+  </p>
+
+  <button
+    type="button"
+    className="accueil-consultation-bouton"
+    onClick={() => setConsultation(!consultation)}
+    aria-expanded={consultation}
+    aria-controls="accueil-details-consultation"
+  >
+    {consultation ? 'Masquer les informations' : 'Découvrir les consultations'}
+    <span aria-hidden="true">{consultation ? '−' : '+'}</span>
+  </button>
 
   {consultation && (
-    <div style={{ background: 'white', borderRadius: 12, padding: '1rem', border: '1px solid #eee' }}>
-      <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, marginBottom: 12 }}>
-        Tu souhaites aller plus loin dans ta démarche bien-être ? Je propose des <strong>consultations personnalisées en visio</strong> pour t'accompagner sur la nutrition, le sommeil, la gestion du stress et le mouvement.
+    <div
+      id="accueil-details-consultation"
+      className="accueil-consultation-details"
+    >
+      <p>
+        Je te propose un accompagnement en visio autour de
+        la nutrition, du sommeil, de la gestion du stress
+        et du mouvement.
       </p>
-      <p style={{ fontSize: 13, color: '#444', lineHeight: 1.8, marginBottom: 16 }}>
-        Les consultations se déroulent en toute simplicité depuis chez toi. Choisis "en vidéo" lors de la prise de rdv.
+
+      <p>
+        Les consultations se déroulent depuis chez toi.
+        Choisis <strong>« en vidéo »</strong> lors de la prise
+        de rendez-vous.
       </p>
+
       <a
         href="https://www.doctolib.fr/masseur-kinesitherapeute/mons-en-laonnois/anais-pata"
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          display: 'block', textAlign: 'center',
-          background: '#6977b6', color: 'white',
-          padding: '12px', borderRadius: 10,
-          fontSize: 14, fontWeight: 500,
-          textDecoration: 'none'
-        }}
-     >
-        📅 Prendre rendez-vous
+        className="accueil-rdv-lien"
+      >
+        Prendre rendez-vous ↗
       </a>
     </div>
   )}
-</div>
-      </div>
+</section>
 
+{/* Aide et installation */}
+<section className="accueil-aide">
+  <h3 className="accueil-aide-titre">
+    Bien démarrer avec Sérénitine
+  </h3>
+
+  <div className="accueil-aide-element">
+    <button
+      type="button"
+      className="accueil-aide-bouton"
+      onClick={() => setInstructions(!instructions)}
+      aria-expanded={instructions}
+      aria-controls="accueil-details-installation"
+    >
+      <span className="accueil-aide-icone" aria-hidden="true">
+        <Smartphone size={21} strokeWidth={1.6} />
+      </span>
+
+      <span className="accueil-aide-libelle">
+        <strong>Installer l’app</strong>
+        <span>Retrouve Sérénitine sur ton écran d’accueil</span>
+      </span>
+
+      <span className="accueil-aide-signe" aria-hidden="true">
+        {instructions ? '−' : '+'}
+      </span>
+    </button>
+
+    {instructions && (
+      <div
+        id="accueil-details-installation"
+        className="accueil-aide-contenu"
+      >
+        <h4>Sur iPhone, avec Safari</h4>
+        <ol>
+          <li>Ouvre Sérénitine dans Safari.</li>
+          <li>Appuie sur l’icône <strong>Partager</strong>.</li>
+          <li>Choisis <strong>Sur l’écran d’accueil</strong>.</li>
+          <li>Appuie sur <strong>Ajouter</strong>.</li>
+        </ol>
+
+        <h4>Sur Android, avec Chrome</h4>
+        <ol>
+          <li>Ouvre Sérénitine dans Chrome.</li>
+          <li>Appuie sur les <strong>trois points</strong> du menu.</li>
+          <li>
+            Choisis <strong>Ajouter à l’écran d’accueil</strong>
+            {' '}ou <strong>Installer l’application</strong>,
+            selon ton téléphone.
+          </li>
+          <li>Suis les indications pour confirmer.</li>
+        </ol>
+      </div>
+    )}
+  </div>
+
+  <div className="accueil-aide-element">
+    <button
+      type="button"
+      className="accueil-aide-bouton"
+      onClick={() => setInstructions2(!instructions2)}
+      aria-expanded={instructions2}
+      aria-controls="accueil-details-utilisation"
+    >
+      <span className="accueil-aide-icone" aria-hidden="true">
+        <Lightbulb size={21} strokeWidth={1.6} />
+      </span>
+
+      <span className="accueil-aide-libelle">
+        <strong>Comment ça marche ?</strong>
+        <span>Quelques repères pour commencer</span>
+      </span>
+
+      <span className="accueil-aide-signe" aria-hidden="true">
+        {instructions2 ? '−' : '+'}
+      </span>
+    </button>
+
+    {instructions2 && (
+      <div
+        id="accueil-details-utilisation"
+        className="accueil-aide-contenu"
+      >
+        <ul>
+          <li>
+            <strong>Routines :</strong> coche tes habitudes
+            quotidiennes, hebdomadaires et annuelles.
+          </li>
+          <li>
+            <strong>Articles :</strong> découvre des ressources
+            pour comprendre et avancer à ton rythme.
+          </li>
+          <li>
+            <strong>Outils :</strong> utilise la liste de courses,
+            les notes sommeil, la respiration et le programme
+            de mouvement.
+          </li>
+          <li>
+            <strong>Profil :</strong> retrouve tes statistiques
+            et les informations sur l’app.
+          </li>
+        </ul>
+      </div>
+    )}
+  </div>
+</section>
     </div>
   );
 }

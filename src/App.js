@@ -104,12 +104,44 @@ useLayoutEffect(() => {
     <AppContext.Provider value={{ routineId, setRoutineId }}>
       <div className="app">
         {(location.pathname === '/accueil' || location.pathname === '/') && (
-          <header className="app-header">
-            <img src="/logosansfond.png" alt="Logo Routines" className="header-logo" />
-            <p style={{ fontFamily: "'Dancing Script', cursive", fontSize: '1.1rem', fontWeight: 700 }}>
-              ✹ Tes routines bien-être pour une vie plus sereine ✹
-            </p>
-          </header>
+          <header className="app-header accueil-marque">
+  <div className="accueil-marque-nom">
+    <h1>Sérénitine</h1>
+
+    <svg
+      className="accueil-marque-feuilles"
+      viewBox="0 0 60 70"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 62 Q27 38 43 12"
+        fill="none"
+        stroke="#87a7bf"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M28 39 C24 19 35 6 53 4 C51 23 43 35 28 39Z"
+        fill="#87a7bf"
+      />
+      <path
+        d="M23 48 C6 43 4 28 8 16 C23 23 29 35 23 48Z"
+        fill="#a6bfd0"
+      />
+      <path
+        d="M28 39 Q39 23 48 12"
+        fill="none"
+        stroke="#f9f5ec"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  </div>
+
+  <p className="accueil-marque-signature">
+    Bien-être &amp; hygiène de vie
+  </p>
+</header>
         )}
         <main className="app-main">
           <Routes>
@@ -140,7 +172,10 @@ useLayoutEffect(() => {
               padding: '1.5rem', width: '100%', textAlign: 'center'
             }}>
               <p style={{ fontSize: 13, color: '#666', lineHeight: 1.6 }}>
-                Cette app ne collecte aucune donnée personnelle. Vos données restent sur votre appareil.
+                Tes saisies personnelles restent sur cet appareil.
+Sérénitine utilise Cloudflare pour son hébergement
+et une mesure d’audience sans cookies.
+Retrouve les détails dans Profil → Informations légales.
               </p>
               <button
                 style={{

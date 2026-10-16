@@ -996,3 +996,736 @@ body {
   background: #c9b596;
   border-radius: 2px;
 }
+/* En-tête plus compact */
+.app-header {
+  padding: 0.5rem 1rem 1rem;
+}
+
+.header-logo {
+  display: block;
+  width: 190px;
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.app-header p {
+  margin: 0.25rem 0 0;
+  line-height: 1.5;
+}
+
+/* Accueil */
+.accueil-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.accueil-wrap .accueil-date {
+  margin-bottom: 14px;
+  color: #304c60;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.accueil-wrap .accueil-hero {
+  padding: 1.5rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  background: #cbe3f3;
+  color: #405b6c;
+  box-shadow: 0 6px 20px rgba(48, 76, 96, 0.06);
+}
+
+.accueil-wrap .accueil-hero-titre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  color: #5c3d2e;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.accueil-wrap .accueil-hero-message {
+  max-width: 320px;
+  margin: 12px auto 20px;
+  color: #526675;
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 1;
+  text-align: center;
+}
+
+.accueil-bouton-routines {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+  min-height: 46px;
+  margin: 0 auto;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 14px;
+  background: #5c3d2e;
+  color: #fffaf3;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.accueil-wrap .accueil-section-titre {
+  margin: 24px 0 12px;
+  color: #304c60;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.accueil-wrap .accueil-piliers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.accueil-wrap .accueil-pilier {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 116px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.accueil-wrap .accueil-pilier-nom {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.accueil-pilier-description {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* Conseil du jour */
+.accueil-wrap .accueil-conseil {
+  padding: 20px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.accueil-wrap .accueil-conseil-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.accueil-wrap .accueil-conseil-texte {
+  margin: 14px 0 0;
+  color: #5c5045;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.accueil-wrap .accueil-conseil-date {
+  color: #786b5e;
+  font-size: 11px;
+}
+
+/* Blocs d'information */
+.accueil-wrap .accueil-card {
+  min-width: 0;
+  border-radius: 16px;
+}
+
+.accueil-wrap .accueil-card-titre {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.accueil-wrap .accueil-card-sub {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.accueil-bouton-routines:focus-visible,
+.accueil-wrap .accueil-pilier:focus-visible {
+  outline: 3px solid #5c3d2e;
+  outline-offset: 4px;
+}
+
+@media (hover: hover) {
+  .accueil-wrap .accueil-pilier:hover {
+    transform: translateY(-2px);
+  }
+
+  .accueil-bouton-routines:hover {
+    background: #714e3c;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accueil-wrap .accueil-pilier {
+    transition: none;
+    transform: none;
+  }
+}
+/* Consultation */
+.accueil-accompagnement {
+  margin-top: 24px;
+  padding: 22px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+  color: #5c3d2e;
+}
+
+.accueil-accompagnement-entete {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accueil-accompagnement h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.accueil-accompagnement p {
+  margin: 14px 0;
+  color: #786b5e;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.accueil-consultation-bouton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #5c3d2e;
+  color: #fffaf3;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accueil-consultation-details {
+  margin-top: 18px;
+  padding-top: 4px;
+  border-top: 1px solid #e8dece;
+}
+
+.accueil-rdv-lien {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #405b6c;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Aide et installation */
+.accueil-aide {
+  margin-top: 20px;
+  overflow: hidden;
+  background: #fffdf9;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+}
+
+.accueil-aide-titre {
+  margin: 0;
+  padding: 20px 20px 8px;
+  color: #5c3d2e;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.accueil-aide-element + .accueil-aide-element {
+  border-top: 1px solid #eee7dd;
+}
+
+.accueil-aide-bouton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accueil-aide-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e8eff4;
+  color: #526f84;
+}
+
+.accueil-aide-libelle {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.accueil-aide-libelle strong {
+  color: #5c3d2e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.accueil-aide-libelle > span {
+  color: #786b5e;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.accueil-aide-signe {
+  flex-shrink: 0;
+  color: #92765b;
+  font-size: 22px;
+}
+
+.accueil-aide-contenu {
+  padding: 0 20px 20px;
+  color: #635b52;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.accueil-aide-contenu h4 {
+  margin: 12px 0 8px;
+  color: #405b6c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.accueil-aide-contenu ol,
+.accueil-aide-contenu ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.accueil-aide-contenu li + li {
+  margin-top: 8px;
+}
+
+.accueil-aide-bouton:focus-visible,
+.accueil-consultation-bouton:focus-visible,
+.accueil-rdv-lien:focus-visible {
+  outline: 3px solid #526f84;
+  outline-offset: -3px;
+}
+
+@media (max-width: 380px) {
+  .accueil-accompagnement {
+    padding: 18px;
+  }
+
+  .accueil-aide-bouton {
+    gap: 10px;
+    padding: 16px;
+  }
+}
+.accueil-wrap .accueil-conseil {
+  margin-top: 24px;
+  padding: 22px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+  box-shadow: none;
+}
+
+.accueil-conseil-entete {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.accueil-conseil-entete h3 {
+  margin: 0;
+  color: #5c3d2e;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.accueil-conseil-categorie {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.accueil-wrap .accueil-conseil-texte {
+  margin: 16px 0 0;
+  color: #786b5e;
+  font-size: 13px;
+  font-style: normal;
+  line-height: 1.8;
+}
+/* Carte personnelle */
+.profil-hero {
+  padding: 24px 20px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+  color: #5c3d2e;
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+.profil-avatar {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 14px;
+  background: #e8eff4;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profil-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.profil-nom {
+  margin: 0;
+  color: #5c3d2e;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.profil-nom-wrap {
+  gap: 10px;
+}
+
+.profil-btn-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 8px 14px;
+  background: #e8eff4;
+  color: #405b6c;
+  border: none;
+  border-radius: 20px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.profil-petit-texte {
+  margin: 14px 0 0;
+  color: #786b5e;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.profil-edition {
+  gap: 12px;
+}
+
+.profil-input {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 260px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #d9cebf;
+  border-radius: 12px;
+  background: #fffdf9;
+  color: #5c3d2e;
+  font: inherit;
+  font-size: 14px;
+}
+
+.profil-btn-save {
+  min-height: 42px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  background: #5c3d2e;
+  color: #fffaf3;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Suivi */
+.profil-suivi {
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #faf6ee;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+}
+
+.profil-serie {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 14px;
+  background: #edf3e8;
+  border-radius: 14px;
+  color: #426246;
+}
+
+.profil-serie-icone {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.profil-serie strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profil-serie p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Informations */
+.profil-a-propos {
+  overflow: hidden;
+  margin-bottom: 20px;
+  background: #fffdf9;
+  border: 1px solid #e8dece;
+  border-radius: 22px;
+}
+
+.profil-a-propos h3 {
+  margin: 0;
+  padding: 20px 20px 8px;
+  color: #5c3d2e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profil-lien {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 20px;
+  background: transparent;
+  border: none;
+  color: #92765b;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profil-lien + .profil-lien {
+  border-top: 1px solid #eee7dd;
+}
+
+.profil-lien-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e8eff4;
+  color: #526f84;
+}
+
+.profil-lien-texte {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.profil-lien-texte strong {
+  color: #5c3d2e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.profil-lien-texte > span {
+  color: #786b5e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.profil-btn-reset {
+  min-height: 44px;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(151, 82, 61, 0.35);
+  border-radius: 14px;
+  color: #864b38;
+  font-size: 12px;
+}
+
+.profil-wrap button:focus-visible,
+.profil-input:focus-visible {
+  outline: 3px solid #526f84;
+  outline-offset: 3px;
+}
+
+@media (max-width: 380px) {
+  .profil-suivi {
+    padding: 14px;
+  }
+}
+.profil-hero > :not(svg) {
+  position: relative;
+  z-index: 1;
+}
+.app-header.accueil-marque {
+  padding: 30px 20px 26px;
+  background: #f9f5ec;
+  border-bottom: 1px solid #e8dece;
+  text-align: center;
+}
+
+.accueil-marque-nom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.app-header.accueil-marque h1 {
+  margin: 0;
+  color: #5c3d2e;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.4rem, 9vw, 3.3rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+}
+
+.accueil-marque-feuilles {
+  flex-shrink: 0;
+  width: 42px;
+  height: 52px;
+  transform: rotate(8deg);
+}
+
+.app-header.accueil-marque .accueil-marque-signature {
+  margin: 12px 0 0;
+  color: #786b5e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  line-height: 1.7;
+  text-transform: uppercase;
+  opacity: 1;
+}
+.app-header.accueil-marque {
+  position: relative;
+  isolation: isolate;
+  padding: 34px 20px 28px;
+  background: linear-gradient(
+    120deg,
+    #f9f5ec 0%,
+    #fffdf8 50%,
+    #f3eee4 100%
+  );
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 4px 14px rgba(92, 61, 46, 0.05);
+}
+
+/* Motifs botaniques sur les côtés */
+.app-header.accueil-marque::before,
+.app-header.accueil-marque::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 120px;
+  height: 140px;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 120'%3E%3Cpath d='M15 115 Q40 65 70 10' fill='none' stroke='%2387a7bf' stroke-width='2'/%3E%3Cpath d='M34 77 Q4 65 10 39 Q37 45 34 77Z' fill='%2387a7bf'/%3E%3Cpath d='M44 58 Q43 27 71 18 Q75 46 44 58Z' fill='%2387a7bf'/%3E%3Cpath d='M23 98 Q1 91 2 70 Q26 73 23 98Z' fill='%23a6bfd0'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.app-header.accueil-marque::before {
+  top: -20px;
+  left: -25px;
+  transform: rotate(30deg);
+}
+
+.app-header.accueil-marque::after {
+  bottom: -25px;
+  right: -25px;
+  transform: rotate(205deg);
+}
+
+/* Petite finition sous la signature */
+.app-header.accueil-marque .accueil-marque-signature::after {
+  content: '';
+  display: block;
+  width: 38px;
+  height: 2px;
+  margin: 14px auto 0;
+  background: #c9b596;
+  border-radius: 2px;
+}
+
+.app-header.accueil-marque h1 {
+  font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  -webkit-text-stroke: 0.6px currentColor;
+}
