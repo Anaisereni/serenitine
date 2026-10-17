@@ -1729,3 +1729,22 @@ body {
   letter-spacing: -0.025em;
   -webkit-text-stroke: 0.6px currentColor;
 }
+.nav-bar .nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.nav-bar .nav-item.actif .nav-icon {
+  background: #e0edf6;
+  color: #526f84;
+}
+
+.nav-bar .nav-item.actif {
+  color: #405b6c;
+  font-weight: 600;
+}

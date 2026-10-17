@@ -20,45 +20,71 @@ function NavBar() {
   const location = useLocation();
   
 
-  return (
-    <nav className="nav-bar">
-      <button
-        className={`nav-item ${location.pathname === '/accueil' ? 'actif' : ''}`}
-        onClick={() => navigate('/')}
-      >
-        <span className="nav-icon"><Home size={20} /></span>
-        <span>Accueil</span>
-      </button>
-      <button
-        className={`nav-item ${location.pathname === '/routines' ? 'actif' : ''}`}
-        onClick={() => navigate('/routines')}
-      >
-        <span className="nav-icon"><CheckCircle2 size={20} /></span>
-        <span>Routines</span>
-      </button>
-      <button
-        className={`nav-item ${location.pathname === '/ressources' ? 'actif' : ''}`}
-        onClick={() => navigate('/ressources')}
-      >
-        <span className="nav-icon"><BookOpen size={20} /></span>
-        <span>Articles</span>
-      </button>
-      <button
-  className={`nav-item ${location.pathname === '/outils' ? 'actif' : ''}`}
-  onClick={() => navigate('/outils')}
->
-  <span className="nav-icon"><Wrench size={20} /></span>
-  <span>Outils</span>
-</button>
-      <button
-        className={`nav-item ${location.pathname === '/profil' ? 'actif' : ''}`}
-        onClick={() => navigate('/profil')}
-      >
-        <span className="nav-icon"><User size={20} /></span>
-        <span>Profil</span>
-      </button>
-    </nav>
-  );
+ return (
+  <nav className="nav-bar">
+    <button
+      className={`nav-item ${
+        location.pathname === '/accueil' ||
+        location.pathname === '/'
+          ? 'actif'
+          : ''
+      }`}
+      onClick={() => navigate('/accueil')}
+    >
+      <span className="nav-icon"><Home size={20} /></span>
+      <span>Accueil</span>
+    </button>
+
+    <button
+      className={`nav-item ${
+        location.pathname === '/routines' ||
+        location.pathname === '/fiche'
+          ? 'actif'
+          : ''
+      }`}
+      onClick={() => navigate('/routines')}
+    >
+      <span className="nav-icon"><CheckCircle2 size={20} /></span>
+      <span>Routines</span>
+    </button>
+
+    <button
+      className={`nav-item ${
+        location.pathname === '/ressources' ||
+        location.pathname.startsWith('/ressources/')
+          ? 'actif'
+          : ''
+      }`}
+      onClick={() => navigate('/ressources')}
+    >
+      <span className="nav-icon"><BookOpen size={20} /></span>
+      <span>Articles</span>
+    </button>
+
+    <button
+      className={`nav-item ${
+        location.pathname === '/outils' ? 'actif' : ''
+      }`}
+      onClick={() => navigate('/outils')}
+    >
+      <span className="nav-icon"><Wrench size={20} /></span>
+      <span>Outils</span>
+    </button>
+
+    <button
+     className={`nav-item ${
+  ['/profil', '/presentation', '/legal', '/apropos', '/statistiques']
+    .includes(location.pathname)
+    ? 'actif'
+    : ''
+}`}
+      onClick={() => navigate('/profil')}
+    >
+      <span className="nav-icon"><User size={20} /></span>
+      <span>Profil</span>
+    </button>
+  </nav>
+);
 }
 
 function ContenuApp() {

@@ -1145,6 +1145,7 @@ function Article({ article, onRetour }) {
 function Ressources() {
   const { articleId } = useParams();
   const navigate = useNavigate();
+  const [recherche, setRecherche] = useState('');
   const PILIERS = ['Tous', 'Nutrition', 'Stress', 'Mouvement', 'Sommeil', 'Environnement'];
 
   const [pilierActif, setPilierActif] = useState(() => {
@@ -1165,7 +1166,29 @@ function Ressources() {
     return () => cancelAnimationFrame(frame);
   }, [articleId]);
 
-  const articlesFiltres = articles.filter(a => pilierActif === 'Tous' || a.pilier === pilierActif);
+ const normaliser = (texte) =>
+  texte
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+
+const motsRecherches = normaliser(recherche.trim())
+  .split(/\s+/)
+  .filter(Boolean);
+
+const articlesFiltres = articles.filter(a => {
+  const categorieOk =
+    pilierActif === 'Tous' || a.pilier === pilierActif;
+
+  const texte = normaliser([
+    a.titre,
+    a.resume,
+    a.pilier,
+    ...a.contenu.map(s => `${s.sous_titre} ${s.texte}`),
+  ].join(' '));
+
+  return categorieOk && motsRecherches.every(mot => texte.includes(mot));
+});
 
   if (articleId) {
     const articleActif = articles.find(a => a.id === Number(articleId));
@@ -1192,6 +1215,54 @@ function Ressources() {
           Des articles pour comprendre et agir, autour des 4 piliers et de ton environnement
         </p>
       </div>
+
+<div style={{ marginBottom: 14 }}>
+  <label
+    htmlFor="recherche-articles"
+    style={{
+      display: 'block',
+      marginBottom: 8,
+      color: '#304c60',
+      fontSize: 13,
+      fontWeight: 500,
+    }}
+  >
+    Rechercher un article
+  </label>
+
+  <div
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '12px 14px',
+      background: '#fffdf9',
+      border: '1px solid #e8dece',
+      borderRadius: 16,
+    }}
+  >
+    <Search size={19} color="#92765b" aria-hidden="true" />
+
+    <input
+      id="recherche-articles"
+      type="search"
+      value={recherche}
+      onChange={e => setRecherche(e.target.value)}
+      placeholder="Sommeil, stress, protéines…"
+      style={{
+        flex: 1,
+        minWidth: 0,
+        width: '100%',
+        padding: '4px 0',
+        border: 'none',
+        background: 'transparent',
+        color: '#5c5045',
+        font: 'inherit',
+        fontSize: 14,
+      }}
+    />
+  </div>
+</div>
 
       <div className="articles-filtres" role="group" aria-label="Catégories d’articles">
         {PILIERS.map(p => {

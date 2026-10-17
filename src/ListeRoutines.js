@@ -28,7 +28,7 @@ const routines = [
   { id: 20, nom: "Consultation gynécologique ou urologique", description: "Frottis, dépistage selon âge et profil", pilier: "Mouvement", frequence: "Annuel" },
 ];
 
-const PILIERS = ["Tous", "Nutrition", "Sommeil", "Stress", "Mouvement"];
+
 const FREQUENCES = ["Quotidien", "Hebdomadaire", "Annuel"];
 const LABELS_FREQUENCES = {
   "Quotidien": "Aujourd'hui",
@@ -186,6 +186,17 @@ const STYLE_ROUTINES = `
 .routines-modernisees .routines-humeur-choix button[aria-pressed="true"] { background: #e8eff4; border-color: #526f84; color: #405b6c; font-weight: 600; }
 .routines-modernisees .routines-humeur-choix button > span:first-child { font-size: 24px; }
 .routines-modernisees button:focus-visible, .routines-modernisees input:focus-visible { outline: 3px solid #526f84; outline-offset: 3px; }
+.routines-modernisees .routines-progression {
+  padding: 14px 16px;
+}
+
+.routines-modernisees .routines-progression strong {
+  font-size: 20px;
+}
+
+.routines-modernisees .routines-jauge {
+  margin-top: 10px;
+}
 @media (max-width: 380px) { .routines-modernisees .routines-progression, .routines-modernisees .routines-humeur { padding: 16px; } .routines-modernisees .routines-progression-entete { flex-wrap: wrap; } .routines-modernisees .routines-frequences button { font-size: 11px; } }
 @media (prefers-reduced-motion: reduce) { .routines-modernisees .routines-jauge > div { transition: none; } }
 `;
@@ -233,19 +244,13 @@ function RoutineCarte({ nom, description, pilier, cochee, onToggle, onOuvrirFich
 function ListeRoutines() {
   const { setRoutineId } = useContext(AppContext);
   const navigate = useNavigate();
-  const [pilierActif, setPilierActif] = useState(() => {
-  const valeur = localStorage.getItem('routines_dernier_pilier');
-  return PILIERS.includes(valeur) ? valeur : 'Tous';
-});
 
 const [frequenceActive, setFrequenceActive] = useState(() => {
   const valeur = localStorage.getItem('routines_derniere_frequence');
   return FREQUENCES.includes(valeur) ? valeur : 'Quotidien';
 });
 
-useEffect(() => {
-  localStorage.setItem('routines_dernier_pilier', pilierActif);
-}, [pilierActif]);
+
 
 useEffect(() => {
   localStorage.setItem('routines_derniere_frequence', frequenceActive);
@@ -286,11 +291,9 @@ const choisirHumeur = (valeur) => {
     navigate('/fiche');
   };
 
-  const routinesFiltrees = routines.filter(r => {
-    const pilierOk = frequenceActive === "Annuel" || pilierActif === "Tous" || r.pilier === pilierActif;
-    const frequenceOk = r.frequence === frequenceActive;
-    return pilierOk && frequenceOk;
-  });
+const routinesFiltrees = routines.filter(
+  r => r.frequence === frequenceActive
+);
 
   const totalFrequence = routines.filter(r => r.frequence === frequenceActive).length;
   const completeesFréquence = cochees.filter(id =>
@@ -347,7 +350,7 @@ const choisirHumeur = (valeur) => {
       <div className="routines-frequences" role="group" aria-label="Fréquence des routines">
         {FREQUENCES.map(f => (
           <button key={f} type="button" aria-pressed={frequenceActive === f}
-            onClick={() => { setFrequenceActive(f); if (f === 'Annuel') setPilierActif('Tous'); }}>
+            onClick={() => setFrequenceActive(f)}>
             {LABELS_FREQUENCES[f]}
           </button>
         ))}
@@ -362,27 +365,18 @@ const choisirHumeur = (valeur) => {
 
       <section className="routines-progression">
         <div className="routines-progression-entete">
-          <span className="routines-pastille"><CheckCircle2 size={21} strokeWidth={1.6} /></span>
-          <div><h3>Chaque geste compte</h3><p>{completees} / {total} routines complétées{pilierActif !== 'Tous' && frequenceActive !== 'Annuel' ? ` · ${pilierActif}` : ''}</p></div>
-          <strong>{progression}<small> %</small></strong>
-        </div>
+  <p style={{ flex: 1, margin: 0 }}>
+    {completees} / {total} routines complétées
+  </p>
+
+  <strong>{progression}<small> %</small></strong>
+</div>
         <div className="routines-jauge" role="progressbar" aria-label="Routines complétées dans la sélection" aria-valuenow={progression} aria-valuemin={0} aria-valuemax={100}>
           <div style={{ width: `${progression}%` }} />
         </div>
       </section>
 
-      {frequenceActive !== 'Annuel' && (
-        <div className="routines-filtres" role="group" aria-label="Filtrer par pilier">
-          {PILIERS.map(p => {
-            const theme = THEMES_ROUTINES[p];
-            return (
-              <button key={p} type="button" aria-pressed={pilierActif === p}
-                style={{ background: pilierActif === p ? theme.fond : 'transparent', color: pilierActif === p ? theme.couleur : '#786b5e' }}
-                onClick={() => setPilierActif(p)}>{p}</button>
-            );
-          })}
-        </div>
-      )}
+      
       <p className="routines-indication">Coche tes habitudes et ouvre leur titre pour en savoir plus.</p>
       <div className="routines-cartes">
         {routinesFiltrees.map(r => (
