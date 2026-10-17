@@ -8,6 +8,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import Statistiques from './Statistiques';
+import SauvegardeDonnees from './SauvegardeDonnees';
 
 
 
@@ -187,6 +188,7 @@ function Profil() {
 </section>
 
     
+<SauvegardeDonnees />
 
      <section className="profil-a-propos">
   <h3>À propos de Sérénitine</h3>

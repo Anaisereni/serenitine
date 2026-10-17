@@ -1180,13 +1180,8 @@ const articlesFiltres = articles.filter(a => {
   const categorieOk =
     pilierActif === 'Tous' || a.pilier === pilierActif;
 
-  const texte = normaliser([
-    a.titre,
-    a.resume,
-    a.pilier,
-    ...a.contenu.map(s => `${s.sous_titre} ${s.texte}`),
-  ].join(' '));
-
+  const texte = normaliser(a.titre);
+  
   return categorieOk && motsRecherches.every(mot => texte.includes(mot));
 });
 

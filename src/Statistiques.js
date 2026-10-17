@@ -458,6 +458,93 @@ function CalendrierAnnuel({ histQuotidien }) {
   );
 }
 
+const ROUTINES_DETAIL = {
+  Quotidien: [
+    { id: 1, nom: 'Hydratation', pilier: 'Nutrition' },
+    { id: 2, nom: 'Horaires des repas', pilier: 'Nutrition' },
+    { id: 3, nom: 'Fruits et légumes', pilier: 'Nutrition' },
+    { id: 4, nom: 'Limiter les ultra-transformés', pilier: 'Nutrition' },
+    { id: 5, nom: 'Horaires de sommeil', pilier: 'Sommeil' },
+    { id: 6, nom: 'Décompression du soir', pilier: 'Sommeil' },
+    { id: 7, nom: 'Sommeil : 7 à 9 h', pilier: 'Sommeil' },
+    { id: 8, nom: 'Cohérence cardiaque', pilier: 'Stress' },
+    { id: 9, nom: 'Prendre l’air', pilier: 'Stress' },
+    { id: 10, nom: 'Activité : 30 min', pilier: 'Mouvement' },
+    { id: 11, nom: 'Pauses actives', pilier: 'Mouvement' },
+  ],
+  Hebdomadaire: [
+    { id: 12, nom: 'Légumineuses', pilier: 'Nutrition' },
+    { id: 13, nom: 'Poissons gras', pilier: 'Nutrition' },
+    { id: 14, nom: 'Bilan sommeil', pilier: 'Sommeil' },
+    { id: 15, nom: 'Bilan stress', pilier: 'Stress' },
+    { id: 16, nom: 'Deux séances de sport', pilier: 'Mouvement' },
+  ],
+  Annuel: [
+    { id: 17, nom: 'Bilan sanguin' },
+    { id: 18, nom: 'Médecin généraliste' },
+    { id: 19, nom: 'Dentiste' },
+    { id: 20, nom: 'Suivi gynéco / uro' },
+  ],
+};
+
+// null = détail absent ou illisible ; [] = détail présent, aucune case cochée.
+function lireCasesPeriode(storage, frequence, periodeKey) {
+  try {
+    const brut = storage.getItem(`routines_${frequence}_${periodeKey}`);
+    if (brut === null) return null;
+    const ids = JSON.parse(brut);
+    const autorises = ROUTINES_DETAIL[frequence].map(r => r.id);
+    if (!Array.isArray(ids) || !ids.every(id => Number.isInteger(id) && autorises.includes(id))) return null;
+    return [...new Set(ids)];
+  } catch { return null; }
+}
+
+function comptePilier(cases, liste, valeurHistorique) {
+  return cases === null ? valeurHistorique : liste.filter(r => cases.includes(r.id)).length;
+}
+
+const STYLE_DETAIL_STATS = `
+.stats-detail-pilier { border-top: 1px solid #e8dece; }
+.stats-detail-pilier > summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 9px 0; cursor: pointer; list-style: none; color: #5c5045; font-size: 12px; }
+.stats-detail-pilier > summary::-webkit-details-marker { display: none; }
+.stats-detail-pilier > summary::marker { content: ''; }
+.stats-detail-icone { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 28px; height: 28px; border-radius: 9px; }
+.stats-detail-nom { flex: 1; min-width: 0; }
+.stats-detail-jauge { flex-shrink: 1; width: 54px; min-width: 15px; height: 6px; border-radius: 10px; overflow: hidden; }
+.stats-detail-compte { flex-shrink: 0; min-width: 25px; color: #786b5e; font-size: 11px; text-align: right; }
+.stats-detail-chevron { flex-shrink: 0; color: #92765b; font-size: 14px; transition: transform .15s; }
+.stats-detail-pilier[open] .stats-detail-chevron { transform: rotate(180deg); }
+.stats-detail-liste { list-style: none; padding: 0; margin: 0 0 12px; background: #faf6ee; border-radius: 12px; }
+.stats-detail-liste li { display: flex; align-items: center; gap: 9px; padding: 10px 12px; color: #786b5e; font-size: 12px; line-height: 1.6; }
+.stats-detail-liste li + li { border-top: 1px solid #eee7dd; }
+.stats-detail-etat { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: #e8eff4; color: #526f84; font-size: 12px; }
+.stats-detail-liste li[data-realisee="true"] { color: #426246; }
+.stats-detail-liste li[data-realisee="true"] .stats-detail-etat { background: #e2ecd9; color: #426246; }
+.stats-detail-indisponible { padding: 12px; margin: 0 0 12px; border-radius: 12px; background: #faf6ee; color: #786b5e; font-size: 12px; line-height: 1.7; }
+.stats-detail-indication { margin: 0 0 10px; color: #786b5e; font-size: 11px; line-height: 1.6; }
+.stats-detail-pilier > summary:focus-visible { outline: 3px solid #526f84; outline-offset: 3px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { .stats-detail-chevron { transition: none; } }
+`;
+
+function ListeCases({ routines, cases }) {
+  if (cases === null) {
+    return <p className="stats-detail-indisponible">Détail indisponible pour cette période : les cases exactes n’ont pas été conservées ou ne peuvent pas être lues. Les totaux disponibles restent affichés.</p>;
+  }
+  return (
+    <ul className="stats-detail-liste">
+      {routines.map(r => {
+        const realisee = cases.includes(r.id);
+        return (
+          <li key={r.id} data-realisee={realisee ? 'true' : 'false'}>
+            <span className="stats-detail-etat" aria-hidden="true">{realisee ? '✓' : '○'}</span>
+            <span>{r.nom}<span style={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: 0 }}>{realisee ? ' : cochée' : ' : non cochée'}</span></span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 function DetailPeriode({
   periodeKey,
   frequence,
@@ -466,7 +553,8 @@ function DetailPeriode({
   isToday,
 }) {
   const total = TOTAUX[frequence];
-  const valeur = histGlobal[periodeKey] || 0;
+  const cases = lireCasesPeriode(localStorage, frequence, periodeKey);
+  const valeur = cases === null ? histGlobal[periodeKey] || 0 : cases.length;
   const pct = total > 0 ? Math.round((valeur / total) * 100) : 0;
 
   const pilierData = histPilier[periodeKey] || {
@@ -491,7 +579,7 @@ function DetailPeriode({
           display: 'flex',
           alignItems: 'center',
           gap: 14,
-          marginBottom: frequence === 'Annuel' ? 0 : 18,
+          marginBottom: 18,
         }}
       >
         <div
@@ -554,87 +642,39 @@ function DetailPeriode({
         </div>
       </div>
 
-      {frequence !== 'Annuel' && PILIERS.map(p => {
+      <style>{STYLE_DETAIL_STATS}</style>
+      <p className="stats-detail-indication">
+        {frequence === 'Annuel' ? 'Ouvre le détail des routines annuelles.' : 'Clique sur un pilier pour voir les routines.'}
+        {' '}✓ Cochée · ○ Non cochée
+      </p>
+      {frequence === 'Annuel' ? (
+        <details className="stats-detail-pilier" key={`annuel-${periodeKey}`}>
+          <summary>
+            <span className="stats-detail-nom">Routines annuelles</span>
+            <span className="stats-detail-compte">{valeur}/{total}</span>
+            <span className="stats-detail-chevron" aria-hidden="true">⌄</span>
+          </summary>
+          <ListeCases routines={ROUTINES_DETAIL.Annuel} cases={cases} />
+        </details>
+      ) : PILIERS.map(p => {
         const totalPilier = repartition[p.nom] || 0;
         if (totalPilier === 0) return null;
-
-        const cocheesPilier = pilierData[p.nom] || 0;
-        const pctPilier = Math.round(
-          (cocheesPilier / totalPilier) * 100
-        );
-
+        const liste = ROUTINES_DETAIL[frequence].filter(r => r.pilier === p.nom);
+        const cocheesPilier = comptePilier(cases, liste, pilierData[p.nom] || 0);
+        const pctPilier = Math.round((cocheesPilier / totalPilier) * 100);
         return (
-          <div
-            key={p.nom}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              padding: '9px 0',
-              borderTop: `1px solid ${COULEURS.bordure}`,
-            }}
-          >
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                width: 28,
-                height: 28,
-                borderRadius: 9,
-                background: p.bg,
-                color: p.couleur,
-              }}
-            >
-              <p.Icon size={15} strokeWidth={1.6} />
-            </span>
-
-            <span
-              style={{
-                flex: 1,
-                color: COULEURS.texte,
-                fontSize: 12,
-              }}
-            >
-              {p.nom}
-            </span>
-
-            <div
-              style={{
-                flexShrink: 1,
-                width: 64,
-                minWidth: 20,
-                height: 6,
-                background: p.bg,
-                borderRadius: 10,
-                overflow: 'hidden',
-              }}
-            >
-              <div
-                style={{
-                  height: '100%',
-                  width: `${
-                    Math.min(100, Math.max(0, pctPilier))
-                  }%`,
-                  background: p.couleur,
-                  borderRadius: 10,
-                }}
-              />
-            </div>
-
-            <span
-              style={{
-                flexShrink: 0,
-                minWidth: 25,
-                color: COULEURS.secondaire,
-                fontSize: 11,
-                textAlign: 'right',
-              }}
-            >
-              {cocheesPilier}/{totalPilier}
-            </span>
-          </div>
+          <details className="stats-detail-pilier" key={`${frequence}-${periodeKey}-${p.nom}`}>
+            <summary>
+              <span className="stats-detail-icone" style={{ background: p.bg, color: p.couleur }} aria-hidden="true"><p.Icon size={15} strokeWidth={1.6} /></span>
+              <span className="stats-detail-nom">{p.nom}</span>
+              <span className="stats-detail-jauge" style={{ background: p.bg }} aria-hidden="true">
+                <span style={{ display: 'block', height: '100%', background: p.couleur, width: `${Math.min(100, Math.max(0, pctPilier))}%`, borderRadius: 10 }} />
+              </span>
+              <span className="stats-detail-compte">{cocheesPilier}/{totalPilier}</span>
+              <span className="stats-detail-chevron" aria-hidden="true">⌄</span>
+            </summary>
+            <ListeCases routines={liste} cases={cases} />
+          </details>
         );
       })}
     </div>
