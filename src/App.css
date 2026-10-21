@@ -36,9 +36,6 @@ body {
   opacity: 0.9;
 }
 
-.app-main {
-  padding: 1.5rem;
-}
 
 .piliers {
   display: grid;
@@ -293,8 +290,13 @@ body {
 }
 
 .app-main {
-  padding-bottom: 80px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 80px;
 }
+
 .accueil-wrap {
   padding: 1rem;
 }
