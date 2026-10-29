@@ -328,8 +328,8 @@ const ouvrirOutil = (pilier) => {
       >
         <ul>
           <li>
-            <strong>Routines :</strong> coche tes habitudes
-            quotidiennes, hebdomadaires et annuelles.
+            <strong>Routines :</strong> découvre les routines, lis les descriptions, puis coche tes habitudes
+            quotidiennes, hebdomadaires et annuelles lorsque tu les as réalisées.
           </li>
           <li>
             <strong>Articles :</strong> découvre des ressources
@@ -337,8 +337,8 @@ const ouvrirOutil = (pilier) => {
           </li>
           <li>
             <strong>Outils :</strong> utilise la liste de courses,
-            les notes sommeil, la respiration et le programme
-            de mouvement.
+            les notes sommeil, la respiration, le programme
+            de mouvement... Retrouve également des produits recommandés.
           </li>
           <li>
             <strong>Profil :</strong> retrouve tes statistiques

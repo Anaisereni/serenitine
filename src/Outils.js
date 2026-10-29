@@ -731,6 +731,13 @@ const PRODUITS = [
   pilier: "Autres",
   lien: "https://www.aroma-zone.com",
 },
+{
+  id: 8,
+  nom: "Savons artisanaux - Les bulles de Cassandre",
+  description: "Savons artisanaux naturels pour peaux sensibles, BÉBÉ ET TOUTE LA FAMILLE, fabriqués à la main en France. ▹ Lien affilié",
+  pilier: "Autres",
+  lien: "https://lesbullesdecassandre.fr/?ae=31",
+},
 
 
   // Ajoute d'autres produits ici
