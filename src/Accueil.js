@@ -219,16 +219,17 @@ const ouvrirOutil = (pilier) => {
       id="accueil-details-consultation"
       className="accueil-consultation-details"
     >
+      
       <p>
-        Je te propose un accompagnement en visio autour de
-        la nutrition, du sommeil, de la gestion du stress
-        et du mouvement.
-      </p>
+        
 
-      <p>
-        Les consultations se déroulent depuis chez toi.
-        Choisis <strong>« en vidéo »</strong> lors de la prise
-        de rendez-vous.
+Tu souhaites mieux manger, améliorer ton sommeil, mieux gérer ton stress ou bouger davantage, mais tu ne sais pas par où commencer ?
+
+Je te propose une consultation en visio pour faire le point sur tes habitudes, tes besoins et tes contraintes. Ensemble, nous définissons des actions concrètes et progressives, adaptées à ton quotidien.
+
+30 minutes · 25 € · En visioconférence.
+
+Pour réserver, choisis « en vidéo » lors de la prise de rendez-vous.
       </p>
 
       <a
